@@ -49,9 +49,16 @@ button {
     border: 1px solid #000;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 1rem;
     font: inherit;
+    margin-top: 1rem;
     padding: .5rem 1rem;
+    transition: all .25s ease;
+    transition-property: background-color, color;
+}
+
+button:hover {
+    background-color: #000;
+    color: #fff;
 }
 
 .post {
