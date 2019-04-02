@@ -43,6 +43,13 @@ p {
     padding: 0 10%;
 }
 
+header {
+    position: sticky;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
 header .container {
     align-items: center;
     background-color: #333333;
