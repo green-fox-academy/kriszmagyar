@@ -15,7 +15,9 @@ h2 {
 }
 
 .container {
-    margin: 0 10%;
+    margin: 0 auto;
+    max-width: 850px;
+    padding: 0 10%;
 }
 
 header {
