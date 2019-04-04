@@ -16,5 +16,16 @@ public class UserInput {
         int distance = scanner.nextInt();
         System.out.println("Mile: " + distance * 1.609344);
 
+
+        // Animals and legs
+        System.out.print("Number of chickens: ");
+        int numbOfChickens = scanner.nextInt();
+
+        System.out.print("Number of pigs: ");
+        int numbOfPigs = scanner.nextInt();
+
+        int numbOfLegs = numbOfChickens * 2 + numbOfPigs * 4;
+        System.out.println("The total number of legs: " + numbOfLegs);
+
     }
 }
