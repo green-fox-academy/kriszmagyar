@@ -45,5 +45,26 @@ public class Conditionals {
             System.out.println("The numbers are equal!");
         }
 
+
+        // Party indicator
+        System.out.print("Number of girls: ");
+        int numbOfGirls = scanner.nextInt();
+
+        System.out.print("Number of boys: ");
+        int numbOfBoys = scanner.nextInt();
+
+        boolean isEnoughPeople = numbOfGirls + numbOfBoys >= 20;
+        boolean isGoodSexRatio = numbOfGirls / numbOfBoys == 1;
+
+        if (numbOfGirls == 0) {
+            System.out.println("Sausage party!");
+        } else if (isEnoughPeople && isGoodSexRatio) {
+            System.out.println("The party is excellent!");
+        } else if (isEnoughPeople) {
+            System.out.println("Quite cool party!");
+        } else {
+            System.out.println("Average party...");
+        }
+
     }
 }
