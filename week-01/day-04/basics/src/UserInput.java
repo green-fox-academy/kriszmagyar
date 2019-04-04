@@ -27,5 +27,19 @@ public class UserInput {
         int numbOfLegs = numbOfChickens * 2 + numbOfPigs * 4;
         System.out.println("The total number of legs: " + numbOfLegs);
 
+
+        // Average of input
+        System.out.println("Type five integers!");
+        int x1 = scanner.nextInt();
+        int x2 = scanner.nextInt();
+        int x3 = scanner.nextInt();
+        int x4 = scanner.nextInt();
+        int x5 = scanner.nextInt();
+
+        int sum    = x1 + x2 + x3 + x4 + x5;
+        double avg = sum / 5;
+
+        System.out.println("Sum: " + sum + ", Average: " + avg);
+
     }
 }
