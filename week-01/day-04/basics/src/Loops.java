@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Loops {
     public static void main(String[] args) {
 
@@ -67,6 +69,24 @@ public class Loops {
 
             }
             System.out.println();
+        }
+
+        // Guess the number
+        Scanner scanner = new Scanner(System.in);
+        int solution = 8;
+
+        System.out.println("Try to guess the number!");
+        while (true) {
+            int answer = scanner.nextInt();
+
+            if (solution > answer) {
+                System.out.println("The stored number is higher");
+            } else if (solution < answer) {
+                System.out.println("The solution is lower");
+            } else {
+                System.out.println("You found the number: " + solution);
+                break;
+            }
         }
 
     }
