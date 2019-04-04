@@ -37,7 +37,7 @@ public class UserInput {
         int x5 = scanner.nextInt();
 
         int sum    = x1 + x2 + x3 + x4 + x5;
-        double avg = sum / 5;
+        double avg = (double) sum / 5;
 
         System.out.println("Sum: " + sum + ", Average: " + avg);
 
