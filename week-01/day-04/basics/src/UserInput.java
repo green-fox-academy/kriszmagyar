@@ -10,5 +10,11 @@ public class UserInput {
         String name = scanner.nextLine();
         System.out.println("Hello, " + name);
 
+
+        // Mile to km converter
+        System.out.print("Km: ");
+        int distance = scanner.nextInt();
+        System.out.println("Mile: " + distance * 1.609344);
+
     }
 }
