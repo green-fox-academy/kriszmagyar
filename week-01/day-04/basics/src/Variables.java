@@ -78,5 +78,17 @@ public class Variables {
         int j = 1521;
         System.out.println("j: " + ((j % 3 == 0) || (j % 5 == 0)));
 
+
+        // Cuboid
+        double length = 20;
+        double width  = 30;
+        double height = 15;
+
+        double surfaceArea = 2 * (length * width + length * height + width * height);
+        double volume      = length * width * height;
+
+        System.out.println("Surface area: " + (int) surfaceArea);
+        System.out.println("Volume: " + (int) volume);
+
     }
 }
