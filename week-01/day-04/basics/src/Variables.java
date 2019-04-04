@@ -3,7 +3,7 @@ public class Variables {
 
         // Favorite number
         int favoriteNumber = 23;
-        System.out.println("\"My favorite number is: " + 8 + "\"");
+        System.out.println("\"My favorite number is: " + favoriteNumber + "\"");
 
     }
 }
