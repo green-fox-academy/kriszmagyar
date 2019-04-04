@@ -101,5 +101,18 @@ public class Loops {
             System.out.println();
         }
 
+        // Draw pyramid
+        numbOfRows = 10;
+        for (int i = 0; i < numbOfRows; i++) {
+            for (int j = 1; j <= numbOfRows * 2 - 1; j++) {
+                if (j <= numbOfRows + i && j >= numbOfRows - i) {
+                    System.out.print("%");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+
     }
 }
