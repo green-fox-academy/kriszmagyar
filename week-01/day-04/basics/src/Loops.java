@@ -23,13 +23,13 @@ public class Loops {
         }
 
         // Count from to
-        int first  = 3;
-        int second = 6;
+        int from  = 3;
+        int to = 6;
 
-        if (second <= first) {
+        if (to <= from) {
             System.out.println("The second number should be bigger");
         } else {
-            for (int i = first; i < second; i++) {
+            for (int i = from; i < to; i++) {
                 System.out.println(i);
             }
         }
