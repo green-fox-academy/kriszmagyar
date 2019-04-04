@@ -115,13 +115,17 @@ public class Loops {
         }
 
         // Draw diamond
+        System.out.println("\nDiamond\n");
         numbOfRows = 7;
+        int middleRow = (int) Math.round(numbOfRows / 2.);
+        int doubleRow = numbOfRows % 2 == 0 ? 1 : 0; // When the numb of rows is even, there are double rows in the middle
+
         for (int i = 1; i <= numbOfRows; i++) {
             for (int j = 1; j <= numbOfRows; j++) {
-                if (i + j <= numbOfRows / 2 + 1) {
+                if (j <= middleRow - i || j >= middleRow + i + doubleRow || j <= i - middleRow - doubleRow || j > middleRow - i + numbOfRows + doubleRow) {
                     System.out.print(" ");
                 } else {
-                    System.out.print("%");
+                    System.out.print("*");
                 }
             }
             System.out.println();
