@@ -11,5 +11,11 @@ public class Loops {
             System.out.println(i);
         }
 
+        // Multiplication table
+        int num = 15;
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(i + " * " + num + " = " + (i * num));
+        }
+
     }
 }
