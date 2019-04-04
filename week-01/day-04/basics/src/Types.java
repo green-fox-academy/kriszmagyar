@@ -14,5 +14,12 @@ public class Types {
         System.out.println(22 / 13);
         System.out.println(22 % 13);
 
+        // Coding hours
+        int timeSpentCoding = 6 * 5 * 17; // hours * days * weeks
+        int workingHours    = 52 * 17;    // hours * weeks
+
+        System.out.println("Time spent with coding: " + timeSpentCoding);
+        System.out.println("Coding hours: " + (float) timeSpentCoding / workingHours * 100 + "%");
+
     }
 }
