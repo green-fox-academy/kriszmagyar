@@ -114,5 +114,17 @@ public class Loops {
             System.out.println();
         }
 
+        // Draw diamond
+        numbOfRows = 7;
+        for (int i = 1; i <= numbOfRows; i++) {
+            for (int j = 1; j <= numbOfRows; j++) {
+                if (i + j <= numbOfRows / 2 + 1) {
+                    System.out.print(" ");
+                } else {
+                    System.out.print("%");
+                }
+            }
+            System.out.println();
+        }
     }
 }
