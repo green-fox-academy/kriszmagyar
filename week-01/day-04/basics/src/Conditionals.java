@@ -68,5 +68,36 @@ public class Conditionals {
         }
         System.out.println(partyMsg);
 
+
+        // Conditional variable mutation
+        double a = 24;
+        int out = 0;
+        if (a % 2 == 0) out++;
+        System.out.println("out: " + out);
+
+        int b = 13;
+        String out2 = "";
+        if (b >= 10 && b <= 20) out2 = "Sweet!";
+        else if (b < 10)        out2 = "Less!";
+        else                    out2 = "More!";
+        System.out.println("out2: " + out2);
+
+        int c = 123;
+        int credits = 100;
+        boolean isBonus = false;
+        if (!isBonus) {
+            if (credits >= 50) c -= 2;
+            else               c --;
+        }
+        System.out.println("c: " + c);
+
+        int d = 8;
+        int time = 120;
+        String out3 = "";
+        if (d % 4 == 0 && time <= 200) out3 = "check";
+        else if (time > 200)           out3 = "Time out";
+        else                           out3 = "Run Forest Run!";
+        System.out.println("out3: " + out3);
+
     }
 }
