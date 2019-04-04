@@ -57,15 +57,12 @@ public class Conditionals {
         boolean isGoodSexRatio = numbOfGirls / numbOfBoys == 1;
 
         String partyMsg;
-        if (numbOfGirls == 0) {
-            partyMsg = "Sausage party!";
-        } else if (isEnoughPeople && isGoodSexRatio) {
-            partyMsg = "The party is excellent!";
-        } else if (isEnoughPeople) {
-            partyMsg = "Quite cool party!";
-        } else {
-            partyMsg = "Average party...";
-        }
+
+        if (numbOfGirls == 0)                      partyMsg = "Sausage party!";
+        else if (isEnoughPeople && isGoodSexRatio) partyMsg = "The party is excellent!";
+        else if (isEnoughPeople)                   partyMsg = "Quite cool party!";
+        else                                       partyMsg = "Average party...";
+
         System.out.println(partyMsg);
 
 
