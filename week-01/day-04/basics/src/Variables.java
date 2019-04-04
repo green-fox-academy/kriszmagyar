@@ -7,16 +7,16 @@ public class Variables {
 
 
         // Swap
-        int a = 123;
-        int b = 526;
+        int x = 123;
+        int y = 526;
         int tmp;
 
-        tmp = a;
-        a = b;
-        b = tmp;
+        tmp = x;
+        x = y;
+        y = tmp;
 
-        System.out.println("a: " + a);
-        System.out.println("b: " + b);
+        System.out.println("x: " + x);
+        System.out.println("y: " + y);
 
 
         // BMI
