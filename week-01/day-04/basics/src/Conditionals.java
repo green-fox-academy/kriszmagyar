@@ -29,5 +29,21 @@ public class Conditionals {
             System.out.println("A lot");
         }
 
+
+        // Print bigger
+        System.out.print("x: ");
+        int x = scanner.nextInt();
+
+        System.out.print("y: ");
+        int y = scanner.nextInt();
+
+        if (x > y) {
+            System.out.println(x);
+        } else if (y > x) {
+            System.out.println(y);
+        } else {
+            System.out.println("The numbers are equal!");
+        }
+
     }
 }
