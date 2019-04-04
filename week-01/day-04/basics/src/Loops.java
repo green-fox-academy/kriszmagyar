@@ -140,5 +140,17 @@ public class Loops {
             System.out.println();
         }
 
+        // Parametric average
+        int numbOfAsks = 4;
+        int sum = 0;
+
+        System.out.println("Type in " + numbOfAsks + " numbers");
+        for (int i = 0; i < numbOfAsks; i++) {
+            int numbFromUser = scanner.nextInt();
+            sum += numbFromUser;
+        }
+
+        System.out.println("Sum: " + sum + ", Average: " + (double) sum / numbOfAsks);
+
     }
 }
