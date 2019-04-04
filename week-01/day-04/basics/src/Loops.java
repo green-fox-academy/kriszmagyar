@@ -45,5 +45,14 @@ public class Loops {
             }
         }
 
+        // Triangle
+        int numbOfRows = 10;
+        for (int i = 1; i <= numbOfRows; i++) {
+            for (int j = 0; j < i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
     }
 }
