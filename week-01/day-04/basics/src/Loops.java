@@ -6,5 +6,10 @@ public class Loops {
             System.out.println("I won't cheat on exam!");
         }
 
+        // Print even
+        for (int i = 2; i < 500; i += 2) {
+            System.out.println(i);
+        }
+
     }
 }
