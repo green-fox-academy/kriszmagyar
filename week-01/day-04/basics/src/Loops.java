@@ -1,6 +1,9 @@
 public class Loops {
     public static void main(String[] args) {
 
+        // Note: Some tasks require user inputs, I omit that
+        // because it is easier to test this way.
+
         // I wont cheat on exams
         for (int i = 0; i < 100; i++) {
             System.out.println("I won't cheat on exam!");
@@ -15,6 +18,18 @@ public class Loops {
         int num = 15;
         for (int i = 1; i <= 10; i++) {
             System.out.println(i + " * " + num + " = " + (i * num));
+        }
+
+        // Count from to
+        int first  = 3;
+        int second = 6;
+
+        if (second <= first) {
+            System.out.println("The second number should be bigger");
+        } else {
+            for (int i = first; i < second; i++) {
+                System.out.println(i);
+            }
         }
 
     }
