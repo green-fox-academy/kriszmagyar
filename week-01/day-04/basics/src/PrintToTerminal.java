@@ -10,5 +10,9 @@ public class PrintToTerminal {
         System.out.println("All the king's horses and all the king's men");
         System.out.println("Couldn't put Humpty together again.");
 
+        // Hello Others !
+        System.out.println("Hello, Mate!");
+        System.out.println("Hello, Soma!");
+        System.out.println("Hello, Attila!");
     }
 }
