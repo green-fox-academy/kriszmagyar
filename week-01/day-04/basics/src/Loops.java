@@ -46,10 +46,25 @@ public class Loops {
         }
 
         // Triangle
-        int numbOfRows = 10;
+        int numbOfRows = 4;
         for (int i = 1; i <= numbOfRows; i++) {
             for (int j = 0; j < i; j++) {
                 System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        // Draw diagonal
+        numbOfRows = 10;
+        for (int i = 1; i <= numbOfRows; i++) {
+            for (int j = 1; j <= numbOfRows; j++) {
+
+                if (i == 1 || i == numbOfRows || j == 1 || j == numbOfRows || i == j) {
+                    System.out.print("%");
+                }  else {
+                    System.out.print(" ");
+                }
+
             }
             System.out.println();
         }
