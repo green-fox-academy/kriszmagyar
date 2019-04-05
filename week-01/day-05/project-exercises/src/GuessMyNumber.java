@@ -44,8 +44,7 @@ public class GuessMyNumber {
     }
 
     private static int looseLife(int currentLives) {
-        currentLives--;
-        System.out.println(" You have " + currentLives + " lives left.");
+        System.out.println(" You have " + --currentLives + " lives left.");
         return currentLives;
     }
 
