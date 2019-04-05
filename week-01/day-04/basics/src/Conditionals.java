@@ -58,10 +58,15 @@ public class Conditionals {
 
         String partyMsg;
 
-        if (numbOfGirls == 0)                      partyMsg = "Sausage party!";
-        else if (isEnoughPeople && isGoodSexRatio) partyMsg = "The party is excellent!";
-        else if (isEnoughPeople)                   partyMsg = "Quite cool party!";
-        else                                       partyMsg = "Average party...";
+        if (numbOfGirls == 0) {
+            partyMsg = "Sausage party!";
+        } else if (isEnoughPeople && isGoodSexRatio) {
+            partyMsg = "The party is excellent!";
+        } else if (isEnoughPeople) {
+            partyMsg = "Quite cool party!";
+        } else {
+            partyMsg = "Average party...";
+        }
 
         System.out.println(partyMsg);
 
@@ -74,26 +79,37 @@ public class Conditionals {
 
         int b = 13;
         String out2 = "";
-        if (b >= 10 && b <= 20) out2 = "Sweet!";
-        else if (b < 10)        out2 = "Less!";
-        else                    out2 = "More!";
+        if (b >= 10 && b <= 20) {
+            out2 = "Sweet!";
+        } else if (b < 10) {
+            out2 = "Less!";
+        } else {
+            out2 = "More!";
+        }
         System.out.println("out2: " + out2);
 
         int c = 123;
         int credits = 100;
         boolean isBonus = false;
         if (!isBonus) {
-            if (credits >= 50) c -= 2;
-            else               c --;
+            if (credits >= 50) {
+                c -= 2;
+            } else {
+                c --;
+            }
         }
         System.out.println("c: " + c);
 
         int d = 8;
         int time = 120;
         String out3 = "";
-        if (d % 4 == 0 && time <= 200) out3 = "check";
-        else if (time > 200)           out3 = "Time out";
-        else                           out3 = "Run Forest Run!";
+        if (d % 4 == 0 && time <= 200) {
+            out3 = "check";
+        } else if (time > 200) {
+            out3 = "Time out";
+        } else {
+            out3 = "Run Forest Run!";
+        }
         System.out.println("out3: " + out3);
 
     }
