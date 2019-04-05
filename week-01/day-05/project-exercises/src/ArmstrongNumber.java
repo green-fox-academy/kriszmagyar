@@ -20,16 +20,23 @@ public class ArmstrongNumber {
     }
 
     private static boolean isArmstrongNumber(int num) {
-        ArrayList<Integer> digits = new ArrayList<>();
+        ArrayList<Integer> digits = getDigitsList(num);
+        int result = getSumDigitsOnPower(digits);
+        return result == num;
+    }
 
-        // Get the digits into a list array
-        int numCopy = num;
-        while (numCopy > 0) {
-            digits.add(numCopy % 10);
-            numCopy /= 10;
+    private static ArrayList<Integer> getDigitsList(int num) {
+        ArrayList<Integer> results = new ArrayList<>();
+
+        while (num > 0) {
+            results.add(num % 10);
+            num /= 10;
         }
 
-        // Calculate the result
+        return results;
+    }
+
+    private static int getSumDigitsOnPower(ArrayList<Integer> digits) {
         int numbOfDigits = digits.size();
         int result = 0;
 
@@ -37,7 +44,7 @@ public class ArmstrongNumber {
             result += powerInt(digits.get(i), numbOfDigits);
         }
 
-        return result == num;
+        return result;
     }
 
     private static int powerInt(int num, int pow) {
