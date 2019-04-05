@@ -40,8 +40,8 @@ public class ArmstrongNumber {
         int numbOfDigits = digits.size();
         int result = 0;
 
-        for (int i = 0; i < numbOfDigits; i++) {
-            result += powerInt(digits.get(i), numbOfDigits);
+        for (Integer digit : digits) {
+            result += powerInt(digit, numbOfDigits);
         }
 
         return result;
