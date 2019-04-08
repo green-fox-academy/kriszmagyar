@@ -42,6 +42,10 @@ public class Exercises {
     String[] animals = {"koal", "pand", "zebr"};
     appendAToAll(animals);
     System.out.println(Arrays.toString(animals)); // expects ["koala", "panda", "zebra"]
+
+    String[] abc = {"first", "second", "third"};
+    swapFirstAndLast(abc);
+    System.out.println(Arrays.toString(abc)); // expects ["third", "second", "first"]
   }
 
   public static void printThird(int[] arr) {
@@ -112,6 +116,12 @@ public class Exercises {
     for (int i = 0; i < arr.length; i++) {
       arr[i] += "a";
     }
+  }
+
+  public static void swapFirstAndLast(String[] arr) {
+    String tmp = arr[0];
+    arr[0] = arr[arr.length - 1];
+    arr[arr.length - 1] = tmp;
   }
 
 }
