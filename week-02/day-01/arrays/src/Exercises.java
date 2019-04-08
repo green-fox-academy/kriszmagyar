@@ -11,6 +11,10 @@ public class Exercises {
 
     int[] r = {54, 23, 66, 12};
     sumSecondAndThird(r); // expects print 89
+
+    int[] s = {1, 2, 3, 8, 5, 6};
+    changeFourthElementToFour(s);
+    System.out.println(s[3]); // expects 4
   }
 
   public static void printThird(int[] arr) {
@@ -27,8 +31,12 @@ public class Exercises {
     }
   }
 
-    public static void sumSecondAndThird(int[] r) {
-      System.out.println(r[1] + r[2]);
-    }
+  public static void sumSecondAndThird(int[] arr) {
+    System.out.println(arr[1] + arr[2]);
+  }
+
+  public static void changeFourthElementToFour(int[] arr) {
+    arr[3] = 4;
+  }
 
 }
