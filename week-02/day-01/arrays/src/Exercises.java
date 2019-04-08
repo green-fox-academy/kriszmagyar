@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Exercises {
 
   public static void main(String[] args) {
@@ -29,6 +31,13 @@ public class Exercises {
     int[] numList = {3, 4, 5, 6, 7};
     doubleArr(numList);
     printArr(numList); // expects print [6, 8, 10, 12, 14]
+
+    String[][] colorShades = {
+        { "lime", "forest green", "olive", "pale green", "spring green" },
+        { "orange red", "red", "tomato" },
+        { "orchid", "violet", "pink", "hot pink" }
+    };
+    System.out.println(Arrays.deepToString(colorShades)); // expects print colorShades array
   }
 
   public static void printThird(int[] arr) {
