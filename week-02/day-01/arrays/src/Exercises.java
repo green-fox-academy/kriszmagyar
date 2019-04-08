@@ -15,6 +15,10 @@ public class Exercises {
     int[] s = {1, 2, 3, 8, 5, 6};
     changeFourthElementToFour(s);
     System.out.println(s[3]); // expects 4
+
+    int[] t = {1, 2, 3, 4, 5};
+    incThirdElement(t);
+    System.out.println(t[2]); // expects 4
   }
 
   public static void printThird(int[] arr) {
@@ -37,6 +41,10 @@ public class Exercises {
 
   public static void changeFourthElementToFour(int[] arr) {
     arr[3] = 4;
+  }
+
+  public static void incThirdElement(int[] arr) {
+    arr[2]++;
   }
 
 }
