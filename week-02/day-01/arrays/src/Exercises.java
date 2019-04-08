@@ -22,6 +22,9 @@ public class Exercises {
 
     int[] numbers = {4, 5, 6, 7};
     printArr(numbers); // expects print [4, 5, 6, 7]
+
+    int[][] matrix = createBaseMatrix(4);
+    printMatrix(matrix); // expects print 4x4 matrix, with 1 in diagonals
   }
 
   public static void printThird(int[] arr) {
@@ -56,7 +59,30 @@ public class Exercises {
     for (i = 0; i < arr.length - 1; i++) {
       System.out.print(arr[i] + ", ");
     }
-    System.out.print(arr[i] + "]");
+    System.out.println(arr[i] + "]");
+  }
+
+  public static int[][] createBaseMatrix(int size) {
+    int[][] matrix = new int[size][size];
+    for (int i = 0; i < size; i++) {
+      for (int j = 0; j < size; j++) {
+        if (i == j) {
+          matrix[i][j] = 1;
+        } else {
+          matrix[i][j] = 0;
+        }
+      }
+    }
+    return matrix;
+  }
+
+  public static void printMatrix(int[][] matrix) {
+    for (int i = 0; i < matrix.length; i++) {
+      for (int j = 0; j < matrix[i].length; j++) {
+        System.out.print(matrix[i][j] + " ");
+      }
+      System.out.println();
+    }
   }
 
 }
