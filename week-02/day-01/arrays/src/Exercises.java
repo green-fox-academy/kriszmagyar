@@ -9,6 +9,8 @@ public class Exercises {
     int[] second = {4, 5};
     compareLength(first, second); // expects print First has more elements!
 
+    int[] r = {54, 23, 66, 12};
+    sumSecondAndThird(r); // expects print 89
   }
 
   public static void printThird(int[] arr) {
@@ -24,5 +26,9 @@ public class Exercises {
       System.out.println("The number of elements are the same!");
     }
   }
+
+    public static void sumSecondAndThird(int[] r) {
+      System.out.println(r[1] + r[2]);
+    }
 
 }
