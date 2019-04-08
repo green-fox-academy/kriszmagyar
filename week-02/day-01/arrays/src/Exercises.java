@@ -19,6 +19,9 @@ public class Exercises {
     int[] t = {1, 2, 3, 4, 5};
     incThirdElement(t);
     System.out.println(t[2]); // expects 4
+
+    int[] numbers = {4, 5, 6, 7};
+    printArr(numbers); // expects print [4, 5, 6, 7]
   }
 
   public static void printThird(int[] arr) {
@@ -45,6 +48,15 @@ public class Exercises {
 
   public static void incThirdElement(int[] arr) {
     arr[2]++;
+  }
+
+  public static void printArr(int[] arr) {
+    System.out.print("[");
+    int i;
+    for (i = 0; i < arr.length - 1; i++) {
+      System.out.print(arr[i] + ", ");
+    }
+    System.out.print(arr[i] + "]");
   }
 
 }
