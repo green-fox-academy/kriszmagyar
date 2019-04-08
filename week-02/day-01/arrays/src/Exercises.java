@@ -25,6 +25,10 @@ public class Exercises {
 
     int[][] matrix = createBaseMatrix(4);
     printMatrix(matrix); // expects print 4x4 matrix, with 1 in diagonals
+
+    int[] numList = {3, 4, 5, 6, 7};
+    doubleArr(numList);
+    printArr(numList); // expects print [6, 8, 10, 12, 14]
   }
 
   public static void printThird(int[] arr) {
@@ -82,6 +86,12 @@ public class Exercises {
         System.out.print(matrix[i][j] + " ");
       }
       System.out.println();
+    }
+  }
+
+  public static void doubleArr(int[] arr) {
+    for (int i = 0; i < arr.length; i++) {
+      arr[i] *= 2;
     }
   }
 
