@@ -49,6 +49,10 @@ public class Exercises {
 
     int[] ai = {3, 4, 5, 6, 7};
     System.out.println(sum(ai)); // expects 25
+
+    int[] aj = {3, 4, 5, 6, 7};
+    reverse(aj);
+    printArr(aj); // expects [7, 6, 5, 4, 3]
   }
 
   public static void printThird(int[] arr) {
@@ -133,6 +137,18 @@ public class Exercises {
       res += el;
     }
     return res;
+  }
+
+  public static void reverse(int[] arr) {
+    int[] tmpArr = new int[arr.length];
+
+    for (int i = 0; i < arr.length; i++) {
+      tmpArr[i] = arr[arr.length - 1 - i];
+    }
+
+    for (int i = 0; i < arr.length; i++) {
+      arr[i] = tmpArr[i];
+    }
   }
 
 }
