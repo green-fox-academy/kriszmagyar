@@ -82,12 +82,7 @@ public class Palindrome {
       }
     }
 
-    String[] result = new String[numbOfPalindromes];
-    for (int i = 0; i < numbOfPalindromes; i++) {
-      result[i] = palindromes[i];
-    }
-
-    return result;
+    return Arrays.copyOf(palindromes, numbOfPalindromes);
   }
 
 }

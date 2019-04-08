@@ -12,23 +12,20 @@ public class Unique {
   /**
    * Returns a list of numbers where every number in the list occurs only once
    */
-  public static int[] unique(int[] arr) {
-    int[] tmpResults = new int[arr.length];
+  private static int[] unique(int[] arr) {
+    int[] results = new int[arr.length];
     int numbOfUniques = 0;
 
     for (int value : arr) {
-      if (!isContains(tmpResults, value)) {
-        tmpResults[numbOfUniques++] = value;
+      if (!isContains(results, value)) {
+        results[numbOfUniques++] = value;
       }
     }
 
-    int[] results = new int[numbOfUniques];
-    System.arraycopy(tmpResults, 0, results, 0, numbOfUniques);
-
-    return results;
+    return Arrays.copyOf(results, numbOfUniques);
   }
 
-  public static boolean isContains(int[] arr, int num) {
+  private static boolean isContains(int[] arr, int num) {
     for (int value : arr) {
       if (value == num) {
         return true;
