@@ -38,6 +38,10 @@ public class Exercises {
         { "orchid", "violet", "pink", "hot pink" }
     };
     System.out.println(Arrays.deepToString(colorShades)); // expects print colorShades array
+
+    String[] animals = {"koal", "pand", "zebr"};
+    appendAToAll(animals);
+    System.out.println(Arrays.toString(animals)); // expects ["koala", "panda", "zebra"]
   }
 
   public static void printThird(int[] arr) {
@@ -101,6 +105,12 @@ public class Exercises {
   public static void doubleArr(int[] arr) {
     for (int i = 0; i < arr.length; i++) {
       arr[i] *= 2;
+    }
+  }
+
+  public static void appendAToAll(String[] arr) {
+    for (int i = 0; i < arr.length; i++) {
+      arr[i] += "a";
     }
   }
 
