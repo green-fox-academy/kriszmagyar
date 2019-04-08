@@ -46,6 +46,9 @@ public class Exercises {
     String[] abc = {"first", "second", "third"};
     swapFirstAndLast(abc);
     System.out.println(Arrays.toString(abc)); // expects ["third", "second", "first"]
+
+    int[] ai = {3, 4, 5, 6, 7};
+    System.out.println(sum(ai)); // expects 25
   }
 
   public static void printThird(int[] arr) {
@@ -122,6 +125,14 @@ public class Exercises {
     String tmp = arr[0];
     arr[0] = arr[arr.length - 1];
     arr[arr.length - 1] = tmp;
+  }
+
+  public static int sum(int[] arr) {
+    int res = 0;
+    for (int el : arr) {
+      res += el;
+    }
+    return res;
   }
 
 }
