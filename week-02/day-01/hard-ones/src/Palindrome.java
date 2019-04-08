@@ -21,7 +21,7 @@ public class Palindrome {
     // Test cases for search palindrome
 
     String txt1 = "dog goat dad duck doodle never";
-    System.out.println(Arrays.toString(searchPalindrome(txt1))); // expects ["og go", "g g", " dad ", "dad", "d d", "dood", "eve"]
+    System.out.println(Arrays.toString(searchPalindrome(txt1))); // expects ["og go", " dad ", "dood", "g g", "dad", "d d", "eve"]
 
     String txt2 = "";
     System.out.println(Arrays.toString(searchPalindrome(txt2))); // expects []
