@@ -15,11 +15,8 @@ public class Anagram {
 
   private static boolean isAnagram(String str1, String str2) {
 
-    char[] charArr1 = str1.toLowerCase().toCharArray();
-    char[] charArr2 = str2.toLowerCase().toCharArray();
-
-    for (char letter : charArr1) {
-      if (numbOfAppearance(letter, charArr1) != numbOfAppearance(letter, charArr2)) {
+    for (int i = 0; i < str1.length(); i++) {
+      if (numbOfAppearance(str1.charAt(i), str1) != numbOfAppearance(str2.charAt(2), str2)) {
         return false;
       }
     }
@@ -30,9 +27,8 @@ public class Anagram {
   /**
    * Returns how many times a letter appears in a text
    */
-  private static int numbOfAppearance(char letter, char[] arr) {
-    String txt = new String(arr);
-    return txt.length() - txt.replaceAll(String.valueOf(letter), "").length();
+  private static int numbOfAppearance(char letter, String txt) {
+    return txt.length() - txt.toLowerCase().replaceAll(String.valueOf(letter).toLowerCase(), "").length();
   }
 
 }
