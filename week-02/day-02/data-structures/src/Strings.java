@@ -9,7 +9,14 @@ public class Strings {
 
     // URL fixer
     String url = "https//www.reddit.com/r/nevertellmethebots";
-    System.out.println(urlFixer(url)); // expects https://www.reddit.com/r/nevertellmetheodds
+    url = urlFixer(url);
+    System.out.println(url); // expects https://www.reddit.com/r/nevertellmetheodds
+
+    // Takes longer
+    String quote = "Hofstadter's Law: It you expect, even when you take into account Hofstadter's Law.";
+    quote = addTakesLonger(quote);
+    System.out.println(quote); // expects to add 'always takes longer than'
+
   }
 
   private static String urlFixer(String url) {
@@ -20,6 +27,16 @@ public class Strings {
 
   private static String insertAt(String str, String insertion, int index) {
     return str.substring(0, index) + insertion + str.substring(index);
+  }
+
+  /**
+   * When saving this quote a disk error has occured. Please fix it.
+   * Add "always takes longer than" to the StringBuilder (quote) between the words "It" and "you"
+   * Using pieces of the quote variable (instead of just redefining the string)
+   */
+  private static String addTakesLonger(String str) {
+    int insertAtIndex = str.indexOf("you expect,");
+    return new StringBuilder(str).insert(insertAtIndex, "always takes longer than ").toString();
   }
 
 }
