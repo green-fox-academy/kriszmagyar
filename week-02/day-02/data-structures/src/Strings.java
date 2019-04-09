@@ -22,6 +22,10 @@ public class Strings {
     todoText = buildTodo(todoText);
     System.out.println(todoText); // expects to do list printed
 
+    // Reverse
+    String reversed = ".eslaf eb t'ndluow ecnetnes siht ,dehctiws erew eslaf dna eurt fo sgninaem eht fI";
+    System.out.println(reverse(reversed)); // expects to reverse the string
+    System.out.println(reverseBetter(reversed)); // expects to reverse the string
   }
 
   private static String urlFixer(String url) {
@@ -55,6 +59,25 @@ public class Strings {
         .append(" - Download games\n")
         .append("\t - Diablo")
         .toString();
+  }
+
+  /**
+   * Create a method that can reverse a String, which is passed as the parameter
+   * Use it on this reversed string to check it!
+   * Try to solve this using charAt() first, and optionally anything else after.
+   */
+  private static String reverse(String str) {
+    char[] reversed = new char[str.length()];
+
+    for (int i = 0; i < reversed.length; i++) {
+      reversed[i] = str.charAt(str.length() - 1 - i);
+    }
+
+    return String.valueOf(reversed);
+  }
+
+  private static String reverseBetter(String str) {
+    return new StringBuilder(str).reverse().toString();
   }
 
 }
