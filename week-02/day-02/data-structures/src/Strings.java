@@ -17,6 +17,11 @@ public class Strings {
     quote = addTakesLonger(quote);
     System.out.println(quote); // expects to add 'always takes longer than'
 
+    // TodoPrint
+    String todoText = " - Buy milk\n";
+    todoText = buildTodo(todoText);
+    System.out.println(todoText); // expects to do list printed
+
   }
 
   private static String urlFixer(String url) {
@@ -37,6 +42,19 @@ public class Strings {
   private static String addTakesLonger(String str) {
     int insertAtIndex = str.indexOf("you expect,");
     return new StringBuilder(str).insert(insertAtIndex, "always takes longer than ").toString();
+  }
+
+  /**
+   * Add "My to do:" to the beginning of the todoText
+   * Add " - Download games" to the end of the todoText
+   * Add " - Diablo" to the end of the todoText but with indention
+   */
+  private static String buildTodo(String todoText) {
+    return new StringBuilder(todoText)
+        .insert(0, "My todo:\n")
+        .append(" - Download games\n")
+        .append("\t - Diablo")
+        .toString();
   }
 
 }
