@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ListIntro {
@@ -33,6 +34,23 @@ public class ListIntro {
     names.clear();
     System.out.println(names);
 
+    System.out.println("\n-------------------------------------\nArray Lists\n-------------------------------------");
+    List<String> listA = new ArrayList<>(Arrays.asList("Apple", "Avocado", "Blueberries", "Durian", "Lychee"));
+    List<String> listB = new ArrayList<>(listA);
+
+    System.out.println(listA.contains("Durian"));
+    listA.remove("Durian");
+    listA.add(3, "Kiwifruit");
+    System.out.println(listA.size() == listB.size());
+
+    listA.indexOf("Avocado");
+    listB.indexOf("Durian");
+
+    listB.addAll(Arrays.asList("Passion Fruit", "Pummelo"));
+    System.out.println(listA.get(2));
+
+    System.out.println("A: " + listA);
+    System.out.println("B: " + listB);
   }
 
 }
