@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ProductDatabase {
@@ -13,6 +15,8 @@ public class ProductDatabase {
     System.out.println("How many products' price is below 300? " + below(products, 300));
     System.out.println("Is there anything we can buy for exactly 125? " + products.containsValue(125));
     System.out.println("What is the cheapest product? " + min(products));
+    System.out.println("Which products cost less than 201? (just the name) " + lessThan(products, 201));
+    System.out.println("Which products cost more than 150? (name + price) " + moreThan(products, 150));
 
   }
 
@@ -64,6 +68,30 @@ public class ProductDatabase {
     }
 
     return productName;
+  }
+
+  private static List<String> lessThan(Map<String, Integer> products, int upper) {
+    List<String> results = new ArrayList<>();
+
+    for (Map.Entry<String, Integer> entry : products.entrySet()) {
+      if (entry.getValue() < upper) {
+        results.add(entry.getKey());
+      }
+    }
+
+    return results;
+  }
+
+  private static Map<String, Integer> moreThan(Map<String, Integer> products, int lower) {
+    Map<String, Integer> results = new HashMap<>();
+
+    for (Map.Entry<String, Integer> entry : products.entrySet()) {
+      if (entry.getValue() > lower) {
+        results.put(entry.getKey(), entry.getValue());
+      }
+    }
+
+    return results;
   }
 
   private static Map<String, Integer> initProducts() {
