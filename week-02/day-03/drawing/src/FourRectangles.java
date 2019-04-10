@@ -16,12 +16,18 @@ public class FourRectangles{
       int y = getCord(size, HEIGHT);
       Color color = getRandom();
       graphics.setColor(color);
-      drawSquare(graphics, x, y, size);
+      drawSquare(graphics, size);
     }
 
   }
 
-  private static void drawSquare(Graphics graphics, int x, int y, int size) {
+  private static void drawSquare(Graphics graphics, int size) {
+    int x = WIDTH / 2 - size / 2;
+    int y = HEIGHT / 2 - size / 2;
+    drawSquare(graphics, size, x, y);
+  }
+
+  private static void drawSquare(Graphics graphics, int size, int x, int y) {
     graphics.fillRect(x, y, size, size);
   }
 
