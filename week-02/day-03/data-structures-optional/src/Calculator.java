@@ -27,7 +27,7 @@ public class Calculator {
 
   private static void start() {
     System.out.println("Write expression, like '+ 1 1'\nWrite 'exit' to exit");
-    
+
     while (true) {
       String[] input = getInput().split(" ");
       if (input[0].equals("exit")) {
