@@ -9,14 +9,13 @@ public class FourRectangles{
 
     // draw four different size and color rectangles.
     // avoid code duplication.
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 400; i++) {
 
-      int size = (int) (Math.random() * WIDTH / 6 + 25);
+      int size = (int) (Math.random() * WIDTH - i);
       int x = getCord(size, WIDTH);
       int y = getCord(size, HEIGHT);
       Color color = getRandom();
-      graphics.setColor(color);
-      drawSquare(graphics, size);
+      drawSquare(graphics, size, color);
     }
 
   }
@@ -25,6 +24,11 @@ public class FourRectangles{
     int x = WIDTH / 2 - size / 2;
     int y = HEIGHT / 2 - size / 2;
     drawSquare(graphics, size, x, y);
+  }
+
+  private static void drawSquare(Graphics graphics, int size, Color color) {
+    graphics.setColor(color);
+    drawSquare(graphics, size);
   }
 
   private static void drawSquare(Graphics graphics, int size, int x, int y) {
