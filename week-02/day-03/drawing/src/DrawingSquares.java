@@ -7,9 +7,9 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class DrawingSquares {
   private static void mainDraw(Graphics graphics){
 
-//    drawRainbow(graphics, 400);
-    drawPurpleSteps(graphics, 20, 10);
-
+    // drawRainbow(graphics, 400);
+    // drawPurpleSteps(graphics, 20, 5);
+    drawCheckBoard(graphics);
 
   }
 
@@ -25,12 +25,34 @@ public class DrawingSquares {
   }
 
   private static void drawPurpleSteps(Graphics graphics, int n, int grow) {
-    int size = 15;
+    int size = 25;
+    int x = 0;
+    int y = 0;
     for (int i = 0; i < n; i++) {
-      int x = size * i;
-      int y = x;
       graphics.setColor(new Color(128,0,128));
       drawSquare(graphics, size, x, y, true);
+      size += grow;
+      x += size - grow;
+      y = x;
+    }
+  }
+
+  private static void drawCheckBoard(Graphics graphics) {
+    int size = (int) (WIDTH / 8);
+    for (int i = 0; i < 8; i++) {
+      for (int j = 0; j < 8; j++) {
+
+        if ((i + j) % 2 == 0) {
+          graphics.setColor(Color.white);
+        } else {
+          graphics.setColor(Color.black);
+        }
+
+        int x = size * i;
+        int y = size * j;
+        drawSquare(graphics, size, x, y);
+
+      }
     }
   }
 
