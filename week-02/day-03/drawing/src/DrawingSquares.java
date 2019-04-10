@@ -9,7 +9,7 @@ public class DrawingSquares {
 
     // drawRainbow(graphics, 400);
     // drawPurpleSteps(graphics, 20, 5);
-    drawCheckBoard(graphics);
+    // drawCheckBoard(graphics);
 
   }
 
@@ -31,9 +31,9 @@ public class DrawingSquares {
     for (int i = 0; i < n; i++) {
       graphics.setColor(new Color(128,0,128));
       drawSquare(graphics, size, x, y, true);
-      size += grow;
-      x += size - grow;
+      x += size;
       y = x;
+      size += grow;
     }
   }
 
