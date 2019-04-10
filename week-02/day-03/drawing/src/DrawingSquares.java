@@ -4,7 +4,7 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class FourRectangles{
+public class DrawingSquares {
   private static void mainDraw(Graphics graphics){
 
     // draw four different size and color rectangles.
