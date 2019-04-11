@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Basics {
 
   public static void main(String[] args) {
@@ -12,6 +14,7 @@ public class Basics {
     System.out.println(removeAll("axle exye", 'x')); // expects "ale eye"
     System.out.println(addToAllChars("Hello there!", '*')); // expects "H*e*l*l*o* *t*h*e*r*e*!"
     System.out.println(fibonacci(7)); // expects 13
+    System.out.println(max(new int[] {6, 2, 10, 8, 3, 3, 9, 1})); // expects 10
 
   }
 
@@ -147,6 +150,25 @@ public class Basics {
       return 1;
     }
     return fibonacci(num - 1) + fibonacci(num - 2);
+  }
+
+  /**
+   * Write a function that finds the largest element of an array using recursion.
+   */
+  private static int max(int[] arr) {
+    if (arr.length == 1) {
+      return arr[0];
+    } else {
+      int maxOfSub = max(Arrays.copyOf(arr, arr.length - 1));
+      return lastOf(arr) > maxOfSub ? lastOf(arr) : maxOfSub;
+    }
+  }
+
+  /**
+   * Return the last element of an array.
+   */
+  private static int lastOf(int[] arr) {
+    return arr[arr.length - 1];
   }
 
 }
