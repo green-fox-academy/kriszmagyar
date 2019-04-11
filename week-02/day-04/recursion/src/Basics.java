@@ -7,6 +7,7 @@ public class Basics {
     System.out.println(power(4, 2)); // expects 16
     System.out.println(commonDivisor(48, 18)); // expects 6
     System.out.println(multiBy(25, 2)); // expects 50
+    System.out.println(countBunnyEars(10)); // expects 25
 
   }
 
@@ -47,6 +48,14 @@ public class Basics {
       return multi;
     } else {
       return multi + multiBy(num - 1, multi);
+    }
+  }
+
+  private static int countBunnyEars(int num) {
+    if (num == 1) {
+      return 2;
+    } else {
+      return 3 - num % 2 + countBunnyEars(num - 1);
     }
   }
 
