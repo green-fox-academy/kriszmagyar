@@ -8,7 +8,8 @@ public class Basics {
     System.out.println(commonDivisor(48, 18)); // expects 6
     System.out.println(multiBy(25, 2)); // expects 50
     System.out.println(countBunnyEars(10)); // expects 25
-    System.out.println(replaceAll("my exes are xors", 'x', 'y')); // expects 'my eyes are yors'
+    System.out.println(replaceAll("my exes are xors", 'x', 'y')); // expects "my eyes are yors"
+    System.out.println(removeAll("axle exye", 'x')); // expects "ale eye"
 
   }
 
@@ -97,6 +98,14 @@ public class Basics {
     } else {
       return replaceAll(newStr, oldChar, newChar);
     }
+  }
+
+  /**
+   * Given a string, compute recursively a new string
+   * where all the specified chars have been removed.
+   */
+  private static String removeAll(String str, char letter) {
+    return replaceAll(str, letter, '\u0000'); // '\u0000' is the empty or null character
   }
 
 }
