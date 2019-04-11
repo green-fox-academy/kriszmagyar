@@ -5,6 +5,7 @@ public class Basics {
     System.out.println(numberAdder(5)); // expects 15
     System.out.println(sumDigits(135)); // expects 9
     System.out.println(power(4, 2)); // expects 16
+    System.out.println(commonDivisor(48, 18)); // expects 6
 
   }
 
@@ -26,6 +27,19 @@ public class Basics {
     } else {
       return base * power(base, exp - 1);
     }
+  }
+
+  private static int commonDivisor(int num1, int num2) {
+    int max = Math.max(num1, num2);
+    int min = Math.min(num1, num2);
+    int remainder = max % min;
+
+    if (remainder == 0) {
+      return min;
+    } else {
+      return commonDivisor(min, remainder);
+    }
+
   }
 
 }
