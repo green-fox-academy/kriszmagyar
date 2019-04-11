@@ -10,6 +10,7 @@ public class Basics {
     System.out.println(countBunnyEars(10)); // expects 25
     System.out.println(replaceAll("my exes are xors", 'x', 'y')); // expects "my eyes are yors"
     System.out.println(removeAll("axle exye", 'x')); // expects "ale eye"
+    System.out.println(addToAllChars("Hello there!", '*')); // expects "H*e*l*l*o* *t*h*e*r*e*!"
 
   }
 
@@ -106,6 +107,26 @@ public class Basics {
    */
   private static String removeAll(String str, char letter) {
     return replaceAll(str, letter, '\u0000'); // '\u0000' is the empty or null character
+  }
+
+  /**
+   * Given a string, compute recursively a new string where
+   * all the adjacent chars are now separated by a given char.
+   */
+  private static String addToAllChars(String str, char c) {
+    if (str.length() == 1) {
+      return str;
+    } else {
+      String newString = insertCharAt(str, c, 1);
+      return newString.substring(0, 2) + addToAllChars(newString.substring(2), c);
+    }
+  }
+
+  /**
+   * Insert a char at the specified index in a string.
+   */
+  private static String insertCharAt(String str, char c, int i) {
+    return str.substring(0, i) + c + str.substring(i);
   }
 
 }
