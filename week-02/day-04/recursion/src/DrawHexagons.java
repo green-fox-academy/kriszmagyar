@@ -8,7 +8,37 @@ public class DrawHexagons {
     int x = WIDTH / 2;
     int y = HEIGHT / 2;
     int size = 256;
-    
+
+    drawHexagonRecursive(graphics, x, y, size);
+
+  }
+
+  private static void drawHexagonRecursive(Graphics graphics, int parentX, int parentY, int parentSize) {
+
+    if (parentSize == 0) {
+      return;
+    }
+
+    drawRegularPolygon(graphics, parentX, parentY, parentSize, 6);
+
+    int size = parentSize / 2;
+    int x, y;
+
+    // Right side
+    x = parentX + size;
+    y = parentY;
+    drawHexagonRecursive(graphics, x, y, size);
+
+    // Top left side
+    x = parentX - size / 2;
+    y = (int) (parentY - size * Math.sqrt(3) / 2);
+    drawHexagonRecursive(graphics, x, y, size);
+
+    // Bottom left side
+    x = parentX - size / 2;
+    y = (int) (parentY + size * Math.sqrt(3) / 2);
+    drawHexagonRecursive(graphics, x, y, size);
+
   }
 
   /**
