@@ -4,6 +4,7 @@ public class Basics {
 
     System.out.println(numberAdder(5)); // expects 15
     System.out.println(sumDigits(135)); // expects 9
+    System.out.println(power(4, 2)); // expects 16
 
   }
 
@@ -16,6 +17,14 @@ public class Basics {
       return num;
     } else {
       return num % 10 + sumDigits(num / 10);
+    }
+  }
+
+  private static int power(int base, int exp) {
+    if (exp == 1) {
+      return base;
+    } else {
+      return base * power(base, exp - 1);
     }
   }
 
