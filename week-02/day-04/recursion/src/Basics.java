@@ -11,10 +11,18 @@ public class Basics {
 
   }
 
+  /**
+   * Write a recursive function that takes
+   * one parameter: n and adds numbers from 1 to n.
+   */
   private static int numberAdder(int num) {
     return num == 1 ? 1 : num + numberAdder(num - 1);
   }
 
+  /**
+   * Given a non-negative int n, return
+   * the sum of its digits recursively (no loops).
+   */
   private static int sumDigits(int num) {
     if (num / 10 == 0) {
       return num;
@@ -23,6 +31,10 @@ public class Basics {
     }
   }
 
+  /**
+   * Given base and n that are both 1 or more, compute
+   * recursively (no loops) the value of base to the n power.
+   */
   private static int power(int base, int exp) {
     if (exp == 1) {
       return base;
@@ -31,6 +43,9 @@ public class Basics {
     }
   }
 
+  /**
+   * Find the greatest common divisor of two numbers using recursion.
+   */
   private static int commonDivisor(int num1, int num2) {
     int max = Math.max(num1, num2);
     int min = Math.min(num1, num2);
@@ -43,6 +58,11 @@ public class Basics {
     }
   }
 
+  /**
+   * We have a number of bunnies and each bunny has two big
+   * floppy ears. We want to compute the total number of ears
+   * across all the bunnies recursively (without loops or multiplication).
+   */
   private static int multiBy(int num, int multi) {
     if (num == 1) {
       return multi;
@@ -51,6 +71,12 @@ public class Basics {
     }
   }
 
+  /**
+   * We have bunnies standing in a line, numbered 1, 2, ... The odd
+   * bunnies (1, 3, ..) have the normal 2 ears. The even bunnies (2, 4, ..)
+   * we'll say have 3 ears, because they each have a raised foot. Recursively
+   * return the number of "ears" in the bunny line 1, 2, ... n (without loops or multiplication).
+   */
   private static int countBunnyEars(int num) {
     if (num == 1) {
       return 2;
