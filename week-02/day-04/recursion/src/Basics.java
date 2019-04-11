@@ -6,6 +6,7 @@ public class Basics {
     System.out.println(sumDigits(135)); // expects 9
     System.out.println(power(4, 2)); // expects 16
     System.out.println(commonDivisor(48, 18)); // expects 6
+    System.out.println(multiBy(25, 2)); // expects 50
 
   }
 
@@ -39,7 +40,14 @@ public class Basics {
     } else {
       return commonDivisor(min, remainder);
     }
+  }
 
+  private static int multiBy(int num, int multi) {
+    if (num == 1) {
+      return multi;
+    } else {
+      return multi + multiBy(num - 1, multi);
+    }
   }
 
 }
