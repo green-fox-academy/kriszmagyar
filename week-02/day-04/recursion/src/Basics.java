@@ -8,7 +8,7 @@ public class Basics {
     System.out.println(commonDivisor(48, 18)); // expects 6
     System.out.println(multiBy(25, 2)); // expects 50
     System.out.println(countBunnyEars(10)); // expects 25
-    System.out.println(replaceChar("my exes are xors", 'x', 'y')); // expects 'my eyes are yors'
+    System.out.println(replaceAll("my exes are xors", 'x', 'y')); // expects 'my eyes are yors'
 
   }
 
@@ -90,12 +90,12 @@ public class Basics {
    * Given a string, compute recursively (no loops) a new string
    * where all the lowercase old chars have been changed to new chars.
    */
-  private static String replaceChar(String str, char oldChar, char newChar) {
+  private static String replaceAll(String str, char oldChar, char newChar) {
     String newStr = str.replace(oldChar, newChar);
     if (str.equals(newStr)) {
       return str;
     } else {
-      return replaceChar(newStr, oldChar, newChar);
+      return replaceAll(newStr, oldChar, newChar);
     }
   }
 
