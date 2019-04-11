@@ -7,12 +7,19 @@ public class DrawHexagons {
 
     int x = WIDTH / 2;
     int y = HEIGHT / 2;
-    int size = 128;
-    int n = 6;
-
-    drawRegularPolygon(graphics, x, y, size, n);
+    int size = 256;
+    
   }
 
+  /**
+   * Draw a regular polygon with a given parameters.
+   *
+   * @param graphics The Graphics object which takes care about the actual drawing.
+   * @param x The x coordinate of the center of the polygon.
+   * @param y The y coordinate of the center of the polygon.
+   * @param size The length of the side.
+   * @param n The number of sides.
+   */
   private static void drawRegularPolygon(Graphics graphics, int x, int y, int size, int n) {
 
     int[] xPoints = new int[n];
