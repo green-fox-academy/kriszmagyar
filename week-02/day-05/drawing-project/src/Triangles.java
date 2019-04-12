@@ -8,13 +8,37 @@ public class Triangles {
     int x = WIDTH / 2;
     int y = HEIGHT / 2;
     int size = 256;
+    int rotation = 60;
 
-    drawTriangle(graphics, x, y, size);
+    drawTriangleRecursive(graphics, x, y, size, rotation);
 
   }
 
-  private static void drawTriangle(Graphics graphics, int x, int y, int size) {
-    drawRegularPolygon(graphics, x, y, size, 3, 60);
+  private static void drawTriangleRecursive(Graphics graphics, int x, int y, int size, int rotation) {
+
+    if (size < 20) {
+      return;
+    }
+
+    // Draw the main triangle
+    drawTriangle(graphics, x, y, size, rotation);
+
+    // Middle
+    drawTriangleRecursive(graphics, x, y, size / 2, rotation + 120);
+
+    // Right
+    drawTriangleRecursive(graphics, (int) (x + size / 2.3), y + size / 4, size / 2, rotation);
+
+    // Left
+    drawTriangleRecursive(graphics, (int) (x - size / 2.3), y + size / 4, size / 2, rotation);
+
+    // Top
+    drawTriangleRecursive(graphics, x, y - size / 2, size / 2, rotation);
+
+  }
+
+  private static void drawTriangle(Graphics graphics, int x, int y, int size, int rotation) {
+    drawRegularPolygon(graphics, x, y, size, 3, rotation);
   }
 
   /**
@@ -46,8 +70,8 @@ public class Triangles {
   }
 
   // Don't touch the code below
-  private static final int WIDTH = 730;
-  private static final int HEIGHT = 730;
+  private static final int WIDTH = 1024;
+  private static final int HEIGHT = 1024;
 
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Draw Squares");
