@@ -8,22 +8,42 @@ public class SuperHexagon {
     int x = WIDTH / 2;
     int y = HEIGHT / 2;
     int size = 64;
-    int numbOfLayers = 1;
+    int numbOfLayers = 2;
 
     drawTerrain(graphics, x, y, size, numbOfLayers);
 
   }
 
   private static void drawTerrain(Graphics graphics, int x, int y, int size, int numbOfLayers) {
-    int height = (int) (size / 2 / Math.tan(Math.PI / 6));
+
+    // Draw the in the middle
     drawHexagon(graphics, x, y, size);
 
-    drawHexagon(graphics, x, y - height * 2, size);
-    drawHexagon(graphics, (int) (x + size * 1.5), y - height, size);
-    drawHexagon(graphics, (int) (x + size * 1.5), y + height, size);
-    drawHexagon(graphics, x, y + height * 2, size);
-    drawHexagon(graphics, (int) (x - size * 1.5), y - height, size);
-    drawHexagon(graphics, (int) (x - size * 1.5), y + height, size);
+    int height = (int) (size / Math.tan(Math.PI / 6));
+    int numbOfHexagons = 1 * 6;
+
+//    for (int i = 0; i < numbOfHexagons; i++) {
+//      int x1 = x + (int) (sign(Math.sin(i * Math.PI * 2 / numbOfHexagons)) * size * 1.5);
+//      int y1 = y - (int) (Math.cos(i * Math.PI * 2 / numbOfHexagons) * height);
+//      drawHexagon(graphics, x1, y1, size);
+//    }
+
+    numbOfHexagons = 2 * 6;
+    for (int i = 0; i < numbOfHexagons; i++) {
+      int x1 = x + (int) (Math.sin(i * Math.PI * 2 / numbOfHexagons) * size * 1.5 * 2);
+      int y1 = y - (int) (Math.cos(i * Math.PI * 2 / numbOfHexagons) * height * 2);
+      drawHexagon(graphics, x1, y1, size);
+    }
+  }
+
+  private static int sign(double num) {
+    if (num < 0.00001 && num > -0.00001) {
+      return 0;
+    }
+    if (num >=0.001) {
+      return 1;
+    }
+    return -1;
   }
 
   private static void drawHexagon(Graphics graphics, int x, int y, int size) {
