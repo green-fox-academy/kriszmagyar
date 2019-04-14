@@ -5,8 +5,8 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class SuperHexagon {
   private static void draw(Graphics graphics){
 
-    int x = WIDTH / 4;
-    int y = HEIGHT / 4;
+    int x = WIDTH / 6;
+    int y = HEIGHT / 3;
     int size = 64;
     int numbOfLayers = 4;
 
@@ -22,8 +22,14 @@ public class SuperHexagon {
 
     for (int col = 0; col < numbOfColumns; col++) {
       for (int row = 0; row < numbOfRows; row++) {
+
+        if (row >= numbOfLayers + col || row <= col - numbOfLayers) {
+          continue;
+        }
+
         int x1 = x + (int) (col * size * 1.5);
-        int y1 = y + row * height - (col % 2) * height / 2;
+        int y1 = y + row * height - col * height / 2;
+
         drawHexagon(graphics, x1, y1, size);
       }
     }
