@@ -71,7 +71,7 @@ public class SuperHexagon {
   private static final int HEIGHT = 1024;
 
   public static void main(String[] args) {
-    JFrame jFrame = new JFrame("Draw Squares");
+    JFrame jFrame = new JFrame("Draw Super Hexagon");
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     ImagePanel panel = new ImagePanel();
     panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
