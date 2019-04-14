@@ -5,10 +5,10 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class SuperHexagon {
   private static void draw(Graphics graphics){
 
-    int x = WIDTH / 2;
-    int y = HEIGHT / 2;
+    int x = WIDTH / 4;
+    int y = HEIGHT / 4;
     int size = 64;
-    int numbOfLayers = 2;
+    int numbOfLayers = 4;
 
     drawTerrain(graphics, x, y, size, numbOfLayers);
 
@@ -16,34 +16,17 @@ public class SuperHexagon {
 
   private static void drawTerrain(Graphics graphics, int x, int y, int size, int numbOfLayers) {
 
-    // Draw the in the middle
-    drawHexagon(graphics, x, y, size);
-
     int height = (int) (size / Math.tan(Math.PI / 6));
-    int numbOfHexagons = 1 * 6;
+    int numbOfColumns = numbOfLayers * 2 - 1;
+    int numbOfRows = numbOfLayers * 2 - 1;
 
-//    for (int i = 0; i < numbOfHexagons; i++) {
-//      int x1 = x + (int) (sign(Math.sin(i * Math.PI * 2 / numbOfHexagons)) * size * 1.5);
-//      int y1 = y - (int) (Math.cos(i * Math.PI * 2 / numbOfHexagons) * height);
-//      drawHexagon(graphics, x1, y1, size);
-//    }
-
-    numbOfHexagons = 2 * 6;
-    for (int i = 0; i < numbOfHexagons; i++) {
-      int x1 = x + (int) (Math.sin(i * Math.PI * 2 / numbOfHexagons) * size * 1.5 * 2);
-      int y1 = y - (int) (Math.cos(i * Math.PI * 2 / numbOfHexagons) * height * 2);
-      drawHexagon(graphics, x1, y1, size);
+    for (int col = 0; col < numbOfColumns; col++) {
+      for (int row = 0; row < numbOfRows; row++) {
+        int x1 = x + (int) (col * size * 1.5);
+        int y1 = y + row * height - (col % 2) * height / 2;
+        drawHexagon(graphics, x1, y1, size);
+      }
     }
-  }
-
-  private static int sign(double num) {
-    if (num < 0.00001 && num > -0.00001) {
-      return 0;
-    }
-    if (num >=0.001) {
-      return 1;
-    }
-    return -1;
   }
 
   private static void drawHexagon(Graphics graphics, int x, int y, int size) {
