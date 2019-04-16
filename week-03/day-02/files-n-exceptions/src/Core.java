@@ -2,7 +2,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Core {
 
@@ -11,7 +15,7 @@ public class Core {
     System.out.println(copyFiles("assets/copyFrom.txt", "assets/copyTo.txt")); // excepts to copy successfully
 
     List<String> logs = getLogs("assets/log.txt");
-    System.out.println(getUniqueIpAddresses(logs));
+    System.out.println(Arrays.toString(getUniqueIpAddresses(logs)));
 
   }
 
@@ -35,8 +39,15 @@ public class Core {
   }
 
   private static String[] getUniqueIpAddresses(List<String> logs) {
-    System.out.println(logs);
-    return new String[];
+    Set<String> ips = new HashSet<>();
+    for (String line : logs) {
+      ips.add(getIp(line));
+    }
+    return ips.toArray(new String[0]);
+  }
+
+  private static String getIp(String line) {
+    return line.split(" ")[8];
   }
 
 }
