@@ -12,7 +12,7 @@ public class TicTacToe {
     // We have provided you some example files (draw.txt, win-x.txt, win-o.txt)
     // Return "X", "O" or "Draw" based on the input file
 
-    System.out.println(ticTacResult("assets/win-o.txt"));
+    System.out.println(ticTacResult("assets/wi-o.txt"));
     // Should print "O"
 
     System.out.println(ticTacResult("assets/win-x.txt"));
@@ -23,15 +23,11 @@ public class TicTacToe {
   }
 
   private static String ticTacResult(String path) {
-
-    List<String> results = getResults(path);
-    List<String> positions = new ArrayList<>(results);
-
-    positions.addAll(getColumns(results));
-    positions.addAll(getDiagonals(results));
-
-    System.out.println(positions);
-    return getWinner(positions);
+    return getWinner(
+        getPositions(
+            getResults(path)
+        )
+    );
   }
 
   private static List<String> getResults(String path) {
@@ -42,6 +38,13 @@ public class TicTacToe {
       e.printStackTrace();
       return new ArrayList<>();
     }
+  }
+
+  private static List<String> getPositions(List<String> results) {
+    List<String> positions = new ArrayList<>(results);
+    positions.addAll(getColumns(results));
+    positions.addAll(getDiagonals(results));
+    return positions;
   }
 
   private static List<String> getColumns(List<String> results) {
