@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public class Core {
+
+  enum Request {
+    GET, POST
+  }
 
   public static void main(String[] args) {
 
@@ -17,6 +20,7 @@ public class Core {
     List<String> logs = getLogs("assets/log.txt");
     System.out.println(Arrays.toString(getUniqueIpAddresses(logs)));
 
+    System.out.println(getRequestRatio(logs));
   }
 
   private static boolean copyFiles(String from, String to) {
@@ -48,6 +52,28 @@ public class Core {
 
   private static String getIp(String line) {
     return line.split(" ")[8];
+  }
+
+  private static double getRequestRatio(List<String> logs) {
+    int sumOfGet = 0;
+    int sumOfPost = 0;
+
+    for (String line : logs) {
+      String req = getReqType(line);
+
+      if (req.equals(Request.GET.name())) {
+        sumOfGet++;
+      }
+
+      if (req.equals(Request.POST.name())) {
+        sumOfPost++;
+      }
+    }
+    return (double) sumOfGet / sumOfPost;
+  }
+
+  private static String getReqType(String line) {
+    return line.split(" ")[11];
   }
 
 }
