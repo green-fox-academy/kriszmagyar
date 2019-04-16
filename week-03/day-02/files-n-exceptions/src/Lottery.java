@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +21,6 @@ public class Lottery {
     List<int[]> winningNumbers = getWinningNumbers(data);
     Map<Integer, Integer> numberCount = new HashMap<>();
 
-    // init map
     for (int i = 1; i <= 90; i++) {
       numberCount.put(i, 0);
     }
@@ -31,10 +31,7 @@ public class Lottery {
         numberCount.put(num, ++prevCount);
       }
     }
-
-    print(numberCount);
-
-    return new ArrayList<>();
+    return getMaxes(numberCount, n);
   }
 
   private static List<String> getData(String path) {
@@ -55,6 +52,22 @@ public class Lottery {
       String[] numbers = Arrays.copyOfRange(lineData, lineData.length - numberOfWinners, lineData.length);
       results.add(toIntArr(numbers));
     }
+    return results;
+  }
+
+  private static List<Integer> getMaxes(Map<Integer, Integer> map, int n) {
+    List<Integer> valuesInOrder = new ArrayList<>(map.values());
+    valuesInOrder.sort(Comparator.reverseOrder());
+    List<Integer> results = new ArrayList<>();
+
+    for (int i = 0; i < n; i++) {
+      for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+        if (entry.getValue().equals(valuesInOrder.get(i)) && results.size() < n) {
+          results.add(entry.getKey());
+        }
+      }
+    }
+
     return results;
   }
 
