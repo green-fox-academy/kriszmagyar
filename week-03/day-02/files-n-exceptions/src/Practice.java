@@ -8,7 +8,8 @@ public class Practice {
   public static void main(String[] args) {
 
     divide(0); // excepts fail
-    printFromFile("assets/my-file.txt");
+    printFromFile("assets/my-file.txt"); // excepst to print all lines
+    System.out.println(numbOfLines("assets/my-file.txt")); // excepts 3
 
   }
 
@@ -22,12 +23,20 @@ public class Practice {
 
   private static void printFromFile(String path) {
     try {
-      List <String> lines =  Files.readAllLines(Paths.get(path));
+      List<String> lines =  Files.readAllLines(Paths.get(path));
       for (String line : lines) {
         System.out.println(line);
       }
     } catch (IOException e) {
       System.out.println("Unable to read file: " + path);
+    }
+  }
+
+  private static int numbOfLines(String path) {
+    try {
+      return Files.readAllLines(Paths.get(path)).size();
+    } catch (IOException e) {
+      return 0;
     }
   }
 
