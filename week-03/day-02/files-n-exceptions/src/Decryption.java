@@ -2,15 +2,17 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Decryption {
 
   public static void main(String[] args) {
 
-    print(decryptMsg("assets/duplicated-chars.txt", "duplicated"));
-    print(decryptMsg("assets/reversed-lines.txt", "reversed"));
-    print(reverseOrder("assets/reversed-order.txt"));
+//    print(decryptMsg("assets/duplicated-chars.txt", "duplicated"));
+//    print(decryptMsg("assets/reversed-lines.txt", "reversed"));
+    print(decryptMsg("assets/encoded-lines.txt", "shifted"));
+//    print(reverseOrder("assets/reversed-order.txt"));
   }
 
   private static List<String> decryptMsg(String path, String method) {
@@ -47,6 +49,7 @@ public class Decryption {
     switch (method) {
       case "duplicated": return removeDuplication(line);
       case "reversed": return reverse(line);
+      case "shifted": return shift(line, -1);
       default: return line;
     }
   }
@@ -61,6 +64,22 @@ public class Decryption {
 
   private static String reverse(String line) {
     return new StringBuilder(line).reverse().toString();
+  }
+
+  private static String shift(String line, int shift) {
+    char[] chars = line.toCharArray();
+    char[] shiftedChars = new char[line.length()];
+
+    for (int i = 0; i < line.length(); i++) {
+      if (chars[i] == ' ') {
+        shiftedChars[i] = chars[i];
+        continue;
+      }
+
+      int asciiCode = chars[i];
+      shiftedChars[i] = (char) (asciiCode + shift);
+    }
+    return new String(shiftedChars);
   }
 
   private static void print(List<String> txt) {
