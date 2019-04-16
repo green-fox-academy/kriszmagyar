@@ -12,7 +12,7 @@ public class TicTacToe {
     // We have provided you some example files (draw.txt, win-x.txt, win-o.txt)
     // Return "X", "O" or "Draw" based on the input file
 
-    System.out.println(ticTacResult("assets/wi-o.txt"));
+    System.out.println(ticTacResult("assets/win-o.txt"));
     // Should print "O"
 
     System.out.println(ticTacResult("assets/win-x.txt"));
