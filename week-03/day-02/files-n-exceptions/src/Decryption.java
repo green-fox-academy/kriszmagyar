@@ -10,7 +10,7 @@ public class Decryption {
 
     print(decryptMsg("assets/duplicated-chars.txt", "duplicated"));
     print(decryptMsg("assets/reversed-lines.txt", "reversed"));
-
+    print(reverseOrder("assets/reversed-order.txt"));
   }
 
   private static List<String> decryptMsg(String path, String method) {
@@ -23,6 +23,15 @@ public class Decryption {
     }
 
     return decryptedMsg;
+  }
+
+  private static List<String> reverseOrder(String path) {
+    List<String> msg = getMsg(path);
+    List<String> reversedMsg = new ArrayList<>();
+    for (int i = msg.size() - 1; i >= 0; i--) {
+      reversedMsg.add(msg.get(i));
+    }
+    return reversedMsg;
   }
 
   private static List<String> getMsg(String path) {
