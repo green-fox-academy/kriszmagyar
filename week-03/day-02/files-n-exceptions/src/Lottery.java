@@ -3,7 +3,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Lottery {
 
@@ -16,8 +18,21 @@ public class Lottery {
   private static List<Integer> mostCommon(List<String> data, int n) {
 
     List<int[]> winningNumbers = getWinningNumbers(data);
+    Map<Integer, Integer> numberCount = new HashMap<>();
 
-    print(winningNumbers);
+    // init map
+    for (int i = 1; i <= 90; i++) {
+      numberCount.put(i, 0);
+    }
+
+    for (int[] numbers : winningNumbers) {
+      for (int num : numbers) {
+        int prevCount = numberCount.get(num);
+        numberCount.put(num, ++prevCount);
+      }
+    }
+
+    print(numberCount);
 
     return new ArrayList<>();
   }
@@ -54,6 +69,12 @@ public class Lottery {
   private static void print(List<int[]> winningNumbers) {
     for (int[] arr : winningNumbers) {
       System.out.println(Arrays.toString(arr));
+    }
+  }
+
+  private static void print(Map<Integer, Integer> map) {
+    for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+      System.out.println(entry.getKey() + ": " + entry.getValue());
     }
   }
 
