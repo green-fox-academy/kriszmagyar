@@ -6,15 +6,19 @@ import java.util.List;
 
 public class Decryption {
 
+  enum Method {
+    DUPLICATED, REVERSED, SHIFTED
+  }
+
   public static void main(String[] args) {
 
-    print(decryptMsg("assets/duplicated-chars.txt", "duplicated"));
-    print(decryptMsg("assets/reversed-lines.txt", "reversed"));
-    print(decryptMsg("assets/encoded-lines.txt", "shifted"));
+    print(decryptMsg("assets/duplicated-chars.txt", Method.DUPLICATED));
+    print(decryptMsg("assets/reversed-lines.txt", Method.REVERSED));
+    print(decryptMsg("assets/encoded-lines.txt", Method.SHIFTED));
     print(reverseOrder("assets/reversed-order.txt"));
   }
 
-  private static List<String> decryptMsg(String path, String method) {
+  private static List<String> decryptMsg(String path, Method method) {
 
     List<String> msg = getMsg(path);
     List<String> decryptedMsg = new ArrayList<>();
@@ -44,11 +48,11 @@ public class Decryption {
     }
   }
 
-  private static String decryptLine(String line, String method) {
+  private static String decryptLine(String line, Method method) {
     switch (method) {
-      case "duplicated": return removeDuplication(line);
-      case "reversed": return reverse(line);
-      case "shifted": return shift(line, -1);
+      case DUPLICATED: return removeDuplication(line);
+      case REVERSED: return reverse(line);
+      case SHIFTED: return shift(line, -1);
       default: return line;
     }
   }
