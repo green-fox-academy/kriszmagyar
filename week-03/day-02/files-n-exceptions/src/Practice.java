@@ -11,7 +11,8 @@ public class Practice {
     divide(0); // excepts fail
     printFromFile("assets/my-file.txt"); // excepst to print all lines
     System.out.println(numbOfLines("assets/my-file.txt")); // excepts 3
-    writeLineToFile("assets/my-name.txt", "Krisz"); // excpets to write Krisz to file
+    writeLineToFile("assets/my-name.txt", "Krisz"); // excepts to write Krisz to file
+    writeMultiLinesToFile("assets/names.txt", "Im a line", 5); // excepts to write 5 lines to a file
 
   }
 
@@ -47,6 +48,20 @@ public class Practice {
       List<String> names = new ArrayList<>();
       names.add(name);
       Files.write(Paths.get(path), names);
+    } catch (IOException e) {
+      System.out.println("Unable to write file: " + path);
+    }
+  }
+
+  private static void writeMultiLinesToFile(String path, String line, int numbOfLines) {
+
+    List<String> lines = new ArrayList<>();
+    for (int i = 0; i < numbOfLines; i++) {
+      lines.add(line);
+    }
+
+    try {
+      Files.write(Paths.get(path), lines);
     } catch (IOException e) {
       System.out.println("Unable to write file: " + path);
     }
