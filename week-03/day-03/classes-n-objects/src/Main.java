@@ -14,11 +14,13 @@ public class Main {
     BlogPost post3 = new BlogPost("William Turton", "One Engineer Is Trying to Get IBM to Reckon With Trump", "Daniel Hanley, a cybersecurity engineer at IBM, doesn’t want to be the center of attention. When I asked to take his picture outside one of IBM’s New York City offices, he told me that he wasn’t really into the whole organizer profile thing.", "2017.03.28");
 
     Animal tiger = new Animal();
-    tiger.eat();
-    tiger.drink();
-    tiger.play();
-    System.out.println(tiger.getHunger());
-    System.out.println(tiger.getThirst());
+    Animal lion = new Animal();
+    Farm farm = new Farm();
+    farm.breed(tiger);
+    farm.breed(lion);
+    lion.play();
+    farm.breed();
+    farm.slaughter();
 
     Sharpie sharpie = new Sharpie("black", 50.0);
     sharpie.use();
