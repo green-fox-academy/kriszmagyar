@@ -47,9 +47,12 @@ public class Main {
 
     Student student = new Student();
     Teacher teacher = new Teacher();
-
     student.question(teacher);
     teacher.teach(student);
+
+    Station station = new Station(2500);
+    Car car = new Car();
+    station.refill(car);
 
   }
 
