@@ -13,6 +13,13 @@ public class FiveTrees {
     trees.add(initTree("tulip", "red", 5, "male"));
     trees.add(initTree("oak", "yellow", 27, "male"));
     print(trees);
+
+    List<Tree> trees2 = new ArrayList<>();
+    trees2.add(new Tree("maples", "green", "male", 25));
+    trees2.add(new Tree("pine", "green", "male", 40));
+    trees2.add(new Tree("spruce", "white", "female", 15));
+    trees2.add(new Tree("tulip", "red", "male", 5));
+    trees2.add(new Tree("oak", "yellow", "male", 27));
   }
 
   private static Map<String, Object> initTree(String type, String color, int age, String sex) {
