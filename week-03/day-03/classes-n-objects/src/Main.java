@@ -26,8 +26,24 @@ public class Main {
 
     List<Pokemon> pokemonOfAsh = initializePokemons();
     Pokemon wildPokemon = new Pokemon("Oddish", "leaf", "water");
-    System.out.print("I choose you, " + choosePokemon(pokemonOfAsh, wildPokemon));
+    System.out.println("I choose you, " + choosePokemon(pokemonOfAsh, wildPokemon));
 
+    Fleet fleet = new Fleet();
+    // Create a fleet of things to have this output:
+    // 1. [ ] Get milk
+    // 2. [ ] Remove the obstacles
+    // 3. [x] Stand up
+    // 4. [x] Eat lunch
+
+    fleet.add(new Thing("Get milk"));
+    fleet.add(new Thing("Remove the obstacles"));
+    fleet.add(new Thing("Stand up"));
+    fleet.add(new Thing("Eat lunch"));
+
+    fleet.complete("Stand up");
+    fleet.complete("Eat lunch");
+
+    System.out.println(fleet);
   }
 
   private static String choosePokemon(List<Pokemon> pokemons, Pokemon wildPokemon) {
