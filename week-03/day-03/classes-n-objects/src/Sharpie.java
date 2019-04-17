@@ -13,6 +13,10 @@ public class Sharpie {
     inkAmount--;
   }
 
+  boolean isUsable() {
+    return this.inkAmount > 0;
+  }
+
   public double getInkAmount() {
     return inkAmount;
   }

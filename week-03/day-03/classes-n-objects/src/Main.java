@@ -23,6 +23,8 @@ public class Main {
     Sharpie sharpie = new Sharpie("black", 50.0);
     sharpie.use();
     System.out.println(sharpie.getInkAmount());
+    SharpieSet sharpieSet = new SharpieSet();
+    sharpieSet.add(sharpie);
 
     List<Pokemon> pokemonOfAsh = initializePokemons();
     Pokemon wildPokemon = new Pokemon("Oddish", "leaf", "water");
