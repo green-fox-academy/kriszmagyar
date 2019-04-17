@@ -44,6 +44,13 @@ public class Main {
     fleet.complete("Eat lunch");
 
     System.out.println(fleet);
+
+    Student student = new Student();
+    Teacher teacher = new Teacher();
+
+    student.question(teacher);
+    teacher.teach(student);
+
   }
 
   private static String choosePokemon(List<Pokemon> pokemons, Pokemon wildPokemon) {
