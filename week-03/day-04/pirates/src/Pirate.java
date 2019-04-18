@@ -49,6 +49,19 @@ public class Pirate {
     this.isDead = true;
   }
 
+  String getState() {
+    if (this.isDead) {
+      return "dead";
+    }
+    if (this.isPassedOut) {
+      return "passed out";
+    }
+    if (this.isDrunk()) {
+      return "feeling drunk";
+    }
+    return "feeling good";
+  }
+
   private void passOut() {
     System.out.println("This pirate just passed out.");
     this.isPassedOut = true;
@@ -56,6 +69,18 @@ public class Pirate {
 
   private boolean isDrunk() {
     return this.drunkLevel > MAX_SOBER_LEVEL;
+  }
+
+  int getDrunkLevel() {
+    return this.drunkLevel;
+  }
+
+  boolean isPassedOut() {
+    return this.isPassedOut;
+  }
+
+  boolean isDead() {
+    return this.isDead;
   }
 
 }
