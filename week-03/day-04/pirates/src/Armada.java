@@ -22,7 +22,9 @@ public class Armada {
     int numbOfShips = (int) (Math.random() * (MAX_FLEET - MIN_FLEET + 1) + MIN_FLEET);
 
     for (int i = 0; i < numbOfShips; i++) {
-      fleet.add(new Ship());
+      Ship ship = new Ship();
+      ship.fill();
+      fleet.add(ship);
     }
 
     return fleet;
