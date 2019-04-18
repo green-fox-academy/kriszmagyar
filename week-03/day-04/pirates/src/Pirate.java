@@ -44,7 +44,7 @@ public class Pirate {
     }
   }
 
-  void die() {
+  private void die() {
     System.out.println("This pirate died.");
     this.isDead = true;
   }
