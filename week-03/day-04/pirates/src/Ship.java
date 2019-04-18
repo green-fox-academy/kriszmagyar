@@ -14,7 +14,18 @@ public class Ship {
   void fill() {
     addCrew();
     addCaptain();
-    this.hasCrew = true;
+  }
+
+  boolean battle(Ship otherShip) {
+    if (this.getBattleScore() >= otherShip.getBattleScore()) {
+      winBattle();
+      otherShip.looseBattle();
+      return true;
+    } else {
+      looseBattle();
+      otherShip.winBattle();
+      return false;
+    }
   }
 
   private void addCaptain() {
@@ -28,6 +39,7 @@ public class Ship {
       this.crew.add(new Pirate());
     }
     this.numbOfCrew = numbOfCrew;
+    this.hasCrew = true;
   }
 
   private int calcNumbOfCrew() {
@@ -56,6 +68,31 @@ public class Ship {
       }
     }
     return numbOfDead;
+  }
+
+  private int getBattleScore() {
+    return getNumbOfCrew() - getNumbOfDeadInCrew() - this.captain.getDrunkLevel();
+  }
+
+  private void looseBattle() {
+    int numbOfLosses = (int) (Math.random() * getNumbOfCrew() + 1);
+    for (int i = 0; i < numbOfLosses; i++) {
+      this.crew.get(i).die();
+    }
+  }
+
+  private void winBattle() {
+    int numbOfRums = (int) (Math.random() * 4 + 1);
+    for (int i = 0; i < numbOfRums; i++) {
+      drinkARound();
+    }
+  }
+
+  private void drinkARound() {
+    this.captain.drinkSomeRum();
+    for (Pirate pirate : this.crew) {
+      pirate.drinkSomeRum();
+    }
   }
 
   @Override
