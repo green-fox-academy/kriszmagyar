@@ -23,6 +23,10 @@ public class Pirate {
     }
   }
 
+  /**
+   * Where pirate fights another pirate (if that other pirate is alive)
+   * and there's a 1/3 chance, 1 dies, the other dies or they both pass out.
+   */
   void brawl(Pirate anotherPirate) {
     if (this.isDead || anotherPirate.isDead) {
       System.out.println("Dead pirates can't fight!");
@@ -30,16 +34,12 @@ public class Pirate {
     }
 
     int outcome = (int) (Math.random() * 3);
-    if (outcome == 0) {
-      this.passOut();
-      anotherPirate.passOut();
+    switch (outcome) {
+      case 0: this.passOut(); anotherPirate.passOut();
+      case 1: this.die();
+      case 2: anotherPirate.die();
     }
-    if (outcome == 1) {
-      this.die();
-    }
-    if (outcome == 2) {
-      anotherPirate.die();
-    }
+
   }
 
   String getState() {
