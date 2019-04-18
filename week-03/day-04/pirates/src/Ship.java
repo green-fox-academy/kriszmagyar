@@ -43,9 +43,8 @@ public class Ship {
   private void addCaptain() { this.captain = new Pirate(); }
 
   private void addCrew() {
-    int numbOfCrew = calcNumbOfCrew();
-    this.crew = initCrew(numbOfCrew);
-    this.numbOfCrew = numbOfCrew;
+    this.numbOfCrew = calcNumbOfCrew();
+    this.crew = initCrew(this.numbOfCrew);
     this.hasCrew = true;
   }
 
