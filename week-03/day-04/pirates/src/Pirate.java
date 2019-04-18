@@ -11,8 +11,6 @@ public class Pirate {
       System.out.println("He's dead.");
       return;
     }
-
-    System.out.println("Pirate is drinking rum.");
     this.drunkLevel++;
   }
 
@@ -31,21 +29,17 @@ public class Pirate {
       return;
     }
 
-    int rnd = (int) (Math.random() * 3);
-    if (rnd == 0) {
+    int outcome = (int) (Math.random() * 3);
+    if (outcome == 0) {
       this.passOut();
       anotherPirate.passOut();
     }
-    if (rnd == 1) {
+    if (outcome == 1) {
       this.die();
     }
-    if (rnd == 2) {
+    if (outcome == 2) {
       anotherPirate.die();
     }
-  }
-
-  void die() {
-    this.isDead = true;
   }
 
   String getState() {
@@ -61,25 +55,16 @@ public class Pirate {
     return "feeling good";
   }
 
-  private void passOut() {
-    System.out.println("This pirate just passed out.");
-    this.isPassedOut = true;
-  }
+  void die() { this.isDead = true; }
 
-  private boolean isDrunk() {
-    return this.drunkLevel > MAX_SOBER_LEVEL;
-  }
+  private void passOut() { this.isPassedOut = true; }
 
-  int getDrunkLevel() {
-    return this.drunkLevel;
-  }
+  private boolean isDrunk() { return this.drunkLevel > MAX_SOBER_LEVEL; }
 
-  boolean isPassedOut() {
-    return this.isPassedOut;
-  }
+  int getDrunkLevel() { return this.drunkLevel; }
 
-  boolean isDead() {
-    return this.isDead;
-  }
+  boolean isPassedOut() { return this.isPassedOut; }
+
+  boolean isDead() { return this.isDead; }
 
 }

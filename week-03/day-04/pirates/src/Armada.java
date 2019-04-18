@@ -8,7 +8,7 @@ public class Armada {
 
   private List<Ship> fleet;
 
-  public Armada() {
+  Armada() {
     this.fleet = initFleet();
   }
 
@@ -24,7 +24,7 @@ public class Armada {
 
     int ourCurrentShipIndex = 0;
     int enemyCurrentShipIndex = 0;
-    
+
     while (true) {
 
       if (ourCurrentShipIndex >= this.fleet.size()) {

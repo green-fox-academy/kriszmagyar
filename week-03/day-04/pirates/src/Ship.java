@@ -28,9 +28,7 @@ public class Ship {
     }
   }
 
-  private void addCaptain() {
-    this.captain = new Pirate();
-  }
+  private void addCaptain() { this.captain = new Pirate(); }
 
   private void addCrew() {
     this.crew = new ArrayList<>();
@@ -46,9 +44,7 @@ public class Ship {
     return (int) (Math.random() * (MAX_CREW - MIN_CREW + 1) + MIN_CREW);
   }
 
-  private int getNumbOfCrew() {
-    return this.numbOfCrew;
-  }
+  private int getNumbOfCrew() { return this.numbOfCrew; }
 
   private int getNumbOfPassedOutInCrew() {
     int numbOfPassedOut = 0;
