@@ -49,7 +49,7 @@ public class Pirate {
     this.isDead = true;
   }
 
-  void passOut() {
+  private void passOut() {
     System.out.println("This pirate just passed out.");
     this.isPassedOut = true;
   }
