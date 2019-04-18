@@ -43,13 +43,18 @@ public class Ship {
   private void addCaptain() { this.captain = new Pirate(); }
 
   private void addCrew() {
-    this.crew = new ArrayList<>();
     int numbOfCrew = calcNumbOfCrew();
-    for (int i = 0; i < numbOfCrew; i++) {
-      this.crew.add(new Pirate());
-    }
+    this.crew = initCrew(numbOfCrew);
     this.numbOfCrew = numbOfCrew;
     this.hasCrew = true;
+  }
+
+  private List<Pirate> initCrew(int numbOfCrew) {
+    List<Pirate> crew = new ArrayList<>();
+    for (int i = 0; i < numbOfCrew; i++) {
+      crew.add(new Pirate());
+    }
+    return crew;
   }
 
   private int calcNumbOfCrew() {
