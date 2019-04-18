@@ -11,11 +11,23 @@ public class Ship {
   private boolean hasCrew = false;
   private int numbOfCrew = 0;
 
+  /**
+   * Filling the ship with a captain and random number of pirates.
+   */
   void fill() {
     addCrew();
     addCaptain();
   }
 
+  /**
+   * Ships can have battles with each other.<br>
+   * The ship should win if its calculated score is higher.
+   * Calculate score: Number of Alive pirates in the crew - Number of consumed rum by the captain.
+   * The loser crew has a random number of losses (deaths).
+   * The winner captain and crew has a party, including a random number of rum :)
+   *
+   * @return should return true if the actual ship (this) wins
+   */
   boolean battle(Ship otherShip) {
     if (this.getBattleScore() >= otherShip.getBattleScore()) {
       winBattle();
