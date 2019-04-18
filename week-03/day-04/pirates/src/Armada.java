@@ -12,7 +12,15 @@ public class Armada {
     this.fleet = initFleet();
   }
 
-  boolean war(Armada otherArmada) {
+  /**
+   * Two armada can engage in a war.<br>
+   * The first ship from the first armada battles the first of the other.
+   * The loser gets skipped so the next ship comes in play from that armada.
+   * Whichever armada gets to the end of its ships loses the war.
+   *
+   * @return  true if this is the winner
+   */
+  boolean war(Armada enemy) {
     System.out.println("War!");
     return true;
   }
