@@ -102,7 +102,7 @@ public class Ship {
     }
 
     String details = "";
-    details += "Ship details:\n";
+    details += "\nShip details:\n";
     details += "------------------------------------------------------\n";
     details += "The ship has a captain and " + getNumbOfCrew() + " crew members.\n";
     details += "The captain has consumed " + this.captain.getDrunkLevel()
