@@ -5,8 +5,8 @@ public class WarApp {
     Armada armada1 = new Armada();
     Armada armada2 = new Armada();
 
-    armada1.war(armada2);
-
+    boolean isFirstArmadaWinning = armada1.war(armada2);
+    System.out.println(isFirstArmadaWinning);
   }
 
 }

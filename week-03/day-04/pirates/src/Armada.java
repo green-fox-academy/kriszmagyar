@@ -21,8 +21,30 @@ public class Armada {
    * @return  true if this is the winner
    */
   boolean war(Armada enemy) {
-    System.out.println("War!");
-    return true;
+
+    int ourCurrentShipIndex = 0;
+    int enemyCurrentShipIndex = 0;
+    
+    while (true) {
+
+      if (ourCurrentShipIndex >= this.fleet.size()) {
+        return false;
+      }
+
+      if (enemyCurrentShipIndex >= enemy.fleet.size()) {
+        return true;
+      }
+
+      Ship ourCurrentShip = this.fleet.get(ourCurrentShipIndex);
+      Ship enemyCurrentShip = enemy.fleet.get(enemyCurrentShipIndex);
+
+      if (ourCurrentShip.battle(enemyCurrentShip)) {
+        enemyCurrentShipIndex++;
+      } else {
+        ourCurrentShipIndex++;
+      }
+
+    }
   }
 
   private List<Ship> initFleet() {
