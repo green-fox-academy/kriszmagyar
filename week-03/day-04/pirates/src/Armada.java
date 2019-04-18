@@ -12,6 +12,11 @@ public class Armada {
     this.fleet = initFleet();
   }
 
+  boolean war(Armada otherArmada) {
+    System.out.println("War!");
+    return true;
+  }
+
   private List<Ship> initFleet() {
     List<Ship> fleet = new ArrayList<>();
     int numbOfShips = (int) (Math.random() * (MAX_FLEET - MIN_FLEET + 1) + MIN_FLEET);
