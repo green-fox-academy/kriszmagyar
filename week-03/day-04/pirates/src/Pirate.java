@@ -43,15 +43,9 @@ public class Pirate {
   }
 
   String getState() {
-    if (this.isDead) {
-      return "dead";
-    }
-    if (this.isPassedOut) {
-      return "passed out";
-    }
-    if (this.isDrunk()) {
-      return "feeling drunk";
-    }
+    if (this.isDead) { return "dead"; }
+    if (this.isPassedOut) { return "passed out"; }
+    if (this.isDrunk()) { return "feeling drunk"; }
     return "feeling good";
   }
 
