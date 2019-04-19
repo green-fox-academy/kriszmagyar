@@ -116,17 +116,14 @@ public class Ship {
       return "This ship has no crew.";
     }
 
-    String details = "";
-    details += "\nShip details:\n";
-    details += "------------------------------------------------------\n";
-    details += "The ship has a captain and " + getNumbOfCrew() + " crew members.\n";
-    details += "The captain has consumed " + this.captain.getDrunkLevel()
-        + " rums and is " + this.captain.getState() + ".\n";
-    details += "There are " + getNumbOfPassedOutInCrew() + " passed out and "
-        + getNumbOfDeadInCrew() + " dead pirates in the crew.\n";
-    details += "------------------------------------------------------\n";
-
-    return details;
+    return "\nShip details:\n"
+      + "------------------------------------------------------\n"
+      + "The ship has a captain and " + getNumbOfCrew() + " crew members.\n"
+      + "The captain has consumed " + this.captain.getDrunkLevel()
+      + " rums and is " + this.captain.getState() + ".\n"
+      + "There are " + getNumbOfPassedOutInCrew() + " passed out and "
+      + getNumbOfDeadInCrew() + " dead pirates in the crew.\n"
+      + "------------------------------------------------------\n";
   }
 
 }
