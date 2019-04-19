@@ -28,15 +28,15 @@ public class Ship {
    * @return should return true if the actual ship (this) wins
    */
   boolean battle(Ship otherShip) {
-    if (this.getBattleScore() >= otherShip.getBattleScore()) {
+    boolean isWinning = this.getBattleScore() >= otherShip.getBattleScore();
+    if (isWinning) {
       winBattle();
       otherShip.looseBattle();
-      return true;
     } else {
       looseBattle();
       otherShip.winBattle();
-      return false;
     }
+    return isWinning;
   }
 
   private void addCaptain() {
