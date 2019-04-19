@@ -20,11 +20,10 @@ public class Ship {
   }
 
   /**
-   * Ships can have battles with each other.<br>
-   * The ship should win if its calculated score is higher.
-   * Calculate score: Number of Alive pirates in the crew - Number of consumed rum by the captain.
-   * The loser crew has a random number of losses (deaths).
-   * The winner captain and crew has a party, including a random number of rum :)
+   * Ships can have battles with each other.<br> The ship should win if its calculated score is
+   * higher. Calculate score: Number of Alive pirates in the crew - Number of consumed rum by the
+   * captain. The loser crew has a random number of losses (deaths). The winner captain and crew has
+   * a party, including a random number of rum :)
    *
    * @return should return true if the actual ship (this) wins
    */
@@ -40,7 +39,9 @@ public class Ship {
     }
   }
 
-  private void addCaptain() { this.captain = new Pirate(); }
+  private void addCaptain() {
+    this.captain = new Pirate();
+  }
 
   private void addCrew() {
     this.numbOfCrew = calcNumbOfCrew();
@@ -60,7 +61,9 @@ public class Ship {
     return (int) (Math.random() * (MAX_CREW - MIN_CREW + 1) + MIN_CREW);
   }
 
-  private int getNumbOfCrew() { return this.numbOfCrew; }
+  private int getNumbOfCrew() {
+    return this.numbOfCrew;
+  }
 
   private int getNumbOfPassedOutInCrew() {
     int numbOfPassedOut = 0;
