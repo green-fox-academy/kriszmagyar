@@ -1,6 +1,7 @@
 package greenfox.org;
 
 class Sponsor {
+
   private String name;
   private int age;
   private String gender;
@@ -29,7 +30,8 @@ class Sponsor {
 
   void introduce() {
     System.out.println("Hi, I'm " + this.name + ", a " + this.age + " year old " + this.gender
-        + " who represents " + this.company + " and hired " + this.hiredStudents + " students so far.");
+        + " who represents " + this.company + " and hired " + this.hiredStudents
+        + " students so far.");
   }
 
   void getGoal() {
