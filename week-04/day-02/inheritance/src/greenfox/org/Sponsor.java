@@ -24,15 +24,16 @@ class Sponsor {
   }
 
   void hire() {
-
+    this.hiredStudents++;
   }
 
   void introduce() {
-
+    System.out.println("Hi, I'm " + this.name + ", a " + this.age + " year old " + this.gender
+        + " who represents " + this.company + " and hired " + this.hiredStudents + " students so far.");
   }
 
   void getGoal() {
-
+    System.out.println("Hire brilliant junior software developers.");
   }
 
 }
