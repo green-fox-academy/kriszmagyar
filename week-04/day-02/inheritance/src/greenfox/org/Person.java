@@ -21,7 +21,7 @@ class Person {
   }
 
   void introduce() {
-    System.out.println("H1, I'm " + this.name + ", a " + this.age + " year old " + this.gender);
+    System.out.println("H1, I'm " + getName() + ", a " + getAge() + " year old " + getGender());
   }
 
   void getGoal() {
@@ -36,7 +36,7 @@ class Person {
     return age;
   }
 
-  Gender getGender() {
-    return gender;
+  String getGender() {
+    return gender.toString().toLowerCase();
   }
 }
