@@ -4,10 +4,17 @@ class Plant {
 
   private String color;
   private boolean needsWater;
+  private float absorbRate;
+  private int currentWater;
 
   Plant(String color) {
     this.color = color;
     this.needsWater = true;
+    this.currentWater = 0;
+  }
+
+  void setAbsorbRate(float absorbRate) {
+    this.absorbRate = absorbRate;
   }
 
   private String getNeedsWater() {
