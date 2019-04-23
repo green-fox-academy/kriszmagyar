@@ -22,13 +22,13 @@ abstract class Aircraft {
     return amount - this.currentAmmo + currentAmmo;
   }
 
-  String getType() {
+  private String getType() {
     return this.getClass().getSimpleName();
   }
 
   String getStatus() {
     return "Type " + getType() + ", Ammo: " + this.currentAmmo + ", Base Damage: "
-        + this.baseDamage + ", All damage: " + getDamage();
+        + this.baseDamage + ", All damage: " + getDamage() + "\n";
   }
 
   int getDamage() {

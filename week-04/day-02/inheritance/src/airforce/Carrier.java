@@ -49,7 +49,7 @@ class Carrier {
   private void fillWithPriority(boolean withPriority) {
     for (Aircraft aircraft : aircrafts) {
       if (aircraft.isPriority() || !withPriority) {
-        this.ammoStore -= aircraft.refill(this.ammoStore);
+        this.ammoStore = aircraft.refill(this.ammoStore);
       }
     }
   }
@@ -68,7 +68,13 @@ class Carrier {
     }
 
     String status = "HP: " + this.health + ", Aircraft count: " + this.aircrafts.size()
-        + ", Ammo storage: " + this.ammoStore + ", Total damage: " + getDamage();
+        + ", Ammo storage: " + this.ammoStore + ", Total damage: " + getDamage()
+        + "\nAircrafts:\n\n";
+
+    for (Aircraft aircraft : aircrafts) {
+      status += aircraft.getStatus();
+    }
+
     return status;
   }
 }
