@@ -2,13 +2,9 @@ package airforce;
 
 abstract class Aircraft {
 
+  private int currentAmmo = 0;
   private int maxAmmo;
-  private int currentAmmo;
   private int baseDamage;
-
-  Aircraft() {
-    this.currentAmmo = 0;
-  }
 
   int fight() {
     int damage = getDamage();
