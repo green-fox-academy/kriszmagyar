@@ -2,17 +2,19 @@ package greenfox.org;
 
 class Person {
 
+  enum Gender { MALE, FEMALE }
+
   private String name;
   private int age;
-  private String gender;
+  private Gender gender;
 
   Person() {
     this.name = "Jane Doe";
     this.age = 30;
-    this.gender = "female";
+    this.gender = Gender.FEMALE;
   }
 
-  Person(String name, int age, String gender) {
+  Person(String name, int age, Gender gender) {
     this.name = name;
     this.age = age;
     this.gender = gender;

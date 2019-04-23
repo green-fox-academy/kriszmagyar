@@ -1,5 +1,6 @@
 package greenfox.org;
 
+import greenfox.org.Person.Gender;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class Main {
     List<Mentor> mentors = new ArrayList<>();
     List<Sponsor> sponsors = new ArrayList<>();
 
-    Person mark = new Person("Mark", 46, "male");
+    Person mark = new Person("Mark", 46, Gender.MALE);
     people.add(mark);
     Person jane = new Person();
     people.add(jane);
