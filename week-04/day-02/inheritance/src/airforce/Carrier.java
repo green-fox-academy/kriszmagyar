@@ -55,10 +55,18 @@ class Carrier {
   }
 
   private boolean isEmptyStorage() {
-    return ammoStore == 0;
+    return this.ammoStore == 0;
+  }
+
+  private boolean isDead() {
+    return this.health == 0;
   }
 
   String getStatus() {
+    if (isDead()) {
+      return "It's dead Jim :(";
+    }
+
     String status = "HP: " + this.health + ", Aircraft count: " + this.aircrafts.size()
         + ", Ammo storage: " + this.ammoStore + ", Total damage: " + getDamage();
     return status;
