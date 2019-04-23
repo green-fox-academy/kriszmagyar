@@ -17,17 +17,17 @@ public class Main {
     people.add(mark);
     Person jane = new Person();
     people.add(jane);
-    Student john = new Student("John Doe", 20, "male", "BME");
+    Student john = new Student("John Doe", 20, Gender.MALE, "BME");
     students.add(john);
     Student student = new Student();
     students.add(student);
-    Mentor gandhi = new Mentor("Gandhi", 148, "male", "senior");
+    Mentor gandhi = new Mentor("Gandhi", 148, Gender.MALE, "senior");
     mentors.add(gandhi);
     Mentor mentor = new Mentor();
     mentors.add(mentor);
     Sponsor sponsor = new Sponsor();
     sponsors.add(sponsor);
-    Sponsor elon = new Sponsor("Elon Musk", 46, "male", "SpaceX");
+    Sponsor elon = new Sponsor("Elon Musk", 46, Gender.MALE, "SpaceX");
     sponsors.add(elon);
 
     student.skipDays(3);

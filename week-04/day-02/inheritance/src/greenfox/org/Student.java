@@ -1,25 +1,18 @@
 package greenfox.org;
 
-class Student {
+class Student extends Person {
 
-  private String name;
-  private int age;
-  private String gender;
   private String previousOrganization;
   private int skippedDays;
 
   Student() {
-    this.name = "Jane Doe";
-    this.age = 30;
-    this.gender = "female";
+    super();
     this.previousOrganization = "The School of Life";
     this.skippedDays = 0;
   }
 
-  Student(String name, int age, String gender, String previousOrganization) {
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
+  Student(String name, int age, Gender gender, String previousOrganization) {
+    super(name, age, gender);
     this.previousOrganization = previousOrganization;
     this.skippedDays = 0;
   }
@@ -28,12 +21,14 @@ class Student {
     this.skippedDays += n;
   }
 
+  @Override
   void introduce() {
-    System.out.println("Hi, I'm " + this.name + ", a " + this.age + " year old " + this.gender
+    System.out.println("Hi, I'm " + getName() + ", a " + getAge() + " year old " + getGender()
         + " from " + this.previousOrganization + " who skipped " + this.skippedDays
         + " days from the course already.");
   }
 
+  @Override
   void getGoal() {
     System.out.println("My goal is: Be a junior software developer.");
   }
