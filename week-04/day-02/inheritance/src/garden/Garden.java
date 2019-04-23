@@ -12,6 +12,23 @@ class Garden {
 
   void water(int amount) {
     System.out.println("Watering with " + amount);
+    int numbOfPlantsNeedWater = getNumbOfPlantsNeedWater();
+
+    for (Plant plant : plants) {
+      if (plant.isNeedsWater()) {
+        plant.water(amount / numbOfPlantsNeedWater);
+      }
+    }
+  }
+
+  private int getNumbOfPlantsNeedWater() {
+    int counter = 0;
+    for (Plant plant : plants) {
+      if (plant.isNeedsWater()) {
+        counter++;
+      }
+    }
+    return counter;
   }
 
   void printState() {

@@ -27,18 +27,22 @@ class Plant {
     this.waterAmountRequired = amount;
   }
 
+  boolean isNeedsWater() {
+    return this.needsWater;
+  }
+
   private void setNeedsWater() {
     if (currentWater >= waterAmountRequired) {
       this.needsWater = false;
     }
   }
 
-  private String getNeedsWater() {
-    return needsWater ? "needs water" : "doesnt need water";
+  private String printNeedsWater() {
+    return isNeedsWater() ? "needs water" : "doesnt need water";
   }
 
   @Override
   public String toString() {
-    return "The " + this.color + " " + this.getClass().getSimpleName() + " " + getNeedsWater();
+    return "The " + this.color + " " + this.getClass().getSimpleName() + " " + printNeedsWater();
   }
 }
