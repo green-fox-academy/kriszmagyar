@@ -31,7 +31,7 @@ abstract class Aircraft {
         + this.baseDamage + ", All damage: " + getDamage();
   }
 
-  private int getDamage() {
+  int getDamage() {
     return this.currentAmmo * this.baseDamage;
   }
 
