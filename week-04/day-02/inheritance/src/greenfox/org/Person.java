@@ -2,8 +2,6 @@ package greenfox.org;
 
 class Person {
 
-  enum Gender { MALE, FEMALE }
-
   private String name;
   private int age;
   private Gender gender;
@@ -39,4 +37,6 @@ class Person {
   String getGender() {
     return gender.toString().toLowerCase();
   }
+
+  enum Gender {MALE, FEMALE}
 }
