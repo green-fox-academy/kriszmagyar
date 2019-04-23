@@ -1,6 +1,6 @@
 package airforce;
 
-public abstract class Aircraft {
+abstract class Aircraft {
 
   private int maxAmmo;
   private int currentAmmo;
@@ -35,6 +35,13 @@ public abstract class Aircraft {
     return this.currentAmmo * this.baseDamage;
   }
 
-  abstract boolean isPriority();
+  void setMaxAmmo(int maxAmmo) {
+    this.maxAmmo = maxAmmo;
+  }
 
+  void setBaseDamage(int baseDamage) {
+    this.baseDamage = baseDamage;
+  }
+
+  abstract boolean isPriority();
 }
