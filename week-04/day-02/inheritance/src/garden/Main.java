@@ -10,6 +10,12 @@ public class Main {
     garden.add(new Tree("purple"));
     garden.add(new Tree("orange"));
 
+    garden.printState();
+    garden.water(40);
+    garden.printState();
+    garden.water(70);
+    garden.printState();
+
   }
 
 }
