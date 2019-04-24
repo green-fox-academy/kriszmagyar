@@ -8,15 +8,11 @@ class Violin extends StringedIntrument {
 
   Violin(int numbOfStrings) {
     super(numbOfStrings);
+    setName("Violin");
   }
 
   @Override
   String sound() {
-    return null;
-  }
-
-  @Override
-  void play() {
-
+    return "Screech";
   }
 }

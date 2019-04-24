@@ -8,15 +8,11 @@ class ElectricGuitar extends StringedIntrument {
 
   ElectricGuitar(int numbOfStrings) {
     super(numbOfStrings);
+    setName("Electric Guitar");
   }
 
   @Override
   String sound() {
-    return null;
-  }
-
-  @Override
-  void play() {
-
+    return "Twang";
   }
 }

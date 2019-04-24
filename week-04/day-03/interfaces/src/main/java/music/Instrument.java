@@ -1,9 +1,17 @@
 package main.java.music;
 
-public abstract class Instrument {
+abstract class Instrument {
 
-  protected String name;
+  private String name;
 
   abstract void play();
+
+  void setName(String name) {
+    this.name = name;
+  }
+
+  String getName() {
+    return this.name;
+  }
 
 }
