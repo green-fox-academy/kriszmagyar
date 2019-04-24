@@ -25,6 +25,9 @@ class Thing implements Comparable<Thing> {
 
   @Override
   public int compareTo(Thing t) {
-    return 0;
+    if (this.completed && !t.completed) {
+      return -1;
+    }
+    return toString().compareTo(t.toString());
   }
 }

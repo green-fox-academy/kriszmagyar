@@ -44,6 +44,8 @@ public class Main {
     things.add(new Thing("Do homework"));
     things.add(new Thing("Do this task"));
     things.add(new Thing("Walk the dog again"));
+    things.get(2).complete();
+    things.get(3).complete();
     return things;
   }
 
