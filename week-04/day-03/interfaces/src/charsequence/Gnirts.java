@@ -4,7 +4,7 @@ public class Gnirts implements CharSequence {
 
   private String reverse;
 
-  public Gnirts(String reverse) {
+  Gnirts(String reverse) {
     this.reverse = reverse;
   }
 
@@ -15,11 +15,15 @@ public class Gnirts implements CharSequence {
 
   @Override
   public char charAt(int index) {
-    return this.reverse.charAt(length() - index - 1);
+    try {
+      return this.reverse.charAt(length() - index - 1);
+    } catch (StringIndexOutOfBoundsException e) {
+      return '\u0000'; // empty char
+    }
   }
 
   @Override
   public CharSequence subSequence(int start, int end) {
-    return null;
+    return new StringBuilder(this.reverse).reverse().substring(start, end);
   }
 }
