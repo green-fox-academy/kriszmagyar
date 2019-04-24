@@ -4,11 +4,11 @@ abstract class StringedIntrument extends Instrument {
 
   private int numbOfStrings;
 
-  abstract String sound();
-
   StringedIntrument(int numbOfStrings) {
     this.numbOfStrings = numbOfStrings;
   }
+
+  abstract String sound();
 
   @Override
   void play() {
