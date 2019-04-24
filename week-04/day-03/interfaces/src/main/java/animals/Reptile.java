@@ -8,6 +8,6 @@ public class Reptile extends Animal {
 
   @Override
   public String breed() {
-    return "";
+    return "laying eggs";
   }
 }

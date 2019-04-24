@@ -8,6 +8,6 @@ public class Bird extends Animal {
 
   @Override
   public String breed() {
-    return null;
+    return "laying eggs";
   }
 }
