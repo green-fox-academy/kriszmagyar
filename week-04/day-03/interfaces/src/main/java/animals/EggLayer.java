@@ -1,8 +1,8 @@
 package main.java.animals;
 
-abstract class EggLayer extends Animal {
+public abstract class EggLayer extends Animal {
 
-  EggLayer(String name) {
+  protected EggLayer(String name) {
     super(name);
   }
 

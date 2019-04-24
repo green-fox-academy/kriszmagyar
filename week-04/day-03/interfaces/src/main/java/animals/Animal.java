@@ -1,6 +1,6 @@
 package main.java.animals;
 
-abstract class Animal {
+public abstract class Animal {
 
   private String name;
   private int age;
