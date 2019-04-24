@@ -34,7 +34,7 @@ class Student extends Person implements Cloneable {
   }
 
   @Override
-  public Person clone(){
-    return new Student();
+  public Student clone(){
+    return new Student(this.getName(), this.getAge(), this.getGender(), this.previousOrganization);
   }
 }

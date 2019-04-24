@@ -34,8 +34,8 @@ class Person {
     return age;
   }
 
-  String getGender() {
-    return gender.toString().toLowerCase();
+  Gender getGender() {
+    return this.gender;
   }
 
   enum Gender {MALE, FEMALE}
