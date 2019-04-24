@@ -1,0 +1,27 @@
+package charsequence;
+
+public class Shifter implements CharSequence {
+
+  private String str;
+  private int index;
+
+  Shifter(String str, int index) {
+    this.str = str;
+    this.index = index;
+  }
+
+  @Override
+  public int length() {
+    return 0;
+  }
+
+  @Override
+  public char charAt(int index) {
+    return 0;
+  }
+
+  @Override
+  public CharSequence subSequence(int start, int end) {
+    return null;
+  }
+}
