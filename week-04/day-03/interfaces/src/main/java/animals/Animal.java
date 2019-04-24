@@ -9,9 +9,9 @@ abstract class Animal {
     this.name = name;
   }
 
-  String getName() {
+  public String getName() {
     return this.name;
   }
 
-  abstract String breed();
+  public abstract String breed();
 }

@@ -1,13 +1,13 @@
 package main.java.animals;
 
-class Bird extends Animal {
+public class Bird extends Animal {
 
-  Bird(String name) {
+  public Bird(String name) {
     super(name);
   }
 
   @Override
-  String breed() {
+  public String breed() {
     return null;
   }
 }

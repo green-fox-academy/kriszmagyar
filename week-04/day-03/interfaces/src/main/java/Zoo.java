@@ -1,4 +1,8 @@
-package main.java.animals;
+package main.java;
+
+import main.java.animals.Bird;
+import main.java.animals.Mammal;
+import main.java.animals.Reptile;
 
 public class Zoo {
 
