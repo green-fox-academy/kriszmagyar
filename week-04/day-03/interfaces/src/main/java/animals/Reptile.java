@@ -1,13 +1,9 @@
 package main.java.animals;
 
-public class Reptile extends Animal {
+public class Reptile extends EggLayer {
 
   public Reptile(String name) {
     super(name);
-  }
-
-  @Override
-  public String breed() {
-    return "laying eggs";
+    setHostile(true);
   }
 }
