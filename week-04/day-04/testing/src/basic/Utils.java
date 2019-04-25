@@ -29,7 +29,15 @@ class Utils {
   }
 
   static int fibonacci(int index) {
-    return 0;
+    if (index <= 0) {
+      return 0;
+    }
+
+    if (index == 1) {
+      return 1;
+    }
+
+    return fibonacci(index - 1) + fibonacci(index - 2);
   }
 
   static boolean isAnagram(String str1, String str2) {
