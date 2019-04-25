@@ -1,6 +1,8 @@
 package basic;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 class Extension {
@@ -18,8 +20,16 @@ class Extension {
     }
   }
 
-  int median(List<Integer> pool) {
-    return pool.get((pool.size()-1)/2);
+  double median(List<Integer> pool) {
+    List<Integer> sortedPool = new ArrayList<>(pool);
+    Collections.sort(sortedPool);
+
+    if (sortedPool.size() % 2 == 0) {
+      int halfSize = sortedPool.size() / 2;
+      return ((double) sortedPool.get(halfSize - 1) + sortedPool.get(halfSize)) / 2;
+    }
+
+    return sortedPool.get((sortedPool.size() - 1) / 2);
   }
 
   boolean isVowel(char c) {
