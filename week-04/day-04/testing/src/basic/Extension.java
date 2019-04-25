@@ -33,20 +33,18 @@ class Extension {
   }
 
   boolean isVowel(char c) {
-    return Arrays.asList('a', 'u', 'o', 'e', 'i').contains(c);
+    return Arrays.asList('a', 'A', 'u', 'U', 'o', 'O', 'e', 'E', 'i', 'I').contains(c);
   }
 
   String translate(String hungarian) {
-    String teve = hungarian;
-    int length = teve.length();
-    for (int i = 0; i < length; i++) {
-      char c = teve.charAt(i);
+    StringBuilder teve = new StringBuilder();
+    for (char c : hungarian.toCharArray()) {
       if (isVowel(c)) {
-        teve = String.join(c + "v" + c, teve.split(""+c));
-        i+=2;
-        length+=2;
+        teve.append(c).append('v').append(c);
+      } else {
+        teve.append(c);
       }
     }
-    return teve;
+    return teve.toString();
   }
 }
