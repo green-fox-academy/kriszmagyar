@@ -16,14 +16,14 @@ class CowsAndBulls {
   }
 
   String guess(int guessedNum) {
-    this.numbOfGuesses++;
+    incNumbOfGuesses();
 
-    if (guessedNum > 9999 || guessedNum < 1000) {
+    if (isOutOfScope(guessedNum)) {
       return "wrong guess";
     }
 
     if (isGuessCorrect(guessedNum)) {
-      finish();
+      setStateFinish();
     }
 
     int numbOfCows = getNumbOfCows(guessedNum);
@@ -67,11 +67,19 @@ class CowsAndBulls {
     return digits;
   }
 
+  private void incNumbOfGuesses() {
+    this.numbOfGuesses++;
+  }
+
+  private boolean isOutOfScope(int guessedNum) {
+    return guessedNum > 9999 || guessedNum < 1000;
+  }
+
   private boolean isGuessCorrect(int guessedNum) {
     return guessedNum == this.goal;
   }
 
-  private void finish() {
+  private void setStateFinish() {
     this.state = GameState.FINISHED;
   }
 
