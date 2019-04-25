@@ -2,7 +2,7 @@ package basic;
 
 import java.util.List;
 
-class MathUtils {
+class Utils {
 
   static int sum(List<Integer> list) {
     if (list == null) {
