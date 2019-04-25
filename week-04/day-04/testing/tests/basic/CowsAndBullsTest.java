@@ -45,13 +45,13 @@ public class CowsAndBullsTest {
   @Test
   public void guessShouldReturnEmptyIfEveryDigitIsWrong() {
     CowsAndBulls cab = new CowsAndBulls(1234);
-    assertEquals("", cab.guess(5678));
+    assertEquals("0 cow, 0 bull", cab.guess(5678));
   }
 
   @Test
   public void guessShouldReturnFourCowsIfEveryDigitIsCorrect() {
     CowsAndBulls cab = new CowsAndBulls(1234);
-    assertEquals("4 cow", cab.guess(1234));
+    assertEquals("4 cow, 0 bull", cab.guess(1234));
   }
 
   @Test

@@ -1,5 +1,8 @@
 package basic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class CowsAndBulls {
 
   private int goal;
@@ -14,10 +17,54 @@ class CowsAndBulls {
 
   String guess(int guessedNum) {
     this.numbOfGuesses++;
+
+    if (guessedNum > 9999 || guessedNum < 1000) {
+      return "wrong guess";
+    }
+
     if (isGuessCorrect(guessedNum)) {
       finish();
     }
-    return "asd";
+
+    int numbOfCows = getNumbOfCows(guessedNum);
+    int numbOfBulls = getNumbOfBulls(guessedNum) - numbOfCows;
+
+    return numbOfCows + " cow, " + numbOfBulls + " bull";
+  }
+
+  private int getNumbOfCows(int guessedNum) {
+    int counter = 0;
+    List<Integer> goalDigits = getDigits(this.goal);
+    List<Integer> guessedNumDigits = getDigits(guessedNum);
+
+    for (int i = 0; i < guessedNumDigits.size(); i++) {
+      if (guessedNumDigits.get(i).equals(goalDigits.get(i))) {
+        counter++;
+      }
+    }
+    return counter;
+  }
+
+  private int getNumbOfBulls(int guessedNum) {
+    int counter = 0;
+    List<Integer> goalDigits = getDigits(this.goal);
+    List<Integer> guessedNumDigits = getDigits(guessedNum);
+
+    for (int i = 0; i < guessedNumDigits.size(); i++) {
+      if (guessedNumDigits.contains(goalDigits.get(i))) {
+        counter++;
+      }
+    }
+    return counter;
+  }
+
+  private List<Integer> getDigits(int num) {
+    List<Integer> digits = new ArrayList<>();
+    while (num > 0) {
+      digits.add(num % 10);
+      num /= 10;
+    }
+    return digits;
   }
 
   private boolean isGuessCorrect(int guessedNum) {
