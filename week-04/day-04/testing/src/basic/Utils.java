@@ -1,7 +1,9 @@
 package basic;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class Utils {
 
@@ -15,6 +17,15 @@ class Utils {
       result += n;
     }
     return result;
+  }
+
+  static Map<Character, Integer> countLetters(String str) {
+    Map<Character, Integer> map = new HashMap<>();
+    for (char c : str.toCharArray()) {
+      int current = map.get(c) == null ? 0 : map.get(c);
+      map.put(c, current + 1);
+    }
+    return map;
   }
 
   static boolean isAnagram(String str1, String str2) {
