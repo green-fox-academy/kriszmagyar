@@ -28,6 +28,10 @@ class Utils {
     return map;
   }
 
+  static int fibonacci(int index) {
+    return 0;
+  }
+
   static boolean isAnagram(String str1, String str2) {
     return toAlphabeticLowercase(str1)
         .equals(toAlphabeticLowercase(str2));

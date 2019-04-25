@@ -36,7 +36,8 @@ public class UtilsCountLetterTest {
   @Test
   public void countLettersShouldReturnEmptyMap() {
     Map<Character, Integer> actual = Utils.countLetters("");
-    assertEquals(new HashMap<>(), actual);
+    Map<Character, Integer> expected = new HashMap<>();
+    assertEquals(expected, actual);
   }
 
 }
