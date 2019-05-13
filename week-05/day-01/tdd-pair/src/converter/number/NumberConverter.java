@@ -31,7 +31,31 @@ class NumberConverter {
   }
 
   int convert(String num) {
-    return 745;
+    String[] hundredSplit = num.split("hundred");
+
+    if (hundredSplit.length > 1) {
+      return convert(hundredSplit[0]) * 100 + convert(hundredSplit[1]);
+    }
+
+    String[] words = hundredSplit[0].split(" ");
+    int result = 0;
+
+    for (String w : words) {
+      if (numberMap.containsValue(w)) {
+        result += getKey(numberMap, w);
+      }
+    }
+
+    return result;
+  }
+
+  private int getKey(Map<Integer, String> map, String str) {
+    for (Map.Entry<Integer, String> entry : map.entrySet()) {
+      if (str.equals(entry.getValue())) {
+        return entry.getKey();
+      }
+    }
+    return -1;
   }
 
   private int digitAt(int num, int index) {

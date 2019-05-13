@@ -28,4 +28,23 @@ public class NumberConverterTest {
     assertEquals("one hundred and twelve dollars", testConverter.convert(112));
   }
 
+  @Test
+  public void convertTo11(){
+    assertEquals(11, testConverter.convert("eleven dollars"));
+  }
+
+  @Test
+  public void convertTo86(){
+    assertEquals(86, testConverter.convert("eighty six dollars"));
+  }
+
+  @Test
+  public void covertToHundredAndEleven(){
+    assertEquals(111, testConverter.convert("one hundred and eleven dollars"));
+  }
+
+  @Test
+  public void convertToSevenHundredAndFortyFive(){
+    assertEquals(745, testConverter.convert("seven hundred and forty five dollars"));
+  }
 }
