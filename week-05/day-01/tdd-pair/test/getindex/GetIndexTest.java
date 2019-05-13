@@ -24,4 +24,9 @@ public class GetIndexTest {
     assertEquals(1, getIndex.get(list, 5));
   }
 
+  @Test
+  public void getIndexShouldReturnMinusOne() {
+    assertEquals(-1, getIndex.get(list, 6));
+  }
+
 }
