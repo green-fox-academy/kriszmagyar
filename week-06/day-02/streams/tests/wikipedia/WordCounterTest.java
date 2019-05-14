@@ -36,4 +36,19 @@ public class WordCounterTest {
     expected.put("seven", 2);
     assertEquals(expected, wc.countWords(text, 3));
   }
+
+  @Test
+  public void countWordFromFileShouldReturnAllWords() {
+    Map<String, Integer> expected = new HashMap<>();
+    expected.put("in", 2);
+    expected.put("the", 3);
+    expected.put("seven", 2);
+    expected.put("eight", 1);
+    assertEquals(expected, wc.countWordsFromFile("src/wikipedia/test.txt"));
+  }
+
+  @Test
+  public void runCountWordFromFile() {
+    wc.countWordsFromFile("src/wikipedia/test.txt");
+  }
 }
