@@ -15,4 +15,11 @@ public class IntUtilsTest {
     assertEquals(evenNumbers, IntUtils.getEven(numbers));
   }
 
+  @Test
+  public void getSquaredShouldReturnSquaredNumbers() {
+    List<Integer> numbers = Arrays.asList(1, 3, -2, -4, 0);
+    List<Double> squaredNumbers= Arrays.asList(1.0, Math.sqrt(3), Math.sqrt(2), 2.0, 0.0);
+    assertEquals(squaredNumbers, IntUtils.getSquared(numbers));
+  }
+
 }

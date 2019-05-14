@@ -11,4 +11,12 @@ class IntUtils {
         .collect(Collectors.toList());
   }
 
+  static List<Double> getSquared(List<Integer> list) {
+    return list.stream()
+        .map(Integer::doubleValue)
+        .map(Math::abs)
+        .map(Math::sqrt)
+        .collect(Collectors.toList());
+  }
+
 }
