@@ -11,4 +11,11 @@ class FoxFinder {
         .collect(Collectors.toList());
   }
 
+  List<Fox> getWithColorAndAge(List<Fox> foxes, String color, int age) {
+    return foxes.stream()
+        .filter(f -> f.getColor().equals(color))
+        .filter(f -> f.getAge() < age)
+        .collect(Collectors.toList());
+  }
+
 }

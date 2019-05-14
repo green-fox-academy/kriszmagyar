@@ -1,6 +1,6 @@
 package fox;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class FoxTest {
       new Fox("Foxy2", "green", 2),
       new Fox("Foxy3", "orange", 6),
       new Fox("Foxy4", "red", 3),
-      new Fox("Foxy5", "green", 4)
+      new Fox("Foxy5", "green", 6)
     );
     ff = new FoxFinder();
   }
@@ -28,8 +28,16 @@ public class FoxTest {
   public void getWithColorShouldReturnFoxesWithGivenColor() {
     List<Fox> expected = Arrays.asList(
         new Fox("Foxy2", "green", 2),
-        new Fox("Foxy5", "green", 4)
+        new Fox("Foxy5", "green", 6)
     );
     assertEquals(expected.toString(), ff.getWithColor(foxes, "green").toString());
+  }
+
+  @Test
+  public void getWithColorAndAgeShouldReturnFoxesWithGivenColor() {
+    List<Fox> expected = Arrays.asList(
+        new Fox("Foxy2", "green", 2)
+    );
+    assertEquals(expected.toString(), ff.getWithColorAndAge(foxes, "green", 5).toString());
   }
 }
