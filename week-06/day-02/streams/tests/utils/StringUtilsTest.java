@@ -25,4 +25,9 @@ public class StringUtilsTest {
     assertEquals(Arrays.asList("AMSTERDAM", "ABU DHABI"), StringUtils.getStartsWith(cities, "A"));
   }
 
+  @Test
+  public void concatenateShouldReturnGreenFox() {
+    assertEquals("GreenFox", StringUtils.concatenate("Green", Arrays.asList('F', 'o', 'x')));
+  }
+
 }

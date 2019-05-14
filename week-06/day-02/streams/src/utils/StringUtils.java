@@ -2,6 +2,7 @@ package utils;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 class StringUtils {
 
@@ -16,6 +17,15 @@ class StringUtils {
     return list.stream()
         .filter(s -> s.startsWith(start))
         .collect(Collectors.toList());
+  }
+
+  static String concatenate(String str, List<Character> chars) {
+    return Stream.concat(
+        str.chars().mapToObj(i -> (char) i),
+        chars.stream()
+    )
+        .map(String::valueOf)
+        .collect(Collectors.joining());
   }
 
 }
