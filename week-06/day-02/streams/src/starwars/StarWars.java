@@ -21,7 +21,7 @@ class StarWars {
 
   String getNameOfHeaviest() {
     return listOfChars.stream()
-        .filter(c -> c.getMass() != -1)
+        .filter(SWCharacter::haveMass)
         .max(Comparator.comparingInt(SWCharacter::getMass))
         .orElseThrow(NoSuchElementException::new)
         .getName();
@@ -29,7 +29,7 @@ class StarWars {
 
   double getAvgHeightOfMales() {
     return listOfChars.stream()
-        .filter(c -> c.getHeight() != -1)
+        .filter(SWCharacter::haveHeight)
         .filter(c -> c.getGender() == Gender.MALE)
         .mapToDouble(SWCharacter::getHeight)
         .average()

@@ -43,6 +43,14 @@ class SWCharacter {
     }
   }
 
+  boolean haveMass() {
+    return mass != -1;
+  }
+
+  boolean haveHeight() {
+    return height != -1;
+  }
+
   String getName() {
     return name;
   }
