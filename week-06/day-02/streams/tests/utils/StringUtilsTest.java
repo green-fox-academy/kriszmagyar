@@ -10,8 +10,19 @@ public class StringUtilsTest {
 
   @Test
   public void getUppercaseShouldReturnUppercaseChars() {
-    List<Character> chars = Arrays.asList('G', 'F');
-    assertEquals(chars, StringUtils.getUppercase("GreenFox"));
+    assertEquals(Arrays.asList('G', 'F'), StringUtils.getUppercase("GreenFox"));
+  }
+
+  @Test
+  public void getStartsWithShouldReturnRome() {
+    List<String> cities = Arrays.asList("ROME", "LONDON", "NAIROBI", "CALIFORNIA", "ZURICH", "NEW DELHI", "AMSTERDAM", "ABU DHABI", "PARIS");
+    assertEquals(Arrays.asList("ROME"), StringUtils.getStartsWith(cities, "R"));
+  }
+
+  @Test
+  public void getStartsWithShouldReturnAmsterdamAndAbuDhabi() {
+    List<String> cities = Arrays.asList("ROME", "LONDON", "NAIROBI", "CALIFORNIA", "ZURICH", "NEW DELHI", "AMSTERDAM", "ABU DHABI", "PARIS");
+    assertEquals(Arrays.asList("AMSTERDAM", "ABU DHABI"), StringUtils.getStartsWith(cities, "A"));
   }
 
 }

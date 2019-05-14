@@ -12,4 +12,10 @@ class StringUtils {
         .collect(Collectors.toList());
   }
 
+  static List<String> getStartsWith(List<String> list, String start) {
+    return list.stream()
+        .filter(s -> s.startsWith(start))
+        .collect(Collectors.toList());
+  }
+
 }
