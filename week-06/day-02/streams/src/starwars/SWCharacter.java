@@ -9,17 +9,41 @@ class SWCharacter {
   private String skinColor;
   private String eyeColor;
   private int birthYear;
-  private String gender;
+  private Gender gender;
+
+  SWCharacter() {
+  }
 
   SWCharacter(String[] props) {
     name = props[0];
-    height = Integer.parseInt(props[1]);
-    mass = Integer.parseInt(props[2]);
+    height = convert(props[1]);
+    mass = convert(props[2]);
     hairColor = props[3];
     skinColor = props[4];
     eyeColor = props[5];
-    birthYear = Integer.parseInt(props[6].replace("BBY", ""));
-    gender = props[7];
+    birthYear = convert(props[6]);
+    gender = convertGender(props[7]);
+  }
+
+  private int convert(String str) {
+    try {
+      return Integer.parseInt(str.replace(",", "").replace("BBY", ""));
+    } catch (NumberFormatException e) {
+      return -1;
+    }
+  }
+
+  private Gender convertGender(String str) {
+    switch (str) {
+      case "male":
+        return Gender.MALE;
+      case "female":
+        return Gender.FEMALE;
+      case "hermaphrodite":
+        return Gender.HERMAPHRODITE;
+      default:
+        return Gender.NA;
+    }
   }
 
   public String getName() {
@@ -50,7 +74,25 @@ class SWCharacter {
     return birthYear;
   }
 
-  public String getGender() {
+  public Gender getGender() {
     return gender;
+  }
+
+  enum Gender {
+    MALE, FEMALE, HERMAPHRODITE, NA
+  }
+
+  @Override
+  public String toString() {
+    return "SWCharacter{" +
+        "name='" + name + '\'' +
+        ", height=" + height +
+        ", mass=" + mass +
+        ", hairColor='" + hairColor + '\'' +
+        ", skinColor='" + skinColor + '\'' +
+        ", eyeColor='" + eyeColor + '\'' +
+        ", birthYear=" + birthYear +
+        ", gender='" + gender + '\'' +
+        '}';
   }
 }

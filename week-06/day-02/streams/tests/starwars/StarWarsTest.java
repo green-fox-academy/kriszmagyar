@@ -1,6 +1,6 @@
 package starwars;
 
-import static org.junit.Assert.*;
+import static junit.framework.TestCase.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +15,7 @@ public class StarWarsTest {
   }
 
   @Test
-  public void run() {
-
+  public void heaviestShouldBeJabba() {
+    assertEquals("Jabba Desilijic Tiure", sw.getNameOfHeaviest());
   }
 }
