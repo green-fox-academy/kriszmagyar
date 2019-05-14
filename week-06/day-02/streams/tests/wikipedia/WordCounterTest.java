@@ -49,6 +49,6 @@ public class WordCounterTest {
 
   @Test
   public void runCountWordFromFile() {
-    wc.countWordsFromFile("src/wikipedia/test.txt");
+    wc.countWordsFromFile("src/wikipedia/wikipedia.txt");
   }
 }

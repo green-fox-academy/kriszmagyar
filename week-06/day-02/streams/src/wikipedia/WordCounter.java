@@ -30,6 +30,7 @@ class WordCounter {
 
   Map<String, Integer> countWords(String str, int mostCommon) {
     return Arrays.stream(format(str))
+        .filter(s -> !s.isEmpty())
         .collect(Collectors.groupingBy(String::toString, Collectors.summingInt(x -> 1)))
         .entrySet().stream()
         .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
