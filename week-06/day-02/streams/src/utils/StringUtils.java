@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -26,6 +27,12 @@ class StringUtils {
     )
         .map(String::valueOf)
         .collect(Collectors.joining());
+  }
+
+  static Map<Character, Integer> countLetters(String str) {
+    return str.chars()
+        .mapToObj(i -> (char) i)
+        .collect(Collectors.toMap(c -> c, c -> (int) c));
   }
 
 }
