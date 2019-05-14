@@ -16,10 +16,17 @@ public class IntUtilsTest {
   }
 
   @Test
-  public void getSquaredShouldReturnSquaredNumbers() {
+  public void getSqrtShouldReturnSquaredNumbers() {
     List<Integer> numbers = Arrays.asList(1, 3, -2, -4, 0);
     List<Double> squaredNumbers= Arrays.asList(1.0, Math.sqrt(3), Math.sqrt(2), 2.0, 0.0);
-    assertEquals(squaredNumbers, IntUtils.getSquared(numbers));
+    assertEquals(squaredNumbers, IntUtils.getSqrt(numbers));
+  }
+
+  @Test
+  public void getHighSquaresShouldReturnSquaredNumbersHigherThanGiven() {
+    List<Integer> numbers = Arrays.asList(3, 9, 2, 8, 6, 5);
+    List<Integer> expected = Arrays.asList(81, 64, 36, 25);
+    assertEquals(expected, IntUtils.getHighSquares(numbers, 20));
   }
 
 }

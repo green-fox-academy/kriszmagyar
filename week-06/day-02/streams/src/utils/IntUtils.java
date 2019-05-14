@@ -11,11 +11,18 @@ class IntUtils {
         .collect(Collectors.toList());
   }
 
-  static List<Double> getSquared(List<Integer> list) {
+  static List<Double> getSqrt(List<Integer> list) {
     return list.stream()
         .map(Integer::doubleValue)
         .map(Math::abs)
         .map(Math::sqrt)
+        .collect(Collectors.toList());
+  }
+
+  static List<Integer> getHighSquares(List<Integer> list, int min) {
+    return list.stream()
+        .map(n -> n * n)
+        .filter(n -> n > min)
         .collect(Collectors.toList());
   }
 
