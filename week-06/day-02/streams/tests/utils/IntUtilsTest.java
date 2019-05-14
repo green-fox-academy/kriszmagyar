@@ -29,4 +29,17 @@ public class IntUtilsTest {
     assertEquals(expected, IntUtils.getHighSquares(numbers, 20));
   }
 
+  @Test
+  public void getAvgOfOddShouldReturnOne() {
+    List<Integer> numbers = Arrays.asList(1, 5, -3);
+    assertEquals(1.0, IntUtils.getAvgOfOdd(numbers), 0.0001);
+  }
+
+  @Test
+  public void getAvgOfOddShouldReturnTheAverageOfOddNumbers() {
+    List<Integer> numbers = Arrays.asList(1, 3, -2, -4, -7, -3, -8, 12, 19, 6, 9, 10, 14);
+    double expected = (double)(1 + 3 - 7 - 3 + 19 + 9) / 6;
+    assertEquals(expected, IntUtils.getAvgOfOdd(numbers), 0.0001);
+  }
+
 }

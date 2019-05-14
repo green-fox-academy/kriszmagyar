@@ -26,4 +26,16 @@ class IntUtils {
         .collect(Collectors.toList());
   }
 
+  static double getAvgOfOdd(List<Integer> list) {
+    return list.stream()
+        .filter(IntUtils::isOdd)
+        .mapToDouble(Integer::doubleValue)
+        .average()
+        .orElse(0);
+  }
+
+  private static boolean isOdd(int n) {
+    return n % 2 == 1 || n % 2 == -1;
+  }
+
 }
