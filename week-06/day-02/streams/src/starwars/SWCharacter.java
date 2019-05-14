@@ -11,9 +11,6 @@ class SWCharacter {
   private int birthYear;
   private Gender gender;
 
-  SWCharacter() {
-  }
-
   SWCharacter(String[] props) {
     name = props[0];
     height = convert(props[1]);
@@ -46,15 +43,15 @@ class SWCharacter {
     }
   }
 
-  public String getName() {
+  String getName() {
     return name;
   }
 
-  public int getHeight() {
+  int getHeight() {
     return height;
   }
 
-  public int getMass() {
+  int getMass() {
     return mass;
   }
 
@@ -74,7 +71,7 @@ class SWCharacter {
     return birthYear;
   }
 
-  public Gender getGender() {
+  Gender getGender() {
     return gender;
   }
 

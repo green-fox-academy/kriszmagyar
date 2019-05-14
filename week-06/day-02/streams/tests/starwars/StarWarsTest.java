@@ -18,4 +18,9 @@ public class StarWarsTest {
   public void heaviestShouldBeJabba() {
     assertEquals("Jabba Desilijic Tiure", sw.getNameOfHeaviest());
   }
+
+  @Test
+  public void getAvgHeightOfMalesShouldBe() {
+    assertEquals(120.0, sw.getAvgHeightOfMales(), 0.0001);
+  }
 }

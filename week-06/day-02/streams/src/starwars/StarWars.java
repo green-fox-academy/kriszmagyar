@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
+import starwars.SWCharacter.Gender;
 
 class StarWars {
 
@@ -24,6 +25,15 @@ class StarWars {
         .max(Comparator.comparingInt(SWCharacter::getMass))
         .orElseThrow(NoSuchElementException::new)
         .getName();
+  }
+
+  double getAvgHeightOfMales() {
+    return listOfChars.stream()
+        .filter(c -> c.getHeight() != -1)
+        .filter(c -> c.getGender() == Gender.MALE)
+        .mapToDouble(SWCharacter::getHeight)
+        .average()
+        .orElse(0);
   }
 
   private List<SWCharacter> populateList(List<String> rows) {
