@@ -34,6 +34,12 @@ class IntUtils {
         .orElse(0);
   }
 
+  static int getSumOfOdd(List<Integer> list) {
+    return list.stream()
+        .reduce(Integer::sum)
+        .orElse(0);
+  }
+
   private static boolean isOdd(int n) {
     return n % 2 == 1 || n % 2 == -1;
   }
