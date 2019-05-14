@@ -1,9 +1,11 @@
 package wikipedia;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -18,12 +20,11 @@ class WordCounter {
         str.toLowerCase().replaceAll("[^a-zA-Z ]", "").split(" ")
     );
     return wordStream
-        .collect(Collectors.groupingBy(
-            String::toString, Collectors.summingInt(x -> 1)
-        ))
+        .collect(Collectors.groupingBy(String::toString, Collectors.summingInt(x -> 1)))
         .entrySet().stream()
+        .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
         .limit(mostCommon)
-        .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
   }
 
 }
