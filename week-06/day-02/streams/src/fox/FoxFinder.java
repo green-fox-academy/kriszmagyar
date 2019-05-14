@@ -1,6 +1,7 @@
 package fox;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 class FoxFinder {
@@ -16,6 +17,13 @@ class FoxFinder {
         .filter(f -> f.getColor().equals(color))
         .filter(f -> f.getAge() < age)
         .collect(Collectors.toList());
+  }
+
+  Map<String, Integer> countByColor(List<Fox> foxes) {
+    return foxes.stream()
+        .collect(Collectors.groupingBy(
+            Fox::getColor, Collectors.summingInt(x -> 1)
+        ));
   }
 
 }

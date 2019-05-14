@@ -3,7 +3,9 @@ package fox;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -40,4 +42,17 @@ public class FoxTest {
     );
     assertEquals(expected.toString(), ff.getWithColorAndAge(foxes, "green", 5).toString());
   }
+
+  @Test
+  public void countByColorShouldGroupFoxesByColor() {
+    Map<String, Integer> expected = new HashMap<>();
+    expected.put("red", 2);
+    expected.put("green", 2);
+    expected.put("orange", 1);
+    assertEquals(expected, ff.countByColor(foxes));
+  }
 }
+
+
+
+
