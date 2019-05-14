@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 class StarWars {
@@ -21,7 +22,7 @@ class StarWars {
     return listOfChars.stream()
         .filter(c -> c.getMass() != -1)
         .max(Comparator.comparingInt(SWCharacter::getMass))
-        .get()
+        .orElseThrow(NoSuchElementException::new)
         .getName();
   }
 
