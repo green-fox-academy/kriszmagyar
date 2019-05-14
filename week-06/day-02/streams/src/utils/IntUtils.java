@@ -36,6 +36,7 @@ class IntUtils {
 
   static int getSumOfOdd(List<Integer> list) {
     return list.stream()
+        .filter(IntUtils::isOdd)
         .reduce(Integer::sum)
         .orElse(0);
   }

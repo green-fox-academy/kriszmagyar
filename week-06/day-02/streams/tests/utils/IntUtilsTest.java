@@ -45,7 +45,8 @@ public class IntUtilsTest {
   @Test
   public void getSumOfOddShouldReturnTheSumOfOddNumbers() {
     List<Integer> numbers = Arrays.asList(5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 5, 4, 9, 6, 2);
-    assertEquals(95, IntUtils.getSumOfOdd(numbers), 0.0001);
+    int expected = 5 + 9 + 1 + 3 + 7 + 5 + 7 + 3 + 7 + 5 + 9;
+    assertEquals(expected, IntUtils.getSumOfOdd(numbers), 0.0001);
   }
 
 }
