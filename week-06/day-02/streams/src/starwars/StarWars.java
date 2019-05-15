@@ -27,10 +27,10 @@ class StarWars {
         .getName();
   }
 
-  double getAvgHeightOfMales() {
+  double getAvgHeight(Gender gender) {
     return listOfChars.stream()
         .filter(SWCharacter::haveHeight)
-        .filter(c -> c.getGender() == Gender.MALE)
+        .filter(c -> c.getGender() == gender)
         .mapToDouble(SWCharacter::getHeight)
         .average()
         .orElse(0);

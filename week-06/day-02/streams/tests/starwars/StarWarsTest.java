@@ -4,6 +4,7 @@ import static junit.framework.TestCase.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+import starwars.SWCharacter.Gender;
 
 public class StarWarsTest {
 
@@ -21,6 +22,11 @@ public class StarWarsTest {
 
   @Test
   public void getAvgHeightOfMalesShouldBe() {
-    assertEquals(179.23729, sw.getAvgHeightOfMales(), 0.0001);
+    assertEquals(179.23729, sw.getAvgHeight(Gender.MALE), 0.0001);
+  }
+
+  @Test
+  public void getAvgHeightOfFemalesShouldBe() {
+    assertEquals(165.47059, sw.getAvgHeight(Gender.FEMALE), 0.0001);
   }
 }
