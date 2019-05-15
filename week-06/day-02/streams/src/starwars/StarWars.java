@@ -1,5 +1,7 @@
 package starwars;
 
+import static java.util.stream.Collectors.groupingBy;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -37,9 +39,12 @@ class StarWars {
         .orElse(0);
   }
 
-  Map<Gender, List<SWCharacter>> getDistribution() {
+  Map<Gender, Map<String, List<SWCharacter>>> getDistribution() {
     return listOfChars.stream()
-        .collect(Collectors.groupingBy(SWCharacter::getGender));
+        .collect(
+            groupingBy(SWCharacter::getGender,
+            groupingBy(SWCharacter::getAgeGroup))
+        );
   }
 
   private List<SWCharacter> populateList(List<String> rows) {

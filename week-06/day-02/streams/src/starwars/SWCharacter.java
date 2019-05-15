@@ -41,6 +41,20 @@ class SWCharacter {
     }
   }
 
+  String getAgeGroup() {
+    if (birthYear < 0) {
+      return "unknown";
+    }
+    if (birthYear < 21) {
+      return "below 21";
+    }
+    if (birthYear < 40) {
+      return "between 21 and 40";
+    } else {
+      return "above 40";
+    }
+  }
+
   boolean haveMass() {
     return mass != -1;
   }
