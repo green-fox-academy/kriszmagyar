@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+  <th:block th:each="hello : ${hellos}">
+    <p style="font-size: 20px;color: rgb(0, 200, 0);" th:text="${hello}"></p>
+  </th:block>
+</body>
+</html>
