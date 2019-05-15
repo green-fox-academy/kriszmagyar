@@ -1,6 +1,8 @@
 package com.greenfoxacademy.springstart.controller;
 
 import com.greenfoxacademy.springstart.components.Counter;
+import com.greenfoxacademy.springstart.components.Hello;
+import com.greenfoxacademy.springstart.components.HelloFactory;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.stereotype.Controller;
@@ -13,10 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class GreetingWebController {
 
   private Counter c = new Counter();
-  private String[] hellos = {"Mirëdita", "Ahalan", "Parev", "Zdravei", "Nei Ho", "Dobrý den", "Ahoj", "Goddag", "Goede dag, Hallo", "Hello", "Saluton", "Hei", "Bonjour",
-      "Guten Tag", "Gia'sou", "Aloha", "Shalom", "Namaste", "Namaste", "Jó napot", "Halló", "Helló", "Góðan daginn", "Halo", "Aksunai", "Qanuipit", "Dia dhuit",
-      "Salve", "Ciao", "Kon-nichiwa", "An-nyong Ha-se-yo", "Salvëte", "Ni hao", "Dzien' dobry", "Olá", "Bunã ziua", "Zdravstvuyte", "Hola", "Jambo", "Hujambo", "Hej",
-      "Sa-wat-dee", "Merhaba", "Selam", "Vitayu", "Xin chào", "Hylo", "Sut Mae", "Sholem Aleychem", "Sawubona"};
+  private HelloFactory helloFactory = new HelloFactory();
 
   @RequestMapping("/web/greeting")
   public String greeting(Model model, @RequestParam String name) {
@@ -32,8 +31,8 @@ public class GreetingWebController {
   }
 
   @ModelAttribute("hellos")
-  public List<String> hellos() {
-    return Arrays.asList(hellos);
+  public List<Hello> hellos() {
+    return helloFactory.generate();
   }
 
 }

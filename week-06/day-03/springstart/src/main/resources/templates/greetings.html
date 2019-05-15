@@ -6,7 +6,7 @@
 </head>
 <body>
   <th:block th:each="hello : ${hellos}">
-    <p style="font-size: 20px;color: rgb(0, 200, 0);" th:text="${hello}"></p>
+    <p th:style="${hello.getStyle()}" th:text="${hello.getText()}"></p>
   </th:block>
 </body>
 </html>
