@@ -34,7 +34,7 @@ public class StarWarsTest {
 
   @Test
   public void printAgeDistribution() {
-    Map<Gender, Map<String, List<SWCharacter>>> map = sw.getDistribution();
+    Map<Gender, Map<String, Integer>> map = sw.getDistribution();
     map.forEach((key, value) -> {
       System.out.println(key);
       value.entrySet().forEach(System.out::println);

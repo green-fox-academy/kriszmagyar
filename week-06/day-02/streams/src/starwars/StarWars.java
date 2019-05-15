@@ -39,11 +39,11 @@ class StarWars {
         .orElse(0);
   }
 
-  Map<Gender, Map<String, List<SWCharacter>>> getDistribution() {
+  Map<Gender, Map<String, Integer>> getDistribution() {
     return listOfChars.stream()
         .collect(
             groupingBy(SWCharacter::getGender,
-            groupingBy(SWCharacter::getAgeGroup))
+            groupingBy(SWCharacter::getAgeGroup, Collectors.summingInt(x -> 1)))
         );
   }
 
