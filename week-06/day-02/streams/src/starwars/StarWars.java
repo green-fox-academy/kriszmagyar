@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import starwars.SWCharacter.Gender;
@@ -34,6 +35,11 @@ class StarWars {
         .mapToDouble(SWCharacter::getHeight)
         .average()
         .orElse(0);
+  }
+
+  Map<Gender, List<SWCharacter>> getDistribution() {
+    return listOfChars.stream()
+        .collect(Collectors.groupingBy(SWCharacter::getGender));
   }
 
   private List<SWCharacter> populateList(List<String> rows) {

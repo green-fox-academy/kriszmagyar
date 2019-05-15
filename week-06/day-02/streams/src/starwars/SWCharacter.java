@@ -36,10 +36,8 @@ class SWCharacter {
         return Gender.MALE;
       case "female":
         return Gender.FEMALE;
-      case "hermaphrodite":
-        return Gender.HERMAPHRODITE;
       default:
-        return Gender.NA;
+        return Gender.OTHER;
     }
   }
 
@@ -84,7 +82,7 @@ class SWCharacter {
   }
 
   enum Gender {
-    MALE, FEMALE, HERMAPHRODITE, NA
+    MALE, FEMALE, OTHER
   }
 
   @Override
