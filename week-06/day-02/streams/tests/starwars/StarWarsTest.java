@@ -21,6 +21,6 @@ public class StarWarsTest {
 
   @Test
   public void getAvgHeightOfMalesShouldBe() {
-    assertEquals(120.0, sw.getAvgHeightOfMales(), 0.0001);
+    assertEquals(179.23729, sw.getAvgHeightOfMales(), 0.0001);
   }
 }
