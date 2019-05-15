@@ -1,6 +1,7 @@
 package starwars;
 
 import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.summingInt;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -43,7 +44,7 @@ class StarWars {
     return listOfChars.stream()
         .collect(
             groupingBy(SWCharacter::getGender,
-            groupingBy(SWCharacter::getAgeGroup, Collectors.summingInt(x -> 1)))
+            groupingBy(SWCharacter::getAgeGroup, summingInt(x -> 1)))
         );
   }
 
