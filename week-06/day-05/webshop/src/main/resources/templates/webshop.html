@@ -3,58 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <title>My Webshop</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
-  <header>
-    <h1>My Shop</h1>
-    <ul>
-      <li>
-        <a href="">Only available</a>
-      </li>
-      <li>
-        <a href="">Cheapest first</a>
-      </li>
-      <li>
-        <a href="">Contains Nike</a>
-      </li>
-      <li>
-        <a href="">Average stock</a>
-      </li>
-      <li>
-        <a href="">Most expensive available</a>
-      </li>
-    </ul>
+  <header class="mb-2">
+    <div class="container">
+      <div class="d-flex justify-content-between">
+        <h1>My Shop</h1>
+        <form class="form-inline" action="">
+          <div class="form-group mx-sm-3">
+            <label for="search"></label>
+            <input class="form-control" type="text" name="search" id="search" autofocus>
+          </div>
+          <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
   </header>
 
+  <nav class="mb-4">
+    <div class="container">
+      <ul class="nav nav-fill">
+        <li class="nav-item">
+          <a href="" class="nav-link">Only available</a>
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link">Cheapest first</a>
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link">Contains Nike</a>
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link">Average stock</a>
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link">Most expensive available</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
   <main>
-    <form action="">
-      <div class="field">
-        <label for="search"></label>
-        <input type="text" name="search" id="search">
-      </div>
-      <button type="submit">Search</button>
-    </form>
-    <table>
+    <div class="container">
+      <table class="table">
       <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Quantity of stock</th>
-        </tr>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity of stock</th>
+      </tr>
       </thead>
       <tbody>
-        <th:block th:each="shopItem : ${shoppingList}">
-          <tr>
-            <td th:text="${shopItem.getName()}"></td>
-            <td th:text="${shopItem.getDescription()}"></td>
-            <td th:text="${shopItem.getPrice()}"></td>
-            <td th:text="${shopItem.getQuantity()}"></td>
-          </tr>
-        </th:block>
+      <th:block th:each="shopItem : ${shoppingList}">
+        <tr>
+          <td th:text="${shopItem.getName()}"></td>
+          <td th:text="${shopItem.getDescription()}"></td>
+          <td th:text="${shopItem.getPrice()}"></td>
+          <td th:text="${shopItem.getQuantity()}"></td>
+        </tr>
+      </th:block>
       </tbody>
-    </table>
+      </table>
+    </div>
   </main>
 
 </body>
