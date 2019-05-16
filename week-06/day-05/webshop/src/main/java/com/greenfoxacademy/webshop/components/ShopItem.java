@@ -19,7 +19,8 @@ public class ShopItem {
   }
 
   public boolean isContains(String search) {
-    return false;
+    return name.toLowerCase().contains(search.toLowerCase())
+        || description.toLowerCase().contains(search.toLowerCase());
   }
 
   public String getName() {

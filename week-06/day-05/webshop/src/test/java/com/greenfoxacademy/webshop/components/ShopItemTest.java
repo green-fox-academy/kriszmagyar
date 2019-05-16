@@ -21,4 +21,22 @@ public class ShopItemTest {
   public void isAvailableReturnsFalseIfQuantityIsZero() {
     assertFalse(new ShopItem(NAME, DESC, PRICE, 0).isAvaiable());
   }
+
+  @Test
+  public void isContainsShouldReturnsTrueIfGivenStringIsInName() {
+    assertTrue(new ShopItem("Nike shoes", DESC, PRICE, QUANTITY)
+        .isContains("nike"));
+  }
+
+  @Test
+  public void isContainsShouldReturnsTrueIfGivenStringIsInDescription() {
+    assertTrue(new ShopItem(NAME, "This is some nice nike shoes!", PRICE, QUANTITY)
+        .isContains("nike"));
+  }
+
+  @Test
+  public void isContainsShouldReturnsFalseIfGivenStringIsNotInNameNorDescription() {
+    assertFalse(new ShopItem("Nike shoes", "Some nice nike shoes!", PRICE, QUANTITY)
+        .isContains("adidas"));
+  }
 }
