@@ -5,17 +5,17 @@ public class ShopItem {
   private String name;
   private String description;
   private double price;
-  private int quantity;
+  private int stock;
 
-  public ShopItem(String name, String description, double price, int quantity) {
+  public ShopItem(String name, String description, double price, int stock) {
     this.name = name;
     this.description = description;
     this.price = price;
-    this.quantity = quantity;
+    this.stock = stock;
   }
 
   public boolean isAvaiable() {
-    return quantity > 0;
+    return stock > 0;
   }
 
   public boolean isContains(String search) {
@@ -35,7 +35,7 @@ public class ShopItem {
     return price;
   }
 
-  public int getQuantity() {
-    return quantity;
+  public int getStock() {
+    return stock;
   }
 }
