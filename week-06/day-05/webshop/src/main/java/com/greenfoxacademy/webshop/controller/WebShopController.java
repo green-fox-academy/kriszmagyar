@@ -15,11 +15,7 @@ public class WebShopController {
   @RequestMapping ("/webshop")
   public String getWebShop(Model model,
       @RequestParam(value = "search", defaultValue = "") String search) {
-    if (search.isEmpty()) {
-      model.addAttribute("shoppingList", shoppingList.get());
-    } else {
-      model.addAttribute("shoppingList", shoppingList.getWithContains(search));
-    }
+    model.addAttribute("shoppingList", shoppingList.getWithContains(search));
     return "webshop";
   }
 
