@@ -29,4 +29,13 @@ public class ShoppingListTest {
         .orElse(0.0);
     assertEquals(shoppingList.getCheapestFirst().get(0).getPrice(), min, 0.0);
   }
+
+  @Test
+  public void getWithContainsShouldReturnAllItemWhichContainsTheParam() {
+    assertTrue(shoppingList
+        .getWithContains("nike")
+        .stream()
+        .allMatch(shopItem -> shopItem.isContains("nike"))
+    );
+  }
 }

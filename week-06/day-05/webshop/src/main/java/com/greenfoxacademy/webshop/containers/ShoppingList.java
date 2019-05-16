@@ -40,6 +40,12 @@ public class ShoppingList {
         .collect(Collectors.toList());
   }
 
+  public List<ShopItem> getWithContains(String search) {
+    return shoppingList.stream()
+        .filter(item -> item.isContains(search))
+        .collect(Collectors.toList());
+  }
+
   public void add(ShopItem shopItem) {
     shoppingList.add(shopItem);
   }

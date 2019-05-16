@@ -1,9 +1,11 @@
 package com.greenfoxacademy.webshop.controller;
 
 import com.greenfoxacademy.webshop.containers.ShoppingList;
+import java.util.Optional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class WebShopController {
@@ -11,8 +13,13 @@ public class WebShopController {
   private ShoppingList shoppingList = new ShoppingList();
 
   @RequestMapping ("/webshop")
-  public String getWebShop(Model model) {
-    model.addAttribute("shoppingList", shoppingList.get());
+  public String getWebShop(Model model,
+      @RequestParam(value = "search", defaultValue = "") String search) {
+    if (search.isEmpty()) {
+      model.addAttribute("shoppingList", shoppingList.get());
+    } else {
+      model.addAttribute("shoppingList", shoppingList.getWithContains(search));
+    }
     return "webshop";
   }
 
