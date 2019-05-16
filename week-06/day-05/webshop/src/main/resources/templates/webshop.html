@@ -6,9 +6,56 @@
 </head>
 <body>
 
-  <th:block th:each="shopItem : ${shoppingList}">
-    <p th:text="${shopItem.getName()}"></p>
-  </th:block>
+  <header>
+    <h1>My Shop</h1>
+    <ul>
+      <li>
+        <a href="">Only available</a>
+      </li>
+      <li>
+        <a href="">Cheapest first</a>
+      </li>
+      <li>
+        <a href="">Contains Nike</a>
+      </li>
+      <li>
+        <a href="">Average stock</a>
+      </li>
+      <li>
+        <a href="">Most expensive available</a>
+      </li>
+    </ul>
+  </header>
+
+  <main>
+    <form action="">
+      <div class="field">
+        <label for="search"></label>
+        <input type="text" name="search" id="search">
+      </div>
+      <button type="submit">Search</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Quantity of stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <th:block th:each="shopItem : ${shoppingList}">
+          <tr>
+            <td th:text="${shopItem.getName()}"></td>
+            <td th:text="${shopItem.getDescription()}"></td>
+            <td th:text="${shopItem.getPrice()}"></td>
+            <td th:text="${shopItem.getQuantity()}"></td>
+          </tr>
+        </th:block>
+      </tbody>
+    </table>
+  </main>
 
 </body>
 </html>
