@@ -35,4 +35,9 @@ public class WebShopController {
     return "webshop";
   }
 
+  @RequestMapping("/webshop/average-stock")
+  public String getAverageStock() {
+    return "results";
+  }
+
 }
