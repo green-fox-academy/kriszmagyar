@@ -56,4 +56,17 @@ public class ShoppingListTest {
     shoppingList.add(new ShopItem("Name3", "Desc", 900, 50));
     assertEquals("Name2", shoppingList.getMostExpensiveItemName());
   }
+
+  @Test
+  public void clearShouldClearTheList() {
+    shoppingList.clear();
+    assertEquals(0, shoppingList.get().size());
+  }
+
+  @Test
+  public void addShouldAddAShopItem() {
+    ShopItem si = new ShopItem("Nam", "Desc", 100, 100);
+    shoppingList.add(si);
+    assertTrue(shoppingList.get().contains(si));
+  }
 }
