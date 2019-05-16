@@ -1,9 +1,6 @@
 package com.greenfoxacademy.webshop.controller;
 
-import com.greenfoxacademy.webshop.components.ShopItem;
 import com.greenfoxacademy.webshop.containers.ShoppingList;
-import java.util.Comparator;
-import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,12 +23,8 @@ public class WebShopController {
   }
 
   @RequestMapping("/webshop/cheapest-first")
-  public String getOrderedByPrice(Model model) {
-    model.addAttribute("shoppingList",
-        shoppingList.get().stream()
-            .sorted(Comparator.comparingDouble(ShopItem::getPrice))
-            .collect(Collectors.toList())
-    );
+  public String getCheapestFirst(Model model) {
+    model.addAttribute("shoppingList", shoppingList.getCheapestFirst());
     return "webshop";
   }
 
