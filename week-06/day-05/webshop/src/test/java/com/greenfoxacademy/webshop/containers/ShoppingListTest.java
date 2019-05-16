@@ -38,4 +38,12 @@ public class ShoppingListTest {
         .allMatch(shopItem -> shopItem.isContains("nike"))
     );
   }
+
+  @Test
+  public void getAverageStockShouldReturnTwentyFive() {
+    shoppingList.clear();
+    shoppingList.add(new ShopItem("Name", "Desc", 100, 0));
+    shoppingList.add(new ShopItem("Name", "Desc", 100, 50));
+    assertEquals(25.0, shoppingList.getAverageStock(), 0.0);
+  }
 }
