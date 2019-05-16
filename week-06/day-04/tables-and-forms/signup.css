@@ -11,15 +11,15 @@ body {
 }
 
 .form-container {
+    align-items: center;
     background-color: #fff;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+    display: flex;
+    justify-content: space-between;
     margin: 2rem auto;
-    max-width: 400px;
-    width: 100%;
-}
-
-form {
+    max-width: 530px;
     padding: 2rem;
+    width: 100%;
 }
 
 h1 {
@@ -48,7 +48,39 @@ button {
     border: none;
     border-radius: 5px;
     color: #fff;
+    display: block;
     margin-top: 2rem;
     padding: 10px 30px;
-    text-transform: uppercase;
+}
+
+button.social-button {
+    width: 100%;
+}
+
+button.facebook {
+    background-color: #3b5998;
+}
+
+button.twitter {
+    background-color: #1da1f2;
+}
+
+button.google {
+    background-color: #dd4b39;
+}
+
+.circle {
+    background-color: #ccc;
+    border-radius: 50%;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+    color: rgba(0, 0, 0, .5);
+    font-size: 1.2rem;
+    margin: 2rem;
+    padding: .5rem;
+}
+
+@media screen and (max-width: 550px) {
+    .form-container {
+        flex-direction: column;
+    }
 }
