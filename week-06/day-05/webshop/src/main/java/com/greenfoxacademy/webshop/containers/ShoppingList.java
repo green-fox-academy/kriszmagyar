@@ -46,7 +46,11 @@ public class ShoppingList {
         .collect(Collectors.toList());
   }
 
-  public double getAverageStock() {
+  public String getAverageStockAsString() {
+    return "Average stock: " + getAverageStock();
+  }
+
+  double getAverageStock() {
     return shoppingList.stream()
         .mapToDouble(ShopItem::getStock)
         .average()

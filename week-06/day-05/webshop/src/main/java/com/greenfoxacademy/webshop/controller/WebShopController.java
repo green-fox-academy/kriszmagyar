@@ -36,7 +36,8 @@ public class WebShopController {
   }
 
   @RequestMapping("/webshop/average-stock")
-  public String getAverageStock() {
+  public String getAverageStock(Model model) {
+    model.addAttribute("result", shoppingList.getAverageStockAsString());
     return "results";
   }
 
