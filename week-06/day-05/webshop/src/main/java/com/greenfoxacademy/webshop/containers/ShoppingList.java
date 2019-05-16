@@ -4,6 +4,7 @@ import com.greenfoxacademy.webshop.components.ShopItem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ShoppingList {
 
@@ -25,6 +26,12 @@ public class ShoppingList {
 
   public List<ShopItem> get() {
     return shoppingList;
+  }
+
+  public List<ShopItem> getAvailable() {
+    return shoppingList.stream()
+        .filter(ShopItem::isAvaiable)
+        .collect(Collectors.toList());
   }
 
   public void add(ShopItem shopItem) {

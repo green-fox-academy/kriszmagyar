@@ -21,11 +21,7 @@ public class WebShopController {
 
   @RequestMapping("/webshop/only-available")
   public String getOnlyAvailable(Model model) {
-    model.addAttribute("shoppingList",
-        shoppingList.get().stream()
-        .filter(ShopItem::isAvaiable)
-        .collect(Collectors.toList())
-    );
+    model.addAttribute("shoppingList", shoppingList.getAvailable());
     return "webshop";
   }
 
