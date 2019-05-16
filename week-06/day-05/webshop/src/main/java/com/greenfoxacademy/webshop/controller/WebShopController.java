@@ -41,4 +41,10 @@ public class WebShopController {
     return "results";
   }
 
+  @RequestMapping("/webshop/most-expensive")
+  public String getMostExpensive(Model model) {
+    model.addAttribute("result", shoppingList.getMostExpensiveItemName());
+    return "results";
+  }
+
 }

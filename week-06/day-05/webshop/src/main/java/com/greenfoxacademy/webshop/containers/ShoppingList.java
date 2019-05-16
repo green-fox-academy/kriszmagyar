@@ -57,6 +57,13 @@ public class ShoppingList {
         .orElse(0);
   }
 
+  public String getMostExpensiveItemName() {
+    return shoppingList.stream()
+        .max(Comparator.comparing(ShopItem::getPrice))
+        .map(ShopItem::getName)
+        .orElse("");
+  }
+
   public void add(ShopItem shopItem) {
     shoppingList.add(shopItem);
   }
