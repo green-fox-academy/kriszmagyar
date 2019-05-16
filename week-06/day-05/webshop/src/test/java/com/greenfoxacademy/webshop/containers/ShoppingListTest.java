@@ -46,4 +46,14 @@ public class ShoppingListTest {
     shoppingList.add(new ShopItem("Name", "Desc", 100, 50));
     assertEquals(25.0, shoppingList.getAverageStock(), 0.0);
   }
+
+  @Test
+  public void getMostExpensiveItemNameShouldReturnPrinter() {
+    shoppingList.clear();
+    shoppingList.add(new ShopItem("Name0", "Desc", 1000, 50));
+    shoppingList.add(new ShopItem("Name1", "Desc", 500, 50));
+    shoppingList.add(new ShopItem("Name2", "Desc", 1400, 50));
+    shoppingList.add(new ShopItem("Name3", "Desc", 900, 50));
+    assertEquals("Name2", shoppingList.getMostExpensiveItemName());
+  }
 }
