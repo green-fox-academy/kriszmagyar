@@ -16,7 +16,6 @@ public class ShopItem {
   }
 
   public ShopItem() {
-    id = "";
     name = "";
     description = "";
     price = 0.0;
@@ -34,6 +33,10 @@ public class ShopItem {
 
   public String getId() {
     return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
   public String getName() {

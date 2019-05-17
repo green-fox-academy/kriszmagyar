@@ -60,7 +60,12 @@ public class ShoppingList {
   }
 
   public void add(ShopItem shopItem) {
+    shopItem.setId(shopItem.getId() == null ? generateId() : shopItem.getId());
     shoppingList.add(shopItem);
+  }
+
+  private String generateId() {
+    return "id" + Math.random() * 10000;
   }
 
   public void clear() {
