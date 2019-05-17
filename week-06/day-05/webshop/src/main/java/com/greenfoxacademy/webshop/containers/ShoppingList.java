@@ -64,6 +64,12 @@ public class ShoppingList {
     shoppingList.add(shopItem);
   }
 
+  public void delete(String id) {
+    shoppingList = shoppingList.stream()
+        .filter(item -> !item.getId().equals(id))
+        .collect(Collectors.toList());
+  }
+
   private String generateId() {
     return "id" + Math.random() * 10000;
   }
