@@ -54,8 +54,13 @@ public class WebShopController {
   }
 
   @PostMapping(value = "/webshop/add")
-  public String addShopItem(@ModelAttribute ShopItem shopItem) {
-    shoppingList.add(shopItem);
+  public String addShopItem(
+      @RequestParam("name") String name,
+      @RequestParam("description") String description,
+      @RequestParam("price") double price,
+      @RequestParam("stock") int stock
+  ) {
+    shoppingList.add(new ShopItem(name, description, price, stock));
     return "redirect:/webshop";
   }
 
