@@ -1,10 +1,10 @@
 package com.greenfoxacademy.webshop.controller;
 
 import com.greenfoxacademy.webshop.containers.ShoppingList;
-import java.util.Optional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -41,6 +41,16 @@ public class WebShopController {
   public String getMostExpensive(Model model) {
     model.addAttribute("result", shoppingList.getMostExpensiveItemName());
     return "results";
+  }
+
+  @RequestMapping("/webshop/add")
+  public String getAddView() {
+    return "add";
+  }
+
+  @RequestMapping(value = "/webshop/add", method = RequestMethod.POST)
+  public String addShopItem() {
+    return "Success";
   }
 
 }
