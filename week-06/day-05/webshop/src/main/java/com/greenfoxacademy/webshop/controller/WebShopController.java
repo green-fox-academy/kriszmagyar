@@ -50,7 +50,7 @@ public class WebShopController {
 
   @RequestMapping(value = "/webshop/add", method = RequestMethod.POST)
   public String addShopItem() {
-    return "Success";
+    return "redirect:/webshop";
   }
 
 }
