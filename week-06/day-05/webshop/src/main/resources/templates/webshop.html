@@ -15,6 +15,7 @@
           <th>Description</th>
           <th>Price</th>
           <th>Quantity of stock</th>
+          <th></th>
         </tr>
         </thead>
       <tbody>
@@ -24,6 +25,7 @@
           <td th:text="${shopItem.getDescription()}"></td>
           <td th:text="${shopItem.getPrice()}"></td>
           <td th:text="${shopItem.getStock()}"></td>
+          <td><a href="#" class="btn btn-danger" role="button"><i class="far fa-trash-alt" title="Delete"></i></a></td>
         </tr>
       </th:block>
       </tbody>
