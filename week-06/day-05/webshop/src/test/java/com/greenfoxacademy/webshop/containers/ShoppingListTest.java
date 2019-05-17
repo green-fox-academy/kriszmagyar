@@ -3,6 +3,7 @@ package com.greenfoxacademy.webshop.containers;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import com.greenfoxacademy.webshop.components.SearchCriteria;
 import com.greenfoxacademy.webshop.components.ShopItem;
 import org.junit.Test;
 
@@ -31,9 +32,9 @@ public class ShoppingListTest {
   }
 
   @Test
-  public void getWithContainsShouldReturnAllItemWhichContainsTheParam() {
+  public void getFilteredShouldReturnAllItemWhichContainsTheParam() {
     assertTrue(shoppingList
-        .getWithContains("nike")
+        .getFiltered(new SearchCriteria("nike"))
         .stream()
         .allMatch(shopItem -> shopItem.isContains("nike"))
     );

@@ -1,5 +1,6 @@
 package com.greenfoxacademy.webshop.containers;
 
+import com.greenfoxacademy.webshop.components.SearchCriteria;
 import com.greenfoxacademy.webshop.components.ShopItem;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -27,6 +28,12 @@ public class ShoppingList {
     return shoppingList;
   }
 
+  public List<ShopItem> getFiltered(SearchCriteria sc) {
+    return shoppingList.stream()
+        .filter(item -> item.isContains(sc.getSearch()))
+        .collect(Collectors.toList());
+  }
+
   public List<ShopItem> getAvailable() {
     return shoppingList.stream()
         .filter(ShopItem::isAvailable)
@@ -36,12 +43,6 @@ public class ShoppingList {
   public List<ShopItem> getCheapestFirst() {
     return shoppingList.stream()
         .sorted(Comparator.comparingDouble(ShopItem::getPrice))
-        .collect(Collectors.toList());
-  }
-
-  public List<ShopItem> getWithContains(String search) {
-    return shoppingList.stream()
-        .filter(item -> item.isContains(search))
         .collect(Collectors.toList());
   }
 

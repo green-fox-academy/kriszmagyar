@@ -1,5 +1,6 @@
 package com.greenfoxacademy.webshop.controller;
 
+import com.greenfoxacademy.webshop.components.SearchCriteria;
 import com.greenfoxacademy.webshop.components.ShopItem;
 import com.greenfoxacademy.webshop.containers.ShoppingList;
 import javax.validation.Valid;
@@ -20,9 +21,8 @@ public class WebShopController {
   private ShoppingList shoppingList = new ShoppingList();
 
   @RequestMapping("")
-  public String getWebShop(Model model,
-      @RequestParam(value = "search", defaultValue = "") String search) {
-    model.addAttribute("shoppingList", shoppingList.getWithContains(search));
+  public String getWebShop(Model model, SearchCriteria sc) {
+    model.addAttribute("shoppingList", shoppingList.getFiltered(sc));
     return "webshop";
   }
 
