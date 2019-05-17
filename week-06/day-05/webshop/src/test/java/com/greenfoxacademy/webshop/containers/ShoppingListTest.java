@@ -32,11 +32,25 @@ public class ShoppingListTest {
   }
 
   @Test
+  public void getFilteredShouldReturnAllItemWhenNoParamsAre() {
+    assertEquals(shoppingList.get(), shoppingList.getFiltered(new SearchCriteria()));
+  }
+
+  @Test
   public void getFilteredShouldReturnAllItemWhichContainsTheParam() {
     assertTrue(shoppingList
         .getFiltered(new SearchCriteria("nike"))
         .stream()
         .allMatch(shopItem -> shopItem.isContains("nike"))
+    );
+  }
+
+  @Test
+  public void getFilteredShouldReturnAllItemWhichIsAvailable() {
+    assertTrue(shoppingList
+        .getFiltered(new SearchCriteria("", true))
+        .stream()
+        .allMatch(ShopItem::isAvailable)
     );
   }
 

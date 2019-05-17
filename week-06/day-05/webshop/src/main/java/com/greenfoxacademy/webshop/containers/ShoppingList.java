@@ -31,6 +31,7 @@ public class ShoppingList {
   public List<ShopItem> getFiltered(SearchCriteria sc) {
     return shoppingList.stream()
         .filter(item -> item.isContains(sc.getSearch()))
+        .filter(item -> !sc.isAvailable() || item.isAvailable())
         .collect(Collectors.toList());
   }
 

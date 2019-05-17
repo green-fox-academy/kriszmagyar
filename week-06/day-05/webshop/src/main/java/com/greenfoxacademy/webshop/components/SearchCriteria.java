@@ -3,6 +3,7 @@ package com.greenfoxacademy.webshop.components;
 public class SearchCriteria {
 
   private String search = "";
+  private boolean isAvailable = false;
   private String orderBy = "";
   private boolean desc = false;
 
@@ -13,10 +14,9 @@ public class SearchCriteria {
     this.search = search;
   }
 
-  public SearchCriteria(String search, String orderBy, boolean desc) {
+  public SearchCriteria(String search, boolean isAvailable) {
     this.search = search;
-    this.orderBy = orderBy;
-    this.desc = desc;
+    this.isAvailable = isAvailable;
   }
 
   public String getSearch() {
@@ -25,6 +25,14 @@ public class SearchCriteria {
 
   public void setSearch(String search) {
     this.search = search;
+  }
+
+  public boolean isAvailable() {
+    return isAvailable;
+  }
+
+  public void setIsAvailable(boolean available) {
+    isAvailable = available;
   }
 
   public String getOrderBy() {
@@ -41,5 +49,15 @@ public class SearchCriteria {
 
   public void setDesc(boolean desc) {
     this.desc = desc;
+  }
+
+  @Override
+  public String toString() {
+    return "SearchCriteria{" +
+        "search='" + search + '\'' +
+        ", isAvailable=" + isAvailable +
+        ", orderBy='" + orderBy + '\'' +
+        ", desc=" + desc +
+        '}';
   }
 }
