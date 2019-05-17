@@ -1,8 +1,12 @@
 package com.greenfoxacademy.webshop.controller;
 
+import com.greenfoxacademy.webshop.components.ShopItem;
 import com.greenfoxacademy.webshop.containers.ShoppingList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,13 +47,15 @@ public class WebShopController {
     return "results";
   }
 
-  @RequestMapping("/webshop/add")
-  public String getAddView() {
+  @GetMapping("/webshop/add")
+  public String getAddView(Model model) {
+    model.addAttribute("shopItem", new ShopItem());
     return "add";
   }
 
-  @RequestMapping(value = "/webshop/add", method = RequestMethod.POST)
-  public String addShopItem() {
+  @PostMapping(value = "/webshop/add")
+  public String addShopItem(@ModelAttribute ShopItem shopItem) {
+    shoppingList.add(shopItem);
     return "redirect:/webshop";
   }
 

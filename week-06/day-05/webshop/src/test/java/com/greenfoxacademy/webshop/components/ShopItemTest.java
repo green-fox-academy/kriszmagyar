@@ -14,12 +14,12 @@ public class ShopItemTest {
 
   @Test
   public void isAvailableReturnsTrueIfStockGreaterThanZero() {
-    assertTrue(new ShopItem(NAME, DESC, PRICE, 100).isAvaiable());
+    assertTrue(new ShopItem(NAME, DESC, PRICE, 100).isAvailable());
   }
 
   @Test
   public void isAvailableReturnsFalseIfStockIsZero() {
-    assertFalse(new ShopItem(NAME, DESC, PRICE, 0).isAvaiable());
+    assertFalse(new ShopItem(NAME, DESC, PRICE, 0).isAvailable());
   }
 
   @Test

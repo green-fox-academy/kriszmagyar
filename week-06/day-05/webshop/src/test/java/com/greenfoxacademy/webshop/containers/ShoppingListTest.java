@@ -15,7 +15,7 @@ public class ShoppingListTest {
     assertTrue(shoppingList
         .getAvailable()
         .stream()
-        .allMatch(ShopItem::isAvaiable)
+        .allMatch(ShopItem::isAvailable)
     );
   }
 

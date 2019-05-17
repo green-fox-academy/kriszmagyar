@@ -9,22 +9,22 @@
 <main>
   <div class="container">
     <h2>Add a Shop item to the list!</h2>
-    <form action="/webshop/add" method="post">
+    <form action="#" th:action="@{/webshop/add}" th:object="${shopItem}" method="post">
       <div class="form-group">
         <label for="name">Name</label>
-        <input class="form-control" type="text" name="name" id="name" required autofocus>
+        <input th:field="*{name}" class="form-control" type="text" name="name" id="name" required autofocus>
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea class="form-control" name="description" id="description"></textarea>
+        <textarea th:field="*{description}" class="form-control" name="description" id="description"></textarea>
       </div>
       <div class="form-group">
         <label for="price">Price</label>
-        <input class="form-control" type="number" name="price" id="price" required>
+        <input th:field="*{price}" class="form-control" type="number" name="price" id="price" required>
       </div>
       <div class="form-group">
         <label for="stock">Stock</label>
-        <input class="form-control" type="number" name="stock" id="stock" required>
+        <input th:field="*{stock}" class="form-control" type="number" name="stock" id="stock" required>
       </div>
       <button class="btn btn-primary" type="submit">Add</button>
       <a href="/webshop" class="btn btn-danger" role="button">Cancel</a>

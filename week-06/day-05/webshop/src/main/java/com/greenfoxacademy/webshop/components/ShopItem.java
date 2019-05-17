@@ -14,7 +14,14 @@ public class ShopItem {
     this.stock = stock;
   }
 
-  public boolean isAvaiable() {
+  public ShopItem() {
+    name = "";
+    description = "";
+    price = 0.0;
+    stock = 0;
+  }
+
+  public boolean isAvailable() {
     return stock > 0;
   }
 

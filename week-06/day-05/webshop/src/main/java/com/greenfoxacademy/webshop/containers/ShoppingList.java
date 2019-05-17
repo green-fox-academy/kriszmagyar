@@ -2,7 +2,6 @@ package com.greenfoxacademy.webshop.containers;
 
 import com.greenfoxacademy.webshop.components.ShopItem;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,7 +29,7 @@ public class ShoppingList {
 
   public List<ShopItem> getAvailable() {
     return shoppingList.stream()
-        .filter(ShopItem::isAvaiable)
+        .filter(ShopItem::isAvailable)
         .collect(Collectors.toList());
   }
 
