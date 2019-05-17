@@ -14,48 +14,49 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/webshop")
 public class WebShopController {
 
   private ShoppingList shoppingList = new ShoppingList();
 
-  @RequestMapping ("/webshop")
+  @RequestMapping("")
   public String getWebShop(Model model,
       @RequestParam(value = "search", defaultValue = "") String search) {
     model.addAttribute("shoppingList", shoppingList.getWithContains(search));
     return "webshop";
   }
 
-  @RequestMapping("/webshop/only-available")
+  @RequestMapping("/only-available")
   public String getOnlyAvailable(Model model) {
     model.addAttribute("shoppingList", shoppingList.getAvailable());
     return "webshop";
   }
 
-  @RequestMapping("/webshop/cheapest-first")
+  @RequestMapping("/cheapest-first")
   public String getCheapestFirst(Model model) {
     model.addAttribute("shoppingList", shoppingList.getCheapestFirst());
     return "webshop";
   }
 
-  @RequestMapping("/webshop/average-stock")
+  @RequestMapping("/average-stock")
   public String getAverageStock(Model model) {
     model.addAttribute("result", shoppingList.getAverageStockAsString());
     return "results";
   }
 
-  @RequestMapping("/webshop/most-expensive")
+  @RequestMapping("/most-expensive")
   public String getMostExpensive(Model model) {
     model.addAttribute("result", shoppingList.getMostExpensiveItemName());
     return "results";
   }
 
-  @GetMapping("/webshop/add")
+  @GetMapping("/add")
   public String getAddView(Model model) {
     model.addAttribute("shopItem", new ShopItem());
     return "shopItem";
   }
 
-  @PostMapping("/webshop/add")
+  @PostMapping("/add")
   public String addShopItem(@ModelAttribute ShopItem shopItem) {
     shoppingList.add(shopItem);
     return "redirect:/webshop";
