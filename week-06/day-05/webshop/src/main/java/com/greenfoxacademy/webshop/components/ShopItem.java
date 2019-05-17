@@ -2,6 +2,7 @@ package com.greenfoxacademy.webshop.components;
 
 public class ShopItem {
 
+  private String id;
   private String name;
   private String description;
   private double price;
@@ -15,6 +16,7 @@ public class ShopItem {
   }
 
   public ShopItem() {
+    id = "";
     name = "";
     description = "";
     price = 0.0;
@@ -28,6 +30,10 @@ public class ShopItem {
   public boolean isContains(String search) {
     return name.toLowerCase().contains(search.toLowerCase())
         || description.toLowerCase().contains(search.toLowerCase());
+  }
+
+  public String getId() {
+    return id;
   }
 
   public String getName() {

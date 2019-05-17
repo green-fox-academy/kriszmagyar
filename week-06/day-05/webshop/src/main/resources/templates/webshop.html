@@ -25,7 +25,13 @@
           <td th:text="${shopItem.getDescription()}"></td>
           <td th:text="${shopItem.getPrice()}"></td>
           <td th:text="${shopItem.getStock()}"></td>
-          <td><a href="#" class="btn btn-danger" role="button"><i class="far fa-trash-alt" title="Delete"></i></a></td>
+          <td>
+            <form th:action="@{'/webshop/delete/' + ${shopItem.getId()}}" method="post">
+              <button type="submit" class="btn btn-danger">
+                <i class="far fa-trash-alt" title="Delete"></i>
+              </button>
+            </form>
+          </td>
         </tr>
       </th:block>
       </tbody>

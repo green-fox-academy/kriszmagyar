@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,6 +54,12 @@ public class WebShopController {
   @PostMapping("/add")
   public String addShopItem(@ModelAttribute ShopItem shopItem) {
     shoppingList.add(shopItem);
+    return "redirect:/webshop";
+  }
+
+  @PostMapping("/delete/{id}")
+  public String deleteShopItem(@PathVariable("id") String id) {
+    System.out.println(id);
     return "redirect:/webshop";
   }
 
