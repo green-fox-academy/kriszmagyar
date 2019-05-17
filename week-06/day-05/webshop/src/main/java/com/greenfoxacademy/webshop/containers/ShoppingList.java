@@ -35,12 +35,6 @@ public class ShoppingList {
         .collect(Collectors.toList());
   }
 
-  public List<ShopItem> getAvailable() {
-    return shoppingList.stream()
-        .filter(ShopItem::isAvailable)
-        .collect(Collectors.toList());
-  }
-
   public List<ShopItem> getCheapestFirst() {
     return shoppingList.stream()
         .sorted(Comparator.comparingDouble(ShopItem::getPrice))

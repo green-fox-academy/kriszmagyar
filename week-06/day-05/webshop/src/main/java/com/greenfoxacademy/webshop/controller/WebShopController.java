@@ -26,12 +26,6 @@ public class WebShopController {
     return "webshop";
   }
 
-  @RequestMapping("/only-available")
-  public String getOnlyAvailable(Model model) {
-    model.addAttribute("shoppingList", shoppingList.getAvailable());
-    return "webshop";
-  }
-
   @RequestMapping("/cheapest-first")
   public String getCheapestFirst(Model model) {
     model.addAttribute("shoppingList", shoppingList.getCheapestFirst());

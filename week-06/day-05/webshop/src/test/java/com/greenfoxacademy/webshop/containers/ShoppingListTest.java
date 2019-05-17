@@ -12,15 +12,6 @@ public class ShoppingListTest {
   private ShoppingList shoppingList = new ShoppingList();
 
   @Test
-  public void getAvailableShouldReturnShopItemsWhereQuantityGreaterThanZero() {
-    assertTrue(shoppingList
-        .getAvailable()
-        .stream()
-        .allMatch(ShopItem::isAvailable)
-    );
-  }
-
-  @Test
   public void getCheapestFirstShouldReturnTheOneWithTheLowerPriceFirst() {
     double min = shoppingList
         .getCheapestFirst()
