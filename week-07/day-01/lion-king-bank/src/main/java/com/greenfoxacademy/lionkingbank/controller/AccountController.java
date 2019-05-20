@@ -1,5 +1,6 @@
 package com.greenfoxacademy.lionkingbank.controller;
 
+import com.greenfoxacademy.lionkingbank.model.BankAccount;
 import com.greenfoxacademy.lionkingbank.model.BankAccountManager;
 import com.greenfoxacademy.lionkingbank.model.ChangeAccountInfo;
 import javax.validation.Valid;
@@ -31,6 +32,18 @@ public class AccountController {
   public String getAccount(Model model, @PathVariable int id) {
     model.addAttribute("account", bam.getWithId(id));
     return "account";
+  }
+
+  @GetMapping("/add")
+  public String addAccountForm(Model model, BankAccount account) {
+    model.addAttribute("account", account);
+    return "add-account";
+  }
+
+  @PostMapping("/add")
+  public String addAccount(BankAccount account) {
+    bam.add(account);
+    return "redirect:/accounts";
   }
 
   @PostMapping("/changeBalance")

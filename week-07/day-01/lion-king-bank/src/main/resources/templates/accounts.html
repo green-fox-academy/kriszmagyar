@@ -10,7 +10,6 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Id</th>
             <th>Name</th>
             <th>Balance</th>
             <th>Animal type</th>
@@ -20,7 +19,6 @@
         <tbody>
           <tr th:each="account : ${accounts}" th:class="${account.isKing()} ? 'table-success'">
             <td th:text="${accountStat.count}"></td>
-            <td th:text="${account.id}"></td>
             <td th:text="${account.name}"></td>
             <td>
               <button class="btn btn-secondary btn-sm" title="increment" th:onclick="|changeAccount(${account.id}, true)|"><i class="fas fa-chevron-up"></i></button>
@@ -32,6 +30,7 @@
           </tr>
         </tbody>
       </table>
+      <a href="/accounts/add" class="btn btn-primary" role="button">Add new</a>
     </div>
   </div>
 </main>
