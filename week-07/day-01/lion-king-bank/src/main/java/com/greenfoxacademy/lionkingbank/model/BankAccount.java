@@ -34,10 +34,14 @@ public class BankAccount {
 
   void changeBalance(boolean increment) {
     if (increment) {
-      balance += 10;
+      balance += getBalanceChange();
     } else {
-      balance -= 10;
+      balance -= getBalanceChange();
     }
+  }
+
+  private int getBalanceChange() {
+    return isKing ? 100 : 10;
   }
 
   public int getId() {
