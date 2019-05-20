@@ -12,9 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/accounts")
 public class AccountController {
 
-  List<BankAccount> accounts = new ArrayList<>();
+  List<BankAccount> accounts;
 
-  @GetMapping("/")
+  public AccountController() {
+    accounts = new ArrayList<>();
+    accounts.add(new BankAccount("Simba", 2000.0, "lion"));
+    accounts.add(new BankAccount("Simba", 2000.0, "lion"));
+    accounts.add(new BankAccount("Simba", 2000.0, "lion"));
+    accounts.add(new BankAccount("Simba", 2000.0, "lion"));
+  }
+
+  @GetMapping("")
   public String getAccounts(Model model) {
     model.addAttribute(accounts);
     return "accounts";
@@ -22,8 +30,7 @@ public class AccountController {
 
   @GetMapping("/show")
   public String getAccount(Model model) {
-    model.addAttribute("account",
-        new BankAccount("Simba", 2000.0, "lion"));
+    model.addAttribute("account", accounts.add(new BankAccount("Simba", 2000.0, "lion")));
     return "account";
   }
 
