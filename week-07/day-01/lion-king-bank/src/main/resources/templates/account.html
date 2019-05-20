@@ -10,7 +10,7 @@
 
 <main>
   <div class="container">
-    <p th:text="|${account.name}, ${account.balance}, ${account.animalType}|"></p>
+    <p th:text="|${account.name}, ${#numbers.formatCurrency(account.balance)}, ${account.animalType}|"></p>
   </div>
 </main>
 

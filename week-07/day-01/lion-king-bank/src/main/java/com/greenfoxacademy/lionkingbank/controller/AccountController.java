@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/accounts")
 public class AccountController {
 
-  @GetMapping("/accounts/show")
+  @GetMapping("/show")
   public String getAccount(Model model) {
     model.addAttribute("account",
-        new BankAccount("Simba", 2000.0, "lion"));
+        new BankAccount("Simba", 2000.00, "lion"));
     return "account";
   }
 
