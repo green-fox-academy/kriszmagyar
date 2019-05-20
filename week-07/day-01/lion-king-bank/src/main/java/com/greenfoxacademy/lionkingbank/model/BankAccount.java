@@ -4,7 +4,7 @@ public class BankAccount {
 
   private static int nextId = 1;
 
-  private String id;
+  private int id;
   private String name;
   private double balance;
   private String animalType;
@@ -13,13 +13,13 @@ public class BankAccount {
   }
 
   public BankAccount(String name, double balance, String animalType) {
-    id = animalType + nextId++;
+    id = nextId++;
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
   }
 
-  public String getId() {
+  public int getId() {
     return id;
   }
 

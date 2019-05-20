@@ -16,8 +16,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
+          <tr th:each="account : ${accounts}">
+            <td th:text="${account.id}"></td>
+            <td th:text="${account.name}"></td>
+            <td th:text="${account.balance}"></td>
+            <td th:text="${account.animalType}"></td>
           </tr>
         </tbody>
       </table>

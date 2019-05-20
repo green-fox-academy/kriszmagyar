@@ -24,7 +24,7 @@ public class AccountController {
 
   @GetMapping("")
   public String getAccounts(Model model) {
-    model.addAttribute(accounts);
+    model.addAttribute("accounts", accounts);
     return "accounts";
   }
 
