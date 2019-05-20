@@ -9,6 +9,7 @@
       <table class="table">
         <thead>
           <tr>
+            <th>#</th>
             <th>Id</th>
             <th>Name</th>
             <th>Balance</th>
@@ -16,10 +17,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr th:each="account : ${accounts}">
+          <tr th:each="account : ${accounts}" th:class="${account.isKing()} ? 'table-success'">
+            <td th:text="${accountStat.count}"></td>
             <td th:text="${account.id}"></td>
             <td th:text="${account.name}"></td>
-            <td th:text="${account.balance}"></td>
+            <td th:text="${#numbers.formatCurrency(account.balance)}"></td>
             <td th:text="${account.animalType}"></td>
           </tr>
         </tbody>

@@ -9,11 +9,11 @@ public class BankAccountManager {
 
   public BankAccountManager() {
     accounts = new ArrayList<>();
-    accounts.add(new BankAccount("Simba", 2000.0, "lion"));
+    accounts.add(new BankAccount("Simba", 2000.0, "lion", true));
     accounts.add(new BankAccount("Timon", 100.0, "meerkat"));
     accounts.add(new BankAccount("Pumba", 150.0, "wordhog"));
     accounts.add(new BankAccount("Zazu", 1450.0, "hornbill"));
-    accounts.add(new BankAccount("Mufasa", 10000.0, "lion"));
+    accounts.add(new BankAccount("Mufasa", 10000.0, "lion", true));
   }
 
   public List<BankAccount> get() {

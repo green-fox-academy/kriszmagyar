@@ -8,15 +8,22 @@ public class BankAccount {
   private String name;
   private double balance;
   private String animalType;
+  private boolean isKing;
 
-  public  BankAccount() {
+  public BankAccount() {
+    this("", 0.0, "", false);
   }
 
-  public BankAccount(String name, double balance, String animalType) {
+  BankAccount(String name, double balance, String animalType) {
+    this(name, balance, animalType, false);
+  }
+
+  BankAccount(String name, double balance, String animalType, boolean isKing) {
     id = nextId++;
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
+    this.isKing = isKing;
   }
 
   public int getId() {
@@ -45,5 +52,13 @@ public class BankAccount {
 
   public void setAnimalType(String animalType) {
     this.animalType = animalType;
+  }
+
+  public boolean isKing() {
+    return isKing;
+  }
+
+  public void setIsKing(boolean king) {
+    isKing = king;
   }
 }
