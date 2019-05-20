@@ -5,10 +5,16 @@
 
 <main>
   <div class="container">
-    <div>
-      <p th:text="|${account.name}, ${#numbers.formatCurrency(account.balance)}, ${account.animalType}|"></p>
-      <a th:href="@{/accounts}" class="btn btn-primary" role="button">Go back</a>
-    </div>
+    <h2>Account</h2>
+    <ul class="list-group" th:object="${account}">
+      <li class="list-group-item" th:text="*{id}"></li>
+      <li class="list-group-item" th:text="*{name}"></li>
+      <li class="list-group-item" th:text="*{#numbers.formatCurrency(balance)}"></li>
+      <li class="list-group-item" th:text="*{animalType}"></li>
+      <li class="list-group-item" th:text="*{isKing()} ? 'Is a King' : 'Not a king'"></li>
+      <li class="list-group-item" th:text="*{isBadGuy()} ? 'Bad Guy' : 'Good One'"></li>
+    </ul>
+    <a th:href="@{/accounts}" class="btn btn-primary" role="button">Go back</a>
   </div>
 </main>
 
