@@ -14,6 +14,7 @@
             <th>Name</th>
             <th>Balance</th>
             <th>Animal type</th>
+            <th>Good or Bad</th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@
             <td th:text="${account.name}"></td>
             <td th:text="${#numbers.formatCurrency(account.balance)}"></td>
             <td th:text="${account.animalType}"></td>
+            <td th:text="${account.isBadGuy()} ? 'Bad Guy' : 'Good One'"></td>
           </tr>
         </tbody>
       </table>

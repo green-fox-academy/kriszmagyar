@@ -14,6 +14,7 @@ public class BankAccountManager {
     accounts.add(new BankAccount("Pumba", 150.0, "wordhog"));
     accounts.add(new BankAccount("Zazu", 1450.0, "hornbill"));
     accounts.add(new BankAccount("Mufasa", 10000.0, "lion", true));
+    accounts.add(new BankAccount("Scar", 9850.0, "lion", true, true));
   }
 
   public List<BankAccount> get() {
