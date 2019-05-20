@@ -9,6 +9,9 @@ public class BankAccount {
   private double balance;
   private String animalType;
 
+  public  BankAccount() {
+  }
+
   public BankAccount(String name, double balance, String animalType) {
     id = animalType + nextId++;
     this.name = name;
