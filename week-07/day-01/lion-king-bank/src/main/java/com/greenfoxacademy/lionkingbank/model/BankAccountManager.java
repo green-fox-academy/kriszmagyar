@@ -28,4 +28,12 @@ public class BankAccountManager {
         .orElse(null);
   }
 
+  public void changeBalance(ChangeAccountInfo cai) {
+    for (BankAccount account : accounts) {
+      if (account.getId() == cai.getId()) {
+        account.changeBalance(cai.isIncrement());
+      }
+    }
+  }
+
 }

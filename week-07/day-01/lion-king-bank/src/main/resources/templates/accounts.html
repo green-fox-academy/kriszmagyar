@@ -23,8 +23,8 @@
             <td th:text="${account.id}"></td>
             <td th:text="${account.name}"></td>
             <td>
-              <button class="btn btn-secondary btn-sm" title="increment"><i class="fas fa-chevron-up"></i></button>
-              <button class="btn btn-secondary btn-sm" title="decrement"><i class="fas fa-chevron-down"></i></button>
+              <button class="btn btn-secondary btn-sm" title="increment" th:onclick="|changeAccount(${account.id}, true)|"><i class="fas fa-chevron-up"></i></button>
+              <button class="btn btn-secondary btn-sm" title="decrement" th:onclick="|changeAccount(${account.id}, false)|"><i class="fas fa-chevron-down"></i></button>
               <span th:text="${#numbers.formatCurrency(account.balance)}"></span>
             </td>
             <td th:text="${account.animalType}"></td>
@@ -35,6 +35,33 @@
     </div>
   </div>
 </main>
+
+<script>
+  function changeAccount(id, increment) {
+    postData('/accounts/changeBalance', { id, increment })
+    .then(data => console.log(JSON.stringify(data)))
+    .catch(error => console.error(error));
+    location.reload();
+  }
+
+  function postData(url = '', data = {}) {
+    // Default options are marked with *
+    return fetch(url, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, cors, *same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json',
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrer: 'no-referrer', // no-referrer, *client
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+    })
+    .then(response => response.json()); // parses JSON response into native Javascript objects
+  }
+</script>
 
 </body>
 </html>

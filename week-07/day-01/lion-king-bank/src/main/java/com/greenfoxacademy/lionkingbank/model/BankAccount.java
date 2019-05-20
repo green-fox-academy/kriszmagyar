@@ -32,6 +32,14 @@ public class BankAccount {
     this.isBadGuy = isBadGuy;
   }
 
+  void changeBalance(boolean increment) {
+    if (increment) {
+      balance += 10;
+    } else {
+      balance -= 10;
+    }
+  }
+
   public int getId() {
     return id;
   }
