@@ -7,6 +7,7 @@
   <div class="container">
     <div>
       <p th:text="|${account.name}, ${#numbers.formatCurrency(account.balance)}, ${account.animalType}|"></p>
+      <a th:href="@{/accounts}" class="btn btn-primary" role="button">Go back</a>
     </div>
   </div>
 </main>
