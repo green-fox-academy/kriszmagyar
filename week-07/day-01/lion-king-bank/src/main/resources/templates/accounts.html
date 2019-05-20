@@ -23,8 +23,8 @@
             <td th:text="${account.id}"></td>
             <td th:text="${account.name}"></td>
             <td>
-              <button class="btn btn-secondary btn-sm"><i class="fas fa-chevron-up"></i></button>
-              <button class="btn btn-secondary btn-sm"><i class="fas fa-chevron-down"></i></button>
+              <button class="btn btn-secondary btn-sm" title="increment"><i class="fas fa-chevron-up"></i></button>
+              <button class="btn btn-secondary btn-sm" title="decrement"><i class="fas fa-chevron-down"></i></button>
               <span th:text="${#numbers.formatCurrency(account.balance)}"></span>
             </td>
             <td th:text="${account.animalType}"></td>
