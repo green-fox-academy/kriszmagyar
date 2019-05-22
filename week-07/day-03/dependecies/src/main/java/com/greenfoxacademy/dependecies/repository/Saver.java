@@ -7,5 +7,5 @@ public interface Saver {
 
   List<Student> get();
 
-  void save(Student item);
+  void save(Student student);
 }
