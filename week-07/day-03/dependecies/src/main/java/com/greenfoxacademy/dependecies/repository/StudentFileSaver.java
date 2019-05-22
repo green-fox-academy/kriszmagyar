@@ -4,6 +4,7 @@ import com.greenfoxacademy.dependecies.model.Student;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,17 +35,10 @@ public class StudentFileSaver implements Saver {
 
   private List<String> getNamesFromFile() {
     try {
-      File file = new ClassPathResource(FILE_NAME).getFile();
-      return Files.readAllLines(file.toPath());
+      return Files.readAllLines(getFilePath());
     } catch (IOException e) {
       return new ArrayList<>();
     }
-  }
-
-  private List<String> getNames() {
-    return students.stream()
-        .map(Student::getName)
-        .collect(Collectors.toList());
   }
 
   @Override
@@ -56,10 +50,19 @@ public class StudentFileSaver implements Saver {
   public void save(Student student) {
     students.add(student);
     try {
-      File file = new ClassPathResource(FILE_NAME).getFile();
-      Files.write(file.toPath(), getNames());
+      Files.write(getFilePath(), getNames());
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  private List<String> getNames() {
+    return students.stream()
+        .map(Student::getName)
+        .collect(Collectors.toList());
+  }
+
+  private Path getFilePath() throws IOException {
+    return new ClassPathResource(FILE_NAME).getFile().toPath();
   }
 }
