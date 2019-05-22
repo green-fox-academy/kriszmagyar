@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping("/useful")
@@ -28,7 +27,7 @@ public class UsefulController {
 
   @GetMapping("/email")
   public String validateEmail(Model model, String email) {
-    model.addAttribute("email", email);
+    model.addAttribute("email", utilityService.validateEmail(email));
     return "email";
   }
 

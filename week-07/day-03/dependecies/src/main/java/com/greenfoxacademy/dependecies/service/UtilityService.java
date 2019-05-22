@@ -1,5 +1,6 @@
 package com.greenfoxacademy.dependecies.service;
 
+import com.greenfoxacademy.dependecies.model.Email;
 import com.greenfoxacademy.dependecies.repository.ColorRepository;
 import java.util.Random;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,10 @@ public class UtilityService {
     return colorRepository.getWithIndex(
         new Random().nextInt(colorRepository.size())
     );
+  }
+
+  public Email validateEmail(String email) {
+    return new Email(email, "green");
   }
 
 }
