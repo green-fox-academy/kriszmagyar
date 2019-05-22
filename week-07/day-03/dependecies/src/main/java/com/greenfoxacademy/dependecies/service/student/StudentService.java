@@ -28,6 +28,9 @@ public class StudentService {
   }
 
   public boolean isExist(String name) {
+    if (name == null) {
+      return false;
+    }
     return saver.get().stream()
         .map(s -> s.getName().toLowerCase())
         .anyMatch(s -> s.equals(name.toLowerCase()));
