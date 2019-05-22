@@ -49,6 +49,10 @@ public class StudentFileSaver implements Saver {
   @Override
   public void save(Student student) {
     students.add(student);
+    update();
+  }
+
+  private void update() {
     try {
       Files.write(getFilePath(), getNames());
     } catch (IOException e) {
