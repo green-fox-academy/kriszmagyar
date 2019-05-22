@@ -17,10 +17,19 @@ public class StudentService {
   }
 
   public void save(Student student) {
+    if (student == null || student.getName().isEmpty()) {
+      return;
+    }
     saver.save(student);
   }
 
   public int count() {
     return saver.get().size();
+  }
+
+  public boolean isExist(String name) {
+    return saver.get().stream()
+        .map(s -> s.getName().toLowerCase())
+        .anyMatch(s -> s.equals(name.toLowerCase()));
   }
 }

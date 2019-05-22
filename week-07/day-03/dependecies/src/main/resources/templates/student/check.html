@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Index</title>
+</head>
+<body>
+  <a th:href="@{/gfa}">Back</a>
+  <form action="#" th:action="@{/gfa/check}" th:object="${student}" th:method="get">
+    <label th:for="*{name}">Name</label>
+    <input type="text" th:field="*{name}" autofocus>
+    <input type="submit" th:value="Check">
+  </form>
+  <p th:if="${name != null}" th:text="|${name} is ${isExist ? 'exists' : 'not exists'}|"></p>
+</body>
+</html>

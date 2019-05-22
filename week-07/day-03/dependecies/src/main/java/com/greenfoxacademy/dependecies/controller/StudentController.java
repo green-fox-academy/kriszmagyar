@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -29,7 +30,6 @@ public class StudentController {
 
   @GetMapping("/add")
   public String add(Model model) {
-    model.addAttribute("student", new Student());
     return "student/add";
   }
 
@@ -37,6 +37,18 @@ public class StudentController {
   public String save(Student student) {
     studentService.save(student);
     return "redirect:list";
+  }
+
+  @GetMapping("/check")
+  public String check(Model model, String name) {
+    model.addAttribute("isExist", studentService.isExist(name));
+    model.addAttribute("name", name);
+    return "student/check";
+  }
+
+  @ModelAttribute
+  public void emptyStudent(Model model) {
+    model.addAttribute("student", new Student());
   }
 
 }
