@@ -5,9 +5,9 @@
   <title>Index</title>
 </head>
 <body>
-<ul>
-  <li><a th:href="@{/}">Main</a></li>
-  <li><a th:href="@{/gfa/list}">List of students</a></li>
-</ul>
+  <a th:href="@{/gfa}">Back</a>
+  <ul th:each="student : ${students}">
+    <li th:text="${student.name}"></li>
+  </ul>
 </body>
 </html>
