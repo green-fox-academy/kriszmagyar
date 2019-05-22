@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface Saver {
 
-  List<Student> findAll();
+  List<Student> get();
 
   void save(Student item);
 }

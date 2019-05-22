@@ -5,10 +5,11 @@
   <title>Index</title>
 </head>
 <body>
-<ul>
-  <li><a th:href="@{/}">Main</a></li>
-  <li><a th:href="@{/gfa/list}">List of students</a></li>
-  <li><a th:href="@{/gfa/add}">Add student</a></li>
-</ul>
+  <h2>Current # of students: <span th:text="${count}"></span></h2>
+  <ul>
+    <li><a th:href="@{/}">Main</a></li>
+    <li><a th:href="@{/gfa/list}">List of students</a></li>
+    <li><a th:href="@{/gfa/add}">Add student</a></li>
+  </ul>
 </body>
 </html>

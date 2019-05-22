@@ -13,10 +13,14 @@ public class StudentService {
   private Saver saver;
 
   public List<Student> findAll() {
-    return saver.findAll();
+    return saver.get();
   }
 
   public void save(Student student) {
     saver.save(student);
+  }
+
+  public int count() {
+    return saver.get().size();
   }
 }

@@ -18,7 +18,7 @@ public class StudentRepository implements Saver {
   }
 
   @Override
-  public List<Student> findAll() {
+  public List<Student> get() {
     return students;
   }
 

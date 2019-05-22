@@ -16,7 +16,8 @@ public class StudentController {
   private StudentService studentService;
 
   @GetMapping
-  public String index() {
+  public String index(Model model) {
+    model.addAttribute("count", studentService.count());
     return "student/index";
   }
 
