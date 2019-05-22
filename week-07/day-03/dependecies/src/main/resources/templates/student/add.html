@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Index</title>
+</head>
+<body>
+  <a th:href="@{/gfa}">Back</a>
+  <form action="#" th:action="@{/gfa/save}" th:object="${student}" th:method="get">
+    <label th:for="*{name}">Name</label>
+    <input type="text" th:field="*{name}">
+    <input type="submit">
+  </form>
+</body>
+</html>

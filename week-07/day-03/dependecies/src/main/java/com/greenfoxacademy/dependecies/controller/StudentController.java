@@ -1,5 +1,6 @@
 package com.greenfoxacademy.dependecies.controller;
 
+import com.greenfoxacademy.dependecies.model.Student;
 import com.greenfoxacademy.dependecies.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,18 @@ public class StudentController {
   public String list(Model model) {
     model.addAttribute("students", studentService.findAll());
     return "student/list";
+  }
+
+  @GetMapping("/add")
+  public String add(Model model) {
+    model.addAttribute("student", new Student());
+    return "student/add";
+  }
+
+  @GetMapping("/save")
+  public String save(Student student) {
+    studentService.save(student);
+    return "redirect:list";
   }
 
 }
