@@ -9,13 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @Primary
 public class StudentFileSaver implements Saver {
 
-  private static final String FILE_NAME = "names.txt";
+  private static final String FILE_NAME = "static/names.txt";
 
   private List<Student> students;
 
@@ -32,7 +34,8 @@ public class StudentFileSaver implements Saver {
 
   private List<String> getNamesFromFile() {
     try {
-      return Files.readAllLines(Paths.get(FILE_NAME));
+      File file = new ClassPathResource(FILE_NAME).getFile();
+      return Files.readAllLines(file.toPath());
     } catch (IOException e) {
       return new ArrayList<>();
     }
