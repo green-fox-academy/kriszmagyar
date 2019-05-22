@@ -1,10 +1,11 @@
 package com.greenfoxacademy.dependecies.service.student;
 
+import com.greenfoxacademy.dependecies.model.Student;
 import java.util.List;
 
-public interface Saver<T> {
+public interface Saver {
 
-  List<T> findAll();
+  List<Student> findAll();
 
-  void save(T item);
+  void save(Student item);
 }

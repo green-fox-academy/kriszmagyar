@@ -3,27 +3,20 @@ package com.greenfoxacademy.dependecies.service.student;
 import com.greenfoxacademy.dependecies.model.Student;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StudentService implements Saver<Student> {
+public class StudentService {
 
-  private List<Student> students;
+  @Autowired
+  private Saver saver;
 
-  public StudentService() {
-    students = new ArrayList<>();
-    students.add(new Student("Sanyi"));
-    students.add(new Student("Lilla"));
-    students.add(new Student("John"));
-  }
-
-  @Override
   public List<Student> findAll() {
-    return students;
+    return saver.findAll();
   }
 
-  @Override
   public void save(Student student) {
-    students.add(student);
+    saver.save(student);
   }
 }
