@@ -21,7 +21,8 @@ public class UtilityService {
   }
 
   public Email validateEmail(String email) {
-    return new Email(email, "green");
+    String color = email.contains("@") && email.contains(".") ? "green" : "red";
+    return new Email(email, color);
   }
 
 }
