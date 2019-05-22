@@ -50,6 +50,7 @@ public class AccountController {
   public String changeBalance(@RequestBody @Valid ChangeAccountInfo cai) {
     bam.changeBalance(cai);
     return "redirect:/accounts";
+
   }
 
 }
