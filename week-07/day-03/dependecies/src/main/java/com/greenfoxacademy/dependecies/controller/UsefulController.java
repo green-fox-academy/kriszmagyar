@@ -26,4 +26,10 @@ public class UsefulController {
     return "colored";
   }
 
+  @GetMapping("/email")
+  public String validateEmail(Model model, String email) {
+    model.addAttribute("email", email);
+    return "email";
+  }
+
 }
