@@ -3,6 +3,7 @@ package com.greenfoxacademy.dependecies.controller;
 import com.greenfoxacademy.dependecies.service.UtilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,8 @@ public class UsefulController {
   }
 
   @GetMapping("/colored")
-  public String getColoredPage() {
+  public String getColoredPage(Model model) {
+    model.addAttribute("color", utilityService.randomColor());
     return "colored";
   }
 
