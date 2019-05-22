@@ -1,4 +1,4 @@
-package com.greenfoxacademy.dependecies.service.student;
+package com.greenfoxacademy.dependecies.repository;
 
 import com.greenfoxacademy.dependecies.model.Student;
 import java.util.List;

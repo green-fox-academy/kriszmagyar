@@ -1,7 +1,6 @@
 package com.greenfoxacademy.dependecies.repository;
 
 import com.greenfoxacademy.dependecies.model.Student;
-import com.greenfoxacademy.dependecies.service.student.Saver;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
