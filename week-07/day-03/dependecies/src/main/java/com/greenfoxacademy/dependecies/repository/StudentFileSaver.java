@@ -41,6 +41,12 @@ public class StudentFileSaver implements Saver {
     }
   }
 
+  private List<String> getNames() {
+    return students.stream()
+        .map(Student::getName)
+        .collect(Collectors.toList());
+  }
+
   @Override
   public List<Student> get() {
     return students;
@@ -49,5 +55,11 @@ public class StudentFileSaver implements Saver {
   @Override
   public void save(Student student) {
     students.add(student);
+    try {
+      File file = new ClassPathResource(FILE_NAME).getFile();
+      Files.write(file.toPath(), getNames());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
