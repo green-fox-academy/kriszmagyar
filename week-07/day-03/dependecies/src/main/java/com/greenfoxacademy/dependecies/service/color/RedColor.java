@@ -1,6 +1,6 @@
 package com.greenfoxacademy.dependecies.service.color;
 
-import com.greenfoxacademy.dependecies.service.Logger;
+import com.greenfoxacademy.dependecies.service.logger.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;

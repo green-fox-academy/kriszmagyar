@@ -1,9 +1,7 @@
 package com.greenfoxacademy.dependecies;
 
-import com.greenfoxacademy.dependecies.service.Logger;
-import com.greenfoxacademy.dependecies.service.Printer;
+import com.greenfoxacademy.dependecies.service.logger.Logger;
 import com.greenfoxacademy.dependecies.service.color.MyColor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

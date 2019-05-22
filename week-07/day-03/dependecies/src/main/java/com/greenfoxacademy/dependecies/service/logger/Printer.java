@@ -1,4 +1,4 @@
-package com.greenfoxacademy.dependecies.service;
+package com.greenfoxacademy.dependecies.service.logger;
 
 import java.time.LocalDateTime;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.greenfoxacademy.dependecies.service;
+package com.greenfoxacademy.dependecies.service.utility;
 
 import com.greenfoxacademy.dependecies.model.Email;
 import com.greenfoxacademy.dependecies.repository.ColorRepository;
