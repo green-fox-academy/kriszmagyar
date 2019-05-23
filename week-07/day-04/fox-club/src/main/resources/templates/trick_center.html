@@ -8,7 +8,7 @@
   <div th:replace="fragments/nav :: copy"></div>
 
   <div class="container">
-    <form th:action="@{/fox/learnTrick(name=${fox.name})}" th:method="post">
+    <form th:action="@{/fox/learnTrick(name=${fox.name})}" th:method="post" th:if="${#lists.size(newTricks) > 0}">
       <div class="form-control">
         <label>Tricks</label>
         <select name="trick">
@@ -17,6 +17,7 @@
       </div>
       <button type="submit">Learn</button>
     </form>
+    <h2 th:if="${#lists.size(newTricks) == 0}">Your fox has learned all the tricks!</h2>
   </div>
 </body>
 </html>
