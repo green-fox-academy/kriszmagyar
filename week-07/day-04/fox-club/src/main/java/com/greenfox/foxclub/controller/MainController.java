@@ -20,8 +20,7 @@ public class MainController {
     if (name == null || name.isEmpty() || !fs.exists(name)) {
       return "redirect:/login";
     }
-
-    model.addAttribute("name", name);
+    model.addAttribute("fox", fs.getByName(name));
     return "index";
   }
 
@@ -33,6 +32,7 @@ public class MainController {
 
   @PostMapping("/login")
   public String login(Fox fox) {
+    fs.add(fox);
     return "redirect:/?name=" + fox.getName();
   }
 
