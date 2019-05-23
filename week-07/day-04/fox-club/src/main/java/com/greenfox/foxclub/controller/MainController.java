@@ -1,5 +1,7 @@
 package com.greenfox.foxclub.controller;
 
+import com.greenfox.foxclub.model.Drink;
+import com.greenfox.foxclub.model.Food;
 import com.greenfox.foxclub.model.Fox;
 import com.greenfox.foxclub.service.FoxService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,7 @@ public class MainController {
 
   @GetMapping
   public String index(@RequestParam(required = false) String name, Model model) {
-    if (name == null || name.isEmpty() || !fs.exists(name)) {
+    if (isNotAuthorized(name)) {
       return "redirect:/login";
     }
     model.addAttribute("fox", fs.getByName(name));
@@ -34,6 +36,18 @@ public class MainController {
   public String login(Fox fox) {
     fs.add(fox);
     return "redirect:/?name=" + fox.getName();
+  }
+
+  @GetMapping("/nutritionStore")
+  public String nutritionStore(Model model) {
+    model.addAttribute("fox", new Fox());
+    model.addAttribute("foodSet", Food.values());
+    model.addAttribute("drinkSet", Drink.values());
+    return "nutrition_store";
+  }
+
+  private boolean isNotAuthorized(String name) {
+    return name == null || name.isEmpty() || !fs.exists(name);
   }
 
 }
