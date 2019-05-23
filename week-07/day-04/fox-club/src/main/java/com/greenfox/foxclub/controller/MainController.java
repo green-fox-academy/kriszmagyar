@@ -3,6 +3,7 @@ package com.greenfox.foxclub.controller;
 import com.greenfox.foxclub.model.Drink;
 import com.greenfox.foxclub.model.Food;
 import com.greenfox.foxclub.model.Fox;
+import com.greenfox.foxclub.model.Trick;
 import com.greenfox.foxclub.service.FoxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,4 +47,10 @@ public class MainController {
     return "nutrition_store";
   }
 
+  @GetMapping("/trickCenter")
+  public String trickCenter(@RequestParam String name, Model model) {
+    model.addAttribute("fox", fs.getByName(name));
+    model.addAttribute("newTricks", Trick.values());
+    return "trick_center";
+  }
 }

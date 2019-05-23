@@ -3,6 +3,7 @@ package com.greenfox.foxclub.service;
 import com.greenfox.foxclub.model.Drink;
 import com.greenfox.foxclub.model.Food;
 import com.greenfox.foxclub.model.Fox;
+import com.greenfox.foxclub.model.Trick;
 import com.greenfox.foxclub.repository.FoxRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,11 @@ public class FoxService {
     Fox fox = getByName(name);
     fox.setFood(food);
     fox.setDrink(drink);
+  }
+
+  public void learnTrick(String name, Trick trick) {
+    System.out.println("trick: " + trick);
+    getByName(name).learTrick(trick);
   }
 
   public boolean isNotAuthorized(String name) {
