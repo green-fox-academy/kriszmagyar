@@ -5,15 +5,7 @@
   <title>Fox Club</title>
 </head>
 <body>
-  <div class="container">
-    <nav>
-      <ul>
-        <li><a href="#" th:href="@{/login}">Logout</a></li>
-        <li><a href="#" th:href="@{/(name=${fox.name})}">Information</a></li>
-        <li><a href="#" th:href="@{/nutritionStore(name=${fox.name})}">Nutrition Store</a></li>
-      </ul>
-    </nav>
-  </div>
+  <div th:replace="fragments/nav :: copy"></div>
   <div class="container" th:object="${fox}">
     <section>
       <img src="https://dreamjo.bs/uploads/green-fox-academy/86a3c9fd316b.jpg" alt="Green Fox">

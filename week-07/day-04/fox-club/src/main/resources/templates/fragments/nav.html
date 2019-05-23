@@ -1,0 +1,11 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div class="container" th:fragment="copy">
+  <nav>
+    <ul>
+      <li><a href="#" th:href="@{/login}">Logout</a></li>
+      <li><a href="#" th:href="@{/(name=${fox.name})}">Information</a></li>
+      <li><a href="#" th:href="@{/nutritionStore(name=${fox.name})}">Nutrition Store</a></li>
+    </ul>
+  </nav>
+</div>

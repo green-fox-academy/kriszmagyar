@@ -5,8 +5,9 @@
   <title>Fox Club - Nutrition Store</title>
 </head>
 <body>
-  <div class="container">
+  <div th:replace="fragments/nav :: copy"></div>
 
+  <div class="container">
     <form th:action="@{/fox/changeNutrition(name=${fox.name})}" th:method="post" th:object="${fox}">
       <div class="form-control">
         <label th:for="*{food}">Food</label>
