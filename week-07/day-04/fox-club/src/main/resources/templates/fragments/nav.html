@@ -1,12 +1,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<div class="container" th:fragment="copy">
-  <nav>
-    <ul>
-      <li><a href="#" th:href="@{/login}">Logout</a></li>
-      <li><a href="#" th:href="@{/(name=${fox.name})}">Information</a></li>
-      <li><a href="#" th:href="@{/nutritionStore(name=${fox.name})}">Nutrition Store</a></li>
-      <li><a href="#" th:href="@{/trickCenter(name=${fox.name})}">Trick Center</a></li>
+<nav class="navbar navbar-light bg-light" th:fragment="copy">
+  <div class="container">
+    <a class="navbar-brand" href="#" th:href="@{/(name=${fox.name})}">
+      <img src="https://dreamjo.bs/uploads/green-fox-academy/86a3c9fd316b.jpg" width="30" height="30" alt="">
+      Fox Club
+    </a>
+    <ul class="nav nav-fill">
+      <li class="nav-item">
+        <a class="nav-link" href="#" th:href="@{/(name=${fox.name})}">Information</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" th:href="@{/nutritionStore(name=${fox.name})}">Nutrition Store</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" th:href="@{/trickCenter(name=${fox.name})}">Trick Center</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" th:href="@{/login}">Logout</a>
+      </li>
     </ul>
-  </nav>
-</div>
+  </div>
+</nav>

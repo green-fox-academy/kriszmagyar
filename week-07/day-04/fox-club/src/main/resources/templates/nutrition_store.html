@@ -5,20 +5,21 @@
   <div th:replace="fragments/nav :: copy"></div>
 
   <div class="container">
+    <h2>Nutrition Store</h2>
     <form th:action="@{/fox/changeNutrition(name=${fox.name})}" th:method="post" th:object="${fox}">
-      <div class="form-control">
+      <div class="form-group">
         <label th:for="*{food}">Food</label>
-        <select th:field="*{food}">
+        <select class="form-control" th:field="*{food}">
           <option th:each="f : ${foodSet}" th:value="${f}" th:text="${f}"></option>
         </select>
       </div>
-      <div class="form-control">
+      <div class="form-group">
         <label th:for="*{drink}">Drink</label>
-        <select th:field="*{drink}">
+        <select class="form-control" th:field="*{drink}">
           <option th:each="d : ${drinkSet}" th:value="${d}" th:text="${d}"></option>
         </select>
       </div>
-      <button type="submit">Change</button>
+      <button type="submit" class="btn btn-primary">Change</button>
     </form>
   </div>
 </body>
