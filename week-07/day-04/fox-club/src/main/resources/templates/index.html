@@ -23,6 +23,7 @@
       </ul>
       <p th:if="${fox.tricks.size() == 0}">No tricks yet. Go on and learn some!</p>
     </section>
+    <div th:replace="action_history :: copy"></div>
   </div>
 
 </body>

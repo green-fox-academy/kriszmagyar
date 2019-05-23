@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -59,6 +60,12 @@ public class FoxService {
     List<Action> reversedActions = getByName(name).getActions();
     Collections.reverse(reversedActions);
     return reversedActions;
+  }
+
+  public List<Action> getActions(String name, int limit) {
+    return getActions(name).stream()
+        .limit(limit)
+        .collect(Collectors.toList());
   }
 
   public boolean isNotAuthorized(String name) {

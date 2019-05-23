@@ -25,6 +25,7 @@ public class MainController {
       return "redirect:/login";
     }
     model.addAttribute("fox", fs.getByName(name));
+    model.addAttribute("actions", fs.getActions(name, 5));
     return "index";
   }
 
