@@ -5,13 +5,21 @@
   <div th:replace="fragments/nav :: copy"></div>
   <div class="container" th:object="${fox}">
     <section>
-      <img src="https://dreamjo.bs/uploads/green-fox-academy/86a3c9fd316b.jpg" alt="Green Fox">
-      <p th:text="${fox}"></p>
+      <div class="row">
+        <div class="col-3">
+          <img src="https://dreamjo.bs/uploads/green-fox-academy/86a3c9fd316b.jpg" alt="Green Fox">
+        </div>
+        <div class="col-9">
+          <h2 class="my-4" th:text="*{name}"></h2>
+          <p th:text="|Eating *{food}|"></p>
+          <p th:text="|Drinking *{drink}|"></p>
+        </div>
+      </div>
     </section>
     <section>
-      <h1>Known tricks</h1>
-      <ul th:each="trick : ${fox.tricks}">
-        <li th:text="${trick}">write HTML</li>
+      <h2>Known tricks</h2>
+      <ul class="list-group">
+        <li th:each="trick : ${fox.tricks}" th:text="${trick}" class="list-group-item">write HTML</li>
       </ul>
       <p th:if="${fox.tricks.size() == 0}">No tricks yet. Go on and learn some!</p>
     </section>
