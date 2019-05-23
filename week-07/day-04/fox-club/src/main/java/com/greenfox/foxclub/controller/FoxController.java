@@ -28,8 +28,6 @@ public class FoxController {
 
   @PostMapping("/learnTrick")
   public String learnTrick(@RequestParam String name, Trick trick) {
-    System.out.println("Name in controller: " + name);
-    System.out.println("Trick in controller: " + trick);
     if (fs.isNotAuthorized(name)) {
       return "redirect:/login";
     }

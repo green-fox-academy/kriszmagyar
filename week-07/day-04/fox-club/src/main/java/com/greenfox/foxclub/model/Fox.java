@@ -60,4 +60,11 @@ public class Fox {
   public Set<Trick> getTricks() {
     return tricks;
   }
+
+  @Override
+  public String toString() {
+    return String.format("This is %s. Currently living on %s and %s. Knows %s tricks.",
+        name, food, drink, tricks.size()
+    );
+  }
 }
