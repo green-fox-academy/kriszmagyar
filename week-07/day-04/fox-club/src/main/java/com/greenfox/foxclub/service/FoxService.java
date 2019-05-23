@@ -33,9 +33,9 @@ public class FoxService {
   }
 
   public void changeNutrition(String name, Food food, Drink drink) {
-    System.out.println(name);
-    System.out.println(food);
-    System.out.println(drink);
+    Fox fox = getByName(name);
+    fox.setFood(food);
+    fox.setDrink(drink);
   }
 
   public boolean isNotAuthorized(String name) {
