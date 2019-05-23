@@ -16,14 +16,18 @@
   <div class="container" th:object="${fox}">
     <section>
       <img src="../static/img/green-fox.png" th:src="@{img/green-fox.png}" alt="Green Fox">
-      <p>This is <span th:text="*{name}">Mr. Fox</span>. Currently living on __FOOD__ and __BEVERAGE__. He knows 2 tricks.</p>
+      <p>This is <span th:text="*{name}">Mr. Fox</span>.
+        Currently living on <span th:text="*{food}">food</span>
+        and <span th:text="*{drink}">drink</span>.
+        He knows <span th:text="*{tricks.size()}">0</span> tricks.
+      </p>
     </section>
     <section>
       <h1>Known tricks</h1>
-      <ul>
-        <li>write HTML</li>
-        <li>code in Java</li>
+      <ul th:each="trick : ${fox.tricks}">
+        <li th:text="${trick}">write HTML</li>
       </ul>
+      <p th:if="${fox.tricks.size() == 0}">No tricks yet. Go on and learn some!</p>
     </section>
   </div>
 
