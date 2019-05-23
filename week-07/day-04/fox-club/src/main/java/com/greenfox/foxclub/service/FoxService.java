@@ -5,9 +5,8 @@ import com.greenfox.foxclub.model.Food;
 import com.greenfox.foxclub.model.Fox;
 import com.greenfox.foxclub.model.Trick;
 import com.greenfox.foxclub.repository.FoxRepository;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -40,8 +39,17 @@ public class FoxService {
   }
 
   public void learnTrick(String name, Trick trick) {
-    System.out.println("trick: " + trick);
+    if (trick == null) {
+      return;
+    }
     getByName(name).learTrick(trick);
+  }
+
+  public Trick[] getNewTricks(String name) {
+    Fox fox = getByName(name);
+    return Arrays.stream(Trick.values())
+        .filter(fox::isNewTrick)
+        .toArray(Trick[]::new);
   }
 
   public boolean isNotAuthorized(String name) {

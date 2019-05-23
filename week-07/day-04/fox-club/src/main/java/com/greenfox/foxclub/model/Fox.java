@@ -29,6 +29,10 @@ public class Fox {
     tricks.add(trick);
   }
 
+  public boolean isNewTrick(Trick trick) {
+    return !tricks.contains(trick);
+  }
+
   public String getName() {
     return name;
   }

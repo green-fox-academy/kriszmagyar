@@ -50,7 +50,7 @@ public class MainController {
   @GetMapping("/trickCenter")
   public String trickCenter(@RequestParam String name, Model model) {
     model.addAttribute("fox", fs.getByName(name));
-    model.addAttribute("newTricks", Trick.values());
+    model.addAttribute("newTricks", fs.getNewTricks(name));
     return "trick_center";
   }
 }
