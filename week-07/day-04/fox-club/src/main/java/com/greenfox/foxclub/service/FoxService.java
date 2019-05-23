@@ -1,14 +1,22 @@
 package com.greenfox.foxclub.service;
 
 import com.greenfox.foxclub.model.Fox;
+import com.greenfox.foxclub.repository.FoxRepository;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class FoxService {
 
-  private List<Fox> foxes = new ArrayList<>();
+  private FoxRepository fr;
+  private List<Fox> foxes;
+
+  public FoxService(FoxRepository fr) {
+    this.fr = fr;
+    foxes = fr.get();
+  }
 
   public Fox getByName(String name) {
     return foxes.stream()
@@ -25,6 +33,7 @@ public class FoxService {
 
   public void add (Fox fox) {
     foxes.add(fox);
+    fr.set(foxes);
   }
 
 }
