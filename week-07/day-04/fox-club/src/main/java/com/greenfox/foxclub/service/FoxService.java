@@ -7,6 +7,8 @@ import com.greenfox.foxclub.model.Fox;
 import com.greenfox.foxclub.model.Trick;
 import com.greenfox.foxclub.repository.FoxRepository;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -54,7 +56,9 @@ public class FoxService {
   }
 
   public List<Action> getActions(String name) {
-    return getByName(name).getActions();
+    List<Action> reversedActions = getByName(name).getActions();
+    Collections.reverse(reversedActions);
+    return reversedActions;
   }
 
   public boolean isNotAuthorized(String name) {

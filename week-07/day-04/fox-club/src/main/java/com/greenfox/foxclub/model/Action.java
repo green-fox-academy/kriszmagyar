@@ -1,6 +1,7 @@
 package com.greenfox.foxclub.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Action {
 
@@ -28,6 +29,7 @@ public class Action {
 
   @Override
   public String toString() {
-    return date + " : " + text;
+    return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+        + " - " + text;
   }
 }
