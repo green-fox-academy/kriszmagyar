@@ -35,4 +35,13 @@ public class FoxController {
     return "redirect:/?name=" + name;
   }
 
+  @PostMapping("/performTrick")
+  public String performTrick(@RequestParam String name, Trick trick) {
+    if (fs.isNotAuthorized(name)) {
+      return "redirect:/login";
+    }
+    fs.performTrick(name, trick);
+    return "redirect:/?name=" + name;
+  }
+
 }

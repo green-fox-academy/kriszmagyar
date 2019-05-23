@@ -11,15 +11,23 @@
         </div>
         <div class="col-9">
           <h2 class="my-4" th:text="*{name}"></h2>
-          <p th:text="|Eating *{food}|"></p>
-          <p th:text="|Drinking *{drink}|"></p>
+          <ul class="list-group">
+            <li class="list-group-item" th:text="|Eating *{food}|"></li>
+            <li class="list-group-item" th:text="|Drinking *{drink}|"></li>
+          </ul>
         </div>
       </div>
     </section>
     <section>
       <h2>Known tricks</h2>
       <ul class="list-group">
-        <li th:each="trick : ${fox.tricks}" th:text="${trick}" class="list-group-item">write HTML</li>
+        <li th:each="trick : ${fox.tricks}" class="list-group-item d-flex justify-content-between align-items-center">
+          <span th:text="${trick}"></span>
+          <form th:action="@{/fox/performTrick(name=*{name})}" th:method="post">
+            <input type="hidden" th:value="${trick}" th:name="trick">
+            <button class="btn btn-primary">Perform</button>
+          </form>
+        </li>
       </ul>
       <p th:if="${fox.tricks.size() == 0}">No tricks yet. Go on and learn some!</p>
     </section>

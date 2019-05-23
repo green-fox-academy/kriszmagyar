@@ -17,6 +17,13 @@ public class Action {
     text = "Learned to: " + trick.name();
   }
 
+  public Action(Trick trick, boolean isPerforming) {
+    this();
+    if (isPerforming) {
+      text = "Performing: " + trick.name();
+    }
+  }
+
   public Action(Food prevFood, Food nextFood) {
     this();
     text = "Food has been changed from: " + prevFood + " to: " + nextFood;

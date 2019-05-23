@@ -33,6 +33,10 @@ public class Fox {
     actions.add(new Action(trick));
   }
 
+  public void performTrick(Trick trick) {
+    actions.add(new Action(trick, true));
+  }
+
   public boolean isNewTrick(Trick trick) {
     return !tricks.contains(trick);
   }

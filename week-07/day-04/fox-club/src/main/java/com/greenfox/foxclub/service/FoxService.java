@@ -49,6 +49,13 @@ public class FoxService {
     getByName(name).learTrick(trick);
   }
 
+  public void performTrick(String name, Trick trick) {
+    if (trick == null) {
+      return;
+    }
+    getByName(name).performTrick(trick);
+  }
+
   public Trick[] getNewTricks(String name) {
     Fox fox = getByName(name);
     return Arrays.stream(Trick.values())
