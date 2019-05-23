@@ -40,7 +40,10 @@ public class MainController {
   }
 
   @GetMapping("/nutritionStore")
-  public String nutritionStore(@RequestParam String name, Model model) {
+  public String nutritionStore(@RequestParam(required = false) String name, Model model) {
+    if (fs.isNotAuthorized(name)) {
+      return "redirect:/login";
+    }
     model.addAttribute("fox", fs.getByName(name));
     model.addAttribute("foodSet", Food.values());
     model.addAttribute("drinkSet", Drink.values());
@@ -48,7 +51,10 @@ public class MainController {
   }
 
   @GetMapping("/trickCenter")
-  public String trickCenter(@RequestParam String name, Model model) {
+  public String trickCenter(@RequestParam(required = false) String name, Model model) {
+    if (fs.isNotAuthorized(name)) {
+      return "redirect:/login";
+    }
     model.addAttribute("fox", fs.getByName(name));
     model.addAttribute("newTricks", fs.getNewTricks(name));
     return "trick_center";
