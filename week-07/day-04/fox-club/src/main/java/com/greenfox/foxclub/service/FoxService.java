@@ -42,6 +42,14 @@ public class FoxService {
     fox.setDrink(drink);
   }
 
+  public void fillUpFood(String name) {
+    getByName(name).fillUpFood();
+  }
+
+  public void fillUpDrink(String name) {
+    getByName(name).fillUpDrink();
+  }
+
   public void learnTrick(String name, Trick trick) {
     if (trick == null) {
       return;

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Fox {
 
@@ -34,6 +36,7 @@ public class Fox {
     currentDrink = maxDrink;
     tricks = new HashSet<>();
     actions = new ArrayList<>();
+    digest();
   }
 
   public void learTrick(Trick trick) {
@@ -113,6 +116,16 @@ public class Fox {
 
   public List<Action> getActions() {
     return actions;
+  }
+
+  private void digest() {
+    new Timer().schedule(new TimerTask() {
+      @Override
+      public void run() {
+        currentFood = Math.max(currentFood - 1, 0);
+        currentDrink = Math.max(currentDrink - 1, 0);
+      }
+    }, 5 * 1000, 5 * 1000);
   }
 
   @Override

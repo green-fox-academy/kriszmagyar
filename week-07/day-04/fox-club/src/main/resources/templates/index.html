@@ -19,7 +19,9 @@
               </div>
               <div class="right">
                 <span><b th:text="|*{currentFood} / *{maxFood}|"></b></span>
-                <button class="btn btn-primary ml-2">Fill up</button>
+                <form class="d-inline" th:action="@{/fox/fillUpFood(name=*{name})}" th:method="post">
+                  <button type="submit" class="btn btn-primary ml-2">Fill up</button>
+                </form>
               </div>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -29,7 +31,9 @@
               </div>
               <div class="right">
                 <span><b th:text="|*{currentDrink} / *{maxDrink}|"></b></span>
-                <button class="btn btn-primary ml-2">Fill up</button>
+                <form class="d-inline" th:action="@{/fox/fillUpDrink(name=*{name})}" th:method="post">
+                  <button type="submit" class="btn btn-primary ml-2">Fill up</button>
+                </form>
               </div>
             </li>
           </ul>

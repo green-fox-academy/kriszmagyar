@@ -44,4 +44,22 @@ public class FoxController {
     return "redirect:/?name=" + name;
   }
 
+  @PostMapping("/fillUpFood")
+  public String fillUpFood(@RequestParam String name) {
+    if (fs.isNotAuthorized(name)) {
+      return "redirect:/login";
+    }
+    fs.fillUpFood(name);
+    return "redirect:/?name=" + name;
+  }
+
+  @PostMapping("/fillUpDrink")
+  public String fillUpDrink(@RequestParam String name) {
+    if (fs.isNotAuthorized(name)) {
+      return "redirect:/login";
+    }
+    fs.fillUpDrink(name);
+    return "redirect:/?name=" + name;
+  }
+
 }
