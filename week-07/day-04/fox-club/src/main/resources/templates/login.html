@@ -11,7 +11,7 @@
     <form th:action="@{/login}" th:method="post" th:object="${fox}">
       <div class="form-control">
         <label th:for="*{name}">Name</label>
-        <input type="text" th:field="*{name}">
+        <input type="text" th:field="*{name}" autofocus>
       </div>
       <button type="submit">Go</button>
     </form>
