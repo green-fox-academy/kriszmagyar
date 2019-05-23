@@ -12,8 +12,26 @@
         <div class="col-9">
           <h2 class="my-4" th:text="*{name}"></h2>
           <ul class="list-group">
-            <li class="list-group-item" th:text="|Eating *{food}|"></li>
-            <li class="list-group-item" th:text="|Drinking *{drink}|"></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="left">
+                <i class="fas fa-utensils mr-2"></i>
+                <span th:text="*{food}"></span>
+              </div>
+              <div class="right">
+                <span><b th:text="|*{currentFood} / *{maxFood}|"></b></span>
+                <button class="btn btn-primary ml-2">Fill up</button>
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="left">
+                <i class="fas fa-cocktail mr-2"></i>
+                <span th:text="*{drink}"></span>
+              </div>
+              <div class="right">
+                <span><b th:text="|*{currentDrink} / *{maxDrink}|"></b></span>
+                <button class="btn btn-primary ml-2">Fill up</button>
+              </div>
+            </li>
           </ul>
         </div>
       </div>

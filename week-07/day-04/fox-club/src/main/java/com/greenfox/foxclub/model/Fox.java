@@ -12,7 +12,11 @@ public class Fox {
 
   private String name;
   private Food food;
+  private int maxFood;
+  private int currentFood;
   private Drink drink;
+  private int maxDrink;
+  private int currentDrink;
   private Set<Trick> tricks;
   private List<Action> actions;
 
@@ -23,7 +27,11 @@ public class Fox {
   public Fox(String name) {
     this.name = name;
     food = HAMBURGER;
+    maxFood = 10;
+    currentFood = maxFood;
     drink = COLA;
+    maxDrink = 8;
+    currentDrink = maxDrink;
     tricks = new HashSet<>();
     actions = new ArrayList<>();
   }
@@ -62,6 +70,18 @@ public class Fox {
     actions.add(new Action(prevFood, food));
   }
 
+  public int getMaxFood() {
+    return maxFood;
+  }
+
+  public int getCurrentFood() {
+    return currentFood;
+  }
+
+  public void fillUpFood() {
+    currentFood = maxFood;
+  }
+
   public Drink getDrink() {
     return drink;
   }
@@ -73,6 +93,18 @@ public class Fox {
     Drink prevDrink = this.drink;
     this.drink = drink;
     actions.add(new Action(prevDrink, drink));
+  }
+
+  public int getMaxDrink() {
+    return maxDrink;
+  }
+
+  public int getCurrentDrink() {
+    return currentDrink;
+  }
+
+  public void fillUpDrink() {
+    currentDrink = maxDrink;
   }
 
   public Set<Trick> getTricks() {
