@@ -19,7 +19,7 @@ public class MainController {
 
   @GetMapping
   public String index(@RequestParam(required = false) String name, Model model) {
-    if (isNotAuthorized(name)) {
+    if (fs.isNotAuthorized(name)) {
       return "redirect:/login";
     }
     model.addAttribute("fox", fs.getByName(name));
@@ -39,15 +39,11 @@ public class MainController {
   }
 
   @GetMapping("/nutritionStore")
-  public String nutritionStore(Model model) {
-    model.addAttribute("fox", new Fox());
+  public String nutritionStore(@RequestParam String name, Model model) {
+    model.addAttribute("fox", fs.getByName(name));
     model.addAttribute("foodSet", Food.values());
     model.addAttribute("drinkSet", Drink.values());
     return "nutrition_store";
-  }
-
-  private boolean isNotAuthorized(String name) {
-    return name == null || name.isEmpty() || !fs.exists(name);
   }
 
 }

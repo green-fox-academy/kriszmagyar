@@ -1,0 +1,28 @@
+package com.greenfox.foxclub.controller;
+
+import com.greenfox.foxclub.model.Drink;
+import com.greenfox.foxclub.model.Food;
+import com.greenfox.foxclub.service.FoxService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+@RequestMapping("/fox")
+public class FoxController {
+
+  @Autowired
+  private FoxService fs;
+
+  @PostMapping("/changeNutrition")
+  public String changeNutrition(@RequestParam String name, Food food, Drink drink) {
+    if (fs.isNotAuthorized(name)) {
+      return "redirect:/login";
+    }
+    fs.changeNutrition(name, food, drink);
+    return "redirect:/?name=" + name;
+  }
+
+}

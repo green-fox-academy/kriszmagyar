@@ -1,5 +1,7 @@
 package com.greenfox.foxclub.service;
 
+import com.greenfox.foxclub.model.Drink;
+import com.greenfox.foxclub.model.Food;
 import com.greenfox.foxclub.model.Fox;
 import com.greenfox.foxclub.repository.FoxRepository;
 import java.util.ArrayList;
@@ -25,15 +27,25 @@ public class FoxService {
         .orElse(null);
   }
 
-  public boolean exists(String name) {
-    return foxes.stream()
-        .map(Fox::getName)
-        .anyMatch(n -> n.equals(name));
-  }
-
   public void add (Fox fox) {
     foxes.add(fox);
     fr.set(foxes);
+  }
+
+  public void changeNutrition(String name, Food food, Drink drink) {
+    System.out.println(name);
+    System.out.println(food);
+    System.out.println(drink);
+  }
+
+  public boolean isNotAuthorized(String name) {
+    return name == null || name.isEmpty() || !exists(name);
+  }
+
+  private boolean exists(String name) {
+    return foxes.stream()
+        .map(Fox::getName)
+        .anyMatch(n -> n.equals(name));
   }
 
 }
