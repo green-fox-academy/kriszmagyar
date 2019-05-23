@@ -3,15 +3,16 @@ package com.greenfox.foxclub.model;
 import static com.greenfox.foxclub.model.Drink.COLA;
 import static com.greenfox.foxclub.model.Food.HAMBURGER;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Fox {
 
   private String name;
   private Food food;
   private Drink drink;
-  private List<Trick> tricks;
+  private Set<Trick> tricks;
 
   public Fox() {
     this("");
@@ -21,7 +22,7 @@ public class Fox {
     this.name = name;
     food = HAMBURGER;
     drink = COLA;
-    tricks = new ArrayList<>();
+    tricks = new HashSet<>();
   }
 
   public void learTrick(Trick trick) {
@@ -52,7 +53,7 @@ public class Fox {
     this.drink = drink;
   }
 
-  public List<Trick> getTricks() {
+  public Set<Trick> getTricks() {
     return tricks;
   }
 }
