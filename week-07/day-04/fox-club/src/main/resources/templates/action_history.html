@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragments/head :: copy"></div>
+<body>
+  <div th:replace="fragments/nav :: copy"></div>
+  <div class="container" th:object="${fox}">
+    <section>
+      <h2>Action history</h2>
+      <ul class="list-group">
+        <li th:each="action : ${actions}" th:text="${action}" class="list-group-item"></li>
+      </ul>
+      <p th:if="${actions.size() == 0}">There were no actions!</p>
+    </section>
+  </div>
+
+</body>
+</html>

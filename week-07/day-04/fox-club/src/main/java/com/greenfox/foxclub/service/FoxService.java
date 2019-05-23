@@ -1,5 +1,6 @@
 package com.greenfox.foxclub.service;
 
+import com.greenfox.foxclub.model.Action;
 import com.greenfox.foxclub.model.Drink;
 import com.greenfox.foxclub.model.Food;
 import com.greenfox.foxclub.model.Fox;
@@ -50,6 +51,10 @@ public class FoxService {
     return Arrays.stream(Trick.values())
         .filter(fox::isNewTrick)
         .toArray(Trick[]::new);
+  }
+
+  public List<Action> getActions(String name) {
+    return getByName(name).getActions();
   }
 
   public boolean isNotAuthorized(String name) {
