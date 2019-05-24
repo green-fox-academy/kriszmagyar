@@ -5,8 +5,12 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Fox {
+
+  private static final int PERIOD_IN_SEC = 5;
 
   private String name;
   private int level;
@@ -25,11 +29,36 @@ public class Fox {
     this.name = name;
     level = 1;
     type = "Otter";
-    mood = new Mood(60);
+    mood = new Mood(80);
     energy = new Energy(80);
     tricks = new HashSet<>();
     actions = new ArrayList<>();
     store = new Store(actions);
+    start();
+  }
+
+  private void start() {
+    new Timer().schedule(new TimerTask() {
+      @Override
+      public void run() {
+        periodicActivity();
+      }
+    }, PERIOD_IN_SEC * 1000, PERIOD_IN_SEC * 1000);
+  }
+
+  private void periodicActivity() {
+    store.doEat();
+    store.doDrink();
+    mood.changeLevel(calcMoodLevelChange());
+    energy.changeLevel(calcEnergyLevelChange());
+  }
+
+  private int calcMoodLevelChange() {
+    return -1;
+  }
+
+  private int calcEnergyLevelChange() {
+    return 2;
   }
 
   public void learTrick(Trick trick) {
@@ -44,6 +73,7 @@ public class Fox {
   public boolean isNewTrick(Trick trick) {
     return !tricks.contains(trick);
   }
+
 
   public String getName() {
     return name;

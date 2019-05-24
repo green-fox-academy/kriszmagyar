@@ -10,8 +10,6 @@ import java.util.TimerTask;
 
 public class Store {
 
-  private static final int PERIOD_IN_SEC = 5;
-
   private Food food;
   private int maxFood;
   private int currentFood;
@@ -28,7 +26,6 @@ public class Store {
     maxDrink = 8;
     currentDrink = maxDrink;
     this.actions = actions;
-    digest();
   }
 
   public Food getFood() {
@@ -57,6 +54,10 @@ public class Store {
     currentFood = maxFood;
   }
 
+  public void doEat() {
+    currentFood = Math.max(currentFood - 1, 0);
+  }
+
   public Drink getDrink() {
     return drink;
   }
@@ -83,13 +84,8 @@ public class Store {
     currentDrink = maxDrink;
   }
 
-  private void digest() {
-    new Timer().schedule(new TimerTask() {
-      @Override
-      public void run() {
-        currentFood = Math.max(currentFood - 1, 0);
-        currentDrink = Math.max(currentDrink - 1, 0);
-      }
-    }, PERIOD_IN_SEC * 1000, PERIOD_IN_SEC * 1000);
+  public void doDrink() {
+    currentDrink = Math.max(currentDrink - 1, 0);
   }
+
 }
