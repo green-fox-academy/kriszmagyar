@@ -4,6 +4,7 @@ import com.greenfox.foxclub.model.Drink;
 import com.greenfox.foxclub.model.Food;
 import com.greenfox.foxclub.model.Fox;
 import com.greenfox.foxclub.service.FoxService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,11 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
 
+  @Autowired
   private FoxService fs;
-
-  public MainController(FoxService fs) {
-    this.fs = fs;
-  }
 
   @GetMapping
   public String index(@RequestParam(required = false) String name, Model model) {
@@ -27,18 +25,6 @@ public class MainController {
     model.addAttribute("fox", fs.getByName(name));
     model.addAttribute("actions", fs.getActions(name, 5));
     return "index";
-  }
-
-  @GetMapping("/login")
-  public String loginView(Model model) {
-    model.addAttribute("fox", new Fox());
-    return "login";
-  }
-
-  @PostMapping("/login")
-  public String login(Fox fox) {
-    fs.add(fox);
-    return "redirect:/?name=" + fox.getName();
   }
 
   @GetMapping("/nutritionStore")
