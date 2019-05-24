@@ -1,8 +1,9 @@
-package com.greenfox.foxclub.model;
+package com.greenfox.foxclub.model.store;
 
-import static com.greenfox.foxclub.model.Drink.COLA;
-import static com.greenfox.foxclub.model.Food.HAMBURGER;
+import static com.greenfox.foxclub.model.store.Drink.COLA;
+import static com.greenfox.foxclub.model.store.Food.HAMBURGER;
 
+import com.greenfox.foxclub.model.Action;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -19,7 +20,7 @@ public class Store {
   private int currentDrink;
   private List<Action> actions;
 
-  Store(List<Action> actions) {
+  public Store(List<Action> actions) {
     food = HAMBURGER;
     maxFood = 10;
     currentFood = maxFood;

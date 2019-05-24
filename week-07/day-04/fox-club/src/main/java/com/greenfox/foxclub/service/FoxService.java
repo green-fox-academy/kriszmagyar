@@ -1,14 +1,12 @@
 package com.greenfox.foxclub.service;
 
 import com.greenfox.foxclub.model.Action;
-import com.greenfox.foxclub.model.Drink;
-import com.greenfox.foxclub.model.Food;
+import com.greenfox.foxclub.model.store.Drink;
+import com.greenfox.foxclub.model.store.Food;
 import com.greenfox.foxclub.model.Fox;
 import com.greenfox.foxclub.model.Trick;
 import com.greenfox.foxclub.repository.FoxRepository;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;

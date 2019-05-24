@@ -1,4 +1,4 @@
-package com.greenfox.foxclub.model;
+package com.greenfox.foxclub.model.store;
 
 public enum Drink {
 

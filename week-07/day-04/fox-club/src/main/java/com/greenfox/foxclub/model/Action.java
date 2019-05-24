@@ -1,5 +1,7 @@
 package com.greenfox.foxclub.model;
 
+import com.greenfox.foxclub.model.store.Drink;
+import com.greenfox.foxclub.model.store.Food;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
