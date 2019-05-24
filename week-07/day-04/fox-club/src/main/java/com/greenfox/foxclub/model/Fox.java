@@ -49,52 +49,49 @@ public class Fox {
   private void periodicActivity() {
     store.doEat();
     store.doDrink();
-    mood.changeLevel(calcMoodLevelChange());
-    energy.changeLevel(calcEnergyLevelChange());
+    mood.changeLevel(calcLevelChange(-1, -10, 2));
+    energy.changeLevel(calcLevelChange(2, -5, 1));
     store.changeFavorits();
   }
 
-  private int calcMoodLevelChange() {
-    int change = -1;
+  private int calcLevelChange(int start, int emptyStore, int favoriteFood) {
+    int change = start;
     if (store.getCurrentFood() == 0) {
-      change -= 10;
+      change += emptyStore;
     }
     if (store.getCurrentDrink() == 0) {
-      change -= 10;
+      change += emptyStore;
     }
     if (store.getFood() == store.getFavoriteFood()) {
-      change += 2;
-    }
-    return change;
-  }
-
-  private int calcEnergyLevelChange() {
-    int change = 2;
-    if (store.getCurrentFood() == 0) {
-      change -= 5;
-    }
-    if (store.getCurrentDrink() == 0) {
-      change -= 5;
-    }
-    if (store.getFood() == store.getFavoriteFood()) {
-      change += 1;
+      change += favoriteFood;
     }
     return change;
   }
 
   public void learTrick(Trick trick) {
+    if (trick.reqLevel > level) {
+      actions.add(new Action("You have to be at least level " + trick.reqLevel
+          + " to learn " + trick.name));
+      return;
+    }
     tricks.add(trick);
     actions.add(new Action(trick));
   }
 
   public void performTrick(Trick trick) {
+    if (trick.reqEnergy > energy.getLevel()) {
+      actions.add(new Action("You need at least " + trick.reqEnergy
+        + " to perform " + trick.name));
+      return;
+    }
+    mood.changeLevel(trick.moodBoost);
+    energy.changeLevel(-trick.reqEnergy);
     actions.add(new Action(trick, true));
   }
 
   public boolean isNewTrick(Trick trick) {
     return !tricks.contains(trick);
   }
-
 
   public String getName() {
     return name;

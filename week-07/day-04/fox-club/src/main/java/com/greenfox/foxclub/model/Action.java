@@ -46,6 +46,11 @@ public class Action {
     text = "Filling up " + drink + " from " + from + " to " + to;
   }
 
+  public Action(String text) {
+    this();
+    this.text = text;
+  }
+
   public LocalDateTime getDate() {
     return date;
   }
