@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,7 +23,6 @@ public class MainController {
     if (fs.isNotAuthorized(name)) {
       return "redirect:/login";
     }
-    model.addAttribute("fox", fs.getByName(name));
     model.addAttribute("actions", fs.getActions(name, 5));
     return "index";
   }
@@ -32,7 +32,6 @@ public class MainController {
     if (fs.isNotAuthorized(name)) {
       return "redirect:/login";
     }
-    model.addAttribute("fox", fs.getByName(name));
     model.addAttribute("store", fs.getByName(name).getStore());
     model.addAttribute("foodSet", Food.values());
     model.addAttribute("drinkSet", Drink.values());
@@ -44,7 +43,6 @@ public class MainController {
     if (fs.isNotAuthorized(name)) {
       return "redirect:/login";
     }
-    model.addAttribute("fox", fs.getByName(name));
     model.addAttribute("newTricks", fs.getNewTricks(name));
     return "trick_center";
   }
@@ -54,8 +52,12 @@ public class MainController {
     if (fs.isNotAuthorized(name)) {
       return "redirect:/login";
     }
-    model.addAttribute("fox", fs.getByName(name));
     model.addAttribute("actions", fs.getActions(name));
     return "action_history";
+  }
+
+  @ModelAttribute
+  public void setupFox(@RequestParam(required = false) String name, Model model) {
+    model.addAttribute("fox", fs.getByName(name));
   }
 }
