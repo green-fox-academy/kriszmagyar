@@ -51,13 +51,20 @@ public class Fox {
     store.doDrink();
     mood.changeLevel(calcMoodLevelChange());
     energy.changeLevel(calcEnergyLevelChange());
+    store.changeFavorits();
   }
 
   private int calcMoodLevelChange() {
+    if (store.getFood() == store.getFavoriteFood()) {
+      return 1;
+    }
     return -1;
   }
 
   private int calcEnergyLevelChange() {
+    if (store.getDrink() == store.getFavoriteDrink()) {
+      return 4;
+    }
     return 2;
   }
 

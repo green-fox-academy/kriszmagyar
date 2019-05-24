@@ -11,20 +11,26 @@ import java.util.TimerTask;
 public class Store {
 
   private Food food;
+  private Food favoriteFood;
   private int maxFood;
   private int currentFood;
+
   private Drink drink;
+  private Drink favoriteDrink;
   private int maxDrink;
   private int currentDrink;
+
   private List<Action> actions;
 
   public Store(List<Action> actions) {
     food = HAMBURGER;
     maxFood = 10;
     currentFood = maxFood;
+    favoriteFood = getRandomFood();
     drink = COLA;
     maxDrink = 8;
     currentDrink = maxDrink;
+    favoriteDrink = getRandomDrink();
     this.actions = actions;
   }
 
@@ -41,6 +47,10 @@ public class Store {
     actions.add(new Action(prevFood, food));
   }
 
+  private Food getRandomFood() {
+    return HAMBURGER;
+  }
+
   public int getMaxFood() {
     return maxFood;
   }
@@ -52,6 +62,10 @@ public class Store {
   public void fillUpFood() {
     actions.add(new Action(food, currentFood, maxFood));
     currentFood = maxFood;
+  }
+
+  public Food getFavoriteFood() {
+    return favoriteFood;
   }
 
   public void doEat() {
@@ -71,6 +85,10 @@ public class Store {
     actions.add(new Action(prevDrink, drink));
   }
 
+  private Drink getRandomDrink() {
+    return COLA;
+  }
+
   public int getMaxDrink() {
     return maxDrink;
   }
@@ -84,8 +102,17 @@ public class Store {
     currentDrink = maxDrink;
   }
 
+  public Drink getFavoriteDrink() {
+    return favoriteDrink;
+  }
+
   public void doDrink() {
     currentDrink = Math.max(currentDrink - 1, 0);
+  }
+
+  public void changeFavorits() {
+    favoriteFood = getFavoriteFood();
+    favoriteDrink = getFavoriteDrink();
   }
 
 }
