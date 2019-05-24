@@ -65,7 +65,7 @@
       <h2>Known tricks</h2>
       <ul class="list-group">
         <li th:each="trick : ${fox.tricks}" class="list-group-item d-flex justify-content-between align-items-center">
-          <span th:text="${trick}"></span>
+          <span><span th:text="${trick}"></span> <small th:text="| (${trick.moodBoost}% to mood, ${trick.reqEnergy}% from energy)|"></small></span>
           <form th:action="@{/fox/performTrick(name=*{name})}" th:method="post">
             <input type="hidden" th:value="${trick.name()}" th:name="trick">
             <button class="btn btn-primary">Perform</button>

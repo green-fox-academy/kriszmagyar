@@ -11,7 +11,7 @@
       <div class="form-group">
         <label>Tricks</label>
         <select name="trick" class="form-control">
-          <option th:each="trick : ${newTricks}" th:value="${trick.name()}" th:text="${trick}"></option>
+          <option th:each="trick : ${newTricks}" th:value="${trick.name()}" th:text="|${trick} (level ${trick.reqLevel})|"></option>
         </select>
       </div>
       <button type="submit" class="btn btn-primary">Learn</button>
