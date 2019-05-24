@@ -29,9 +29,19 @@ public class Action {
     text = "Food has been changed from: " + prevFood + " to: " + nextFood;
   }
 
+  public Action(Food food, int from, int to) {
+    this();
+    text = "Filling up " + food + " from " + from + " to " + to;
+  }
+
   public Action(Drink prevDrink, Drink nextDrink) {
     this();
     text = "Drink has been changed from: " + prevDrink + " to: " + nextDrink;
+  }
+
+  public Action(Drink drink, int from, int to) {
+    this();
+    text = "Filling up " + drink + " from " + from + " to " + to;
   }
 
   @Override

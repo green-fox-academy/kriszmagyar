@@ -82,6 +82,7 @@ public class Fox {
   }
 
   public void fillUpFood() {
+    actions.add(new Action(food, currentFood, maxFood));
     currentFood = maxFood;
   }
 
@@ -107,6 +108,7 @@ public class Fox {
   }
 
   public void fillUpDrink() {
+    actions.add(new Action(drink, currentDrink, maxDrink));
     currentDrink = maxDrink;
   }
 
