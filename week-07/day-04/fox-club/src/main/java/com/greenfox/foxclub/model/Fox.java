@@ -81,7 +81,7 @@ public class Fox {
   public void performTrick(Trick trick) {
     if (trick.reqEnergy > energy.getLevel()) {
       actions.add(new Action("You need at least " + trick.reqEnergy
-        + " to perform " + trick.name));
+        + " energy to perform " + trick.name));
       return;
     }
     mood.changeLevel(trick.moodBoost);
