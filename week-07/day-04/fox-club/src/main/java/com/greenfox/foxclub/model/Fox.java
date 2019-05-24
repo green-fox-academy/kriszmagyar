@@ -55,17 +55,31 @@ public class Fox {
   }
 
   private int calcMoodLevelChange() {
-    if (store.getFood() == store.getFavoriteFood()) {
-      return 1;
+    int change = -1;
+    if (store.getCurrentFood() == 0) {
+      change -= 10;
     }
-    return -1;
+    if (store.getCurrentDrink() == 0) {
+      change -= 10;
+    }
+    if (store.getFood() == store.getFavoriteFood()) {
+      change += 2;
+    }
+    return change;
   }
 
   private int calcEnergyLevelChange() {
-    if (store.getDrink() == store.getFavoriteDrink()) {
-      return 4;
+    int change = 2;
+    if (store.getCurrentFood() == 0) {
+      change -= 5;
     }
-    return 2;
+    if (store.getCurrentDrink() == 0) {
+      change -= 5;
+    }
+    if (store.getFood() == store.getFavoriteFood()) {
+      change += 1;
+    }
+    return change;
   }
 
   public void learTrick(Trick trick) {
