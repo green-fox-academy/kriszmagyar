@@ -12,6 +12,7 @@ public class Fox {
   private int level;
   private String type;
   private Mood mood;
+  private Energy energy;
   private Set<Trick> tricks;
   private List<Action> actions;
   private Store store;
@@ -24,7 +25,8 @@ public class Fox {
     this.name = name;
     level = 1;
     type = "Otter";
-    mood = new Mood(100);
+    mood = new Mood(60);
+    energy = new Energy(80);
     tricks = new HashSet<>();
     actions = new ArrayList<>();
     store = new Store(actions);
@@ -61,6 +63,10 @@ public class Fox {
 
   public Mood getMood() {
     return mood;
+  }
+
+  public Energy getEnergy() {
+    return energy;
   }
 
   public Set<Trick> getTricks() {

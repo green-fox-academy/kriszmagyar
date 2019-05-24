@@ -15,6 +15,24 @@
           <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div class="left">
+                <i th:class="|*{mood.type.icon} mr-2|"></i>
+                <span th:text="|Mood: *{name} is feeling *{mood.type.name}|"></span>
+              </div>
+              <div class="right">
+                <span><b th:text="*{mood.level + '%'}"></b></span>
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="left">
+                <i class="fas fa-bolt mr-2"></i>
+                <span th:text="|Energy: *{name} is feeling *{energy.type.name}|"></span>
+              </div>
+              <div class="right">
+                <span><b th:text="*{energy.level + '%'}"></b></span>
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="left">
                 <i class="fas fa-utensils mr-2"></i>
                 <span th:text="*{store.food}"></span>
               </div>
@@ -35,15 +53,6 @@
                 <form class="d-inline" th:action="@{/fox/fillUpDrink(name=*{name})}" th:method="post">
                   <button type="submit" class="btn btn-primary ml-2">Fill up</button>
                 </form>
-              </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <div class="left">
-                <i th:class="|*{mood.type.icon} mr-2|"></i>
-                <span th:text="|*{name} is feeling *{mood.type.name}|"></span>
-              </div>
-              <div class="right">
-                <span><b th:text="*{mood.level + '%'}"></b></span>
               </div>
             </li>
           </ul>
