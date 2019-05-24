@@ -39,16 +39,16 @@ public class FoxService {
 
   public void changeNutrition(String name, Food food, Drink drink) {
     Fox fox = getByName(name);
-    fox.setFood(food);
-    fox.setDrink(drink);
+    fox.getStore().setFood(food);
+    fox.getStore().setDrink(drink);
   }
 
   public void fillUpFood(String name) {
-    getByName(name).fillUpFood();
+    getByName(name).getStore().fillUpFood();
   }
 
   public void fillUpDrink(String name) {
-    getByName(name).fillUpDrink();
+    getByName(name).getStore().fillUpDrink();
   }
 
   public void learnTrick(String name, Trick trick) {

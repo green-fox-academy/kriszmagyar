@@ -47,6 +47,7 @@ public class MainController {
       return "redirect:/login";
     }
     model.addAttribute("fox", fs.getByName(name));
+    model.addAttribute("store", fs.getByName(name).getStore());
     model.addAttribute("foodSet", Food.values());
     model.addAttribute("drinkSet", Drink.values());
     return "nutrition_store";

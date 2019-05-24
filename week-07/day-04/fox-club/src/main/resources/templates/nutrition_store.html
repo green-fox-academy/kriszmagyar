@@ -6,7 +6,7 @@
 
   <div class="container">
     <h2>Nutrition Store</h2>
-    <form th:action="@{/fox/changeNutrition(name=${fox.name})}" th:method="post" th:object="${fox}">
+    <form th:action="@{/fox/changeNutrition(name=${fox.name})}" th:method="post" th:object="${store}">
       <div class="form-group">
         <label th:for="*{food}">Food</label>
         <select class="form-control" th:field="*{food}">

@@ -15,10 +15,10 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div class="left">
                 <i class="fas fa-utensils mr-2"></i>
-                <span th:text="*{food}"></span>
+                <span th:text="*{store.food}"></span>
               </div>
               <div class="right">
-                <span><b th:text="|*{currentFood} / *{maxFood}|"></b></span>
+                <span><b th:text="|*{store.currentFood} / *{store.maxFood}|"></b></span>
                 <form class="d-inline" th:action="@{/fox/fillUpFood(name=*{name})}" th:method="post">
                   <button type="submit" class="btn btn-primary ml-2">Fill up</button>
                 </form>
@@ -27,10 +27,10 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div class="left">
                 <i class="fas fa-cocktail mr-2"></i>
-                <span th:text="*{drink}"></span>
+                <span th:text="*{store.drink}"></span>
               </div>
               <div class="right">
-                <span><b th:text="|*{currentDrink} / *{maxDrink}|"></b></span>
+                <span><b th:text="|*{store.currentDrink} / *{store.maxDrink}|"></b></span>
                 <form class="d-inline" th:action="@{/fox/fillUpDrink(name=*{name})}" th:method="post">
                   <button type="submit" class="btn btn-primary ml-2">Fill up</button>
                 </form>
