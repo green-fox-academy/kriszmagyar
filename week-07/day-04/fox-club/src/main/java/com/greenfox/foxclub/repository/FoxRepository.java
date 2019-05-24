@@ -1,6 +1,6 @@
 package com.greenfox.foxclub.repository;
 
-import com.greenfox.foxclub.model.Fox;
+import com.greenfox.foxclub.model.fox.Fox;
 import java.util.List;
 
 public interface FoxRepository {

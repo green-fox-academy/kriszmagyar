@@ -1,4 +1,4 @@
-package com.greenfox.foxclub.model;
+package com.greenfox.foxclub.model.fox;
 
 import java.util.HashSet;
 import java.util.Set;

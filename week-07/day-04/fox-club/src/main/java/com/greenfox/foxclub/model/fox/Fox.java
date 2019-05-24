@@ -1,4 +1,4 @@
-package com.greenfox.foxclub.model;
+package com.greenfox.foxclub.model.fox;
 
 import com.greenfox.foxclub.model.store.Store;
 import java.util.ArrayList;

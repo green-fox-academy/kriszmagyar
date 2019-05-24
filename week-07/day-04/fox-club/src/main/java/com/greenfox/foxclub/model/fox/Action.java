@@ -1,4 +1,4 @@
-package com.greenfox.foxclub.model;
+package com.greenfox.foxclub.model.fox;
 
 import com.greenfox.foxclub.model.store.Drink;
 import com.greenfox.foxclub.model.store.Food;

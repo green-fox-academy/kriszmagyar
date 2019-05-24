@@ -3,11 +3,9 @@ package com.greenfox.foxclub.model.store;
 import static com.greenfox.foxclub.model.store.Drink.COLA;
 import static com.greenfox.foxclub.model.store.Food.HAMBURGER;
 
-import com.greenfox.foxclub.model.Action;
+import com.greenfox.foxclub.model.fox.Action;
 import java.util.List;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Store {
 
