@@ -5,6 +5,7 @@ import static com.greenfox.foxclub.model.store.Food.HAMBURGER;
 
 import com.greenfox.foxclub.model.Action;
 import java.util.List;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,6 +22,7 @@ public class Store {
   private int currentDrink;
 
   private List<Action> actions;
+  private Random random = new Random();
 
   public Store(List<Action> actions) {
     food = HAMBURGER;
@@ -48,7 +50,8 @@ public class Store {
   }
 
   private Food getRandomFood() {
-    return HAMBURGER;
+    Food[] foods = Food.values();
+    return foods[random.nextInt(foods.length)];
   }
 
   public int getMaxFood() {
@@ -86,7 +89,8 @@ public class Store {
   }
 
   private Drink getRandomDrink() {
-    return COLA;
+    Drink[] drinks = Drink.values();
+    return drinks[random.nextInt(drinks.length)];
   }
 
   public int getMaxDrink() {
@@ -111,8 +115,8 @@ public class Store {
   }
 
   public void changeFavorits() {
-    favoriteFood = getFavoriteFood();
-    favoriteDrink = getFavoriteDrink();
+    favoriteFood = getRandomFood();
+    favoriteDrink = getRandomDrink();
   }
 
 }
