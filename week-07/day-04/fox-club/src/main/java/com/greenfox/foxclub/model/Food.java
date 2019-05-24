@@ -4,7 +4,9 @@ public enum Food {
 
   HAMBURGER ("Hamburger"),
   PIZZA ("Pizza"),
-  GYROS ("Gyros");
+  GYROS ("Gyros"),
+  CHICKEN_WITH_RICE ("Chicken with rice"),
+  SALAD ("Salad");
 
   public final String name;
 

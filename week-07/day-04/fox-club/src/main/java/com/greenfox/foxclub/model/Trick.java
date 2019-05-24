@@ -4,7 +4,8 @@ public enum Trick {
 
   CODE_IN_JAVA ("Code in Java"),
   WRITE_HTML ("Write HTML"),
-  SUFFER_WITH_CSS ("Suffer with CSS");
+  SUFFER_WITH_CSS ("Suffer with CSS"),
+  PLAY_GAMES ("Play games");
 
   public final String name;
 
