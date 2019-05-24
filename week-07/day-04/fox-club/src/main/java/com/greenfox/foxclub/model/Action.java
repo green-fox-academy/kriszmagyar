@@ -44,6 +44,10 @@ public class Action {
     text = "Filling up " + drink + " from " + from + " to " + to;
   }
 
+  public LocalDateTime getDate() {
+    return date;
+  }
+
   @Override
   public String toString() {
     return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))

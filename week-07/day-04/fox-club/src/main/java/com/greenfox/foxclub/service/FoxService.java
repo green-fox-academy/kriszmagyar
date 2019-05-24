@@ -9,6 +9,7 @@ import com.greenfox.foxclub.repository.FoxRepository;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
@@ -72,9 +73,9 @@ public class FoxService {
   }
 
   public List<Action> getActions(String name) {
-    List<Action> reversedActions = getByName(name).getActions();
-    Collections.reverse(reversedActions);
-    return reversedActions;
+    return getByName(name).getActions().stream()
+        .sorted(Comparator.comparing(Action::getDate).reversed())
+        .collect(Collectors.toList());
   }
 
   public List<Action> getActions(String name, int limit) {
