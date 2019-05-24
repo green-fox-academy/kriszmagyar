@@ -14,13 +14,13 @@ public class Action {
 
   public Action(Trick trick) {
     this();
-    text = "Learned to: " + trick.name();
+    text = "Learned to: " + trick;
   }
 
   public Action(Trick trick, boolean isPerforming) {
     this();
     if (isPerforming) {
-      text = "Performing: " + trick.name();
+      text = "Performing: " + trick;
     }
   }
 
