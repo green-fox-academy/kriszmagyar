@@ -9,6 +9,8 @@ import java.util.TimerTask;
 
 public class Store {
 
+  private static final int PERIOD_IN_SEC = 5;
+
   private Food food;
   private int maxFood;
   private int currentFood;
@@ -87,7 +89,6 @@ public class Store {
         currentFood = Math.max(currentFood - 1, 0);
         currentDrink = Math.max(currentDrink - 1, 0);
       }
-    }, 5 * 1000, 5 * 1000);
+    }, PERIOD_IN_SEC * 1000, PERIOD_IN_SEC * 1000);
   }
-
 }
