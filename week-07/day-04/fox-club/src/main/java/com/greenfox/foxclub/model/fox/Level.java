@@ -9,7 +9,7 @@ public class Level {
   Level() {
     level = 1;
     currentXP = 0;
-    requiredXP = 10;
+    setRequiredXP();
   }
 
   public int get() {
@@ -20,7 +20,24 @@ public class Level {
     return currentXP;
   }
 
+  public void addXP(int amount) {
+    currentXP += amount;
+    if (currentXP > requiredXP) {
+      levelUp();
+    }
+  }
+
+  private void levelUp() {
+    currentXP -= requiredXP;
+    level++;
+    setRequiredXP();
+  }
+
   public int getRequiredXP() {
     return requiredXP;
+  }
+
+  private void setRequiredXP() {
+    requiredXP = level * level * 10;
   }
 }
