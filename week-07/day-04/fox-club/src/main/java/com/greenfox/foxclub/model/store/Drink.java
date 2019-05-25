@@ -2,11 +2,11 @@ package com.greenfox.foxclub.model.store;
 
 public enum Drink {
 
-  COLA ("Coca-Cola"),
-  WATER ("Water"),
+  COLA("Coca-Cola"),
+  WATER("Water"),
   COFFEE("Coffee"),
-  BEER ("Beer"),
-  VINE ("Vine");
+  BEER("Beer"),
+  VINE("Vine");
 
   public final String name;
 

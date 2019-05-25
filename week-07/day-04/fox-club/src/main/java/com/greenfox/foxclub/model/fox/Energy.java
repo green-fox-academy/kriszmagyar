@@ -1,7 +1,6 @@
 package com.greenfox.foxclub.model.fox;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 public class Energy {
 
@@ -39,9 +38,9 @@ public class Energy {
 
   public enum EnergyType {
 
-    FULL_OF_LIFE ("Full of life", 75),
-    NORMAL ("Normal", 40),
-    TIRED ("Tired", 0);
+    FULL_OF_LIFE("Full of life", 75),
+    NORMAL("Normal", 40),
+    TIRED("Tired", 0);
 
     public final String name;
     public final int level;
