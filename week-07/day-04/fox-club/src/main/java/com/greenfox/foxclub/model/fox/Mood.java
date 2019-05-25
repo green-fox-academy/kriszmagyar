@@ -16,7 +16,7 @@ public class Mood {
     return level;
   }
 
-  public void changeLevel(int change) {
+  void changeLevel(int change) {
     level = Math.max(Math.min(level + change, MAX_LEVEL), 0);
     setType();
   }
@@ -26,17 +26,26 @@ public class Mood {
   }
 
   private void setType() {
-    if (level > 75) {
+    if (level > 90) {
+      type = MoodType.EXCELLENT;
+    } else if (level > 75) {
       type = MoodType.HAPPY;
-    } else {
+    } else if (level > 40) {
+      type = MoodType.MEH;
+    } else if (level > 25) {
       type = MoodType.ANGRY;
+    } else {
+      type = MoodType.SAD;
     }
   }
 
   public enum MoodType {
 
+    EXCELLENT("Excellent", "far fa-grin-stars"),
     HAPPY ("Happy", "far fa-laugh-beam"),
-    ANGRY ("Angry", "far fa-angry");
+    MEH ("Meh", "far fa-meh"),
+    ANGRY ("Angry", "far fa-angry"),
+    SAD ("Sad", "far fa-sad-cry");
 
     public final String name;
     public final String icon;

@@ -16,7 +16,7 @@ public class Energy {
     return level;
   }
 
-  public void changeLevel(int change) {
+  void changeLevel(int change) {
     level = Math.max(Math.min(level + change, MAX_LEVEL), 0);
     setType();
   }
@@ -28,6 +28,8 @@ public class Energy {
   private void setType() {
     if (level > 75) {
       type = EnergyType.FULL_OF_LIFE;
+    } else if (level > 40) {
+      type = EnergyType.NORMAL;
     } else {
       type = EnergyType.TIRED;
     }
@@ -36,6 +38,7 @@ public class Energy {
   public enum EnergyType {
 
     FULL_OF_LIFE ("Full of life"),
+    NORMAL ("Normal"),
     TIRED ("Tired");
 
     public final String name;
