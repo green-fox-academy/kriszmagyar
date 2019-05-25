@@ -4,7 +4,7 @@
 <body>
   <div th:replace="fragments/nav :: copy"></div>
   <div class="container" th:object="${fox}">
-    <section th:fragment="copy">
+    <section th:fragment="copy" class="mb-4">
       <h2>Action history</h2>
       <ul class="list-group">
         <li th:each="action : ${actions}" th:text="${action}" class="list-group-item"></li>
