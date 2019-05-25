@@ -41,7 +41,7 @@
               <div class="left">
                 <i class="fas fa-utensils mr-2"></i>
                 <span th:text="*{store.food}"></span>
-                <small th:text="| (current favorite is *{store.favoriteFood})|"></small>
+                <div><small th:text="| (current favorite is *{store.favoriteFood})|"></small></div>
               </div>
               <div class="right">
                 <span><b th:text="|*{store.currentFood} / *{store.maxFood}|"></b></span>
@@ -54,7 +54,7 @@
               <div class="left">
                 <i class="fas fa-cocktail mr-2"></i>
                 <span th:text="*{store.drink}"></span>
-                <small th:text="| (current favorite is *{store.favoriteDrink})|"></small>
+                <div><small th:text="| (current favorite is *{store.favoriteDrink})|"></small></div>
               </div>
               <div class="right">
                 <span><b th:text="|*{store.currentDrink} / *{store.maxDrink}|"></b></span>
