@@ -2,16 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="fragments/head :: copy"></div>
 <body>
-  <div th:replace="fragments/nav :: copy"></div>
-  <div class="container" th:object="${fox}">
-    <section th:fragment="copy" class="mb-4">
-      <h2>Action history</h2>
-      <ul class="list-group">
-        <li th:each="action : ${actions}" th:text="${action}" class="list-group-item"></li>
-      </ul>
-      <p th:if="${actions.size() == 0}">There were no actions!</p>
-    </section>
-  </div>
+<div th:replace="fragments/nav :: copy"></div>
+<div class="container" th:object="${fox}">
+  <section class="mb-4" th:fragment="copy">
+    <h2>Action history</h2>
+    <ul class="list-group">
+      <li class="list-group-item" th:each="action : ${actions}" th:text="${action}"></li>
+    </ul>
+    <p th:if="${actions.size() == 0}">There were no actions!</p>
+  </section>
+</div>
 
 </body>
 </html>

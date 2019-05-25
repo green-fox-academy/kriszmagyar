@@ -3,20 +3,22 @@
 <div th:replace="fragments/head :: copy"></div>
 </head>
 <body>
-  <div th:replace="fragments/nav :: copy"></div>
+<div th:replace="fragments/nav :: copy"></div>
 
-  <div class="container">
-    <h2>Trick Center</h2>
-    <form th:action="@{/fox/learnTrick(name=${fox.name})}" th:method="post" th:if="${#lists.size(newTricks) > 0}">
-      <div class="form-group">
-        <label>Tricks</label>
-        <select name="trick" class="form-control">
-          <option th:each="trick : ${newTricks}" th:value="${trick.name()}" th:text="|${trick} (level ${trick.reqLevel})|"></option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary">Learn</button>
-    </form>
-    <p th:if="${#lists.size(newTricks) == 0}">Your fox has learned all the tricks!</p>
-  </div>
+<div class="container">
+  <h2>Trick Center</h2>
+  <form th:action="@{/fox/learnTrick(name=${fox.name})}" th:if="${#lists.size(newTricks) > 0}"
+        th:method="post">
+    <div class="form-group">
+      <label>Tricks</label>
+      <select class="form-control" name="trick">
+        <option th:each="trick : ${newTricks}" th:text="|${trick} (level ${trick.reqLevel})|"
+                th:value="${trick.name()}"></option>
+      </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Learn</button>
+  </form>
+  <p th:if="${#lists.size(newTricks) == 0}">Your fox has learned all the tricks!</p>
+</div>
 </body>
 </html>
