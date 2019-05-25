@@ -6,11 +6,14 @@
   <div class="container" th:object="${fox}">
     <section>
       <div class="row">
-        <div class="col-3">
+        <div class="col-sm-3 mt-2 text-center">
           <img src="https://dreamjo.bs/uploads/green-fox-academy/86a3c9fd316b.jpg" alt="Green Fox">
-          <p class="text-center">Level <span th:text="*{level}">1</span>, <span th:text="*{type}">type</span></p>
+          <div>
+            <h3>Level <span th:text="*{level}">1</span></h3>
+            <p th:text="*{type}">type</p>
+          </div>
         </div>
-        <div class="col-9">
+        <div class="col-sm-9">
           <h2 class="my-4" th:text="*{name}"></h2>
           <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center">
