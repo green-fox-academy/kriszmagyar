@@ -20,9 +20,13 @@ public class Level {
     return currentXP;
   }
 
-  public void addXP(int amount) {
+  public int getCurrentPercent() {
+    return 100 * currentXP / requiredXP;
+  }
+
+  void addXP(int amount) {
     currentXP += amount;
-    if (currentXP > requiredXP) {
+    if (currentXP >= requiredXP) {
       levelUp();
     }
   }
@@ -31,10 +35,6 @@ public class Level {
     currentXP -= requiredXP;
     level++;
     setRequiredXP();
-  }
-
-  public int getRequiredXP() {
-    return requiredXP;
   }
 
   private void setRequiredXP() {

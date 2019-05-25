@@ -9,8 +9,11 @@
         <div class="col-sm-3 mt-2 text-center">
           <img src="https://dreamjo.bs/uploads/green-fox-academy/86a3c9fd316b.jpg" alt="Green Fox">
           <div>
-            <h3>Level <span th:text="*{level}">1</span></h3>
+            <h3>Level <span th:text="*{level.get()}">1</span></h3>
             <p th:text="*{type}">type</p>
+            <div class="progress" style="height: 20px">
+              <div class="progress-bar" role="progressbar" th:style="${'width: ' + fox.level.getCurrentPercent() + '%;'}" th:aria-valuenow="*{level.getCurrentPercent()}" aria-valuemin="0" aria-valuemax="100" th:text="*{level.getCurrentXP() + 'xp'}">3xp</div>
+            </div>
           </div>
         </div>
         <div class="col-sm-9">

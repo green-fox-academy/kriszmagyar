@@ -13,7 +13,7 @@ public class Fox {
   private static final int PERIOD_IN_SEC = 5;
 
   private String name;
-  private int level;
+  private Level level;
   private String type;
   private Mood mood;
   private Energy energy;
@@ -27,12 +27,12 @@ public class Fox {
 
   public Fox(String name) {
     this.name = name;
-    level = 1;
+    actions = new ArrayList<>();
+    level = new Level();
     type = "Otter";
     mood = new Mood(80);
     energy = new Energy(80);
     tricks = new HashSet<>();
-    actions = new ArrayList<>();
     store = new Store(actions);
     start();
   }
@@ -69,7 +69,7 @@ public class Fox {
   }
 
   public void learTrick(Trick trick) {
-    if (trick.reqLevel > level) {
+    if (trick.reqLevel > level.get()) {
       actions.add(new Action("You have to be at least level " + trick.reqLevel
           + " to learn " + trick.name));
       return;
@@ -86,6 +86,7 @@ public class Fox {
     }
     mood.changeLevel(trick.moodBoost);
     energy.changeLevel(-trick.reqEnergy);
+    level.addXP(trick.reqLevel);
     actions.add(new Action(trick, true));
   }
 
@@ -101,7 +102,7 @@ public class Fox {
     this.name = name;
   }
 
-  public int getLevel() {
+  public Level getLevel() {
     return level;
   }
 
