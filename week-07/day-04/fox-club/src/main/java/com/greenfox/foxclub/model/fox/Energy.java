@@ -1,5 +1,8 @@
 package com.greenfox.foxclub.model.fox;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class Energy {
 
   private static final int MAX_LEVEL = 100;
@@ -26,25 +29,26 @@ public class Energy {
   }
 
   private void setType() {
-    if (level > 75) {
-      type = EnergyType.FULL_OF_LIFE;
-    } else if (level > 40) {
-      type = EnergyType.NORMAL;
-    } else {
-      type = EnergyType.TIRED;
-    }
+    type = Arrays.stream(EnergyType.values())
+        .filter(e -> level >= e.level)
+        .sorted((e1, e2) -> e2.level - e1.level)
+        .limit(1)
+        .findFirst()
+        .orElse(EnergyType.NORMAL);
   }
 
   public enum EnergyType {
 
-    FULL_OF_LIFE ("Full of life"),
-    NORMAL ("Normal"),
-    TIRED ("Tired");
+    FULL_OF_LIFE ("Full of life", 75),
+    NORMAL ("Normal", 40),
+    TIRED ("Tired", 0);
 
     public final String name;
+    public final int level;
 
-    EnergyType(String name) {
+    EnergyType(String name, int level) {
       this.name = name;
+      this.level = level;
 
     }
 

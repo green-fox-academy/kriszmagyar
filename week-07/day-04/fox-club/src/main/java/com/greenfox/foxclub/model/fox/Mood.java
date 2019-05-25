@@ -1,5 +1,7 @@
 package com.greenfox.foxclub.model.fox;
 
+import java.util.Arrays;
+
 public class Mood {
 
   private static final int MAX_LEVEL = 100;
@@ -26,33 +28,30 @@ public class Mood {
   }
 
   private void setType() {
-    if (level > 90) {
-      type = MoodType.EXCELLENT;
-    } else if (level > 75) {
-      type = MoodType.HAPPY;
-    } else if (level > 40) {
-      type = MoodType.MEH;
-    } else if (level > 25) {
-      type = MoodType.ANGRY;
-    } else {
-      type = MoodType.SAD;
-    }
+    type = Arrays.stream(MoodType.values())
+        .filter(m -> level >= m.level)
+        .sorted((m1, m2) -> m2.level - m1.level)
+        .limit(1)
+        .findFirst()
+        .orElse(MoodType.MEH);
   }
 
   public enum MoodType {
 
-    EXCELLENT("Excellent", "far fa-grin-stars"),
-    HAPPY ("Happy", "far fa-laugh-beam"),
-    MEH ("Meh", "far fa-meh"),
-    ANGRY ("Angry", "far fa-angry"),
-    SAD ("Sad", "far fa-sad-cry");
+    EXCELLENT("Excellent", "far fa-grin-stars", 90),
+    HAPPY("Happy", "far fa-laugh-beam", 75),
+    MEH("Meh", "far fa-meh", 40),
+    ANGRY("Angry", "far fa-angry", 25),
+    SAD("Sad", "far fa-sad-cry", 0);
 
     public final String name;
     public final String icon;
+    public final int level;
 
-    MoodType(String name, String icon) {
+    MoodType(String name, String icon, int level) {
       this.name = name;
       this.icon = icon;
+      this.level = level;
     }
 
     @Override
