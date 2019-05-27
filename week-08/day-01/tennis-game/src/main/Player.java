@@ -1,23 +1,27 @@
 package main;
 
-public class Player {
+class Player {
 
   private String name;
   private int score = 0;
 
-  public Player(String name) {
+  Player(String name) {
     this.name = name;
   }
 
-  public String getName() {
+  String getName() {
     return name;
   }
 
-  public int getScore() {
+  int getScore() {
     return score;
   }
 
-  public void addScore() {
+  String getScoreMsg() {
+    return new String[]{"Love", "Fifteen", "Thirty", "Forty"}[score];
+  }
+
+  void addScore() {
     score++;
   }
 }
