@@ -2,29 +2,27 @@ package main;
 
 public class TennisGame1 implements TennisGame {
 
-  private int m_score1 = 0;
-  private int m_score2 = 0;
-  private String player1Name;
-  private String player2Name;
+  private Player player1;
+  private Player player2;
 
   public TennisGame1(String player1Name, String player2Name) {
-    this.player1Name = player1Name;
-    this.player2Name = player2Name;
+    player1 = new Player(player1Name);
+    player2 = new Player(player2Name);
   }
 
   public void wonPoint(String playerName) {
-    if (playerName == "player1") {
-      m_score1 += 1;
+    if (playerName.equals(player1.getName())) {
+      player1.addScore();
     } else {
-      m_score2 += 1;
+      player2.addScore();
     }
   }
 
   public String getScore() {
     String score = "";
     int tempScore = 0;
-    if (m_score1 == m_score2) {
-      switch (m_score1) {
+    if (player1.getScore() == player2.getScore()) {
+      switch (player1.getScore()) {
         case 0:
           score = "Love-All";
           break;
@@ -42,8 +40,8 @@ public class TennisGame1 implements TennisGame {
           break;
 
       }
-    } else if (m_score1 >= 4 || m_score2 >= 4) {
-      int minusResult = m_score1 - m_score2;
+    } else if (player1.getScore() >= 4 || player2.getScore() >= 4) {
+      int minusResult = player1.getScore() - player2.getScore();
       if (minusResult == 1) {
         score = "Advantage player1";
       } else if (minusResult == -1) {
@@ -56,10 +54,10 @@ public class TennisGame1 implements TennisGame {
     } else {
       for (int i = 1; i < 3; i++) {
         if (i == 1) {
-          tempScore = m_score1;
+          tempScore = player1.getScore();
         } else {
           score += "-";
-          tempScore = m_score2;
+          tempScore = player2.getScore();
         }
         switch (tempScore) {
           case 0:
