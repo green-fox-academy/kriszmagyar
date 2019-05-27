@@ -2,6 +2,8 @@ package main;
 
 public class TennisGame1 implements TennisGame {
 
+  private static final int TIE_BREAK_SCORE = 4;
+
   private Player player1;
   private Player player2;
 
@@ -19,62 +21,67 @@ public class TennisGame1 implements TennisGame {
   }
 
   public String getScore() {
-    String score = "";
-    int tempScore = 0;
-    if (player1.getScore() == player2.getScore()) {
-      switch (player1.getScore()) {
-        case 0:
-          score = "Love-All";
-          break;
-        case 1:
-          score = "Fifteen-All";
-          break;
-        case 2:
-          score = "Thirty-All";
-          break;
-        case 3:
-          score = "Forty-All";
-          break;
-        default:
-          score = "Deuce";
-          break;
-
-      }
-    } else if (player1.getScore() >= 4 || player2.getScore() >= 4) {
-      int minusResult = player1.getScore() - player2.getScore();
-      if (minusResult == 1) {
-        score = "Advantage player1";
-      } else if (minusResult == -1) {
-        score = "Advantage player2";
-      } else if (minusResult >= 2) {
-        score = "Win for player1";
-      } else {
-        score = "Win for player2";
-      }
-    } else {
-      for (int i = 1; i < 3; i++) {
-        if (i == 1) {
-          tempScore = player1.getScore();
-        } else {
-          score += "-";
-          tempScore = player2.getScore();
-        }
-        switch (tempScore) {
-          case 0:
-            score += "Love";
-            break;
-          case 1:
-            score += "Fifteen";
-            break;
-          case 2:
-            score += "Thirty";
-            break;
-          case 3:
-            score += "Forty";
-            break;
-        }
-      }
+    if (playersHaveSameScore()) {
+      return sameScoreMsg(player1.getScore());
     }
-    return score;
+    if (playersAreInTieBreak()) {
+      return tieBreakScoreMsg();
+    }
+    return defaultScoreMsg();
+  }
+
+  private boolean playersHaveSameScore() {
+    return player1.getScore() == player2.getScore();
+  }
+
+  private String sameScoreMsg(int score) {
+    if (score >= TIE_BREAK_SCORE) {
+      return "Deuce";
+    } else {
+      return getSingleScoreMsg(score) + "-All";
+    }
+  }
+
+  private boolean playersAreInTieBreak() {
+    return player1.getScore() >= TIE_BREAK_SCORE
+        || player2.getScore() >= TIE_BREAK_SCORE;
+  }
+
+  private String tieBreakScoreMsg() {
+    return advantageOrWinMsg() + getPlayerInAdvance().getName();
+  }
+
+  private String advantageOrWinMsg() {
+    if (getScoreDifference() > 1) {
+      return "Win for ";
+    } else {
+      return "Advantage ";
+    }
+  }
+
+  private Player getPlayerInAdvance() {
+    return player1.getScore() > player2.getScore() ? player1 : player2;
+  }
+
+  private int getScoreDifference() {
+    return Math.abs(player1.getScore() - player2.getScore());
+  }
+
+  private String defaultScoreMsg() {
+    return getSingleScoreMsg(player1.getScore()) + "-"
+        + getSingleScoreMsg(player2.getScore());
+  }
+
+  private String getSingleScoreMsg(int score) {
+    switch (score) {
+      case 1:
+        return "Fifteen";
+      case 2:
+        return "Thirty";
+      case 3:
+        return "Forty";
+      default:
+        return "Love";
+    }
   }
 }
