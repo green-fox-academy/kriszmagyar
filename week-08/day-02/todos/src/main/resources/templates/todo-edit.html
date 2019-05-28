@@ -8,8 +8,20 @@
 
 <h1>Edit todo</h1>
 <form th:action="@{'/todo/edit/' + ${todo.id}}" th:method="post" th:object="${todo}">
-  <input type="text" th:field="*{title}">
+  <div class="form-group">
+    <label th:for="*{title}">Title</label>
+    <input type="text" th:field="*{title}">
+  </div>
+  <div class="form-group">
+    <input type="checkbox" th:field="*{done}">
+    <label th:for="*{done}">Done</label>
+  </div>
+  <div class="form-group">
+    <input type="checkbox" th:field="*{urgent}">
+    <label th:for="*{urgent}">Urgent</label>
+  </div>
   <input type="submit">
+  <a href="#" th:href="@{/todo}">Cancel</a>
 </form>
 
 </body>
