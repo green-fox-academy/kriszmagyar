@@ -19,4 +19,9 @@ public class TodoServiceImp implements TodoService {
     todoRepository.findAll().forEach(todos::add);
     return todos;
   }
+
+  @Override
+  public void save(Todo todo) {
+    todoRepository.save(todo);
+  }
 }

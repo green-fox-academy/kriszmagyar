@@ -7,4 +7,6 @@ public interface TodoService {
 
   List<Todo> findAll();
 
+  void save(Todo todo);
+
 }
