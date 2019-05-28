@@ -29,6 +29,12 @@ public class TodoServiceImp implements TodoService {
   }
 
   @Override
+  public Todo findById(long id) {
+    return todoRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Todo with id " + id + " is not exists!"));
+  }
+
+  @Override
   public Todo getNewInstance() {
     return new Todo();
   }
@@ -41,5 +47,10 @@ public class TodoServiceImp implements TodoService {
   @Override
   public void delete(long id) {
     todoRepository.deleteById(id);
+  }
+
+  @Override
+  public void edit(Todo todo) {
+    todoRepository.save(todo);
   }
 }

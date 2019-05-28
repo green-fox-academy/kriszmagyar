@@ -9,10 +9,14 @@ public interface TodoService {
 
   List<Todo> findWithQuery(boolean isActive);
 
+  Todo findById(long id);
+
   Todo getNewInstance();
 
   void add(Todo todo);
 
   void delete(long id);
+
+  void edit(Todo todo);
 
 }
