@@ -9,6 +9,8 @@ public interface TodoService {
 
   List<Todo> findWithQuery(boolean isActive);
 
-  void save(Todo todo);
+  Todo getNewInstance();
+
+  void add(Todo todo);
 
 }

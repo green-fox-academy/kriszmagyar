@@ -29,7 +29,12 @@ public class TodoServiceImp implements TodoService {
   }
 
   @Override
-  public void save(Todo todo) {
+  public Todo getNewInstance() {
+    return new Todo();
+  }
+
+  @Override
+  public void add(Todo todo) {
     todoRepository.save(todo);
   }
 }
