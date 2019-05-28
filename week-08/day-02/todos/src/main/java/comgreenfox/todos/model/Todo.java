@@ -1,7 +1,14 @@
 package comgreenfox.todos.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Todo {
 
+  @Id
+  @GeneratedValue
   private long id;
   private String title;
   private boolean urgent = false;
