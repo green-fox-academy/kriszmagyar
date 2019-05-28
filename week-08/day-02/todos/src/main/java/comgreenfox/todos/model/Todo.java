@@ -1,9 +1,12 @@
 package comgreenfox.todos.model;
 
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Todo {
@@ -14,6 +17,11 @@ public class Todo {
   private String title;
   private boolean urgent = false;
   private boolean done = false;
+
+  @Temporal(TemporalType.DATE)
+  private Date createdAtDate = new Date();
+  @Temporal(TemporalType.TIME)
+  private Date createdAtTime = new Date();
 
   public Todo() {
   }
@@ -52,6 +60,22 @@ public class Todo {
 
   public void setDone(boolean done) {
     this.done = done;
+  }
+
+  public Date getCreatedAtDate() {
+    return createdAtDate;
+  }
+
+  public void setCreatedAtDate(Date createdAtDate) {
+    this.createdAtDate = createdAtDate;
+  }
+
+  public Date getCreatedAtTime() {
+    return createdAtTime;
+  }
+
+  public void setCreatedAtTime(Date createdAtTime) {
+    this.createdAtTime = createdAtTime;
   }
 
   @Override

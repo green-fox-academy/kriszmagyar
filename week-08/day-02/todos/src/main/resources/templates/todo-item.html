@@ -10,6 +10,7 @@
   <h1 th:text="${todo.title}"></h1>
   <p>Done: <span th:text="${todo.done}"></span></p>
   <p>Urgent: <span th:text="${todo.urgent}"></span></p>
+  <p>Created at: <span th:text="|${todo.createdAtDate}  ${todo.createdAtTime}|"></span></p>
   <a href="#" th:href="@{'/todo/edit/' + ${todo.id}}">Edit</a>
   <a href="#" th:href="@{'/todo/delete/' + ${todo.id}}">Delete</a>
   <a href="#" th:href="@{/todo}">Go back</a>

@@ -20,8 +20,8 @@
       <th>ACTION</th>
       <th>DONE</th>
       <th>URGENT</th>
-      <th></th>
-      <th></th>
+      <th>CREATED AT</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
   <tbody>
@@ -30,6 +30,7 @@
       <td><a href="#" th:href="@{'/todo/' + ${todo.id}}" th:text="${todo.title}"></a></td>
       <td th:text="${todo.done}"></td>
       <td th:text="${todo.urgent}"></td>
+      <td th:text="${todo.createdAtDate}"></td>
       <td><a href="#" th:href="@{'/todo/delete/' + ${todo.id}}">Delete</a></td>
       <td><a href="#" th:href="@{'/todo/edit/' + ${todo.id}}">Edit</a></td>
     </tr>
