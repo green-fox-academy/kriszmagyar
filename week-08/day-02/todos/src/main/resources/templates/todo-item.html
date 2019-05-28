@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo Item</title>
+</head>
+<body>
+
+<div>
+  <h1 th:text="${todo.title}"></h1>
+  <p>Done: <span th:text="${todo.done}"></span></p>
+  <p>Urgent: <span th:text="${todo.urgent}"></span></p>
+  <a href="#" th:href="@{'/todo/edit/' + ${todo.id}}">Edit</a>
+  <a href="#" th:href="@{'/todo/delete/' + ${todo.id}}">Delete</a>
+  <a href="#" th:href="@{/todo}">Go back</a>
+</div>
+
+</body>
+</html>

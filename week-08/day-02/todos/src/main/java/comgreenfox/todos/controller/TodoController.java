@@ -23,6 +23,12 @@ public class TodoController {
     return "todo-list";
   }
 
+  @GetMapping("/{id}")
+  public String itemView(@PathVariable long id, Model model) {
+    model.addAttribute("todo", todoService.findById(id));
+    return "todo-item";
+  }
+
   @GetMapping("/add")
   public String addView(Model model) {
     model.addAttribute("todo", todoService.getNewInstance());
