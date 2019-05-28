@@ -4,6 +4,7 @@ import comgreenfox.todos.model.Todo;
 import comgreenfox.todos.repository.TodoRepository;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,13 @@ public class TodoServiceImp implements TodoService {
     List<Todo> todos = new ArrayList<>();
     todoRepository.findAll().forEach(todos::add);
     return todos;
+  }
+
+  @Override
+  public List<Todo> findWithQuery(boolean isActive) {
+    return findAll().stream()
+        .filter(t -> !t.isDone() || !isActive)
+        .collect(Collectors.toList());
   }
 
   @Override

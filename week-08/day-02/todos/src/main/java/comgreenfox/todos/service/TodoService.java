@@ -7,6 +7,8 @@ public interface TodoService {
 
   List<Todo> findAll();
 
+  List<Todo> findWithQuery(boolean isActive);
+
   void save(Todo todo);
 
 }

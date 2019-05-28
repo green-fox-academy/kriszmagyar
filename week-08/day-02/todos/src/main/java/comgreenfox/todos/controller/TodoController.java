@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/todo")
@@ -15,8 +16,8 @@ public class TodoController {
   private TodoService todoService;
 
   @GetMapping(value = {"", "/list"})
-  public String list(Model model) {
-    model.addAttribute("todos", todoService.findAll());
+  public String list(boolean isActive, Model model) {
+    model.addAttribute("todos", todoService.findWithQuery(isActive));
     return "todo-list";
   }
 
