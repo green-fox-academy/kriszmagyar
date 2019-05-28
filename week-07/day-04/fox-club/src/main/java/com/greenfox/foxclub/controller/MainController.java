@@ -16,7 +16,7 @@ public class MainController {
   @Autowired
   private FoxService fs;
 
-  @GetMapping
+  @GetMapping("/")
   public String index(@RequestParam(required = false) String name, Model model) {
     if (fs.isNotAuthorized(name)) {
       return "redirect:/login";
