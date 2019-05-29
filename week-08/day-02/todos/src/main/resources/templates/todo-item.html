@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>Todo Item</title>
-</head>
+<head th:include="fragments/general :: head (title = 'Todo Item')"></head>
 <body>
 
 <div>
@@ -16,5 +13,6 @@
   <a href="#" th:href="@{/todo}">Go back</a>
 </div>
 
+<th:block th:include="fragments/general :: scripts"></th:block>
 </body>
 </html>

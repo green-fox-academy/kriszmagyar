@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>Add todo</title>
-</head>
+<head th:include="fragments/general :: head (title = 'Add Todo')"></head>
 <body>
 
 <h1>Add new todo</h1>
@@ -12,5 +9,6 @@
   <input type="submit">
 </form>
 
+<th:block th:include="fragments/general :: scripts"></th:block>
 </body>
 </html>

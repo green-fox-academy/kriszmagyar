@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>Todo List</title>
-</head>
-<style>
-  table, th, td {
-    border: 1px solid black;
-  }
-</style>
+<head th:include="fragments/general :: head (title = 'Todo List')"></head>
 <body>
 
 <h1>Todos for today</h1>
@@ -38,5 +30,6 @@
 </table>
 <p th:if="${todos.size() == 0}">No todos found!</p>
 
+<th:block th:include="fragments/general :: scripts"></th:block>
 </body>
 </html>
