@@ -3,10 +3,10 @@
 <head th:include="fragments/general :: head (title = 'Todo List')"></head>
 <body>
 
-<h1>Todos for today</h1>
-<a href="#" th:href="@{/todo/add}">Add new todo</a>
-<table th:if="${todos.size() > 0}">
-  <thead>
+<div class="container">
+  <h1 class="text-center">Todos for today</h1>
+  <table class="table" th:if="${todos.size() > 0}">
+    <thead>
     <tr>
       <th>ID</th>
       <th>ACTION</th>
@@ -15,21 +15,26 @@
       <th>CREATED AT</th>
       <th colspan="2"></th>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     <tr th:each="todo : ${todos}">
       <td th:text="${todo.id}"></td>
       <td><a href="#" th:href="@{'/todo/' + ${todo.id}}" th:text="${todo.title}"></a></td>
-      <td th:text="${todo.done}"></td>
-      <td th:text="${todo.urgent}"></td>
+      <td><i th:class="${todo.done ? 'fas fa-check' : 'fas fa-times'}"></i></td>
+      <td><i th:class="${todo.urgent ? 'fas fa-check' : 'fas fa-times'}"></i></td>
       <td th:text="${todo.createdAtDate}"></td>
-      <td><a href="#" th:href="@{'/todo/delete/' + ${todo.id}}">Delete</a></td>
-      <td><a href="#" th:href="@{'/todo/edit/' + ${todo.id}}">Edit</a></td>
+      <td><a class="btn btn-danger" role="button" href="#"
+             th:href="@{'/todo/delete/' + ${todo.id}}">Delete</a></td>
+      <td><a class="btn btn-primary" role="button" href="#"
+             th:href="@{'/todo/edit/' + ${todo.id}}">Edit</a>
+      </td>
     </tr>
-  </tbody>
-</table>
-<p th:if="${todos.size() == 0}">No todos found!</p>
+    </tbody>
+  </table>
+  <p th:if="${todos.size() == 0}">No todos found!</p>
+  <a class="btn btn-primary" role="button" href="#" th:href="@{/todo/add}">Add new todo</a>
+</div>
 
-<th:block th:include="fragments/general :: scripts"></th:block>
+<th:block th:include="fragments/general :: scripts"/>
 </body>
 </html>

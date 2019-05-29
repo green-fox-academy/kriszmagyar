@@ -3,12 +3,14 @@
 <head th:include="fragments/general :: head (title = 'Add Todo')"></head>
 <body>
 
-<h1>Add new todo</h1>
-<form th:action="@{/todo/add}" th:method="post" th:object="${todo}">
-  <input type="text" th:field="*{title}">
-  <input type="submit">
-</form>
+<div class="container">
+  <h1>Add new todo</h1>
+  <form class="form-inline" th:action="@{/todo/add}" th:method="post" th:object="${todo}">
+    <input class="form-control" type="text" th:field="*{title}">
+    <input class="btn btn-primary" role="button" type="submit">
+  </form>
+</div>
 
-<th:block th:include="fragments/general :: scripts"></th:block>
+<th:block th:include="fragments/general :: scripts" />
 </body>
 </html>

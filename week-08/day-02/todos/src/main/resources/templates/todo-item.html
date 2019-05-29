@@ -3,16 +3,26 @@
 <head th:include="fragments/general :: head (title = 'Todo Item')"></head>
 <body>
 
-<div>
+<div class="container">
   <h1 th:text="${todo.title}"></h1>
-  <p>Done: <span th:text="${todo.done}"></span></p>
-  <p>Urgent: <span th:text="${todo.urgent}"></span></p>
-  <p>Created at: <span th:text="|${todo.createdAtDate}  ${todo.createdAtTime}|"></span></p>
-  <a href="#" th:href="@{'/todo/edit/' + ${todo.id}}">Edit</a>
-  <a href="#" th:href="@{'/todo/delete/' + ${todo.id}}">Delete</a>
-  <a href="#" th:href="@{/todo}">Go back</a>
+  <ul class="list-group">
+    <li class="list-group-item">
+       <p>Done: <span th:text="${todo.done}"></span></p>
+    </li>
+    <li class="list-group-item">
+       <p>Urgent: <span th:text="${todo.urgent}"></span></p>
+    </li>
+    <li class="list-group-item">
+       <p>Created at: <span th:text="|${todo.createdAtDate}  ${todo.createdAtTime}|"></span></p>
+    </li>
+    <li class="list-group-item">
+      <a class="btn btn-primary" role="button" href="#" th:href="@{'/todo/edit/' + ${todo.id}}">Edit</a>
+      <a class="btn btn-danger" role="button" href="#" th:href="@{'/todo/delete/' + ${todo.id}}">Delete</a>
+      <a class="btn btn-warning" role="button" href="#" th:href="@{/todo}">Go back</a>
+    </li>
+  </ul>
 </div>
 
-<th:block th:include="fragments/general :: scripts"></th:block>
+<th:block th:include="fragments/general :: scripts" />
 </body>
 </html>
