@@ -37,6 +37,7 @@ public class TodoController {
   @GetMapping("/add")
   public String addView(Model model) {
     model.addAttribute("todo", todoService.getNewInstance());
+    model.addAttribute("assignees", assigneeService.findAll());
     return "todo/todo-add";
   }
 
