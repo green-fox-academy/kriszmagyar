@@ -2,7 +2,7 @@ package comgreenfox.todos.controller;
 
 import comgreenfox.todos.model.Assignee;
 import comgreenfox.todos.service.AssigneeService;
-import org.springframework.beans.factory.annotation.Autowired;
+import comgreenfox.todos.service.TodoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/assignees")
 public class AssigneeController {
 
-  @Autowired
-  private AssigneeService assigneeService;
+  private final AssigneeService assigneeService;
+  private final TodoService todoService;
+
+  public AssigneeController(AssigneeService assigneeService,
+      TodoService todoService) {
+    this.assigneeService = assigneeService;
+    this.todoService = todoService;
+  }
 
   @GetMapping(value = {"", "/list"})
   public String list(String search, Model model) {
@@ -25,7 +31,9 @@ public class AssigneeController {
 
   @GetMapping("/{id}")
   public String itemView(@PathVariable long id, Model model) {
-    model.addAttribute("assignee", assigneeService.findById(id));
+    Assignee assignee = assigneeService.findById(id);
+    model.addAttribute("assignee", assignee);
+    model.addAttribute("todos", todoService.findAllByAssignee(assignee));
     return "assignee/assignee-item";
   }
 

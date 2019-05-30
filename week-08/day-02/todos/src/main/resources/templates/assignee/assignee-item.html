@@ -16,6 +16,13 @@
       <a class="btn btn-warning" role="button" href="#" th:href="@{/assignees}">Go back</a>
     </li>
   </ul>
+  <h2 class="my-2">Todos:</h2>
+  <ul class="list-group">
+    <li class="list-group-item" th:each="todo : ${todos}">
+      <a href="#" th:href="@{'/todos/' + ${todo.id}}" th:text="${todo.title}"></a>
+    </li>
+  </ul>
+  <p th:if="${todos.size() == 0}">No todos yet!</p>
 </div>
 
 <th:block th:include="fragments/general :: scripts" />

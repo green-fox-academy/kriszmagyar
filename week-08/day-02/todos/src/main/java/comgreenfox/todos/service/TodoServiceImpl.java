@@ -1,5 +1,6 @@
 package comgreenfox.todos.service;
 
+import comgreenfox.todos.model.Assignee;
 import comgreenfox.todos.model.Todo;
 import comgreenfox.todos.repository.TodoRepository;
 import java.util.ArrayList;
@@ -27,6 +28,11 @@ public class TodoServiceImpl implements TodoService {
       return findAll();
     }
     return todoRepository.findAllByTitleContainsOrDescriptionContains(search, search);
+  }
+
+  @Override
+  public List<Todo> findAllByAssignee(Assignee assignee) {
+    return todoRepository.findAllByAssigneeIs(assignee);
   }
 
   @Override
