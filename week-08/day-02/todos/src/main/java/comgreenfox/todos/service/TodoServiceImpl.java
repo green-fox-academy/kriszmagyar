@@ -26,10 +26,10 @@ public class TodoServiceImpl implements TodoService {
     if (search == null || search.isEmpty()) {
       return findAll();
     }
-    return findWithValidSearch(search);
+    return findWithValidQuery(search);
   }
 
-  private List<Todo> findWithValidSearch(String search) {
+  private List<Todo> findWithValidQuery(String search) {
     switch (search.toLowerCase()) {
       case "done":
         return todoRepository.findAllByDoneTrue();
