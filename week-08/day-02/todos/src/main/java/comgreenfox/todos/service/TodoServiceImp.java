@@ -23,9 +23,11 @@ public class TodoServiceImp implements TodoService {
 
   @Override
   public List<Todo> findWithQuery(boolean isActive) {
-    return findAll().stream()
-        .filter(t -> !t.isDone() || !isActive)
-        .collect(Collectors.toList());
+    if (isActive) {
+      return todoRepository.findAllByDoneFalse();
+    } else {
+      return findAll();
+    }
   }
 
   @Override
