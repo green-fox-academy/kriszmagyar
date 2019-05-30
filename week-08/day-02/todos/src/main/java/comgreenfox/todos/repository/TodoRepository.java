@@ -9,5 +9,5 @@ public interface TodoRepository extends CrudRepository<Todo, Long> {
 
   List<Todo> findAllByTitleContainsOrDescriptionContains(String title, String description);
 
-  List<Todo> findAllByAssigneeIs(Assignee assignee);
+  List<Todo> findAllByAssignee(Assignee assignee);
 }

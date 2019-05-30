@@ -5,7 +5,6 @@ import comgreenfox.todos.model.Todo;
 import comgreenfox.todos.repository.TodoRepository;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +31,7 @@ public class TodoServiceImpl implements TodoService {
 
   @Override
   public List<Todo> findAllByAssignee(Assignee assignee) {
-    return todoRepository.findAllByAssigneeIs(assignee);
+    return todoRepository.findAllByAssignee(assignee);
   }
 
   @Override
