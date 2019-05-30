@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/general :: head (title = 'Todo App')"></head>
+<body>
+
+<div class="container">
+  <div class="jumbotron my-5">
+    <h1>Login to see your Todos</h1>
+    <form th:action="@{/login}" th:method="post">
+      <div class="form-group">
+        <label for="">Username</label>
+        <input class="form-control" type="text" autofocus>
+      </div>
+      <div class="form-group">
+        <label for="">Password</label>
+        <input class="form-control" type="password">
+      </div>
+      <input class="btn btn-primary" role="button" type="submit" value="Login">
+    </form>
+  </div>
+</div>
+
+<th:block th:include="fragments/general :: scripts" />
+</body>
+</html>
