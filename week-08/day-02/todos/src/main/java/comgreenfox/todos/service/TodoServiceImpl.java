@@ -26,16 +26,20 @@ public class TodoServiceImpl implements TodoService {
     if (search == null || search.isEmpty()) {
       return findAll();
     }
-    if (search.toLowerCase().equals("done")) {
-      return todoRepository.findAllByDoneTrue();
+    return findWithValidSearch(search);
+  }
+
+  private List<Todo> findWithValidSearch(String search) {
+    switch (search.toLowerCase()) {
+      case "done":
+        return todoRepository.findAllByDoneTrue();
+      case "active":
+        return todoRepository.findAllByDoneFalse();
+      case "urgent":
+        return todoRepository.findAllByUrgentTrue();
+      default:
+        return todoRepository.findAllByTitleContainsOrDescriptionContains(search, search);
     }
-    if (search.toLowerCase().equals("urgent")) {
-      return todoRepository.findAllByUrgentTrue();
-    }
-    if (search.toLowerCase().equals("active")) {
-      return todoRepository.findAllByDoneFalse();
-    }
-    return todoRepository.findAllByTitleContainsOrDescriptionContains(search, search);
   }
 
   @Override
