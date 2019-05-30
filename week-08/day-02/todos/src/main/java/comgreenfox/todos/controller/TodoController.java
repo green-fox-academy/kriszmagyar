@@ -18,8 +18,8 @@ public class TodoController {
   private TodoService todoService;
 
   @GetMapping(value = {"", "/list"})
-  public String list(boolean isActive, Model model) {
-    model.addAttribute("todos", todoService.findWithQuery(isActive));
+  public String list(String search, Model model) {
+    model.addAttribute("todos", todoService.findWithQuery(search));
     return "todo-list";
   }
 

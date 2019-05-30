@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface TodoRepository extends CrudRepository<Todo, Long> {
 
-  List<Todo> findAllByDoneFalse();
+  List<Todo> findAllByTitleContainsOrDescriptionContains(String title, String description);
 }

@@ -22,12 +22,11 @@ public class TodoServiceImp implements TodoService {
   }
 
   @Override
-  public List<Todo> findWithQuery(boolean isActive) {
-    if (isActive) {
-      return todoRepository.findAllByDoneFalse();
-    } else {
+  public List<Todo> findWithQuery(String search) {
+    if (search == null || search.isEmpty()) {
       return findAll();
     }
+    return todoRepository.findAllByTitleContainsOrDescriptionContains(search, search);
   }
 
   @Override

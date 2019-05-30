@@ -7,7 +7,7 @@ public interface TodoService {
 
   List<Todo> findAll();
 
-  List<Todo> findWithQuery(boolean isActive);
+  List<Todo> findWithQuery(String search);
 
   Todo findById(long id);
 
