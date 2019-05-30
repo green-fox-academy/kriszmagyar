@@ -20,6 +20,7 @@
       <th>DONE</th>
       <th>URGENT</th>
       <th>CREATED AT</th>
+      <th>ASSIGNEE</th>
       <th colspan="2"></th>
     </tr>
     </thead>
@@ -30,6 +31,8 @@
       <td><i th:class="${todo.done ? 'fas fa-check' : 'fas fa-times'}"></i></td>
       <td><i th:class="${todo.urgent ? 'fas fa-check' : 'fas fa-times'}"></i></td>
       <td th:text="${todo.createdAtDate}"></td>
+      <td><a th:if="${todo.assignee != null}" th:text="${todo.assignee}"
+             th:href="@{'/assignees/' + ${todo.assignee.id}}" href="#"></a></td>
       <td><a class="btn btn-danger" role="button" href="#"
              th:href="@{'/todos/delete/' + ${todo.id}}">Delete</a></td>
       <td><a class="btn btn-primary" role="button" href="#"
