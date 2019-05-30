@@ -1,8 +1,8 @@
 package comgreenfox.todos.controller;
 
 import comgreenfox.todos.model.Todo;
+import comgreenfox.todos.service.AssigneeService;
 import comgreenfox.todos.service.TodoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/todos")
 public class TodoController {
 
-  @Autowired
-  private TodoService todoService;
+  private final TodoService todoService;
+  private final AssigneeService assigneeService;
+
+  public TodoController(TodoService todoService, AssigneeService assigneeService) {
+    this.todoService = todoService;
+    this.assigneeService = assigneeService;
+  }
 
   @GetMapping(value = {"", "/list"})
   public String list(String search, Model model) {
@@ -50,6 +55,7 @@ public class TodoController {
   @GetMapping("/edit/{id}")
   public String editView(@PathVariable long id, Model model) {
     model.addAttribute("todo", todoService.findById(id));
+    model.addAttribute("assignees", assigneeService.findAll());
     return "todo/todo-edit";
   }
 

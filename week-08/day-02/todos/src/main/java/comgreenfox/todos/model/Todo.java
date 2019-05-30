@@ -2,9 +2,11 @@ package comgreenfox.todos.model;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -23,6 +25,9 @@ public class Todo {
   private Date createdAtDate = new Date();
   @Temporal(TemporalType.TIME)
   private Date createdAtTime = new Date();
+
+  @ManyToOne
+  private Assignee assignee;
 
   public Todo() {
   }
@@ -75,16 +80,19 @@ public class Todo {
     this.createdAtTime = createdAtTime;
   }
 
-  @Override
-  public String toString() {
-    return title;
-  }
-
   public String getDescription() {
     return description;
   }
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public Assignee getAssignee() {
+    return assignee;
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
   }
 }
