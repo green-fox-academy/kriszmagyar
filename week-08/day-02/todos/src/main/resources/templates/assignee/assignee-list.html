@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/general :: head (title = 'Todo List')"></head>
+<body>
+<header th:include="fragments/general :: header"></header>
+
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <h1 class="text-center">Assignees</h1>
+    <form class="form-inline" th:action="@{/assignees}">
+      <input class="form-control mr-2" type="text" name="search">
+      <input class="btn btn-primary" type="submit" value="Search">
+    </form>
+  </div>
+  <table class="table" th:if="${assignees.size() > 0}">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>NAME</th>
+      <th>EMAIL</th>
+      <th colspan="2"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="assignee : ${assignees}">
+      <td th:text="${assignee.id}"></td>
+      <td><a href="#" th:href="@{'/assignees/' + ${assignee.id}}" th:text="${assignee.name}"></a></td>
+      <td th:text="${assignee.email}"></td>
+      <td><a class="btn btn-danger" role="button" href="#"
+             th:href="@{'/assignees/delete/' + ${assignee.id}}">Delete</a></td>
+      <td><a class="btn btn-primary" role="button" href="#"
+             th:href="@{'/assignees/edit/' + ${assignee.id}}">Edit</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p th:if="${assignees.size() == 0}">No assignees found!</p>
+  <a class="btn btn-primary" role="button" href="#" th:href="@{/assignees/add}">Add new member</a>
+</div>
+
+<th:block th:include="fragments/general :: scripts"/>
+</body>
+</html>

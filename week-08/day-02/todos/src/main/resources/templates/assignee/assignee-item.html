@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/general :: head (title = 'Todo Item')"></head>
+<body>
+<header th:include="fragments/general :: header"></header>
+
+<div class="container">
+  <h1 th:text="${assignee.name}"></h1>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <p>Email: <span th:text="${assignee.email}"></span></p>
+    </li>
+    <li class="list-group-item">
+      <a class="btn btn-primary" role="button" href="#" th:href="@{'/assignees/edit/' + ${assignee.id}}">Edit</a>
+      <a class="btn btn-danger" role="button" href="#" th:href="@{'/assignees/delete/' + ${assignee.id}}">Delete</a>
+      <a class="btn btn-warning" role="button" href="#" th:href="@{/assignee}">Go back</a>
+    </li>
+  </ul>
+</div>
+
+<th:block th:include="fragments/general :: scripts" />
+</body>
+</html>

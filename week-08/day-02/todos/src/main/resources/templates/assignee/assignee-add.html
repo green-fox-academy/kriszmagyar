@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/general :: head (title = 'Add Todo')"></head>
+<body>
+<header th:include="fragments/general :: header"></header>
+
+<div class="container">
+  <h1>Add new member</h1>
+  <form th:action="@{/assignees/add}" th:method="post" th:object="${assignee}">
+    <div class="form-group">
+      <label th:for="*{name}">Name</label>
+      <input class="form-control" type="text" th:field="*{name}" required>
+    </div>
+    <div class="form-group">
+      <label th:for="*{email}">Email</label>
+      <input class="form-control" type="email" th:field="*{email}" required>
+    </div>
+    <input class="btn btn-primary" role="button" type="submit">
+  </form>
+</div>
+
+<th:block th:include="fragments/general :: scripts" />
+</body>
+</html>
