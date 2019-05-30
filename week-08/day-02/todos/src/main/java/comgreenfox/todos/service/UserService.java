@@ -6,4 +6,8 @@ public interface UserService {
 
   User getNewInstance();
 
+  void add(User user);
+
+  boolean isValid(User user);
+
 }
