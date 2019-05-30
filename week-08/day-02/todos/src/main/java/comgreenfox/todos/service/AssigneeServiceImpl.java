@@ -25,7 +25,7 @@ public class AssigneeServiceImpl implements AssigneeService {
     if (search == null || search.isEmpty()) {
       return findAll();
     }
-    return assigneeRepository.findAllByNameContainsAndEmailContains(search, search);
+    return assigneeRepository.findAllByNameContainsOrEmailContains(search, search);
   }
 
   @Override

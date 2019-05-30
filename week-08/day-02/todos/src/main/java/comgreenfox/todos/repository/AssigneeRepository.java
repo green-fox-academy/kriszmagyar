@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface AssigneeRepository extends CrudRepository<Assignee, Long> {
 
-  List<Assignee> findAllByNameContainsAndEmailContains(String name, String email);
+  List<Assignee> findAllByNameContainsOrEmailContains(String name, String email);
 }
