@@ -26,6 +26,15 @@ public class TodoServiceImpl implements TodoService {
     if (search == null || search.isEmpty()) {
       return findAll();
     }
+    if (search.toLowerCase().equals("done")) {
+      return todoRepository.findAllByDoneTrue();
+    }
+    if (search.toLowerCase().equals("urgent")) {
+      return todoRepository.findAllByUrgentTrue();
+    }
+    if (search.toLowerCase().equals("active")) {
+      return todoRepository.findAllByDoneFalse();
+    }
     return todoRepository.findAllByTitleContainsOrDescriptionContains(search, search);
   }
 
