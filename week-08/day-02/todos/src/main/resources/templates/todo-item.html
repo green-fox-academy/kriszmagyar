@@ -7,6 +7,9 @@
   <h1 th:text="${todo.title}"></h1>
   <ul class="list-group">
     <li class="list-group-item">
+      <p>Description: <span th:text="${todo.description}"></span></p>
+    </li>
+    <li class="list-group-item">
        <p>Done: <span th:text="${todo.done}"></span></p>
     </li>
     <li class="list-group-item">

@@ -15,6 +15,7 @@ public class Todo {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String title;
+  private String description;
   private boolean urgent = false;
   private boolean done = false;
 
@@ -24,10 +25,6 @@ public class Todo {
   private Date createdAtTime = new Date();
 
   public Todo() {
-  }
-
-  public Todo(String title) {
-    this.title = title;
   }
 
   public long getId() {
@@ -81,5 +78,13 @@ public class Todo {
   @Override
   public String toString() {
     return title;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 }
