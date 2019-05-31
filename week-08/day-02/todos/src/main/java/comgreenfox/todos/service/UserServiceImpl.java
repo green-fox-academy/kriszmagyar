@@ -28,6 +28,6 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public boolean isExist(User user) {
-    return true;
+    return userRepository.findByName(user.getName()) != null;
   }
 }

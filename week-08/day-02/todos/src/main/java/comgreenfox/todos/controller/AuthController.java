@@ -42,7 +42,7 @@ public class AuthController {
   @PostMapping("/register")
   public String register(User user, RedirectAttributes redirect) {
     if (userService.isExist(user)) {
-      redirect.addFlashAttribute("error", "User with name " + user.getUsername() + " is already registered!");
+      redirect.addFlashAttribute("error", "User with name " + user.getName() + " is already registered!");
       return "redirect:/register";
     }
     userService.add(user);

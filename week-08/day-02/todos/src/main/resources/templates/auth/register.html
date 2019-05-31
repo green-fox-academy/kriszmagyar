@@ -8,8 +8,8 @@
     <h1>Register an account</h1>
     <form th:action="@{/register}" th:method="post" th:object="${user}">
       <div class="form-group">
-        <label th:for="*{username}">Username</label>
-        <input class="form-control" type="text" th:field="*{username}" autofocus>
+        <label th:for="*{name}">Username</label>
+        <input class="form-control" type="text" th:field="*{name}" autofocus>
       </div>
       <div class="form-group">
         <label th:for="*{password}">Password</label>
