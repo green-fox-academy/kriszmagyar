@@ -1,6 +1,7 @@
 package comgreenfox.todos.service;
 
 import comgreenfox.todos.model.User;
+import comgreenfox.todos.model.ValidationError;
 
 public interface UserService {
 
@@ -8,7 +9,7 @@ public interface UserService {
 
   void add(User user);
 
-  boolean isValid(User user);
+  ValidationError getLoginValidationError(User user);
 
-  boolean isExist(User user);
+  ValidationError getRegisterValidationError(User user);
 }
