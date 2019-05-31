@@ -25,4 +25,9 @@ public class UserServiceImpl implements UserService {
   public boolean isValid(User user) {
     return false;
   }
+
+  @Override
+  public boolean isExist(User user) {
+    return true;
+  }
 }

@@ -32,4 +32,21 @@ public class AuthController {
     return "redirect:/login";
   }
 
+  @GetMapping("/register")
+  public String registerView(@ModelAttribute("error") String error, Model model) {
+    model.addAttribute("user", userService.getNewInstance())
+        .addAttribute("error", error);
+    return "auth/register";
+  }
+
+  @PostMapping("/register")
+  public String register(User user, RedirectAttributes redirect) {
+    if (userService.isExist(user)) {
+      redirect.addFlashAttribute("error", "User with name " + user.getUsername() + " is already registered!");
+      return "redirect:/register";
+    }
+    userService.add(user);
+    return "redirect:/todos";
+  }
+
 }

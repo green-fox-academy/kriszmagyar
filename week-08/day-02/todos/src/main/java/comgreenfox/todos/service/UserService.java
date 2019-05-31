@@ -10,4 +10,5 @@ public interface UserService {
 
   boolean isValid(User user);
 
+  boolean isExist(User user);
 }
