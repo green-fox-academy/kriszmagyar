@@ -15,8 +15,8 @@
         <label th:for="*{password}">Password</label>
         <input class="form-control" type="password" th:field="*{password}">
       </div>
-      <div th:text="${error}"></div>
       <input class="btn btn-primary" role="button" type="submit" value="Login">
+      <div class="invalid-feedback d-block" th:text="${error}"></div>
     </form>
   </div>
 </div>
