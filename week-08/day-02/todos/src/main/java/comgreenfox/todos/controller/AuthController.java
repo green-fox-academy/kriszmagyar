@@ -18,7 +18,8 @@ public class AuthController {
   private UserService userService;
 
   @GetMapping("/login")
-  public String loginView(@ModelAttribute("error") ValidationError error, Model model) {
+  public String loginView(
+      @ModelAttribute("error") ValidationError error, Model model) {
     model.addAttribute("user", userService.getNewInstance())
       .addAttribute("error", error);
     return "auth/login";
