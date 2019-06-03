@@ -29,7 +29,8 @@ public class ExerciseService {
     return new Greeter(name, title);
   }
 
-  public ResultDTO getResultDto(Action action, UntilDTO until) {
-    return new ResultDTO(new Result(action, until.getUntil()));
+  public ResultDTO<Integer> getResultDto(Action action, UntilDTO until) {
+    Result result = new Result(action, until.getUntil());
+    return new ResultDTO<>(result.getResult());
   }
 }

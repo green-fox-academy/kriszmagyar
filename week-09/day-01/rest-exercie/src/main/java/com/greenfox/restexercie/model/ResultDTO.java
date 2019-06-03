@@ -1,18 +1,18 @@
 package com.greenfox.restexercie.model;
 
-public class ResultDTO {
+public class ResultDTO <T> {
 
-  private int result;
+  private T result;
 
-  public ResultDTO(Result result) {
-    this.result = result.getResult();
+  public ResultDTO(T result) {
+    this.result = result;
   }
 
-  public int getResult() {
+  public T getResult() {
     return result;
   }
 
-  public void setResult(int result) {
+  public void setResult(T result) {
     this.result = result;
   }
 }

@@ -12,7 +12,7 @@ public class Result {
     setResult();
   }
 
-  int getResult() {
+  public int getResult() {
     return result;
   }
 

@@ -52,4 +52,12 @@ public class ExerciseController {
     }
     return exerciseService.getResultDto(action, until);
   }
+
+  @PostMapping("/arrays")
+  public ResultDTO arrays(@Valid @RequestBody ArrayHandler arrayHandler, Errors errors) {
+    if (errors.hasErrors()) {
+      throw new MissingInputException("Please provide what to do with the numbers!");
+    }
+    return exerciseService.getResultDto(action, until);
+  }
 }
