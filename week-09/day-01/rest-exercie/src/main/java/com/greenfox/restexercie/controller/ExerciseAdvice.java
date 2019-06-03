@@ -14,7 +14,7 @@ public class ExerciseAdvice {
   @ResponseBody
   @ExceptionHandler(DoublerInvalidInputException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
-  CustomException doublerBadRequestHandler(DoublerInvalidInputException ex) {
+  public CustomException doublerBadRequestHandler(DoublerInvalidInputException ex) {
     return new CustomException(ex.getMessage());
   }
 
