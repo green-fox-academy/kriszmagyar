@@ -6,6 +6,7 @@ import com.greenfox.restexercie.model.ArrayHandler;
 import com.greenfox.restexercie.model.Doubler;
 import com.greenfox.restexercie.model.Greeter;
 import com.greenfox.restexercie.model.Log;
+import com.greenfox.restexercie.model.LogEntries;
 import com.greenfox.restexercie.model.Result.Action;
 import com.greenfox.restexercie.model.ResultDTO;
 import com.greenfox.restexercie.model.UntilDTO;
@@ -74,5 +75,10 @@ public class ExerciseController {
     }
     logService.save(new Log("/arrays", arrayHandler.toString()));
     return exerciseService.getArrayResultsDto(arrayHandler);
+  }
+
+  @GetMapping("/log")
+  public LogEntries findAllLogs() {
+    return logService.findAllLogs();
   }
 }
