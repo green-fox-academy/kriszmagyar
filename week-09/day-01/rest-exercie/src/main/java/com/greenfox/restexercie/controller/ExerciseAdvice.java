@@ -2,6 +2,7 @@ package com.greenfox.restexercie.controller;
 
 import com.greenfox.restexercie.exceptions.CustomException;
 import com.greenfox.restexercie.exceptions.DoublerInvalidInputException;
+import com.greenfox.restexercie.exceptions.GreeterMissingInputException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,5 +18,13 @@ public class ExerciseAdvice {
   public CustomException doublerBadRequestHandler(DoublerInvalidInputException ex) {
     return new CustomException(ex.getMessage());
   }
+
+  @ResponseBody
+  @ExceptionHandler(GreeterMissingInputException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public CustomException greeterMissingInputHandler(GreeterMissingInputException ex) {
+    return new CustomException(ex.getMessage());
+  }
+
 
 }

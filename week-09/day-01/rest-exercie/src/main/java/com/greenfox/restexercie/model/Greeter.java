@@ -1,23 +1,37 @@
 package com.greenfox.restexercie.model;
 
+import com.greenfox.restexercie.exceptions.GreeterMissingInputException;
+
 public class Greeter {
 
   private String name;
   private String title;
+  private WelcomeMessage welcomeMessage;
 
-  public String getName() {
-    return name;
+  public Greeter(String name, String title) {
+    if (name == null) {
+      throw new GreeterMissingInputException("Please provide a name!");
+    }
+    if (title == null) {
+      throw new GreeterMissingInputException("Please provide a title!");
+    }
+    welcomeMessage = new WelcomeMessage(name, title);
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public WelcomeMessage getWelcomeMessage() {
+    return welcomeMessage;
   }
 
-  public String getTitle() {
-    return title;
-  }
+  private class WelcomeMessage {
 
-  public void setTitle(String title) {
-    this.title = title;
+    private String welcome_message;
+
+    WelcomeMessage(String name, String title) {
+      welcome_message = "Oh, hi there " + name + ", my dear " + title + "!";
+    }
+
+    public String getWelcome_message() {
+      return welcome_message;
+    }
   }
 }

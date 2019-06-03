@@ -1,6 +1,5 @@
 package com.greenfox.restexercie.controller;
 
-import com.greenfox.restexercie.model.CustomError;
 import com.greenfox.restexercie.model.Doubler;
 import com.greenfox.restexercie.model.Greeter;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +16,7 @@ public class ExerciseController {
 
   @GetMapping("/greeter")
   public ResponseEntity greeter(Greeter greeter) {
-    return ResponseEntity.ok().body(greeter);
+    return ResponseEntity.ok().body(greeter.getWelcomeMessage());
   }
 
 }
