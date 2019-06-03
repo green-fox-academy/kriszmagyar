@@ -1,5 +1,9 @@
 package com.greenfox.restexercie.service;
 
+import static com.greenfox.restexercie.util.ArrayUtils.doubling;
+import static com.greenfox.restexercie.util.ArrayUtils.multiply;
+import static com.greenfox.restexercie.util.ArrayUtils.sum;
+
 import com.greenfox.restexercie.exceptions.MissingInputException;
 import com.greenfox.restexercie.model.ArrayHandler;
 import com.greenfox.restexercie.model.Doubler;
@@ -8,7 +12,6 @@ import com.greenfox.restexercie.model.Result;
 import com.greenfox.restexercie.model.Result.Action;
 import com.greenfox.restexercie.model.ResultDTO;
 import com.greenfox.restexercie.model.UntilDTO;
-import com.greenfox.restexercie.util.ArrayUtils;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -37,15 +40,17 @@ public class ExerciseService {
   }
 
   public ResultDTO getArrayResultsDto(ArrayHandler arrayHandler) {
-    switch (arrayHandler.getWhat()) {
+    String command = arrayHandler.getWhat();
+    int[] numbers = arrayHandler.getNumbers();
+    switch (command) {
       case "sum":
-        return new ResultDTO<>(ArrayUtils.sum(arrayHandler.getNumbers()));
+        return new ResultDTO<>(sum(numbers));
       case "multiply":
-        return new ResultDTO<>(ArrayUtils.multiply(arrayHandler.getNumbers()));
+        return new ResultDTO<>(multiply(numbers));
       case "double":
-        return new ResultDTO<>(ArrayUtils.doubling(arrayHandler.getNumbers()));
+        return new ResultDTO<>(doubling(numbers));
       default:
-        throw new MissingInputException("Invalid command: " + arrayHandler.getWhat());
+        throw new MissingInputException("Invalid command: " + command);
     }
   }
 }
