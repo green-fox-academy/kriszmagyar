@@ -5,12 +5,13 @@ import com.greenfox.restexercie.model.Appenda;
 import com.greenfox.restexercie.model.ArrayHandler;
 import com.greenfox.restexercie.model.Doubler;
 import com.greenfox.restexercie.model.Greeter;
+import com.greenfox.restexercie.model.Log;
 import com.greenfox.restexercie.model.Result.Action;
 import com.greenfox.restexercie.model.ResultDTO;
 import com.greenfox.restexercie.model.UntilDTO;
 import com.greenfox.restexercie.service.ExerciseService;
+import com.greenfox.restexercie.service.LogService;
 import javax.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,11 +23,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ExerciseController {
 
-  @Autowired
-  private ExerciseService exerciseService;
+  private final ExerciseService exerciseService;
+  private final LogService logService;
+
+  public ExerciseController(ExerciseService exerciseService,
+      LogService logService) {
+    this.exerciseService = exerciseService;
+    this.logService = logService;
+  }
 
   @GetMapping("/doubling")
   public Doubler doubling(Integer input) {
+    logService.save(new Log("/doubling", "input=" + input));
     return exerciseService.getDoublerInstance(input);
   }
 
