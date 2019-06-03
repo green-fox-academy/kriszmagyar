@@ -1,5 +1,6 @@
 package com.greenfox.restexercie.controller;
 
+import com.greenfox.restexercie.exceptions.CustomException;
 import com.greenfox.restexercie.exceptions.DoublerInvalidInputException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,8 +14,8 @@ public class ExerciseAdvice {
   @ResponseBody
   @ExceptionHandler(DoublerInvalidInputException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
-  String doublerBadRequestHandler(DoublerInvalidInputException ex) {
-    return ex.getMessage();
+  CustomException doublerBadRequestHandler(DoublerInvalidInputException ex) {
+    return new CustomException(ex.getMessage());
   }
 
 }
