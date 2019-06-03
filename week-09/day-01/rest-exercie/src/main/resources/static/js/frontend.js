@@ -74,7 +74,7 @@ class Updoot {
 
     // expecting error with prompt to provide a title
     await this.request('get', '/greeter', { name: 'petike' }, errorData => {
-      return errorData.error = 'Please provide a title!';
+      return errorData.error === 'Please provide a title!';
   });
 
     // expected success with specific response

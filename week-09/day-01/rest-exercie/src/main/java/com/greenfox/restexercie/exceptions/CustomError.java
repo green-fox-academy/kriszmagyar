@@ -1,10 +1,10 @@
 package com.greenfox.restexercie.exceptions;
 
-public class CustomException {
+public class CustomError {
 
   private String error;
 
-  public CustomException(String error) {
+  public CustomError(String error) {
     this.error = error;
   }
 

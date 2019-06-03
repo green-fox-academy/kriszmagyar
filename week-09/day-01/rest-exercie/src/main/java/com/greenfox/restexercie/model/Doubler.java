@@ -1,16 +1,11 @@
 package com.greenfox.restexercie.model;
 
-import com.greenfox.restexercie.exceptions.MissingInputException;
-
 public class Doubler {
 
   private int received;
   private int result;
 
-  public Doubler(Integer received) {
-    if (received == null) {
-      throw new MissingInputException("Please provide an input!");
-    }
+  public Doubler(int received) {
     this.received = received;
     this.result = received * 2;
   }
