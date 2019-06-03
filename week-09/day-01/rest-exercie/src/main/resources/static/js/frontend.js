@@ -18,9 +18,6 @@ class Updoot {
     const id = path.split('/')[0];
     const [ulEl] = $(`#${id}_response`).append(`<div class="alert alert-${type}">${id} / ${info}</div>`);
     const alertEl = ulEl.querySelector('div:last-child');
-    setTimeout(() => {
-      $(alertEl).fadeOut();
-  }, 5000);
   }
 
   onServerChangeSubmit(event) {
