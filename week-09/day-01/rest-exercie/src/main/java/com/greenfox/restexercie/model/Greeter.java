@@ -1,6 +1,6 @@
 package com.greenfox.restexercie.model;
 
-import com.greenfox.restexercie.exceptions.GreeterMissingInputException;
+import com.greenfox.restexercie.exceptions.MissingInputException;
 
 public class Greeter {
 
@@ -10,10 +10,10 @@ public class Greeter {
 
   public Greeter(String name, String title) {
     if (name == null) {
-      throw new GreeterMissingInputException("Please provide a name!");
+      throw new MissingInputException("Please provide a name!");
     }
     if (title == null) {
-      throw new GreeterMissingInputException("Please provide a title!");
+      throw new MissingInputException("Please provide a title!");
     }
     welcomeMessage = new WelcomeMessage(name, title);
   }
