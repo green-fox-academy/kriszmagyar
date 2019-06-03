@@ -2,6 +2,7 @@ package com.greenfox.restexercie.controller;
 
 import com.greenfox.restexercie.model.CustomError;
 import com.greenfox.restexercie.model.Doubler;
+import com.greenfox.restexercie.model.Greeter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,11 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExerciseController {
 
   @GetMapping("/doubling")
-  public ResponseEntity doubling(Integer input) {
-    if (input == null) {
-      return ResponseEntity.badRequest().body(new CustomError("Please provide an input!"));
-    }
-    return ResponseEntity.ok().body(new Doubler(input));
+  public Doubler doubling(Integer input) {
+    return new Doubler(input);
+  }
+
+  @GetMapping("/greeter")
+  public ResponseEntity greeter(Greeter greeter) {
+    return ResponseEntity.ok().body(greeter);
   }
 
 }
