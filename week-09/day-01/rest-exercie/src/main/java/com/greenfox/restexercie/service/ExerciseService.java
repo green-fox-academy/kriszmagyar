@@ -3,6 +3,10 @@ package com.greenfox.restexercie.service;
 import com.greenfox.restexercie.exceptions.MissingInputException;
 import com.greenfox.restexercie.model.Doubler;
 import com.greenfox.restexercie.model.Greeter;
+import com.greenfox.restexercie.model.Result;
+import com.greenfox.restexercie.model.Result.Action;
+import com.greenfox.restexercie.model.ResultDTO;
+import com.greenfox.restexercie.model.UntilDTO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,5 +27,9 @@ public class ExerciseService {
       throw new MissingInputException("Please provide a title!");
     }
     return new Greeter(name, title);
+  }
+
+  public ResultDTO getResultDto(Action action, UntilDTO until) {
+    return new ResultDTO(new Result(action, until.getUntil()));
   }
 }
