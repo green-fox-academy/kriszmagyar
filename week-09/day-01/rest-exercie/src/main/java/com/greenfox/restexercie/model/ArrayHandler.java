@@ -1,5 +1,6 @@
 package com.greenfox.restexercie.model;
 
+import java.util.Arrays;
 import javax.validation.constraints.NotNull;
 
 public class ArrayHandler {
@@ -23,5 +24,10 @@ public class ArrayHandler {
 
   public void setNumbers(int[] numbers) {
     this.numbers = numbers;
+  }
+
+  @Override
+  public String toString() {
+    return "what=" + what + ", numbers=" + Arrays.toString(numbers);
   }
 }
