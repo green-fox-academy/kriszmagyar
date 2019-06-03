@@ -12,7 +12,7 @@ public class ExerciseController {
   @GetMapping("/doubling")
   public ResponseEntity doubling(Integer input) {
     if (input == null) {
-      return ResponseEntity.ok().body(new CustomError("Please provide an input!"));
+      return ResponseEntity.badRequest().body(new CustomError("Please provide an input!"));
     }
     return ResponseEntity.ok().body(new Doubler(input));
   }
