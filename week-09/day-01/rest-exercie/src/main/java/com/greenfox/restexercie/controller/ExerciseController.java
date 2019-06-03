@@ -2,6 +2,7 @@ package com.greenfox.restexercie.controller;
 
 import com.greenfox.restexercie.exceptions.MissingInputException;
 import com.greenfox.restexercie.model.Appenda;
+import com.greenfox.restexercie.model.ArrayHandler;
 import com.greenfox.restexercie.model.Doubler;
 import com.greenfox.restexercie.model.Greeter;
 import com.greenfox.restexercie.model.Result.Action;
@@ -58,6 +59,6 @@ public class ExerciseController {
     if (errors.hasErrors()) {
       throw new MissingInputException("Please provide what to do with the numbers!");
     }
-    return exerciseService.getResultDto(action, until);
+    return exerciseService.getArrayResultsDto(arrayHandler);
   }
 }
