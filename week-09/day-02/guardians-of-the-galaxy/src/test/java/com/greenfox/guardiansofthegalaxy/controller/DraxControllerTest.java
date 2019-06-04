@@ -13,6 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.greenfox.guardiansofthegalaxy.model.FoodDTO;
 import com.greenfox.guardiansofthegalaxy.service.DraxService;
 import com.greenfox.guardiansofthegalaxy.utils.TestUtils;
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import java.util.Arrays;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,6 +51,38 @@ public class DraxControllerTest {
         .andExpect(jsonPath("$[1].calorie", is(800)));
 
     verify(draxServiceMock, times(1)).findAll();
+    verifyNoMoreInteractions(draxServiceMock);
+  }
+
+  @Test
+  public void findById_withValidId() throws Exception {
+    FoodDTO food = new FoodDTO("Pizza", 5, 800);
+    food.setId(2);
+
+    when(draxServiceMock.findById(2)).thenReturn(food);
+
+    mockMvc.perform(get("/drax/foods/2")
+        .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(TestUtils.APP_JSON))
+        .andExpect(jsonPath("$.id", is(2)))
+        .andExpect(jsonPath("$.name", is("Pizza")))
+        .andExpect(jsonPath("$.amount", is(5)))
+        .andExpect(jsonPath("$.calorie", is(800)));
+
+    verify(draxServiceMock, times(1)).findById(2);
+    verifyNoMoreInteractions(draxServiceMock);
+  }
+
+  @Test
+  public void findById_withInvalidId() throws Exception {
+    when(draxServiceMock.findById(3)).thenThrow(new InvalidArgumentException(new String[]{}));
+
+    mockMvc.perform(get("/drax/foods/3")
+        .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isNotFound());
+
+    verify(draxServiceMock, times(1)).findById(3);
     verifyNoMoreInteractions(draxServiceMock);
   }
 }
