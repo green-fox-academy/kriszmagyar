@@ -7,7 +7,7 @@ public class CargoFillResponse {
   private String shipStatus;
   private boolean ready;
 
-  public CargoFillResponse(String received, int amount, String shipStatus, boolean ready) {
+  CargoFillResponse(String received, int amount, String shipStatus, boolean ready) {
     this.received = received;
     this.amount = amount;
     this.shipStatus = shipStatus;

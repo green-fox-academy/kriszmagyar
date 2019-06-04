@@ -1,6 +1,7 @@
 package com.greenfox.guardiansofthegalaxy.controller;
 
 import com.greenfox.guardiansofthegalaxy.model.Cargo;
+import com.greenfox.guardiansofthegalaxy.model.CargoFillResponse;
 import com.greenfox.guardiansofthegalaxy.model.CustomError;
 import com.greenfox.guardiansofthegalaxy.model.Translation;
 import com.greenfox.guardiansofthegalaxy.model.YonduArrow;
@@ -33,5 +34,13 @@ public class GuardianController {
   @GetMapping("/rocket")
   public ResponseEntity getCargo() {
     return ResponseEntity.ok().body(cargo);
+  }
+
+  @GetMapping("/rocket/fill")
+  public ResponseEntity fillCargo(String caliber, Integer amount) {
+    if (caliber == null || amount == null) {
+      return ResponseEntity.badRequest().body(new CustomError("Invalid parameters!"));
+    }
+    return ResponseEntity.ok().body(cargo.fill(caliber, amount));
   }
 }

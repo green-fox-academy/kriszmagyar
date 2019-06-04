@@ -11,22 +11,43 @@ public class Cargo {
   private boolean ready;
 
   public Cargo() {
-    shipStatus = "empty";
+    setShipStatus();
   }
 
-  public CargoFillResponse fill(double caliberSize, int amount) {
+  public CargoFillResponse fill(String caliberSize, int amount) {
     setCaliber(caliberSize, amount);
     setShipStatus();
     setReady();
-    return new CargoFillResponse(Double.toString(caliberSize), amount, shipStatus, ready);
+    return new CargoFillResponse(caliberSize, amount, shipStatus, ready);
   }
 
-  private void setCaliber(double caliberSize, int amount) {
-
+  private void setCaliber(String caliberSize, int amount) {
+    switch (caliberSize) {
+      case ".25":
+        caliber25 += amount;
+        break;
+      case ".30":
+        caliber30 += amount;
+        break;
+      case ".50":
+        caliber50 += amount;
+        break;
+      default:
+        throw new RuntimeException("Invalid caliber size!");
+    }
   }
 
   private void setShipStatus() {
-    shipStatus = "50%";
+    int fillPercent = (caliber25 + caliber30 + caliber50) * 100 / MAX_CALIBER;
+    if (fillPercent == 0) {
+      shipStatus = "empty";
+    } else if (fillPercent == 100) {
+      shipStatus = "full";
+    } else if (fillPercent > 100) {
+      shipStatus = "overloaded";
+    } else {
+      shipStatus = fillPercent + "%";
+    }
   }
 
   private void setReady() {
