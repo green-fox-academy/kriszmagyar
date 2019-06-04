@@ -6,6 +6,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -84,5 +85,31 @@ public class DraxControllerTest {
 
     verify(draxServiceMock, times(1)).findById(3);
     verifyNoMoreInteractions(draxServiceMock);
+  }
+
+  @Test
+  public void addFood_withValidParams() throws Exception {
+    when(draxServiceMock.save("Hamburger", 10, 2000))
+        .thenReturn(new FoodDTO("Hamburger", 10, 2000));
+
+    mockMvc.perform(post("/drax/foods")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content("{\"name\": \"Hamburger\", \"amount\": 10, \"calorie\": 2000}"))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(TestUtils.APP_JSON))
+        .andExpect(jsonPath("$.name", is("Hamburger")))
+        .andExpect(jsonPath("$.amount", is(10)))
+        .andExpect(jsonPath("$.calorie", is(2000)));
+
+    verify(draxServiceMock, times(1)).save("Hamburger", 10, 2000);
+    verifyNoMoreInteractions(draxServiceMock);
+  }
+
+  @Test
+  public void addFood_withInvalidParams() throws Exception {
+    mockMvc.perform(post("/drax/foods")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content("{}"))
+        .andExpect(status().isBadRequest());
   }
 }

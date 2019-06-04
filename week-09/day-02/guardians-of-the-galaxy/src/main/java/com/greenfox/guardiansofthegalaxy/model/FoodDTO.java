@@ -1,10 +1,13 @@
 package com.greenfox.guardiansofthegalaxy.model;
 
+import javax.validation.constraints.NotEmpty;
+
 public class FoodDTO {
 
   private static long currentId = 1;
 
   private long id;
+  @NotEmpty
   private String name;
   private int amount;
   private int calorie;

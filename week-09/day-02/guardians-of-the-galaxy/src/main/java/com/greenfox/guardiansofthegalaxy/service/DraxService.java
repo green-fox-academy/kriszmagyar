@@ -21,4 +21,10 @@ public class DraxService {
         .findFirst()
         .orElseThrow(() -> new InvalidArgumentException(new String[]{"Invalid id!"}));
   }
+
+  public FoodDTO save(String name, int amount, int calories) {
+    FoodDTO foodDTO = new FoodDTO(name, amount, calories);
+    foods.add(foodDTO);
+    return foodDTO;
+  }
 }
