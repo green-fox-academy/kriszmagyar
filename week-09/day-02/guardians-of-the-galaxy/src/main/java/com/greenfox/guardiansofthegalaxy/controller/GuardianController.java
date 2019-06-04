@@ -1,19 +1,20 @@
 package com.greenfox.guardiansofthegalaxy.controller;
 
 import com.greenfox.guardiansofthegalaxy.model.Cargo;
-import com.greenfox.guardiansofthegalaxy.model.CargoFillResponse;
 import com.greenfox.guardiansofthegalaxy.model.CustomError;
 import com.greenfox.guardiansofthegalaxy.model.Translation;
 import com.greenfox.guardiansofthegalaxy.model.YonduArrow;
+import com.greenfox.guardiansofthegalaxy.service.GuardianService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class GuardianController {
 
-  private Cargo cargo = new Cargo();
+  @Autowired
+  private GuardianService guardianService;
 
   @GetMapping("/groot")
   public ResponseEntity groot(String message) {
@@ -33,7 +34,7 @@ public class GuardianController {
 
   @GetMapping("/rocket")
   public ResponseEntity getCargo() {
-    return ResponseEntity.ok().body(cargo);
+    return ResponseEntity.ok().body(guardianService.getCargo());
   }
 
   @GetMapping("/rocket/fill")
@@ -41,6 +42,6 @@ public class GuardianController {
     if (caliber == null || amount == null) {
       return ResponseEntity.badRequest().body(new CustomError("Invalid parameters!"));
     }
-    return ResponseEntity.ok().body(cargo.fill(caliber, amount));
+    return ResponseEntity.ok().body(guardianService.getCargo().fill(caliber, amount));
   }
 }
