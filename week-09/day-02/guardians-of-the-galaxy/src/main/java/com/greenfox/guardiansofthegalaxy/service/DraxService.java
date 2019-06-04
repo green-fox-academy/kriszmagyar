@@ -10,7 +10,7 @@ public class DraxService {
 
   private List<FoodDTO> foods = new ArrayList<>();
 
-  public List<FoodDTO> getFoods() {
+  public List<FoodDTO> findAll() {
     return foods;
   }
 }

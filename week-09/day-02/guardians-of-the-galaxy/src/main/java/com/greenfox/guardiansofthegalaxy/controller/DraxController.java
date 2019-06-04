@@ -16,8 +16,8 @@ public class DraxController {
   private DraxService draxService;
 
   @GetMapping("/foods")
-  public List<FoodDTO> getFoods() {
-    return draxService.getFoods();
+  public List<FoodDTO> findAll() {
+    return draxService.findAll();
   }
 
 }
