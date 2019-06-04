@@ -1,6 +1,5 @@
 package com.greenfox.guardiansofthegalaxy.controller;
 
-import com.greenfox.guardiansofthegalaxy.model.Cargo;
 import com.greenfox.guardiansofthegalaxy.model.CustomError;
 import com.greenfox.guardiansofthegalaxy.model.Translation;
 import com.greenfox.guardiansofthegalaxy.model.YonduArrow;
