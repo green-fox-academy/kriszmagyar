@@ -5,6 +5,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -111,5 +112,24 @@ public class DraxControllerTest {
         .contentType(MediaType.APPLICATION_JSON)
         .content("{}"))
         .andExpect(status().isBadRequest());
+  }
+
+  @Test
+  public void deleteFood_withValidId() throws Exception {
+    when(draxServiceMock.contains(2)).thenReturn(true);
+
+    mockMvc.perform(delete("/drax/foods/2")
+        .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(content().string("Delete was successful!"));
+  }
+
+  @Test
+  public void deleteFood_withInvalidId() throws Exception {
+    when(draxServiceMock.contains(2)).thenReturn(false);
+
+    mockMvc.perform(delete("/drax/foods/2")
+        .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isNotFound());
   }
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +27,7 @@ public class DraxController {
     return draxService.findAll();
   }
 
-  @GetMapping("foods/{id}")
+  @GetMapping("/foods/{id}")
   public ResponseEntity findById(@PathVariable long id) {
     try {
       return ResponseEntity.ok().body(draxService.findById(id));
@@ -36,8 +37,17 @@ public class DraxController {
     }
   }
 
-  @PostMapping("foods")
+  @PostMapping("/foods")
   public FoodDTO addFood(@Valid @RequestBody FoodDTO foodDTO) {
     return draxService.save(foodDTO.getName(), foodDTO.getAmount(), foodDTO.getCalorie());
+  }
+
+  @DeleteMapping("/foods/{id}")
+  public ResponseEntity deleteFood(@PathVariable long id) {
+    if (draxService.contains(id)) {
+      draxService.delete(id);
+      return ResponseEntity.ok().body("Delete was successful!");
+    }
+    return ResponseEntity.notFound().build();
   }
 }
