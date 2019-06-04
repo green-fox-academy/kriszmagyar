@@ -62,4 +62,17 @@ public class GuardianControllerTest {
         .andExpect(jsonPath("$.error", is("Invalid parameters!")));
   }
 
+  @Test
+  public void getCargo_returnsEmptyCargo() throws Exception {
+    mockMvc.perform(get("/rocket")
+        .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(TestUtils.APP_JSON))
+        .andExpect(jsonPath("$.caliber25", is(0)))
+        .andExpect(jsonPath("$.caliber30", is(0)))
+        .andExpect(jsonPath("$.caliber50", is(0)))
+        .andExpect(jsonPath("$.shipStatus", is("empty")))
+        .andExpect(jsonPath("$.ready", is(false)));
+  }
+
 }

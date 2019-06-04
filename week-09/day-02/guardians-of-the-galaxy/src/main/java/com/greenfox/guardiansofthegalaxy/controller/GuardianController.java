@@ -1,5 +1,6 @@
 package com.greenfox.guardiansofthegalaxy.controller;
 
+import com.greenfox.guardiansofthegalaxy.model.Cargo;
 import com.greenfox.guardiansofthegalaxy.model.CustomError;
 import com.greenfox.guardiansofthegalaxy.model.Translation;
 import com.greenfox.guardiansofthegalaxy.model.YonduArrow;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class GuardianController {
+
+  private Cargo cargo = new Cargo();
 
   @GetMapping("/groot")
   public ResponseEntity groot(String message) {
@@ -27,4 +30,8 @@ public class GuardianController {
     return ResponseEntity.ok().body(new YonduArrow(distance, time));
   }
 
+  @GetMapping("/rocket")
+  public ResponseEntity getCargo() {
+    return ResponseEntity.ok().body(cargo);
+  }
 }
