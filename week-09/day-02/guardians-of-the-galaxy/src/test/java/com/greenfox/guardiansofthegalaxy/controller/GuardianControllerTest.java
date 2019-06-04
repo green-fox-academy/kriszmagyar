@@ -24,7 +24,7 @@ public class GuardianControllerTest {
   private MockMvc mockMvc;
 
   @Test
-  public void groot_shouldReturnTranslationObjectWithGivenParam() throws Exception {
+  public void groot_withParams() throws Exception {
     mockMvc.perform(get("/groot?message=hello")
         .contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
@@ -40,6 +40,26 @@ public class GuardianControllerTest {
         .andExpect(status().isBadRequest())
         .andExpect(content().contentType(TestUtils.APP_JSON))
         .andExpect(jsonPath("$.error", is("I am Groot!")));
+  }
+
+  @Test
+  public void yondu_withParams() throws Exception {
+    mockMvc.perform(get("/yondu?distance=100.0&time=10.0")
+        .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(TestUtils.APP_JSON))
+        .andExpect(jsonPath("$.distance", is(100.0)))
+        .andExpect(jsonPath("$.time", is(10.0)))
+        .andExpect(jsonPath("$.speed", is(10.0)));
+  }
+
+  @Test
+  public void yondu_withoutParams() throws Exception {
+    mockMvc.perform(get("/yondu")
+        .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isBadRequest())
+        .andExpect(content().contentType(TestUtils.APP_JSON))
+        .andExpect(jsonPath("$.error", is("Invalid parameters!")));
   }
 
 }
