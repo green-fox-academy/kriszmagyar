@@ -31,7 +31,7 @@ namespace TodoApp.Controllers
             var todo = todoService.FindById(id);
             if (todo == null)
             {
-                return NotFound();
+                return NotFound($"Todo item with id {id} is not found.");
             }
             return todo;
         }
@@ -39,6 +39,10 @@ namespace TodoApp.Controllers
         [HttpPost]
         public ActionResult<TodoModel> Post([FromBody] TodoModel todo)
         {
+            if (todo.Id != 0)
+            {
+                return BadRequest("You cannot add todo with id, as it is generated.");
+            }
             todoService.Add(todo);
             return CreatedAtAction(nameof(Get), new { id = todo.Id }, todo);
         }
@@ -48,7 +52,7 @@ namespace TodoApp.Controllers
         {
             if (id != todo.Id)
             {
-                return BadRequest();
+                return BadRequest("The given ids do not match.");
             }
             todoService.Update(todo);
             return NoContent();
@@ -60,7 +64,7 @@ namespace TodoApp.Controllers
             var todo = todoService.FindById(id);
             if (todo == null)
             {
-                return NotFound();
+                return NotFound($"Todo item with a given id {id} is not found.");
             }
 
             todoService.Delete(todo);
