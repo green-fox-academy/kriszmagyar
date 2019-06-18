@@ -22,7 +22,8 @@ namespace TodoApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ITodoService, TodoService>();
-            services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
+            services.AddDbContext<TodoContext>(opt => 
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
