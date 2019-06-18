@@ -6,7 +6,7 @@ using TodoApp.Models;
 
 namespace TodoApp.Services
 {
-    interface ITodoService
+    public interface ITodoService
     {
         TodoModel Add(TodoModel todo); 
     }

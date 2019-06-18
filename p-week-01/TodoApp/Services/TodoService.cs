@@ -8,9 +8,18 @@ namespace TodoApp.Services
 {
     public class TodoService : ITodoService
     {
+        private readonly TodoContext context;
+
+        public TodoService(TodoContext context)
+        {
+            this.context = context;
+        }
+
         public TodoModel Add(TodoModel todo)
         {
-            throw new NotImplementedException();
+            context.Add(todo);
+            context.SaveChanges();
+            return todo;
         }
     }
 }

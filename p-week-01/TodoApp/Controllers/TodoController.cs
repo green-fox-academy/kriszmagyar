@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TodoApp.Models;
+using TodoApp.Services;
 
 namespace TodoApp.Controllers
 {
@@ -11,6 +12,13 @@ namespace TodoApp.Controllers
     [Route("api/[controller]")]
     public class TodoController : ControllerBase
     {
+        private readonly ITodoService todoService;
+
+        public TodoController(ITodoService todoService)
+        {
+            this.todoService = todoService;
+        }
+
         [HttpGet]
         public ActionResult<IEnumerable<TodoModel>> Get()
         {
