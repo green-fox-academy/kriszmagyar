@@ -26,6 +26,16 @@ namespace TodoAppTests.Controllers
             Assert.Equal("Todo Three", actionResult.Value[2].Title);
         }
 
+        private List<TodoModel> GenerateTodoList()
+        {
+            return new List<TodoModel> {
+                new TodoModel { Title = "Todo One" },
+                new TodoModel { Title = "Todo Two" },
+                new TodoModel { Title = "Todo Three" },
+                new TodoModel { Title = "Todo Four" }
+            };
+        }
+
         [Fact]
         public void Get_WhenCalled_ReturnsEmptyList()
         {
@@ -36,14 +46,30 @@ namespace TodoAppTests.Controllers
             Assert.Empty(controller.Get().Value);
         }
 
-        private List<TodoModel> GenerateTodoList()
+        [Fact]
+        public void Get_WhenCalledWithNonExistingId_ReturnsNotFound()
         {
-            return new List<TodoModel> {
-                new TodoModel { Title = "Todo One" },
-                new TodoModel { Title = "Todo Two" },
-                new TodoModel { Title = "Todo Three" },
-                new TodoModel { Title = "Todo Four" }
-            };
+            var mockService = new Mock<ITodoService>();
+            var controller = new TodoController(mockService.Object);
+
+            Assert.IsType<NotFoundObjectResult>(controller.Get(1).Result);
+        }
+
+        [Fact]
+        public void Get_WhenCalledWithValidId_ReturnsTodo()
+        {
+            var mockService = new Mock<ITodoService>();
+            mockService.Setup(s => s.FindById(1)).Returns(new TodoModel()
+            {
+                Id = 1,
+                Title = "Todo One"
+            });
+            var controller = new TodoController(mockService.Object);
+
+            var todo = controller.Get(1).Value;
+
+            Assert.Equal(1, todo.Id);
+            Assert.Equal("Todo One", todo.Title);
         }
     }
 }
