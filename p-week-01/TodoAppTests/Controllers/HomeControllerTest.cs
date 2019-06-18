@@ -59,17 +59,39 @@ namespace TodoAppTests.Controllers
         public void Get_WhenCalledWithValidId_ReturnsTodo()
         {
             var mockService = new Mock<ITodoService>();
-            mockService.Setup(s => s.FindById(1)).Returns(new TodoModel()
-            {
-                Id = 1,
-                Title = "Todo One"
-            });
+            mockService.Setup(s => s.FindById(1))
+                .Returns(new TodoModel() { Id = 1, Title = "Todo One" });
             var controller = new TodoController(mockService.Object);
 
             var todo = controller.Get(1).Value;
 
             Assert.Equal(1, todo.Id);
             Assert.Equal("Todo One", todo.Title);
+        }
+
+        [Fact]
+        public void Post_WhenCalledWithValidTodo_ReturnsCreatedAtAction()
+        {
+            var todo = new TodoModel() { Title = "Todo One" };
+            var mockService = new Mock<ITodoService>();
+            mockService.Setup(s => s.Add(todo))
+                .Returns(new TodoModel() { Id = 1, Title = "Todod One" });
+            var controller = new TodoController(mockService.Object);
+
+            var result = controller.Post(todo);
+
+            Assert.IsType<CreatedAtActionResult>(result.Result);
+        }
+
+        [Fact]
+        public void Post_WhenCalledWithInvalidTodo_ReturnsBadRequest()
+        {
+            var mockService = new Mock<ITodoService>();
+            var controller = new TodoController(mockService.Object);
+
+            var result = controller.Post(new TodoModel() { Id = 1 });
+
+            Assert.IsType<BadRequestObjectResult>(result.Result);
         }
     }
 }
