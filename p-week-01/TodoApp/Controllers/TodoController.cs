@@ -37,9 +37,10 @@ namespace TodoApp.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] TodoModel todo)
+        public ActionResult<TodoModel> Post([FromBody] TodoModel todo)
         {
             todoService.Add(todo);
+            return CreatedAtAction(nameof(Get), todo);
         }
 
         [HttpPut("{id}")]
