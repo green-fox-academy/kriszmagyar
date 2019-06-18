@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,6 +31,12 @@ namespace TodoApp.Services
             context.Add(todo);
             context.SaveChanges();
             return todo;
+        }
+
+        public void Update(TodoModel todo)
+        {
+            context.Entry(todo).State = EntityState.Modified;
+            context.SaveChanges();
         }
     }
 }

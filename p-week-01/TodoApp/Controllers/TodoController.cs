@@ -40,12 +40,18 @@ namespace TodoApp.Controllers
         public ActionResult<TodoModel> Post([FromBody] TodoModel todo)
         {
             todoService.Add(todo);
-            return CreatedAtAction(nameof(Get), todo);
+            return CreatedAtAction(nameof(Get), new { id = todo.Id }, todo);
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult Put(long id, [FromBody] TodoModel todo)
         {
+            if (id != todo.Id)
+            {
+                return BadRequest();
+            }
+            todoService.Update(todo);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
