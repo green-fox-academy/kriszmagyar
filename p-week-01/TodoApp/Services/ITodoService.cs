@@ -9,6 +9,7 @@ namespace TodoApp.Services
     public interface ITodoService
     {
         TodoModel[] FindAll();
+        TodoModel FindById(long id);
         TodoModel Add(TodoModel todo);
     }
 }

@@ -26,14 +26,20 @@ namespace TodoApp.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<TodoModel> Get(long id)
         {
-            return "value";
+            TodoModel todo = todoService.FindById(id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+            return todo;
         }
 
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] TodoModel todo)
         {
+            todoService.Add(todo);
         }
 
         [HttpPut("{id}")]

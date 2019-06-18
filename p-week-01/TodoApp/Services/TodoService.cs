@@ -20,6 +20,11 @@ namespace TodoApp.Services
             return context.Todos.ToArray();
         }
 
+        public TodoModel FindById(long id)
+        {
+            return context.Todos.Find(id);
+        }
+
         public TodoModel Add(TodoModel todo)
         {
             context.Add(todo);
