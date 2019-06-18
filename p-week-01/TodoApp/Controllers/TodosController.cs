@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TodoApp.Models;
 
 namespace TodoApp.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class TodosController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<TodoModel>> Get()
         {
-            return new string[] { "value1", "value2", "value3", "value4" };
+            return new TodoModel[] { new TodoModel() };
         }
 
         [HttpGet("{id}")]
