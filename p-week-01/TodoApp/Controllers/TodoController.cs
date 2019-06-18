@@ -9,7 +9,7 @@ namespace TodoApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TodosController : ControllerBase
+    public class TodoController : ControllerBase
     {
         [HttpGet]
         public ActionResult<IEnumerable<TodoModel>> Get()
