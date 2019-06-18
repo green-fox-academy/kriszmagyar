@@ -28,7 +28,7 @@ namespace TodoApp.Controllers
         [HttpGet("{id}")]
         public ActionResult<TodoModel> Get(long id)
         {
-            TodoModel todo = todoService.FindById(id);
+            var todo = todoService.FindById(id);
             if (todo == null)
             {
                 return NotFound();
@@ -55,8 +55,16 @@ namespace TodoApp.Controllers
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(long id)
         {
+            var todo = todoService.FindById(id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            todoService.Delete(todo);
+            return NoContent();
         }
     }
 }

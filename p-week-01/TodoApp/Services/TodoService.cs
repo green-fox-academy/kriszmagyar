@@ -38,5 +38,11 @@ namespace TodoApp.Services
             context.Entry(todo).State = EntityState.Modified;
             context.SaveChanges();
         }
+
+        public void Delete(TodoModel todo)
+        {
+            context.Remove(todo);
+            context.SaveChanges();
+        }
     }
 }

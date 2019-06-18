@@ -12,5 +12,6 @@ namespace TodoApp.Services
         TodoModel FindById(long id);
         TodoModel Add(TodoModel todo);
         void Update(TodoModel todo);
+        void Delete(TodoModel id);
     }
 }
