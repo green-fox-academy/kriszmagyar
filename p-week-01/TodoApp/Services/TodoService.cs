@@ -16,9 +16,9 @@ namespace TodoApp.Services
             this.context = context;
         }
 
-        public TodoModel[] FindAll()
+        public List<TodoModel> FindAll()
         {
-            return context.Todos.ToArray();
+            return context.Todos.ToList();
         }
 
         public TodoModel FindById(long id)

@@ -20,7 +20,7 @@ namespace TodoApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<TodoModel>> Get()
+        public ActionResult<List<TodoModel>> Get()
         {
             return todoService.FindAll();
         }
