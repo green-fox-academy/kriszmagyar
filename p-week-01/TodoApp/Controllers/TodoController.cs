@@ -44,7 +44,7 @@ namespace TodoApp.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult Put(long id, [FromBody] TodoModel todo)
+        public IActionResult Put(long id, [FromBody] TodoModel todo)
         {
             if (id != todo.Id)
             {
@@ -55,7 +55,7 @@ namespace TodoApp.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult Delete(long id)
+        public IActionResult Delete(long id)
         {
             var todo = todoService.FindById(id);
             if (todo == null)
