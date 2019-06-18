@@ -15,6 +15,11 @@ namespace TodoApp.Services
             this.context = context;
         }
 
+        public TodoModel[] FindAll()
+        {
+            return context.Todos.ToArray();
+        }
+
         public TodoModel Add(TodoModel todo)
         {
             context.Add(todo);

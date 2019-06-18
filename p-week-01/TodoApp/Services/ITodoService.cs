@@ -8,6 +8,7 @@ namespace TodoApp.Services
 {
     public interface ITodoService
     {
-        TodoModel Add(TodoModel todo); 
+        TodoModel[] FindAll();
+        TodoModel Add(TodoModel todo);
     }
 }

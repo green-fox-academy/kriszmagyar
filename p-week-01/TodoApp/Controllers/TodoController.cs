@@ -22,7 +22,7 @@ namespace TodoApp.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<TodoModel>> Get()
         {
-            return new TodoModel[] { new TodoModel() };
+            return todoService.FindAll();
         }
 
         [HttpGet("{id}")]
