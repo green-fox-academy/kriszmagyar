@@ -93,5 +93,52 @@ namespace TodoAppTests.Controllers
 
             Assert.IsType<BadRequestObjectResult>(result.Result);
         }
+
+        [Fact]
+        public void Put_WhenCalledWithValidTodo_ReturnsNoContent()
+        {
+            var mockService = new Mock<ITodoService>();
+            var controller = new TodoController(mockService.Object);
+
+            var todo = new TodoModel() { Id = 1, Title = "Todo One" };
+            var result = controller.Put(1, todo);
+
+            Assert.IsType<NoContentResult>(result);
+        }
+
+        [Fact]
+        public void Put_WhenCalledWithNonMatchingTodoAndPath_BadRequest()
+        {
+            var mockService = new Mock<ITodoService>();
+            var controller = new TodoController(mockService.Object);
+
+            var todo = new TodoModel() { Id = 1, Title = "Todo One" };
+            var result = controller.Put(2, todo);
+
+            Assert.IsType<BadRequestObjectResult>(result);
+        }
+
+        [Fact]
+        public void Delete_WhenCalledWithValidId_ReturnsNoContent()
+        {
+            var mockService = new Mock<ITodoService>();
+            mockService.Setup(s => s.FindById(1)).Returns(new TodoModel());
+            var controller = new TodoController(mockService.Object);
+
+            var result = controller.Delete(1);
+
+            Assert.IsType<NoContentResult>(result);
+        }
+
+        [Fact]
+        public void Delete_WhenCalledWithInvalidId_NotFound()
+        {
+            var mockService = new Mock<ITodoService>();
+            var controller = new TodoController(mockService.Object);
+
+            var result = controller.Delete(1);
+
+            Assert.IsType<NotFoundObjectResult>(result);
+        }
     }
 }
