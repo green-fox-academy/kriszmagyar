@@ -4,8 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using TodoApp.Auth;
 using TodoApp.Models;
 using TodoApp.Services;
+using System.Text;
 
 namespace TodoApp
 {
@@ -25,6 +29,11 @@ namespace TodoApp
             services.AddDbContext<TodoContext>(opt => 
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            var tokenSettingsSection = Configuration.GetSection("TokenSettings");
+            services.Configure<TokenSettings>(tokenSettingsSection);
+            var tokenSettings = tokenSettingsSection.Get<TokenSettings>();
+            var key = Encoding.ASCII.GetBytes(tokenSettings.Secret);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
