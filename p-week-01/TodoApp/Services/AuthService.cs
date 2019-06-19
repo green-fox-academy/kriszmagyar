@@ -33,11 +33,16 @@ namespace TodoApp.Services
 
         private UserModel GetValidUser(string username, string password)
         {
-            if (!username.Equals("Admin") || !password.Equals("password"))
+            if (IsValidUser(username, password))
             {
                 return null;
             }
             return new UserModel() { Username = username };
+        }
+
+        private bool IsValidUser(string username, string password)
+        {
+            return !username.Equals("Admin") || !password.Equals("password");
         }
 
         private string GetUserToken(UserModel user)
@@ -47,8 +52,7 @@ namespace TodoApp.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim("id", user.Id.ToString()),
-                    new Claim("username", user.Username)
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(tokenSettings.AccessExpiration),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
