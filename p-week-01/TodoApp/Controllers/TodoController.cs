@@ -9,9 +9,9 @@ using TodoApp.Services;
 
 namespace TodoApp.Controllers
 {
-    [Authorize]
-    [ApiController]
+    [Authorize(Roles = Role.Admin)]
     [Route("api/[controller]")]
+    [ApiController]
     public class TodoController : ControllerBase
     {
         private readonly ITodoService todoService;

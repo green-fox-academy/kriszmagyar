@@ -37,7 +37,7 @@ namespace TodoApp.Services
             {
                 return null;
             }
-            return new UserModel() { Id = 10, Username = username };
+            return new UserModel() { Id = 10, Username = username, Role = Role.User };
         }
 
         private bool IsValidUser(string username, string password)
@@ -52,7 +52,8 @@ namespace TodoApp.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                    new Claim(ClaimTypes.Name, user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role)
                 }),
                 Expires = DateTime.UtcNow.AddDays(tokenSettings.AccessExpiration),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
