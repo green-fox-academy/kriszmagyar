@@ -10,6 +10,7 @@ using TodoApp.Models;
 using TodoApp.Services;
 using System.Text;
 using TodoApp.Repositories;
+using System.Threading.Tasks;
 
 namespace TodoApp
 {
@@ -40,6 +41,19 @@ namespace TodoApp
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(opt =>
                 {
+                    opt.Events = new JwtBearerEvents
+                    {
+                        OnTokenValidated = context =>
+                        {
+                            var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
+                            var userId = long.Parse(context.Principal.Identity.Name);
+                            if (userService.FindById(userId) == null)
+                            {
+                                context.Fail("Unauthorized");
+                            }
+                            return Task.CompletedTask;
+                        }
+                    };
                     opt.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,

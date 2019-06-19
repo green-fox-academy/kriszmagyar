@@ -23,7 +23,7 @@ namespace TodoApp.Services
 
         public UserModel FindById(long id)
         {
-            throw new NotImplementedException();
+            return context.Users.Find(id);
         }
 
         public UserModel FindByUsername(string username)
