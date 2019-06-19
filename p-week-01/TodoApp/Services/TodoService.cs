@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TodoApp.Models;
+using TodoApp.Repositories;
 
 namespace TodoApp.Services
 {
@@ -14,7 +15,6 @@ namespace TodoApp.Services
         public TodoService(ApplicationContext context)
         {
             this.context = context;
-
         }
 
         public List<TodoModel> FindAll()

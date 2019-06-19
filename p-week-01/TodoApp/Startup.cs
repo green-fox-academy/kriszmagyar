@@ -7,9 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using TodoApp.Models;
-using TodoApp.Models;
 using TodoApp.Services;
 using System.Text;
+using TodoApp.Repositories;
 
 namespace TodoApp
 {
@@ -27,7 +27,9 @@ namespace TodoApp
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<ITodoService, TodoService>();
+
             services.AddDbContext<ApplicationContext>(opt => 
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             

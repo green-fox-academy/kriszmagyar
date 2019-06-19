@@ -13,11 +13,13 @@ namespace TodoApp.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private IAuthService authService;
+        private readonly IAuthService authService;
+        private readonly IUserService userService;
 
-        public UserController(IAuthService authService)
+        public UserController(IAuthService authService, IUserService userService)
         {
             this.authService = authService;
+            this.userService = userService;
         }
 
         [HttpPost("login")]
@@ -28,6 +30,13 @@ namespace TodoApp.Controllers
             {
                 return BadRequest(new { message = "Username or password is incorrect" });
             }
+            return Ok(user);
+        }
+
+        [HttpPost("register")]
+        public IActionResult Register([FromBody] UserModel userParam)
+        {
+            var user = userService.Add(userParam);
             return Ok(user);
         }
     }

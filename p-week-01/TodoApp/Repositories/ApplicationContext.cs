@@ -14,5 +14,6 @@ namespace TodoApp.Repositories
         }
 
         public DbSet<TodoModel> Todos { get; set; }
+        public DbSet<UserModel> Users { get; set; }
     } 
 }

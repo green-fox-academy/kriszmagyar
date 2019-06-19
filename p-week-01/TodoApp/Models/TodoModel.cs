@@ -14,5 +14,6 @@ namespace TodoApp.Models
         [StringLength(100, MinimumLength = 3)]
         public string Title { get; set; }
         public bool IsComplete { get; set; }
+        public long UserId { get; set; }
     }
 }
