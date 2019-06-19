@@ -24,6 +24,7 @@ namespace TodoApp.Controllers
         [HttpGet]
         public ActionResult<List<TodoModel>> Get()
         {
+            // long userId = long.Parse(User.Identity.Name);
             return todoService.FindAll();
         }
 
