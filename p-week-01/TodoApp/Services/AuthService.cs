@@ -47,7 +47,8 @@ namespace TodoApp.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Username)
+                    new Claim("id", user.Id.ToString()),
+                    new Claim("username", user.Username)
                 }),
                 Expires = DateTime.UtcNow.AddDays(tokenSettings.AccessExpiration),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
