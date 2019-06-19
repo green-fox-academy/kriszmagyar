@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace TodoApp.Auth
+namespace TodoApp.Models
 {
     public class TokenSettings
     {

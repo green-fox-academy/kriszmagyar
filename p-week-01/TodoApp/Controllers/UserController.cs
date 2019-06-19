@@ -20,13 +20,14 @@ namespace TodoApp.Controllers
             this.authService = authService;
         }
 
-         [HttpPost("login")]
-         public IActionResult Login([FromBody] UserModel userParam)
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] UserModel userParam)
         {
             var user = authService.Authenticate(userParam.Username, userParam.Password);
             if (user == null)
+            {
                 return BadRequest(new { message = "Username or password is incorrect" });
-
+            }
             return Ok(user);
         }
     }

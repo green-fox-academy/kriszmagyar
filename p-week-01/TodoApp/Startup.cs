@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using TodoApp.Auth;
+using TodoApp.Models;
 using TodoApp.Models;
 using TodoApp.Services;
 using System.Text;
