@@ -22,26 +22,39 @@ namespace TodoApp.Services
 
         public UserModel Authenticate(string username, string password)
         {
+            var user = GetValidUser(username, password);
+            if (user == null)
+            {
+                return null;
+            }
+            user.Token = GetUserToken(user);
+            return user;
+        }
+
+        private UserModel GetValidUser(string username, string password)
+        {
             if (!username.Equals("Admin") || !password.Equals("password"))
             {
                 return null;
             }
+            return new UserModel() { Username = username };
+        }
 
+        private string GetUserToken(UserModel user)
+        {
             var key = Encoding.ASCII.GetBytes(tokenSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, username)
+                    new Claim(ClaimTypes.Name, user.Username)
                 }),
                 Expires = DateTime.UtcNow.AddDays(tokenSettings.AccessExpiration),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            var userToken = tokenHandler.WriteToken(token);
-
-            return new UserModel() { Username = username, Token = userToken };
+            return tokenHandler.WriteToken(token);
         }
     }
 }
