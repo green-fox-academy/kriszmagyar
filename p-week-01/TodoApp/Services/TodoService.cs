@@ -9,9 +9,9 @@ namespace TodoApp.Services
 {
     public class TodoService : ITodoService
     {
-        private readonly TodoContext context;
+        private readonly ApplicationContext context;
 
-        public TodoService(TodoContext context)
+        public TodoService(ApplicationContext context)
         {
             this.context = context;
 

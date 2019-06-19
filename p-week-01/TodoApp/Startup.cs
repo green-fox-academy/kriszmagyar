@@ -28,7 +28,7 @@ namespace TodoApp
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<ITodoService, TodoService>();
-            services.AddDbContext<TodoContext>(opt => 
+            services.AddDbContext<ApplicationContext>(opt => 
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             
             var tokenSettingsSection = Configuration.GetSection("TokenSettings");

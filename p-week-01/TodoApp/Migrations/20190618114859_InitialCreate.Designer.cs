@@ -8,7 +8,7 @@ using TodoApp.Models;
 
 namespace TodoApp.Migrations
 {
-    [DbContext(typeof(TodoContext))]
+    [DbContext(typeof(ApplicationContext))]
     [Migration("20190618114859_InitialCreate")]
     partial class InitialCreate
     {
