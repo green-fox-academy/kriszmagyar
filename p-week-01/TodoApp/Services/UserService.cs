@@ -16,18 +16,6 @@ namespace TodoApp.Services
             this.context = context;
         }
 
-        public UserModel Add(UserModel user)
-        {
-            context.Add(user);
-            context.SaveChanges();
-            return user;
-        }
-
-        public void Delete(UserModel id)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<UserModel> FindAll()
         {
             throw new NotImplementedException();
@@ -38,7 +26,24 @@ namespace TodoApp.Services
             throw new NotImplementedException();
         }
 
+        public UserModel FindByUsername(string username)
+        {
+            return context.Users.SingleOrDefault(u => u.Username.Equals(username));
+        }
+
+        public UserModel Add(UserModel user)
+        {
+            context.Add(user);
+            context.SaveChanges();
+            return user;
+        }
+
         public void Update(UserModel todo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(UserModel id)
         {
             throw new NotImplementedException();
         }

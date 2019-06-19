@@ -14,10 +14,12 @@ namespace TodoApp.Services
     public class AuthService : IAuthService
     {
         private readonly TokenSettings tokenSettings;
+        private readonly IUserService userService;
 
-        public AuthService(IOptions<TokenSettings> tokenSettings)
+        public AuthService(IOptions<TokenSettings> tokenSettings, IUserService userService)
         {
             this.tokenSettings = tokenSettings.Value;
+            this.userService = userService;
         }
 
         public UserModel Authenticate(string username, string password)
@@ -33,16 +35,16 @@ namespace TodoApp.Services
 
         private UserModel GetValidUser(string username, string password)
         {
-            if (IsValidUser(username, password))
+            if (IsInvalidUser(username, password))
             {
                 return null;
             }
-            return new UserModel() { Id = 10, Username = username, Role = Role.User };
+            return userService.FindByUsername(username);
         }
 
-        private bool IsValidUser(string username, string password)
+        private bool IsInvalidUser(string username, string password)
         {
-            return !username.Equals("Admin") || !password.Equals("password");
+            return !username.Equals("admin") || !password.Equals("password");
         }
 
         private string GetUserToken(UserModel user)

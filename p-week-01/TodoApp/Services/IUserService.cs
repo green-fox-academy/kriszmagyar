@@ -10,6 +10,7 @@ namespace TodoApp.Services
     {
         List<UserModel> FindAll();
         UserModel FindById(long id);
+        UserModel FindByUsername(string username);
         UserModel Add(UserModel user);
         void Update(UserModel user);
         void Delete(UserModel id);
