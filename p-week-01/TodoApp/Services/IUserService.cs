@@ -13,6 +13,6 @@ namespace TodoApp.Services
         UserModel FindByUsername(string username);
         UserModel Add(UserModel user);
         void Update(UserModel user);
-        void Delete(UserModel id);
+        void Delete(UserModel user);
     }
 }

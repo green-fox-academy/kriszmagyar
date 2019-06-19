@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace TodoApp.Services
 
         public List<UserModel> FindAll()
         {
-            throw new NotImplementedException();
+            return context.Users.ToList();
         }
 
         public UserModel FindById(long id)
@@ -38,14 +39,16 @@ namespace TodoApp.Services
             return user;
         }
 
-        public void Update(UserModel todo)
+        public void Update(UserModel user)
         {
-            throw new NotImplementedException();
+            context.Entry(user).State = EntityState.Modified;
+            context.SaveChanges();
         }
 
-        public void Delete(UserModel id)
+        public void Delete(UserModel user)
         {
-            throw new NotImplementedException();
+            context.Remove(user);
+            context.SaveChanges();
         }
     }
 }
