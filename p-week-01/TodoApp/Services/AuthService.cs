@@ -22,6 +22,22 @@ namespace TodoApp.Services
             this.userService = userService;
         }
 
+        public UserModel Create(UserModel user, string password)
+        {
+            if (userService.FindByUsername(user.Username) != null)
+            {
+                // User is already in DB, throw exception later
+                return null;
+            }
+
+            CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+            user.Role = Role.User;
+            userService.Add(user);
+            return user;
+        }
+
         public UserModel Authenticate(string username, string password)
         {
             var user = GetValidUser(username, password);
@@ -36,12 +52,23 @@ namespace TodoApp.Services
         private UserModel GetValidUser(string username, string password)
         {
             var user = userService.FindByUsername(username);
-            if (user == null || VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+            if (user == null || !VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
             {
-                throw new Exception($"User is not verified, username: {username}," +
-                    $" password: {password}, hash: {user.PasswordHash}, salt: {user.PasswordSalt}");
+                return null;
             }
             return user;
+        }
+
+        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        {
+            if (password == null) throw new ArgumentNullException("password");
+            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "password");
+
+            using (var hmac = new System.Security.Cryptography.HMACSHA512())
+            {
+                passwordSalt = hmac.Key;
+                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            }
         }
 
         private static bool VerifyPasswordHash(string password, byte[] storedHash, byte[] storedSalt)
@@ -54,12 +81,15 @@ namespace TodoApp.Services
             using (var hmac = new System.Security.Cryptography.HMACSHA512(storedSalt))
             {
                 var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                // return computedHash.Equals(storedHash);
                 for (int i = 0; i < computedHash.Length; i++)
                 {
-                    if (computedHash[i] != storedHash[i]) return false;
+                    if (computedHash[i] != storedHash[i])
+                    {
+                        return false;
+                    }
                 }
             }
-
             return true;
         }
 

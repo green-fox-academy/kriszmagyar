@@ -36,7 +36,11 @@ namespace TodoApp.Controllers
         [HttpPost("register")]
         public IActionResult Register([FromBody] UserModel userParam)
         {
-            var user = userService.Add(userParam);
+            var user = authService.Create(userParam, userParam.Password);
+            if (user == null)
+            {
+                return BadRequest(new { message = "Username is already in use" });
+            }
             return Ok(user);
         }
     }
