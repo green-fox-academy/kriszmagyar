@@ -35,16 +35,12 @@ namespace TodoApp.Services
 
         private UserModel GetValidUser(string username, string password)
         {
-            if (IsInvalidUser(username, password))
+            var user = userService.FindByUsername(username);
+            if (user == null || !user.Password.Equals(password))
             {
                 return null;
             }
-            return userService.FindByUsername(username);
-        }
-
-        private bool IsInvalidUser(string username, string password)
-        {
-            return !username.Equals("admin") || !password.Equals("password");
+            return user;
         }
 
         private string GetUserToken(UserModel user)

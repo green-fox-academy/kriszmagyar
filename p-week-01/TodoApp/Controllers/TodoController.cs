@@ -9,7 +9,7 @@ using TodoApp.Services;
 
 namespace TodoApp.Controllers
 {
-    [Authorize(Roles = Role.Admin)]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TodoController : ControllerBase
@@ -20,7 +20,8 @@ namespace TodoApp.Controllers
         {
             this.todoService = todoService;
         }
-
+        
+        [Authorize(Roles = Role.Admin)]
         [HttpGet]
         public ActionResult<List<TodoModel>> Get()
         {
