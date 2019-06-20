@@ -50,5 +50,10 @@ namespace TodoApp.Services
             context.Remove(user);
             context.SaveChanges();
         }
+
+        public bool Exists(string username)
+        {
+            return context.Users.Any(u => u.Username == username);
+        }
     }
 }

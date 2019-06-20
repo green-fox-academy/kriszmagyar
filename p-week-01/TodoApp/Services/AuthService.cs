@@ -24,9 +24,8 @@ namespace TodoApp.Services
 
         public UserModel Create(UserModel user, string password)
         {
-            if (userService.FindByUsername(user.Username) != null)
+            if (userService.Exists(user.Username))
             {
-                // User is already in DB, throw exception later
                 return null;
             }
 

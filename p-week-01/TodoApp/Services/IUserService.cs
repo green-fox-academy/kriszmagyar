@@ -14,5 +14,6 @@ namespace TodoApp.Services
         UserModel Add(UserModel user);
         void Update(UserModel user);
         void Delete(UserModel user);
+        bool Exists(string username);
     }
 }
