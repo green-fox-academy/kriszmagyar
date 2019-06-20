@@ -38,6 +38,7 @@ namespace TodoApp
             var tokenSettings = tokenSettingsSection.Get<TokenSettings>();
             var key = Encoding.ASCII.GetBytes(tokenSettings.Secret);
             services.Configure<TokenSettings>(tokenSettingsSection);
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(opt =>
                 {
