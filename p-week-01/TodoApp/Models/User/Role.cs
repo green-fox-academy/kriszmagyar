@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TodoApp.Models
+namespace TodoApp.Models.User
 {
     public static class Role
     {
