@@ -49,7 +49,7 @@ namespace TodoApp.Services
         public UserDto Authenticate(UserReq userReq)
         {
             var user = GetValidUser(userReq);
-            return new UserDto() { Id = user.Id, Username = user.Username, Role = user.Role, Token = GetUserToken(user) };
+            return new UserDto() { Id = user.Id, Username = user.Username, Role = user.Role, Token = GeneratetUserToken(user) };
         }
 
         private UserModel GetValidUser(UserReq userReq)
@@ -86,7 +86,7 @@ namespace TodoApp.Services
             return true;
         }
 
-        private string GetUserToken(UserModel user)
+        private string GeneratetUserToken(UserModel user)
         {
             var key = Encoding.ASCII.GetBytes(tokenSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
@@ -97,6 +97,7 @@ namespace TodoApp.Services
                     new Claim(ClaimTypes.Role, user.Role)
                 }),
                 Expires = DateTime.UtcNow.AddDays(tokenSettings.AccessExpiration),
+                NotBefore = DateTime.UtcNow,
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var tokenHandler = new JwtSecurityTokenHandler();

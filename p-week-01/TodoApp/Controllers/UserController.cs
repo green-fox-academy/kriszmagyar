@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TodoApp.Models.User;
 using TodoApp.Services;
 
 namespace TodoApp.Controllers
 {
+    [Authorize(Roles = Role.Admin)]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -17,6 +19,7 @@ namespace TodoApp.Controllers
             this.userService = userService;
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public IActionResult Login([FromBody] UserReq userReq)
         {
@@ -24,6 +27,7 @@ namespace TodoApp.Controllers
             return Ok(userDto);
         }
 
+        [AllowAnonymous]
         [HttpPost("register")]
         public IActionResult Register([FromBody] UserReq userReq)
         {
