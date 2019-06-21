@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TodoApp.Models;
+using TodoApp.Models.User;
 using TodoApp.Services;
 
 namespace TodoApp.Controllers
