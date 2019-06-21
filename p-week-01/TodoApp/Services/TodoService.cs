@@ -24,7 +24,12 @@ namespace TodoApp.Services
 
         public TodoModel FindById(long id)
         {
-            return context.Todos.Find(id);
+            var todo = context.Todos.Find(id);
+            if (todo == null)
+            {
+                throw new KeyNotFoundException($"Todo with id {todo.Id} is not found!");
+            }
+            return todo;
         }
 
         public List<TodoModel> FindAllByUserId(long userId)

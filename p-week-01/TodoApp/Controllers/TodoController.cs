@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TodoApp.Exceptions;
 using TodoApp.Models;
 using TodoApp.Models.User;
 using TodoApp.Services;
@@ -40,47 +41,25 @@ namespace TodoApp.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(long id)
         {
-            var user = GetCurrentUser();
-            var todo = todoService.FindById(id);
-            if (todo == null)
-            {
-                return NotFound($"Todo item with id {id} is not found.");
-            }
-            if (todo.UserId != user.Id && user.Role != Role.Admin)
-            {
-                return Forbid();
-            }
+            var todo = GetTodoWithAuthorization(id);
             return Ok(todo);
         }
 
         [HttpPost]
-        public ActionResult<TodoModel> Post([FromBody] TodoModel todo)
+        public ActionResult<TodoModel> Post([FromBody] TodoReq todoReq)
         {
-            if (todo.Id != 0)
-            {
-                return BadRequest("You cannot add todo with id, as it is generated.");
-            }
             var user = GetCurrentUser();
-            todo.UserId = user.Id;
+            var todo = new TodoModel() { Title = todoReq.Title, IsComplete = todoReq.IsComplete, UserId = user.Id };
             todoService.Add(todo);
             return CreatedAtAction(nameof(Get), new { id = todo.Id }, todo);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(long id, [FromBody] TodoModel todoRequest)
+        public IActionResult Put(long id, [FromBody] TodoReq todoReq)
         {
-            var todo = todoService.FindById(id);
-            if (todo == null)
-            {
-                return NotFound($"Todo with id {id} is not found!");
-            }
-            var user = GetCurrentUser();
-            if (user.Id != todo.UserId && user.Role != Role.Admin)
-            {
-                return Forbid();
-            }
-            todo.Title = todoRequest.Title;
-            todo.IsComplete = todoRequest.IsComplete;
+            var todo = GetTodoWithAuthorization(id);
+            todo.Title = todoReq.Title;
+            todo.IsComplete = todoReq.IsComplete;
             todoService.Update(todo);
             return NoContent();
         }
@@ -88,24 +67,31 @@ namespace TodoApp.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
-            var todo = todoService.FindById(id);
-            if (todo == null)
-            {
-                return NotFound($"Todo item with a given id {id} is not found.");
-            }
-            var user = GetCurrentUser();
-            if (user.Id != todo.UserId && user.Role != Role.Admin)
-            {
-                return Forbid();
-            }
+            var todo = GetTodoWithAuthorization(id);
             todoService.Delete(todo);
             return NoContent();
+        }
+
+        private TodoModel GetTodoWithAuthorization(long todoId)
+        {
+            var todo = todoService.FindById(todoId);
+            var user = GetCurrentUser();
+            ThrowIfForbidden(todo, user);
+            return todo;
         }
 
         private UserModel GetCurrentUser()
         {
             long userId = long.Parse(User.Identity.Name);
             return userService.FindById(userId);
+        }
+
+        private void ThrowIfForbidden(TodoModel todo, UserModel user)
+        {
+            if (user.Id != todo.UserId && user.Role != Role.Admin)
+            {
+                throw new AccessDeniedException("You can not access this item!");
+            }
         }
     }
 }

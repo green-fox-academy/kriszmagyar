@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using TodoApp.Exceptions;
 using TodoApp.Models;
 
 namespace TodoApp.Middlewares
@@ -39,14 +40,10 @@ namespace TodoApp.Middlewares
 
         private static HttpStatusCode GetStatusCode(Exception ex)
         {
-            if (ex is ArgumentException)
-            {
-                return HttpStatusCode.BadRequest;
-            }
-            if (ex is KeyNotFoundException)
-            {
-                return HttpStatusCode.NotFound;
-            }
+            if (ex is ArgumentException) return HttpStatusCode.BadRequest;
+            if (ex is KeyNotFoundException) return HttpStatusCode.NotFound;
+            if (ex is AccessDeniedException) return HttpStatusCode.Forbidden;
+            if (ex is UnauthorizedException) return HttpStatusCode.Unauthorized;
             return HttpStatusCode.InternalServerError;
         }
     }

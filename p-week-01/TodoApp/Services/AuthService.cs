@@ -58,10 +58,6 @@ namespace TodoApp.Services
         private UserModel GetValidUser(UserReq userReq)
         {
             var user = userService.FindByUsername(userReq.Username);
-            if (user == null)
-            {
-                throw new KeyNotFoundException($"User with name {userReq.Username} is not found!");
-            }
             if (!VerifyPasswordHash(userReq.Password, user.PasswordHash, user.PasswordSalt))
             {
                 throw new ArgumentException($"Password for {user.Username} is incorrect!");

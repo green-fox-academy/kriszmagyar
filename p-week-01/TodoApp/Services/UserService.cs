@@ -29,7 +29,12 @@ namespace TodoApp.Services
 
         public UserModel FindByUsername(string username)
         {
-            return context.Users.SingleOrDefault(u => u.Username.Equals(username));
+            var user = context.Users.FirstOrDefault(u => u.Username == username);
+            if (user == null)
+            {
+                throw new KeyNotFoundException($"User with name {username} is not found!");
+            }
+            return user;
         }
 
         public UserModel Add(UserModel user)
@@ -49,6 +54,11 @@ namespace TodoApp.Services
         {
             context.Remove(user);
             context.SaveChanges();
+        }
+
+        public bool Exists(long id)
+        {
+            return context.Users.Any(u => u.Id == id);
         }
 
         public bool Exists(string username)

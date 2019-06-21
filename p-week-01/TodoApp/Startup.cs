@@ -12,6 +12,7 @@ using System.Text;
 using TodoApp.Repositories;
 using System.Threading.Tasks;
 using TodoApp.Middlewares;
+using TodoApp.Exceptions;
 
 namespace TodoApp
 {
@@ -49,9 +50,9 @@ namespace TodoApp
                         {
                             var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
                             var userId = long.Parse(context.Principal.Identity.Name);
-                            if (userService.FindById(userId) == null)
+                            if (!userService.Exists(userId))
                             {
-                                context.Fail("Unauthorized");
+                                throw new UnauthorizedException("User not exist!");
                             }
                             return Task.CompletedTask;
                         }
