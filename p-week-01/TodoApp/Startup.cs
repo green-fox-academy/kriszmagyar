@@ -13,6 +13,7 @@ using TodoApp.Repositories;
 using System.Threading.Tasks;
 using TodoApp.Middlewares;
 using TodoApp.Exceptions;
+using TodoApp.Configs;
 
 namespace TodoApp
 {
@@ -35,36 +36,8 @@ namespace TodoApp
 
             services.AddDbContext<ApplicationContext>(opt => 
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
-            var tokenSettingsSection = Configuration.GetSection("TokenSettings");
-            var tokenSettings = tokenSettingsSection.Get<TokenSettings>();
-            var key = Encoding.ASCII.GetBytes(tokenSettings.Secret);
-            services.Configure<TokenSettings>(tokenSettingsSection);
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(opt =>
-                {
-                    opt.Events = new JwtBearerEvents
-                    {
-                        OnTokenValidated = context =>
-                        {
-                            var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
-                            var userId = long.Parse(context.Principal.Identity.Name);
-                            if (!userService.Exists(userId))
-                            {
-                                throw new UnauthorizedException("User not exist!");
-                            }
-                            return Task.CompletedTask;
-                        }
-                    };
-                    opt.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(key),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
-                    };
-                });
+            services.AddConfiguredAuthentication(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
