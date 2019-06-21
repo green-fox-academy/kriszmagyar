@@ -2,38 +2,54 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TodoApp.Models;
 using TodoApp.Services;
 
 namespace TodoApp.Controllers
 {
-    [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
+    [ApiController]
     public class TodoController : ControllerBase
     {
         private readonly ITodoService todoService;
+        private readonly IUserService userService;
 
-        public TodoController(ITodoService todoService)
+        public TodoController(ITodoService todoService, IUserService userService)
         {
             this.todoService = todoService;
+            this.userService = userService;
         }
-
+        
         [HttpGet]
         public ActionResult<List<TodoModel>> Get()
         {
-            return todoService.FindAll();
+            var user = GetCurrentUser();
+            if (user.Role == Role.Admin)
+            {
+                return todoService.FindAll();
+            } else
+            {
+                return todoService.FindAllByUserId(user.Id);
+            }
         }
 
         [HttpGet("{id}")]
-        public ActionResult<TodoModel> Get(long id)
+        public IActionResult Get(long id)
         {
+            var user = GetCurrentUser();
             var todo = todoService.FindById(id);
             if (todo == null)
             {
                 return NotFound($"Todo item with id {id} is not found.");
             }
-            return todo;
+            if (todo.UserId != user.Id && user.Role != Role.Admin)
+            {
+                return Forbid();
+            }
+            return Ok(todo);
         }
 
         [HttpPost]
@@ -43,17 +59,27 @@ namespace TodoApp.Controllers
             {
                 return BadRequest("You cannot add todo with id, as it is generated.");
             }
+            var user = GetCurrentUser();
+            todo.UserId = user.Id;
             todoService.Add(todo);
             return CreatedAtAction(nameof(Get), new { id = todo.Id }, todo);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(long id, [FromBody] TodoModel todo)
+        public IActionResult Put(long id, [FromBody] TodoModel todoRequest)
         {
-            if (id != todo.Id)
+            var todo = todoService.FindById(id);
+            if (todo == null)
             {
-                return BadRequest("The given ids do not match.");
+                return NotFound($"Todo with id {id} is not found!");
             }
+            var user = GetCurrentUser();
+            if (user.Id != todo.UserId && user.Role != Role.Admin)
+            {
+                return Forbid();
+            }
+            todo.Title = todoRequest.Title;
+            todo.IsComplete = todoRequest.IsComplete;
             todoService.Update(todo);
             return NoContent();
         }
@@ -66,9 +92,19 @@ namespace TodoApp.Controllers
             {
                 return NotFound($"Todo item with a given id {id} is not found.");
             }
-
+            var user = GetCurrentUser();
+            if (user.Id != todo.UserId && user.Role != Role.Admin)
+            {
+                return Forbid();
+            }
             todoService.Delete(todo);
             return NoContent();
+        }
+
+        private UserModel GetCurrentUser()
+        {
+            long userId = long.Parse(User.Identity.Name);
+            return userService.FindById(userId);
         }
     }
 }

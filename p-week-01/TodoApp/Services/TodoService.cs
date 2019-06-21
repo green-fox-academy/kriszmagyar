@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TodoApp.Models;
+using TodoApp.Repositories;
 
 namespace TodoApp.Services
 {
     public class TodoService : ITodoService
     {
-        private readonly TodoContext context;
+        private readonly ApplicationContext context;
 
-        public TodoService(TodoContext context)
+        public TodoService(ApplicationContext context)
         {
             this.context = context;
         }
@@ -24,6 +25,11 @@ namespace TodoApp.Services
         public TodoModel FindById(long id)
         {
             return context.Todos.Find(id);
+        }
+
+        public List<TodoModel> FindAllByUserId(long userId)
+        {
+            return context.Todos.Where(t => t.UserId == userId).ToList();
         }
 
         public TodoModel Add(TodoModel todo)
