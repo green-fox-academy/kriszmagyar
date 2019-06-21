@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TodoApp.Models;
+using TodoApp.Models.User;
 
 namespace TodoApp.Services
 {
     public interface IAuthService
     {
-        UserModel Create(UserModel user, string password);
-        UserModel Authenticate(string username, string password);
+        UserModel Create(UserReq userReq);
+        UserDto Authenticate(UserReq userReq);
     }
 }

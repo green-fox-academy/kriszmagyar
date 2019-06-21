@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TodoApp.Models;
+using TodoApp.Models.User;
 using TodoApp.Services;
 
 namespace TodoApp.Controllers
@@ -23,25 +23,25 @@ namespace TodoApp.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] UserModel userParam)
+        public IActionResult Login([FromBody] UserReq userReq)
         {
-            var user = authService.Authenticate(userParam.Username, userParam.Password);
-            if (user == null)
+            var userDto = authService.Authenticate(userReq);
+            if (userDto == null)
             {
                 return BadRequest(new { message = "Username or password is incorrect" });
             }
-            return Ok(user);
+            return Ok(userDto);
         }
 
         [HttpPost("register")]
-        public IActionResult Register([FromBody] UserModel userParam)
+        public IActionResult Register([FromBody] UserReq userReq)
         {
-            var user = authService.Create(userParam, userParam.Password);
+            var user = authService.Create(userReq);
             if (user == null)
             {
                 return BadRequest(new { message = "Username is already in use" });
             }
-            return Ok(user);
+            return Ok(new UserDto() { Id = user.Id, Username = user.Username, Role = user.Role });
         }
     }
 }

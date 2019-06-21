@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TodoApp.Models;
+using TodoApp.Models.User;
 
 namespace TodoApp.Services
 {
@@ -22,17 +23,20 @@ namespace TodoApp.Services
             this.userService = userService;
         }
 
-        public UserModel Create(UserModel user, string password)
+        public UserModel Create(UserReq userReq)
         {
-            if (userService.Exists(user.Username))
+            if (userService.Exists(userReq.Username))
             {
                 return null;
             }
-
-            CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
-            user.Role = Role.User;
+            CreatePasswordHash(userReq.Password, out byte[] passwordHash, out byte[] passwordSalt);
+            var user = new UserModel()
+            {
+                Username = userReq.Username,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                Role = Role.User
+            };
             userService.Add(user);
             return user;
         }
@@ -45,25 +49,24 @@ namespace TodoApp.Services
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
                 passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             }
         }
 
-        public UserModel Authenticate(string username, string password)
+        public UserDto Authenticate(UserReq userReq)
         {
-            var user = GetValidUser(username, password);
+            var user = GetValidUser(userReq);
             if (user == null)
             {
                 return null;
             }
-            user.Token = GetUserToken(user);
-            return user;
+            return new UserDto() { Id = user.Id, Username = user.Username, Role = user.Role, Token = GetUserToken(user) };
         }
 
-        private UserModel GetValidUser(string username, string password)
+        private UserModel GetValidUser(UserReq userReq)
         {
-            var user = userService.FindByUsername(username);
-            if (user == null || !VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+            var user = userService.FindByUsername(userReq.Username);
+            if (user == null || !VerifyPasswordHash(userReq.Password, user.PasswordHash, user.PasswordSalt))
             {
                 return null;
             }

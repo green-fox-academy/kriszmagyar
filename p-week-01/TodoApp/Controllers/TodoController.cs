@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TodoApp.Models;
+using TodoApp.Models.User;
 using TodoApp.Services;
 
 namespace TodoApp.Controllers

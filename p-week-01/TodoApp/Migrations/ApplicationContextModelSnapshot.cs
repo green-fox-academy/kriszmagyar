@@ -38,14 +38,11 @@ namespace TodoApp.Migrations
                     b.ToTable("Todos");
                 });
 
-            modelBuilder.Entity("TodoApp.Models.UserModel", b =>
+            modelBuilder.Entity("TodoApp.Models.User.UserModel", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Password")
-                        .IsRequired();
 
                     b.Property<byte[]>("PasswordHash");
 
@@ -53,10 +50,7 @@ namespace TodoApp.Migrations
 
                     b.Property<string>("Role");
 
-                    b.Property<string>("Token");
-
-                    b.Property<string>("Username")
-                        .IsRequired();
+                    b.Property<string>("Username");
 
                     b.HasKey("Id");
 
