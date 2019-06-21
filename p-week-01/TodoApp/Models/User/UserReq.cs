@@ -11,6 +11,7 @@ namespace TodoApp.Models.User
         [Required]
         public string Username { get; set; }
         [Required]
+        [StringLength(30, MinimumLength = 5)]
         public string Password { get; set; }
     }
 }

@@ -11,6 +11,7 @@ using TodoApp.Services;
 using System.Text;
 using TodoApp.Repositories;
 using System.Threading.Tasks;
+using TodoApp.Middlewares;
 
 namespace TodoApp
 {
@@ -77,6 +78,7 @@ namespace TodoApp
                 app.UseHsts();
             }
 
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseMvc();

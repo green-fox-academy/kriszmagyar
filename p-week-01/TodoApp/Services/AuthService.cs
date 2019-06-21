@@ -27,25 +27,21 @@ namespace TodoApp.Services
         {
             if (userService.Exists(userReq.Username))
             {
-                return null;
+                throw new ArgumentException($"Username ({userReq.Username}) is already in use!");
             }
+
             CreatePasswordHash(userReq.Password, out byte[] passwordHash, out byte[] passwordSalt);
-            var user = new UserModel()
+            return userService.Add(new UserModel()
             {
                 Username = userReq.Username,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
                 Role = Role.User
-            };
-            userService.Add(user);
-            return user;
+            });
         }
 
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
-            if (password == null) throw new ArgumentNullException("password");
-            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "password");
-
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
                 passwordSalt = hmac.Key;
@@ -56,40 +52,42 @@ namespace TodoApp.Services
         public UserDto Authenticate(UserReq userReq)
         {
             var user = GetValidUser(userReq);
-            if (user == null)
-            {
-                return null;
-            }
             return new UserDto() { Id = user.Id, Username = user.Username, Role = user.Role, Token = GetUserToken(user) };
         }
 
         private UserModel GetValidUser(UserReq userReq)
         {
             var user = userService.FindByUsername(userReq.Username);
-            if (user == null || !VerifyPasswordHash(userReq.Password, user.PasswordHash, user.PasswordSalt))
+            if (user == null)
             {
-                return null;
+                throw new KeyNotFoundException($"User with name {userReq.Username} is not found!");
+            }
+            if (!VerifyPasswordHash(userReq.Password, user.PasswordHash, user.PasswordSalt))
+            {
+                throw new ArgumentException($"Password for {user.Username} is incorrect!");
             }
             return user;
         }
 
         private static bool VerifyPasswordHash(string password, byte[] storedHash, byte[] storedSalt)
         {
-            if (password == null) throw new ArgumentNullException("password");
-            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "password");
             if (storedHash.Length != 64) throw new ArgumentException("Invalid length of password hash (64 bytes expected).", "passwordHash");
             if (storedSalt.Length != 128) throw new ArgumentException("Invalid length of password salt (128 bytes expected).", "passwordHash");
 
             using (var hmac = new System.Security.Cryptography.HMACSHA512(storedSalt))
             {
-                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-                // return computedHash.Equals(storedHash);
-                for (int i = 0; i < computedHash.Length; i++)
+                var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return IsEquals(computedHash, storedHash);
+            }
+        }
+
+        private static bool IsEquals(byte[] arr1, byte[] arr2)
+        {
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                if (arr1[i] != arr2[i])
                 {
-                    if (computedHash[i] != storedHash[i])
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
             return true;
