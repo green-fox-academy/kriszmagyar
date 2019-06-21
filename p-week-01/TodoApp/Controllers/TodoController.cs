@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using TodoApp.Exceptions;
 using TodoApp.Models.Todo;
 using TodoApp.Models.User;
@@ -24,7 +21,7 @@ namespace TodoApp.Controllers
             this.todoService = todoService;
             this.userService = userService;
         }
-        
+
         [HttpGet]
         public ActionResult<List<TodoModel>> Get()
         {
@@ -32,7 +29,8 @@ namespace TodoApp.Controllers
             if (user.Role == Role.Admin)
             {
                 return todoService.FindAll();
-            } else
+            }
+            else
             {
                 return todoService.FindAllByUserId(user.Id);
             }

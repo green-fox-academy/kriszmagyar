@@ -4,16 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using TodoApp.Models;
-using TodoApp.Services;
-using System.Text;
-using TodoApp.Repositories;
-using System.Threading.Tasks;
-using TodoApp.Middlewares;
-using TodoApp.Exceptions;
 using TodoApp.Configs;
+using TodoApp.Middlewares;
+using TodoApp.Repositories;
+using TodoApp.Services;
 
 namespace TodoApp
 {
@@ -34,7 +28,7 @@ namespace TodoApp
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ITodoService, TodoService>();
 
-            services.AddDbContext<ApplicationContext>(opt => 
+            services.AddDbContext<ApplicationContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddConfiguredAuthentication(Configuration);

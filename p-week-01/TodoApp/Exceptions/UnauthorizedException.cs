@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TodoApp.Exceptions
 {
@@ -15,7 +12,7 @@ namespace TodoApp.Exceptions
         {
         }
 
-        public UnauthorizedException(string message, Exception ex): base(message, ex)
+        public UnauthorizedException(string message, Exception ex) : base(message, ex)
         {
         }
     }

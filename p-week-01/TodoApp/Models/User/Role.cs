@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TodoApp.Models.User
+﻿namespace TodoApp.Models.User
 {
     public static class Role
     {
