@@ -47,7 +47,7 @@ namespace TodoApp.Controllers
         public ActionResult<TodoModel> Post([FromBody] TodoReq todoReq)
         {
             var user = GetCurrentUser();
-            var todo = new TodoModel() { Title = todoReq.Title, IsComplete = todoReq.IsComplete, UserId = user.Id };
+            var todo = new TodoModel() { Title = todoReq.Title, IsComplete = todoReq.IsComplete, User = user };
             todoService.Add(todo);
             return CreatedAtAction(nameof(Get), new { id = todo.Id }, todo);
         }
@@ -86,7 +86,7 @@ namespace TodoApp.Controllers
 
         private void ThrowIfForbidden(TodoModel todo, UserModel user)
         {
-            if (user.Id != todo.UserId && user.Role != Role.Admin)
+            if (user.Id != todo.User.Id && user.Role != Role.Admin)
             {
                 throw new AccessDeniedException("You can not access this item!");
             }

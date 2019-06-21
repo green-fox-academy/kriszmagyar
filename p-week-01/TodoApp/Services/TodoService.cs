@@ -28,7 +28,7 @@ namespace TodoApp.Services
 
         public List<TodoModel> FindAllByUserId(long userId)
         {
-            return context.Todos.Where(t => t.UserId == userId).ToList();
+            return context.Todos.Where(t => t.User.Id == userId).ToList();
         }
 
         public TodoModel Add(TodoModel todo)
