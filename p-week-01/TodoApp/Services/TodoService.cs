@@ -25,7 +25,7 @@ namespace TodoApp.Services
             var todo = context.Todos.Find(id);
             if (todo == null)
             {
-                throw new KeyNotFoundException($"Todo with id {todo.Id} is not found!");
+                throw new KeyNotFoundException($"Todo with id {id} is not found!");
             }
             return todo;
         }

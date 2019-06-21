@@ -42,7 +42,8 @@ namespace TodoApp.Middlewares
             if (ex is KeyNotFoundException) return HttpStatusCode.NotFound;
             if (ex is AccessDeniedException) return HttpStatusCode.Forbidden;
             if (ex is UnauthorizedException) return HttpStatusCode.Unauthorized;
-            return HttpStatusCode.InternalServerError;
+
+            throw ex;
         }
     }
 }
