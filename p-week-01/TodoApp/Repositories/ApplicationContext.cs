@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TodoApp.Models;
+using TodoApp.Models.Todo;
 using TodoApp.Models.User;
 
 namespace TodoApp.Repositories

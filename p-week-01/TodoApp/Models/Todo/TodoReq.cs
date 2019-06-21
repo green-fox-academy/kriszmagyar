@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TodoApp.Models
+namespace TodoApp.Models.Todo
 {
     public class TodoReq
     {
