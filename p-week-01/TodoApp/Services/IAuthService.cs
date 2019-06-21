@@ -9,6 +9,6 @@ namespace TodoApp.Services
     public interface IAuthService
     {
         UserModel Create(UserReq userReq);
-        UserModel Authenticate(UserReq userReq);
+        UserDto Authenticate(UserReq userReq);
     }
 }

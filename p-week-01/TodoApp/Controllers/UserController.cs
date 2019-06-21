@@ -25,12 +25,12 @@ namespace TodoApp.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] UserReq userReq)
         {
-            var user = authService.Authenticate(userReq);
-            if (user == null)
+            var userDto = authService.Authenticate(userReq);
+            if (userDto == null)
             {
                 return BadRequest(new { message = "Username or password is incorrect" });
             }
-            return Ok(user);
+            return Ok(userDto);
         }
 
         [HttpPost("register")]
@@ -41,7 +41,7 @@ namespace TodoApp.Controllers
             {
                 return BadRequest(new { message = "Username is already in use" });
             }
-            return Ok(user);
+            return Ok(new UserDto() { Id = user.Id, Username = user.Username, Role = user.Role });
         }
     }
 }

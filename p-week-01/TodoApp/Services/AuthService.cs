@@ -33,7 +33,6 @@ namespace TodoApp.Services
             var user = new UserModel()
             {
                 Username = userReq.Username,
-                Password = userReq.Password,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
                 Role = Role.User
@@ -50,19 +49,18 @@ namespace TodoApp.Services
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
                 passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             }
         }
 
-        public UserModel Authenticate(UserReq userReq)
+        public UserDto Authenticate(UserReq userReq)
         {
             var user = GetValidUser(userReq);
             if (user == null)
             {
                 return null;
             }
-            user.Token = GetUserToken(user);
-            return user;
+            return new UserDto() { Id = user.Id, Username = user.Username, Role = user.Role, Token = GetUserToken(user) };
         }
 
         private UserModel GetValidUser(UserReq userReq)
