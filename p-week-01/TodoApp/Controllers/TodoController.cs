@@ -58,8 +58,7 @@ namespace TodoApp.Controllers
         public IActionResult Put(long id, [FromBody] TodoReq todoReq)
         {
             var todo = GetTodoWithAuthorization(id);
-            todo.Title = todoReq.Title;
-            todo.IsComplete = todoReq.IsComplete;
+            todo = mapper.Map(todoReq, todo);
             todoService.Update(todo);
             return NoContent();
         }

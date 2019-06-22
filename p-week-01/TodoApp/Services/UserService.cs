@@ -55,12 +55,14 @@ namespace TodoApp.Services
 
         public bool Exists(long id)
         {
-            return context.Users.Any(u => u.Id == id);
+            return context.Users
+                .Any(u => u.Id == id);
         }
 
         public bool Exists(string username)
         {
-            return context.Users.Any(u => u.Username == username);
+            return context.Users
+                .Any(u => u.Username == username);
         }
     }
 }
