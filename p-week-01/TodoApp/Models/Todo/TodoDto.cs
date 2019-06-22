@@ -1,6 +1,4 @@
-﻿using TodoApp.Models.User;
-
-namespace TodoApp.Models.Todo
+﻿namespace TodoApp.Models.Todo
 {
     public class TodoDto
     {

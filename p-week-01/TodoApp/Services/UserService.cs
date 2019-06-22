@@ -23,14 +23,14 @@ namespace TodoApp.Services
         public UserModel FindById(long id)
         {
             return context.Users
-                .Find(id) 
+                .Find(id)
                 ?? throw new KeyNotFoundException($"User not found!");
         }
 
         public UserModel FindByUsername(string username)
         {
             return context.Users
-                .SingleOrDefault(u => u.Username == username) 
+                .SingleOrDefault(u => u.Username == username)
                 ?? throw new KeyNotFoundException($"User with name {username} is not found!");
         }
 
