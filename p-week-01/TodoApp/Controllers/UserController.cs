@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TodoApp.Models.User;
 using TodoApp.Services;
@@ -12,11 +13,13 @@ namespace TodoApp.Controllers
     {
         private readonly IAuthService authService;
         private readonly IUserService userService;
+        private readonly IMapper mapper;
 
-        public UserController(IAuthService authService, IUserService userService)
+        public UserController(IAuthService authService, IUserService userService, IMapper mapper)
         {
             this.authService = authService;
             this.userService = userService;
+            this.mapper = mapper;
         }
 
         [AllowAnonymous]
@@ -32,7 +35,8 @@ namespace TodoApp.Controllers
         public IActionResult Register([FromBody] UserReq userReq)
         {
             var user = authService.Create(userReq);
-            return Ok(new UserDto() { Id = user.Id, Username = user.Username, Role = user.Role });
+            var userDto = mapper.Map<UserDto>(user);
+            return Ok(userDto);
         }
     }
 }

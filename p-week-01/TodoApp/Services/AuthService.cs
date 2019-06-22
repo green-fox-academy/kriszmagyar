@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Options;
+﻿using AutoMapper;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -13,11 +14,13 @@ namespace TodoApp.Services
     {
         private readonly TokenSettings tokenSettings;
         private readonly IUserService userService;
+        private readonly IMapper mapper;
 
-        public AuthService(IOptions<TokenSettings> tokenSettings, IUserService userService)
+        public AuthService(IOptions<TokenSettings> tokenSettings, IUserService userService, IMapper mapper)
         {
             this.tokenSettings = tokenSettings.Value;
             this.userService = userService;
+            this.mapper = mapper;
         }
 
         public UserModel Create(UserReq userReq)
@@ -49,7 +52,9 @@ namespace TodoApp.Services
         public UserDto Authenticate(UserReq userReq)
         {
             var user = GetValidUser(userReq);
-            return new UserDto() { Id = user.Id, Username = user.Username, Role = user.Role, Token = GeneratetUserToken(user) };
+            var userDto = mapper.Map<UserDto>(user);
+            userDto.Token = GeneratetUserToken(user);
+            return userDto;
         }
 
         private UserModel GetValidUser(UserReq userReq)
