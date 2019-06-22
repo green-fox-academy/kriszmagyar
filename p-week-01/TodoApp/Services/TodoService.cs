@@ -17,18 +17,25 @@ namespace TodoApp.Services
 
         public List<TodoModel> FindAll()
         {
-            return context.Todos.ToList();
+            return context.Todos
+                .Include(t => t.User)
+                .ToList();
         }
 
         public TodoModel FindById(long id)
         {
-            return context.Todos.Find(id) 
+            return context.Todos
+                .Include(t => t.User)
+                .SingleOrDefault(t => t.Id == id)
                 ?? throw new KeyNotFoundException($"Todo with id {id} is not found!");
         }
 
         public List<TodoModel> FindAllByUserId(long userId)
         {
-            return context.Todos.Where(t => t.User.Id == userId).ToList();
+            return context.Todos
+                .Include(t => t.User)
+                .Where(t => t.User.Id == userId)
+                .ToList();
         }
 
         public TodoModel Add(TodoModel todo)

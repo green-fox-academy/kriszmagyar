@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using TodoApp.Exceptions;
@@ -15,41 +16,42 @@ namespace TodoApp.Controllers
     {
         private readonly ITodoService todoService;
         private readonly IUserService userService;
+        private readonly IMapper mapper;
 
-        public TodoController(ITodoService todoService, IUserService userService)
+        public TodoController(ITodoService todoService, IUserService userService, IMapper mapper)
         {
             this.todoService = todoService;
             this.userService = userService;
+            this.mapper = mapper;
         }
 
         [HttpGet]
-        public ActionResult<List<TodoModel>> Get()
+        public ActionResult<List<TodoDto>> Get()
         {
             var user = GetCurrentUser();
-            if (user.Role == Role.Admin)
-            {
-                return todoService.FindAll();
-            }
-            else
-            {
-                return todoService.FindAllByUserId(user.Id);
-            }
+            var todos = user.Role == Role.Admin
+                ? todoService.FindAll()
+                : todoService.FindAllByUserId(user.Id);
+
+            return mapper.Map<List<TodoDto>>(todos);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(long id)
         {
             var todo = GetTodoWithAuthorization(id);
-            return Ok(todo);
+            var todoDto = mapper.Map<TodoDto>(todo);
+            return Ok(todoDto);
         }
 
         [HttpPost]
-        public ActionResult<TodoModel> Post([FromBody] TodoReq todoReq)
+        public IActionResult Post([FromBody] TodoReq todoReq)
         {
-            var user = GetCurrentUser();
-            var todo = new TodoModel() { Title = todoReq.Title, IsComplete = todoReq.IsComplete, User = user };
+            var todo = mapper.Map<TodoModel>(todoReq);
+            todo.User = GetCurrentUser();
             todoService.Add(todo);
-            return CreatedAtAction(nameof(Get), new { id = todo.Id }, todo);
+            var todoDto = mapper.Map<TodoDto>(todo);
+            return CreatedAtAction(nameof(Get), new { id = todo.Id }, todoDto);
         }
 
         [HttpPut("{id}")]
