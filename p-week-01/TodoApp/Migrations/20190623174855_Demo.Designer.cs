@@ -10,8 +10,8 @@ using TodoApp.Repositories;
 namespace TodoApp.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20190621160953_UserObjOnTodo")]
-    partial class UserObjOnTodo
+    [Migration("20190623174855_Demo")]
+    partial class Demo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
